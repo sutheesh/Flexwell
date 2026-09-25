@@ -13,6 +13,10 @@ struct PathView: View {
     @Query(sort: \SessionLog.day) private var sessions: [SessionLog]
     @Query private var logs: [DailyLog]
     @Query(sort: \ExerciseSwap.createdAt, order: .reverse) private var swaps: [ExerciseSwap]
+    @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
+    @Query private var ingredientSwaps: [IngredientSwapRecord]
+    @Environment(\.modelContext) private var modelContext
+    @State private var mealDetail: MealSelection?
 
     var body: some View {
         if let record = profiles.first {
@@ -49,6 +53,14 @@ struct PathView: View {
                     .cardShadow()
                 }
 
+                SectionHeader(title: "The road to \(Formatters.mass(profile.targetWeightKg, units: profile.displayUnits))")
+                RoadSection(profile: profile, targets: TargetsStore.current(weekly, profile: profile),
+                            weeks: weeks, currentWeek: elapsed + 1)
+
+                SectionHeader(title: "Day by day")
+                DayByDaySection(profile: profile, targets: TargetsStore.current(weekly, profile: profile),
+                                swaps: ingredientSwaps) { mealDetail = $0 }
+
                 SectionHeader(title: "Volume by muscle")
                 VolumeCard(volume: ProgressStats.volume(logged))
 
@@ -65,6 +77,17 @@ struct PathView: View {
         }
         .statusBarBackdrop()
         .pageBackground()
+        .sheet(item: $mealDetail) { selection in
+            MealDetailView(planned: selection.planned,
+                           isEaten: logs.first { Calendar.current.isDate($0.day, inSameDayAs: selection.date) }?.eatenMeals.contains(selection.planned.index) == true,
+                           onToggleEaten: {
+                               let log = DailyLog.forDay(selection.date, in: modelContext)
+                               if let i = log.eatenMeals.firstIndex(of: selection.planned.index) { log.eatenMeals.remove(at: i) }
+                               else { log.eatenMeals.append(selection.planned.index) }
+                               try? modelContext.save()
+                           },
+                           onMissingIngredient: { mealDetail = nil; router.tab = .eat })
+        }
     }
 
     /// Completed sessions per week, index 0 = this week.

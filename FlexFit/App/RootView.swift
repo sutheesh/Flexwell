@@ -34,6 +34,12 @@ struct RootView: View {
         .sheet(isPresented: $router.isSettingsPresented) {
             SettingsView()
         }
+        .sheet(isPresented: $router.isGroceryPresented) {
+            GroceryView()
+        }
+        .sheet(isPresented: $router.isRestaurantPresented) {
+            RestaurantSheet()
+        }
         .sheet(item: $router.paywall) { reason in
             PaywallView(reason: reason)
         }

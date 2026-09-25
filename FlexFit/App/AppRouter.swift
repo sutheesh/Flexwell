@@ -13,6 +13,8 @@ final class AppRouter {
     var isAdaptPresented = false
     var paywall: PaywallReason?
     var isSettingsPresented = false
+    var isGroceryPresented = false
+    var isRestaurantPresented = false
     /// Non-nil while a workout is running for that day.
     var workoutDay: Date?
 }

@@ -57,8 +57,16 @@ enum Palette {
     static let ice = Color(hex: 0xD6E4F3)
     /// Copper: the ⚡ accent, calorie arc, "current" markers. Label = navy (7.2:1).
     static let copper = Color(hex: 0xE0A27C)
-    /// Fat macro bar.
+    /// Fat macro bar; warm end of the meal "petals".
     static let sand = Color(hex: 0xEBC9B2)
+    /// Cool end of the meal petals and ingredient tiles.
+    static let iceLight = Color(hex: 0xE6EEF8)
+    /// "Picked for you" card: a fixed peach surface with fixed dark content.
+    static let peach = Color(hex: 0xF4E3D6)
+    static let peachDeep = Color(hex: 0xEFD2BF)
+    /// Dark copper for text on peach (6.1:1).
+    static let copperInk = Color(hex: 0x8F4A26)
+    static let white = Color(hex: 0xFFFFFF)
 
     // Content on panel / navy grounds. Fixed because those grounds are always dark.
     static let onPanel = Color(hex: 0xFFFFFF)
@@ -230,6 +238,13 @@ enum Space {
 }
 
 enum Size {
+    /// Calorie arc on Today (mock: 18×34 segments at radius 108).
+    static let arcRadius: CGFloat = 92
+    static let segment = CGSize(width: 16, height: 30)
+    /// Meal photo in a meal card.
+    static let mealThumb = CGSize(width: 88, height: 96)
+    /// Round meal image on "Picked for you" and the detail flower.
+    static let mealHero: CGFloat = 100
     /// Primary CTA height.
     static let buttonTall: CGFloat = 58
     /// Secondary CTA height.

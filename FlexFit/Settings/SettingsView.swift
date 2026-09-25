@@ -38,8 +38,44 @@ struct SettingsView: View {
                     Text("Metric (kg)").tag(DisplayUnits.metric.rawValue)
                     Text("Imperial (lb)").tag(DisplayUnits.imperial.rawValue)
                 }
+                Picker("Goal", selection: bind(record, \.goal)) {
+                    ForEach(Goal.allCases, id: \.self) { Text($0.title).tag($0.rawValue) }
+                }
                 NavigationLink("Equipment") { EquipmentEditor(record: record) }
                 NavigationLink("Areas to protect") { LimitationsEditor(record: record) }
+            }
+
+            Section("Food") {
+                Picker("Diet style", selection: bind(record, \.dietStyle)) {
+                    ForEach(DietStyle.allCases, id: \.self) { Text($0.title).tag($0.rawValue) }
+                }
+                Picker("Meals per day", selection: bind(record, \.mealPattern)) {
+                    ForEach(MealPattern.allCases, id: \.self) { Text($0.title).tag($0.rawValue) }
+                }
+                Picker("Max cooking time", selection: bind(record, \.maxCookMinutes)) {
+                    ForEach([10, 20, 40, 0], id: \.self) { Text($0 == 0 ? "No limit" : "\($0) min").tag($0) }
+                }
+                NavigationLink("Cuisines, allergies & dislikes") { FoodEditor(record: record) }
+            }
+
+            Section {
+                Picker("Check-in reminder", selection: bind(record, \.reminder)) {
+                    ForEach(ReminderTime.allCases, id: \.self) { Text($0.title).tag($0.rawValue) }
+                }
+                Picker("Tone", selection: bind(record, \.tone)) {
+                    ForEach(CoachTone.allCases, id: \.self) { Text($0.title).tag($0.rawValue) }
+                }
+                Picker("Shopping day", selection: bind(record, \.shopDay)) {
+                    ForEach(ShopDay.allCases, id: \.self) { Text($0.title).tag($0.rawValue) }
+                }
+            } header: {
+                Text("Coaching")
+            } footer: {
+                Text(Reminders.message(CoachTone(rawValue: record.tone) ?? .direct))
+            }
+            .onChange(of: record.reminder + record.tone) {
+                let p = record.profile()
+                Task { await Reminders.schedule(time: p.reminder, tone: p.tone) }
             }
 
             Section {
@@ -118,7 +154,8 @@ struct SettingsView: View {
 
     private func reset() {
         for model in [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self,
-                      WeeklyTargets.self, PainFlag.self] as [any PersistentModel.Type] {
+                      WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self,
+                      GroceryCheck.self, PantryItem.self] as [any PersistentModel.Type] {
             try? modelContext.delete(model: model)
         }
         try? modelContext.save()
@@ -193,5 +230,50 @@ private struct LimitationsEditor: View {
         }
         .pageBackground()
         .navigationTitle("Areas to protect")
+    }
+}
+
+private struct FoodEditor: View {
+    let record: ProfileRecord
+    @Environment(\.modelContext) private var modelContext
+
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: Space.xl) {
+                group("Cuisines", hint: "Your meals come from these kitchens.") {
+                    ForEach(Cuisine.allCases, id: \.self) { c in
+                        Chip(title: c.rawValue, isSelected: record.cuisines.contains(c.rawValue)) { toggle(\.cuisines, c.rawValue) }
+                    }
+                }
+                group("Allergies", hint: "Hard rule: meals with these never appear.") {
+                    ForEach(Allergen.allCases, id: \.self) { a in
+                        Chip(title: a.title, isSelected: record.allergens.contains(a.rawValue)) { toggle(\.allergens, a.rawValue) }
+                    }
+                }
+                group("Foods you won't eat", hint: "Avoided wherever there's an alternative.") {
+                    ForEach(FoodDislikes.options, id: \.self) { f in
+                        Chip(title: f, isSelected: record.dislikes.contains(f)) { toggle(\.dislikes, f) }
+                    }
+                }
+            }
+            .padding(Space.lg)
+            .readableColumn()
+        }
+        .pageBackground()
+        .navigationTitle("Food preferences")
+    }
+
+    private func group<C: View>(_ title: String, hint: String, @ViewBuilder chips: () -> C) -> some View {
+        VStack(alignment: .leading, spacing: Space.sm) {
+            Text(title).textStyle(.label).foregroundStyle(Palette.ink)
+            Text(hint).textStyle(.caption).foregroundStyle(Palette.inkMuted)
+            FlowLayout { chips() }
+        }
+    }
+
+    private func toggle(_ key: ReferenceWritableKeyPath<ProfileRecord, [String]>, _ value: String) {
+        if let i = record[keyPath: key].firstIndex(of: value) { record[keyPath: key].remove(at: i) }
+        else { record[keyPath: key].append(value) }
+        try? modelContext.save()
     }
 }

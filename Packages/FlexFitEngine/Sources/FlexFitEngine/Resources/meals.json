@@ -1,0 +1,976 @@
+{
+ "version": 1,
+ "reviewStatus": "draft — meals and macros taken from the design mock; macros must be human-verified (PRD) before launch",
+ "allergenNote": "Tags are the mock's plus allergens derived from ingredient names (conservative: oats count as gluten, coconut as a tree nut per FDA). Verify every recipe before launch.",
+ "meals": [
+  {
+   "id": 1,
+   "slot": "breakfast",
+   "name": "Masala Egg Bhurji & Sourdough",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 520,
+   "proteinG": 38,
+   "carbsG": 44,
+   "fatG": 22,
+   "cookMinutes": 12,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 120
+    },
+    {
+     "name": "Sourdough",
+     "grams": 90
+    },
+    {
+     "name": "Tomato",
+     "grams": 50
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Ghee",
+     "grams": 15
+    },
+    {
+     "name": "Coriander",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "slot": "breakfast",
+   "name": "Moong Dal Chilla, Mint Yoghurt",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 430,
+   "proteinG": 26,
+   "carbsG": 48,
+   "fatG": 12,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Moong dal",
+     "grams": 80
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 100
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Spinach",
+     "grams": 30
+    },
+    {
+     "name": "Mint",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "slot": "breakfast",
+   "name": "Greek Yoghurt Oat Bowl",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten"
+   ],
+   "kcal": 480,
+   "proteinG": 34,
+   "carbsG": 58,
+   "fatG": 12,
+   "cookMinutes": 5,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Greek yoghurt",
+     "grams": 200
+    },
+    {
+     "name": "Rolled oats",
+     "grams": 50
+    },
+    {
+     "name": "Blueberries",
+     "grams": 60
+    },
+    {
+     "name": "Honey",
+     "grams": 15
+    },
+    {
+     "name": "Chia seeds",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "slot": "breakfast",
+   "name": "Tofu Scramble on Rye",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 450,
+   "proteinG": 30,
+   "carbsG": 40,
+   "fatG": 18,
+   "cookMinutes": 10,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 200
+    },
+    {
+     "name": "Rye bread",
+     "grams": 70
+    },
+    {
+     "name": "Tomato",
+     "grams": 50
+    },
+    {
+     "name": "Spinach",
+     "grams": 40
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "slot": "breakfast",
+   "name": "Eggs, Avocado & Feta Plate",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "eggs"
+   ],
+   "kcal": 540,
+   "proteinG": 28,
+   "carbsG": 8,
+   "fatG": 44,
+   "cookMinutes": 8,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 150
+    },
+    {
+     "name": "Avocado",
+     "grams": 100
+    },
+    {
+     "name": "Spinach",
+     "grams": 50
+    },
+    {
+     "name": "Feta",
+     "grams": 30
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "slot": "breakfast",
+   "name": "Shakshuka & Pita",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 500,
+   "proteinG": 30,
+   "carbsG": 38,
+   "fatG": 24,
+   "cookMinutes": 18,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 150
+    },
+    {
+     "name": "Tomato",
+     "grams": 150
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Pita",
+     "grams": 60
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "slot": "lunch",
+   "name": "Chicken Tikka Rice Bowl",
+   "cuisine": "Indian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 680,
+   "proteinG": 52,
+   "carbsG": 71,
+   "fatG": 18,
+   "cookMinutes": 20,
+   "rating": 4.9,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 200
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 150
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 60
+    },
+    {
+     "name": "Cucumber",
+     "grams": 50
+    },
+    {
+     "name": "Mint",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "slot": "lunch",
+   "name": "Rajma Chawal & Kachumber",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 610,
+   "proteinG": 24,
+   "carbsG": 98,
+   "fatG": 12,
+   "cookMinutes": 25,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Kidney beans",
+     "grams": 180
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 150
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Cucumber",
+     "grams": 50
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "slot": "lunch",
+   "name": "Chicken Power Bowl",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 620,
+   "proteinG": 50,
+   "carbsG": 58,
+   "fatG": 18,
+   "cookMinutes": 20,
+   "rating": 4.9,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 180
+    },
+    {
+     "name": "Quinoa",
+     "grams": 120
+    },
+    {
+     "name": "Sweet potato",
+     "grams": 100
+    },
+    {
+     "name": "Avocado",
+     "grams": 40
+    },
+    {
+     "name": "Greens",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "slot": "lunch",
+   "name": "Paneer Tikka Wrap",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten"
+   ],
+   "kcal": 640,
+   "proteinG": 38,
+   "carbsG": 56,
+   "fatG": 28,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Paneer",
+     "grams": 140
+    },
+    {
+     "name": "Whole-wheat roti",
+     "grams": 80
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Mint chutney",
+     "grams": 30
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "slot": "lunch",
+   "name": "Salmon Poke Bowl",
+   "cuisine": "East Asian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 650,
+   "proteinG": 42,
+   "carbsG": 64,
+   "fatG": 22,
+   "cookMinutes": 15,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 140
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 150
+    },
+    {
+     "name": "Edamame",
+     "grams": 60
+    },
+    {
+     "name": "Cucumber",
+     "grams": 50
+    },
+    {
+     "name": "Sesame",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "slot": "lunch",
+   "name": "Chicken Burrito Bowl",
+   "cuisine": "Mexican",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 660,
+   "proteinG": 48,
+   "carbsG": 70,
+   "fatG": 18,
+   "cookMinutes": 20,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Brown rice",
+     "grams": 140
+    },
+    {
+     "name": "Black beans",
+     "grams": 80
+    },
+    {
+     "name": "Salsa",
+     "grams": 60
+    },
+    {
+     "name": "Lettuce",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 13,
+   "slot": "lunch",
+   "name": "Steak, Greens & Chimichurri",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [],
+   "kcal": 600,
+   "proteinG": 50,
+   "carbsG": 10,
+   "fatG": 40,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 200
+    },
+    {
+     "name": "Greens",
+     "grams": 80
+    },
+    {
+     "name": "Olive oil",
+     "grams": 15
+    },
+    {
+     "name": "Parsley",
+     "grams": 15
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "slot": "snack",
+   "name": "Yoghurt, Berries & Honey",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 240,
+   "proteinG": 22,
+   "carbsG": 26,
+   "fatG": 5,
+   "cookMinutes": 2,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Greek yoghurt",
+     "grams": 200
+    },
+    {
+     "name": "Blueberries",
+     "grams": 60
+    },
+    {
+     "name": "Honey",
+     "grams": 15
+    },
+    {
+     "name": "Pumpkin seeds",
+     "grams": 15
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "slot": "snack",
+   "name": "Roasted Chana & Apple",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 220,
+   "proteinG": 11,
+   "carbsG": 34,
+   "fatG": 5,
+   "cookMinutes": 1,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Roasted chana",
+     "grams": 40
+    },
+    {
+     "name": "Apple",
+     "grams": 150
+    },
+    {
+     "name": "Chaat masala",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "slot": "snack",
+   "name": "Protein Shake & Banana",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 280,
+   "proteinG": 30,
+   "carbsG": 32,
+   "fatG": 4,
+   "cookMinutes": 2,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Whey",
+     "grams": 30
+    },
+    {
+     "name": "Milk",
+     "grams": 250
+    },
+    {
+     "name": "Banana",
+     "grams": 120
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "slot": "snack",
+   "name": "Boiled Eggs & Cucumber",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs"
+   ],
+   "kcal": 180,
+   "proteinG": 13,
+   "carbsG": 4,
+   "fatG": 11,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 100
+    },
+    {
+     "name": "Cucumber",
+     "grams": 120
+    },
+    {
+     "name": "Salt & pepper",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "slot": "dinner",
+   "name": "Paneer & Chickpea Skillet",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 610,
+   "proteinG": 41,
+   "carbsG": 48,
+   "fatG": 26,
+   "cookMinutes": 18,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Paneer",
+     "grams": 150
+    },
+    {
+     "name": "Chickpeas",
+     "grams": 120
+    },
+    {
+     "name": "Spinach",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Garlic",
+     "grams": 15
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "slot": "dinner",
+   "name": "Dal Tadka, Roti & Sabzi",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 560,
+   "proteinG": 24,
+   "carbsG": 80,
+   "fatG": 14,
+   "cookMinutes": 25,
+   "rating": 4.9,
+   "ingredients": [
+    {
+     "name": "Toor dal",
+     "grams": 90
+    },
+    {
+     "name": "Whole-wheat roti",
+     "grams": 80
+    },
+    {
+     "name": "Mixed veg",
+     "grams": 120
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Cumin",
+     "grams": 4
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "slot": "dinner",
+   "name": "Baked Salmon, Potatoes & Greens",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish"
+   ],
+   "kcal": 620,
+   "proteinG": 44,
+   "carbsG": 48,
+   "fatG": 26,
+   "cookMinutes": 25,
+   "rating": 4.9,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 160
+    },
+    {
+     "name": "Baby potatoes",
+     "grams": 200
+    },
+    {
+     "name": "Green beans",
+     "grams": 100
+    },
+    {
+     "name": "Lemon",
+     "grams": 20
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "slot": "dinner",
+   "name": "Chicken Stir-Fry & Rice",
+   "cuisine": "East Asian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "soy"
+   ],
+   "kcal": 600,
+   "proteinG": 46,
+   "carbsG": 62,
+   "fatG": 16,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 140
+    },
+    {
+     "name": "Broccoli",
+     "grams": 100
+    },
+    {
+     "name": "Pak choi",
+     "grams": 60
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 15
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "slot": "dinner",
+   "name": "Lemon Herb Chicken & Roast Veg",
+   "cuisine": "Mediterranean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [],
+   "kcal": 540,
+   "proteinG": 50,
+   "carbsG": 22,
+   "fatG": 26,
+   "cookMinutes": 30,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 200
+    },
+    {
+     "name": "Courgette",
+     "grams": 120
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Olive oil",
+     "grams": 12
+    },
+    {
+     "name": "Lemon",
+     "grams": 20
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "slot": "dinner",
+   "name": "Tofu Thai Green Curry",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "soy",
+    "treeNuts"
+   ],
+   "kcal": 580,
+   "proteinG": 26,
+   "carbsG": 62,
+   "fatG": 24,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 180
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 130
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 80
+    },
+    {
+     "name": "Green beans",
+     "grams": 60
+    },
+    {
+     "name": "Thai basil",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "slot": "dinner",
+   "name": "Chicken Fajita Plate",
+   "cuisine": "Mexican",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 590,
+   "proteinG": 46,
+   "carbsG": 44,
+   "fatG": 24,
+   "cookMinutes": 20,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Tortillas",
+     "grams": 70
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Guacamole",
+     "grams": 40
+    }
+   ]
+  }
+ ],
+ "substitutions": {
+  "Eggs": "Firm tofu",
+  "Sourdough": "Roti",
+  "Tomato": "Tinned tomato",
+  "Onion": "Spring onion",
+  "Ghee": "Olive oil",
+  "Coriander": "Parsley",
+  "Greek yoghurt": "Hung curd",
+  "Rolled oats": "Poha",
+  "Blueberries": "Frozen berries",
+  "Honey": "Maple syrup",
+  "Chicken thigh": "Paneer",
+  "Chicken breast": "Firm tofu",
+  "Basmati rice": "Quinoa",
+  "Brown rice": "Basmati rice",
+  "Jasmine rice": "Basmati rice",
+  "Cucumber": "Celery",
+  "Mint": "Coriander",
+  "Kidney beans": "Black beans",
+  "Paneer": "Firm tofu",
+  "Salmon": "Tinned tuna",
+  "Spinach": "Kale",
+  "Chickpeas": "Black beans",
+  "Avocado": "Hummus",
+  "Quinoa": "Brown rice",
+  "Sweet potato": "Potato",
+  "Firm tofu": "Paneer",
+  "Whey": "Skyr",
+  "Milk": "Soy milk",
+  "Banana": "Dates",
+  "Broccoli": "Green beans",
+  "Garlic": "Garlic powder",
+  "Tortillas": "Lettuce cups",
+  "Sirloin": "Chicken thigh"
+ }
+}

@@ -13,6 +13,8 @@ struct TodayView: View {
     @Query private var sessions: [SessionLog]
     @Query private var swaps: [ExerciseSwap]
     @Query private var painFlags: [PainFlag]
+    @Query private var ingredientSwaps: [IngredientSwapRecord]
+    @State private var mealDetail: MealSelection?
 
     var body: some View {
         if let record = profiles.first {
@@ -32,6 +34,12 @@ struct TodayView: View {
         let totalWeeks = TargetCalculator.weeksToGoal(for: profile)
         let streak = Streak.weeks(sessionsPerWeek: sessionsPerWeek(now: now), planned: profile.trainingDays)
         let doneToday = sessions.contains { Calendar.current.isDate($0.day, inSameDayAs: now) }
+        let meals = MealPlanContext(profile: profile, targets: targets, swaps: ingredientSwaps).meals(on: now)
+        let eatenIdx = Set(todayLog?.eatenMeals ?? [])
+        let eatenMeals = meals.filter { eatenIdx.contains($0.index) }
+        let eaten = (kcal: eatenMeals.reduce(0) { $0 + $1.kcal }, protein: eatenMeals.reduce(0) { $0 + $1.proteinG },
+                     carbs: eatenMeals.reduce(0) { $0 + $1.carbsG }, fat: eatenMeals.reduce(0) { $0 + $1.fatG })
+        let next = MealPlanContext.nextMeal(meals, eaten: eatenIdx, now: now)
 
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
@@ -46,11 +54,19 @@ struct TodayView: View {
                     date: now,
                     weekLabel: streak > 0 ? "🔥 \(streak)-week streak"
                         : (totalWeeks.map { "Week \(min(week, $0)) of \($0)" } ?? "Week \(week)"),
+                    eaten: eaten,
                     protein: todayLog?.proteinValue,
                     onProtein: { answer in setProtein(answer, on: now) }
                 )
 
                 if plannedToday.kind == .training {
+                    if todayLog?.energyValue == nil && profile.sleep.isShort {
+                        Text("You said sleep often runs short. \"Low\" is an honest answer: the session shrinks, the streak holds.")
+                            .textStyle(.caption)
+                            .foregroundStyle(Palette.inkMuted)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.horizontal, Space.xxs)
+                    }
                     EnergyCheckIn(energy: todayLog?.energyValue, pivot: pivot,
                                   onPick: { pick($0, on: now) },
                                   onChange: { setEnergy(nil, on: now) })
@@ -61,8 +77,38 @@ struct TodayView: View {
                             onStart: { router.workoutDay = Calendar.current.startOfDay(for: now) },
                             onAdapt: { router.isAdaptPresented = true })
 
+                if !meals.isEmpty {
+                    HStack(alignment: .firstTextBaseline) {
+                        SectionHeader(title: "Today's food")
+                        Spacer()
+                        Button("See all") { router.tab = .eat }
+                            .textStyle(.label)
+                            .foregroundStyle(Palette.copperText)
+                    }
+                    CardList {
+                        ForEach(meals) { meal in
+                            Button { mealDetail = MealSelection(date: now, planned: meal) } label: {
+                                TodayMealRow(meal: meal, target: targets.calories,
+                                             status: eatenIdx.contains(meal.index) ? .eaten : (meal.id == next?.id ? .upNext : .planned))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+
                 SectionHeader(title: "Quick adjustments")
                 CardList {
+                    ActionRow(icon: "house", tint: .navy, title: "Can't make it to the gym",
+                              subtitle: record.activeTravelKit(now: now) == TravelKit.none ? "On: today is a no-equipment session" : "Converts today to zero equipment",
+                              badge: entitlements.canUseTravelMode ? nil : "Pro") {
+                        toggleNoGym(record, now: now)
+                    }
+                    ActionRow(icon: "fork.knife", tint: .copper, title: "Eating out tonight",
+                              subtitle: "3 safe orders for \(Formatters.kcal(max(0, targets.calories - eaten.kcal))) kcal left") {
+                        router.isRestaurantPresented = true
+                    }
+                    ActionRow(icon: "checklist", tint: .blue, title: "Grocery list",
+                              subtitle: "Everything for this week's meals") { router.isGroceryPresented = true }
                     ActionRow(icon: "airplane", tint: .navy, title: "Travel mode",
                               subtitle: record.activeTravelKit(now: now).map { "On · \($0.title.lowercased())" }
                                   ?? "Same muscles with bodyweight or bands",
@@ -80,6 +126,38 @@ struct TodayView: View {
         }
         .statusBarBackdrop()
         .pageBackground()
+        .sheet(item: $mealDetail) { selection in
+            MealDetailView(planned: selection.planned,
+                           isEaten: log(for: selection.date)?.eatenMeals.contains(selection.planned.index) == true,
+                           onToggleEaten: { toggleEaten(selection) },
+                           onMissingIngredient: { mealDetail = nil; router.tab = .eat })
+        }
+    }
+
+    // MARK: Meals & no-gym
+
+    private func toggleEaten(_ selection: MealSelection) {
+        let log = DailyLog.forDay(selection.date, in: modelContext)
+        if let i = log.eatenMeals.firstIndex(of: selection.planned.index) {
+            log.eatenMeals.remove(at: i)
+        } else {
+            log.eatenMeals.append(selection.planned.index)
+        }
+        log.updatedAt = .now
+        try? modelContext.save()
+    }
+
+    /// "Can't make it to the gym": Travel Mode with no equipment until the end of today (Pro).
+    private func toggleNoGym(_ record: ProfileRecord, now: Date) {
+        guard entitlements.canUseTravelMode else { router.paywall = .travel; return }
+        if record.activeTravelKit(now: now) == TravelKit.none {
+            record.travelKit = nil
+            record.travelUntil = nil
+        } else {
+            record.travelKit = TravelKit.none.rawValue
+            record.travelUntil = Calendar.current.date(bySettingHour: 23, minute: 59, second: 0, of: now)
+        }
+        try? modelContext.save()
     }
 
     // MARK: Logs
@@ -171,10 +249,12 @@ private struct TodayHeader: View {
 // MARK: - Targets + protein check
 
 /// Navy panel: dark in both appearances, so its content uses fixed tokens.
+/// The mock's calorie arc: 13 segments filling as meals are marked eaten.
 private struct TargetsCard: View {
     let targets: DailyTargets
     let date: Date
     let weekLabel: String
+    let eaten: (kcal: Int, protein: Int, carbs: Int, fat: Int)
     let protein: ProteinCheck?
     let onProtein: (ProteinCheck?) -> Void
 
@@ -193,31 +273,29 @@ private struct TargetsCard: View {
                     .background(Palette.ice.opacity(0.14), in: Capsule())
             }
 
-            VStack(spacing: Space.xs) {
-                Image(systemName: "bolt.fill")
-                    .font(TextStyle.label.font)
-                    .foregroundStyle(Palette.copper)
-                    .accessibilityHidden(true)
-                HStack(alignment: .firstTextBaseline, spacing: Space.xs - 2) {
-                    Text(Formatters.kcal(targets.calories))
-                        .textStyle(.metric)
-                        .foregroundStyle(Palette.onPanel)
-                    Text("kcal")
-                        .textStyle(.label)
-                        .foregroundStyle(Palette.copper)
+            CalorieArc(fraction: Double(eaten.kcal) / Double(max(1, targets.calories)))
+                .overlay(alignment: .bottom) {
+                    VStack(spacing: Space.xs - 1) {
+                        Image(systemName: "bolt.fill")
+                            .font(TextStyle.label.font)
+                            .foregroundStyle(Palette.copper)
+                        Text("\(Formatters.kcal(eaten.kcal)) kcal")
+                            .textStyle(.metric)
+                            .foregroundStyle(Palette.onPanel)
+                        Text("Goal \(Formatters.kcal(targets.calories)) kcal")
+                            .textStyle(.micro)
+                            .foregroundStyle(Palette.copper)
+                    }
+                    .padding(.bottom, Space.xs)
                 }
-                Text("Today's target")
-                    .textStyle(.micro)
-                    .foregroundStyle(Palette.onPanelMuted)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, Space.lg)
-            .accessibilityElement(children: .combine)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("\(eaten.kcal) of \(targets.calories) kilocalories eaten today")
+                .padding(.top, Space.xxs)
 
             HStack(spacing: 0) {
-                MacroStat(label: "Protein", grams: targets.proteinG, fill: Palette.ice, leading: true)
-                MacroStat(label: "Carbs", grams: targets.carbsG, fill: Palette.copper)
-                MacroStat(label: "Fat", grams: targets.fatG, fill: Palette.sand)
+                MacroStat(label: "Protein", eaten: eaten.protein, target: targets.proteinG, fill: Palette.ice)
+                MacroStat(label: "Carbs", eaten: eaten.carbs, target: targets.carbsG, fill: Palette.copper)
+                MacroStat(label: "Fat", eaten: eaten.fat, target: targets.fatG, fill: Palette.sand)
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding(.top, Space.md - 1)
@@ -234,24 +312,55 @@ private struct TargetsCard: View {
     }
 }
 
-private struct MacroStat: View {
-    let label: String
-    let grams: Int
-    let fill: Color
-    var leading = false
+/// 13 rounded segments on a 204° arc, as drawn in the mock.
+private struct CalorieArc: View {
+    let fraction: Double
+    private let segments = 13
 
     var body: some View {
-        HStack(spacing: Space.xs) {
-            Capsule().fill(fill).frame(width: Size.progressBar)
-            VStack(alignment: .leading, spacing: Space.xxs + 2) {
-                Text(label)
-                    .textStyle(.micro)
-                    .foregroundStyle(Palette.onPanelMuted)
-                Text("\(grams)g")
-                    .textStyle(.statValue)
-                    .foregroundStyle(Palette.onPanel)
+        let filled = Int((min(1, max(0, fraction)) * Double(segments)).rounded())
+        ZStack {
+            ForEach(0..<segments, id: \.self) { i in
+                Capsule()
+                    .fill(i < filled ? Palette.copper : Palette.onPanelHairline)
+                    .frame(width: Size.segment.width, height: Size.segment.height)
+                    .offset(y: -Size.arcRadius)
+                    .rotationEffect(.degrees(-102 + Double(i) * 204 / Double(segments - 1)))
             }
         }
+        .frame(width: Size.arcRadius * 2 + Size.segment.width, height: Size.arcRadius + Size.segment.height)
+        .offset(y: Size.arcRadius / 2 - Space.xs)
+        .frame(maxWidth: .infinity)
+        .frame(height: Size.arcRadius * 1.3)
+        .clipped()
+    }
+}
+
+private struct MacroStat: View {
+    let label: String
+    let eaten: Int
+    let target: Int
+    let fill: Color
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: Space.xs) {
+            Text(label)
+                .textStyle(.micro)
+                .foregroundStyle(Palette.onPanelMuted)
+            Text("\(eaten) / \(target)g")
+                .textStyle(.label)
+                .foregroundStyle(Palette.onPanel)
+            Capsule()
+                .fill(Palette.onPanelHairline)
+                .frame(height: Size.progressBar)
+                .overlay(alignment: .leading) {
+                    GeometryReader { geo in
+                        Capsule().fill(fill)
+                            .frame(width: geo.size.width * min(1, Double(eaten) / Double(max(1, target))))
+                    }
+                }
+        }
+        .padding(.trailing, Space.md)
         .frame(maxWidth: .infinity, alignment: .leading)
         .accessibilityElement(children: .combine)
     }
@@ -614,5 +723,64 @@ struct ActionRow: View {
         case .copper: Palette.copperTint
         case .blue: Palette.blueTint
         }
+    }
+}
+
+private struct TodayMealRow: View {
+    enum Status { case eaten, upNext, planned }
+    let meal: PlannedMeal
+    let target: Int
+    let status: Status
+
+    var body: some View {
+        HStack(spacing: Space.sm + 1) {
+            Circle()
+                .fill(Palette.page)
+                .overlay { Image(meal.slot.illustration).resizable().scaledToFill() }
+                .frame(width: Size.avatar + 10, height: Size.avatar + 10)
+                .clipShape(Circle())
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: Space.xxs + 2) {
+                HStack(spacing: Space.xs - 1) {
+                    Text("\(meal.slot.title) · \(meal.slot.clock)")
+                        .textStyle(.micro)
+                        .foregroundStyle(Palette.inkMuted)
+                    Text(statusTitle)
+                        .textStyle(.micro)
+                        .foregroundStyle(statusFg)
+                        .padding(.horizontal, Space.xs - 1)
+                        .padding(.vertical, Space.xxs)
+                        .background(statusBg, in: Capsule())
+                }
+                Text(meal.meal.name)
+                    .textStyle(.rowTitle)
+                    .foregroundStyle(Palette.ink)
+                    .fixedSize(horizontal: false, vertical: true)
+                Text("P \(meal.proteinG)g · C \(meal.carbsG)g · F \(meal.fatG)g")
+                    .textStyle(.micro)
+                    .foregroundStyle(Palette.inkMuted)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .trailing, spacing: Space.xs - 2) {
+                Text("\(meal.kcal)").textStyle(.statValue).foregroundStyle(Palette.ink)
+                Text("\(Int((Double(meal.kcal) / Double(max(1, target)) * 100).rounded()))% of goal")
+                    .textStyle(.micro)
+                    .foregroundStyle(Palette.copperText)
+            }
+        }
+        .padding(.horizontal, Space.md)
+        .padding(.vertical, Space.sm + 1)
+        .contentShape(Rectangle())
+        .accessibilityElement(children: .combine)
+    }
+
+    private var statusTitle: String {
+        switch status { case .eaten: "Eaten"; case .upNext: "Up next"; case .planned: "Planned" }
+    }
+    private var statusFg: Color {
+        switch status { case .eaten: Palette.blueText; case .upNext: Palette.copperText; case .planned: Palette.inkMuted }
+    }
+    private var statusBg: Color {
+        switch status { case .eaten: Palette.blueTint; case .upNext: Palette.copperTint; case .planned: Palette.hairline }
     }
 }

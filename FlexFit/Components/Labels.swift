@@ -177,3 +177,210 @@ enum Weekday {
         ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][index]
     }
 }
+
+extension TrainingHistory {
+    var title: String {
+        switch self {
+        case .firstAttempt: "First serious attempt"
+        case .restarting: "Restarting after a break"
+        case .plateaued: "Plateaued for months"
+        case .consistent: "Consistent, want better programming"
+        }
+    }
+}
+
+extension DailySteps {
+    var title: String {
+        switch self {
+        case .under4k: "Under 4,000"
+        case .fourToEight: "4,000 – 8,000"
+        case .eightToTwelve: "8,000 – 12,000"
+        case .over12k: "Over 12,000"
+        }
+    }
+}
+
+extension TrainingStyle {
+    var title: String {
+        switch self {
+        case .heavyStrength: "Heavy strength"
+        case .hypertrophy: "Hypertrophy"
+        case .hiit: "HIIT"
+        case .circuits: "Circuits"
+        case .running: "Running"
+        case .cycling: "Cycling"
+        case .mobility: "Mobility"
+        case .sport: "Sport"
+        }
+    }
+}
+
+extension SleepBand {
+    var title: String {
+        switch self {
+        case .under5: "Under 5 hrs"
+        case .fiveToSix: "5 – 6 hrs"
+        case .sixToSeven: "6 – 7 hrs"
+        case .sevenToEight: "7 – 8 hrs"
+        case .over8: "8 hrs +"
+        }
+    }
+}
+
+extension DietStyle {
+    var title: String {
+        switch self {
+        case .highProtein: "High protein"
+        case .balanced: "Balanced / flexible"
+        case .vegetarian: "Vegetarian"
+        case .vegan: "Vegan"
+        case .keto: "Keto"
+        case .intermittentFasting: "Intermittent fasting"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .highProtein: "Flexible, protein-led"
+        case .balanced: "No rules beyond calories"
+        case .vegetarian: "No meat or fish"
+        case .vegan: "No animal products"
+        case .keto: "Very low carb"
+        case .intermittentFasting: "8-hour eating window"
+        }
+    }
+}
+
+extension Allergen {
+    var title: String {
+        switch self {
+        case .peanuts: "Peanuts"
+        case .treeNuts: "Tree nuts"
+        case .dairy: "Dairy"
+        case .gluten: "Gluten"
+        case .shellfish: "Shellfish"
+        case .fish: "Fish"
+        case .soy: "Soy"
+        case .eggs: "Eggs"
+        case .sesame: "Sesame"
+        }
+    }
+}
+
+enum FoodDislikes {
+    /// The mock's "Foods you will not eat" list.
+    static let options = ["Tofu", "Salmon", "Paneer", "Coriander", "Avocado", "Chickpeas", "Mushrooms"]
+}
+
+extension MealPattern {
+    var title: String {
+        switch self {
+        case .two: "2 meals"
+        case .three: "3 meals"
+        case .threePlusSnack: "3 meals + snack"
+        case .fourToFive: "4 – 5 small meals"
+        }
+    }
+}
+
+extension MealSlot {
+    var title: String {
+        switch self {
+        case .breakfast: "Breakfast"
+        case .lunch: "Lunch"
+        case .snack: "Snack"
+        case .dinner: "Dinner"
+        }
+    }
+
+    /// Suggested time of day, from the mock.
+    var clock: String {
+        switch self {
+        case .breakfast: "8:00 am"
+        case .lunch: "1:00 pm"
+        case .snack: "4:30 pm"
+        case .dinner: "8:00 pm"
+        }
+    }
+
+    var hour: Double {
+        switch self {
+        case .breakfast: 8
+        case .lunch: 13
+        case .snack: 16.5
+        case .dinner: 20
+        }
+    }
+
+    var illustration: String { "Illustration-\(rawValue)" }
+}
+
+extension Meal.Tag {
+    var title: String {
+        switch self {
+        case .highProtein: "High protein"
+        case .lowCarb: "Low carb"
+        case .vegan: "Vegan"
+        case .vegetarian: "Vegetarian"
+        case .balanced: "Balanced"
+        }
+    }
+}
+
+extension GroceryBudget {
+    var title: String {
+        switch self {
+        case .tight: "Tight"
+        case .moderate: "Moderate"
+        case .comfortable: "Comfortable"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .tight: "Staples, batch cooking"
+        case .moderate: "Some convenience items"
+        case .comfortable: "Whatever hits the macros"
+        }
+    }
+}
+
+extension ShopDay {
+    var title: String {
+        switch self {
+        case .sunday: "Sunday"
+        case .midweek: "Midweek"
+        case .littleAndOften: "Little and often"
+        case .delivery: "Delivery, whenever"
+        }
+    }
+}
+
+extension ReminderTime {
+    var title: String {
+        switch self {
+        case .morning: "Morning, before work"
+        case .midday: "Midday"
+        case .evening: "Evening"
+        case .none: "Do not remind me"
+        }
+    }
+}
+
+extension CoachTone {
+    var title: String {
+        switch self {
+        case .direct: "Direct"
+        case .warm: "Warm"
+        case .hard: "Hard"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .direct: "Short, factual, no fluff"
+        case .warm: "Encouraging but honest"
+        case .hard: "Tell me when I am slipping"
+        }
+    }
+}

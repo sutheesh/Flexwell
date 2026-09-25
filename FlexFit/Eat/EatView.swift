@@ -3,8 +3,8 @@ import SwiftData
 import Charts
 import FlexFitEngine
 
-/// Eat (MVP): this week's calorie and protein targets, the weekly weigh-in, the protein check (PRD F7).
-/// Meal plans and groceries are Phase 2.
+/// Eat: the day's meals from your food answers, scaled to your target (mock "Discover meals"),
+/// meal detail, ingredient swaps, plus targets, the weekly weigh-in and the protein check (PRD F7).
 struct EatView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppRouter.self) private var router
@@ -13,11 +13,37 @@ struct EatView: View {
     @Query(sort: \WeighIn.date) private var weighIns: [WeighIn]
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @Query private var logs: [DailyLog]
+    @Query private var ingredientSwaps: [IngredientSwapRecord]
     @State private var isLoggingWeight = false
+    @State private var selectedWeekday = MealPlanContext.weekday(of: .now)
+    @State private var detail: MealSelection?
+    @State private var swapping: MealSelection?
+    @State private var search = ""
 
     var body: some View {
         if let record = profiles.first {
             content(record: record, profile: record.profile())
+                .sheet(item: $detail) { selection in
+                    MealDetailView(
+                        planned: selection.planned,
+                        isEaten: eaten(on: selection.date).contains(selection.planned.index),
+                        onToggleEaten: { toggleEaten(selection) },
+                        onMissingIngredient: {
+                            detail = nil
+                            Task { @MainActor in
+                                try? await Task.sleep(for: .milliseconds(450))
+                                swapping = selection
+                            }
+                        }
+                    )
+                }
+                .sheet(item: $swapping) { selection in
+                    IngredientSwapSheet(planned: selection.planned, profile: record.profile()) { from, to in
+                        modelContext.insert(IngredientSwapRecord(day: Calendar.current.startOfDay(for: selection.date),
+                                                                 mealIndex: selection.planned.index, from: from, to: to))
+                        try? modelContext.save()
+                    }
+                }
                 .sheet(isPresented: $isLoggingWeight) {
                     WeighInSheet(units: record.profile().displayUnits) { kg in
                         modelContext.insert(WeighIn(date: .now, kg: kg))
@@ -36,10 +62,60 @@ struct EatView: View {
         let lowToday = logs.first { Calendar.current.isDateInToday($0.day) }?.energyValue == .low
         let lowYesterday = logs.first { Calendar.current.isDateInYesterday($0.day) }?.energyValue == .low
 
+        let context = MealPlanContext(profile: profile, targets: targets, swaps: ingredientSwaps)
+        let dates = weekDates()
+        let selectedDate = dates[selectedWeekday]
+        let dayMeals = context.meals(on: selectedDate)
+        let todayMeals = context.meals(on: .now)
+        let eatenToday = eaten(on: .now)
+        let kcalLeft = targets.calories - todayMeals.filter { eatenToday.contains($0.index) }.reduce(0) { $0 + $1.kcal }
+        let cuisineLine = profile.cuisines.isEmpty ? "All cuisines" : profile.cuisines.map(\.rawValue).sorted().joined(separator: " + ")
+
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
-                HeaderButton(name: profile.name, kicker: "Daily targets", title: "Fuel")
+                HeaderButton(name: profile.name, kicker: "\(profile.diet.title) · \(cuisineLine)", title: "Discover meals")
 
+                SearchField(text: $search)
+
+                if !search.trimmingCharacters(in: .whitespaces).isEmpty {
+                    SearchResults(query: search, profile: profile, targets: targets) { meal in
+                        detail = MealSelection(date: .now, planned: meal)
+                    }
+                } else {
+                    if let next = MealPlanContext.nextMeal(todayMeals, eaten: eatenToday) {
+                        PickedForYouCard(planned: next, kcalLeft: kcalLeft, diet: profile.diet) {
+                            detail = MealSelection(date: .now, planned: next)
+                        }
+                    }
+
+                    DayChips(dates: dates, selected: $selectedWeekday)
+
+                    HStack(alignment: .firstTextBaseline) {
+                        SectionHeader(title: dayTitle(selectedDate))
+                        Spacer()
+                        Text("\(Formatters.kcal(dayMeals.reduce(0) { $0 + $1.kcal })) kcal")
+                            .textStyle(.label)
+                            .foregroundStyle(Palette.copperText)
+                    }
+
+                    if dayMeals.isEmpty {
+                        InlineNote(text: "No meals match every allergy and diet rule you set. Loosen a dislike or the cooking time in Settings, or check the allergies.")
+                    } else {
+                        CardList {
+                            ForEach(dayMeals) { meal in
+                                MealCard(planned: meal, isEaten: eaten(on: selectedDate).contains(meal.index),
+                                         onOpen: { detail = MealSelection(date: selectedDate, planned: meal) },
+                                         onSwap: { swapping = MealSelection(date: selectedDate, planned: meal) })
+                            }
+                        }
+                    }
+                    Text("Meals come from \(cuisineLine.lowercased()) kitchens, \(profile.diet.title.lowercased())\(profile.allergens.isEmpty ? "" : ", never containing " + profile.allergens.map { $0.title.lowercased() }.sorted().joined(separator: ", ")).")
+                        .textStyle(.caption)
+                        .foregroundStyle(Palette.inkMuted)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+
+                SectionHeader(title: "Your targets")
                 TargetsPanel(targets: targets, adaptive: entitlements.hasAdaptiveTargets, weekOf: thisWeek?.weekOf)
 
                 if !entitlements.hasAdaptiveTargets {
@@ -68,6 +144,32 @@ struct EatView: View {
         }
         .statusBarBackdrop()
         .pageBackground()
+    }
+
+    // MARK: Meals
+
+    private func weekDates() -> [Date] {
+        let monday = Week.start(of: .now)
+        return (0..<7).map { Calendar.current.date(byAdding: .day, value: $0, to: monday) ?? monday }
+    }
+
+    private func dayTitle(_ date: Date) -> String {
+        Calendar.current.isDateInToday(date) ? "Today" : date.formatted(.dateTime.weekday(.wide).day().month(.abbreviated))
+    }
+
+    private func eaten(on date: Date) -> Set<Int> {
+        Set(logs.first { Calendar.current.isDate($0.day, inSameDayAs: date) }?.eatenMeals ?? [])
+    }
+
+    private func toggleEaten(_ selection: MealSelection) {
+        let log = DailyLog.forDay(selection.date, in: modelContext)
+        if let i = log.eatenMeals.firstIndex(of: selection.planned.index) {
+            log.eatenMeals.remove(at: i)
+        } else {
+            log.eatenMeals.append(selection.planned.index)
+        }
+        log.updatedAt = .now
+        try? modelContext.save()
     }
 
     @ViewBuilder
@@ -307,5 +409,89 @@ private struct WeighInSheet: View {
             .onAppear { focused = true }
         }
         .presentationDetents([.medium])
+    }
+}
+
+private struct SearchField: View {
+    @Binding var text: String
+
+    var body: some View {
+        HStack(spacing: Space.sm - 2) {
+            Image(systemName: "magnifyingglass").foregroundStyle(Palette.inkMuted).accessibilityHidden(true)
+            TextField("Search meals, ingredients…", text: $text)
+                .textStyle(.chip)
+                .foregroundStyle(Palette.ink)
+                .submitLabel(.search)
+            if !text.isEmpty {
+                Button { text = "" } label: { Image(systemName: "xmark.circle.fill").foregroundStyle(Palette.inkMuted) }
+                    .accessibilityLabel("Clear search")
+            }
+        }
+        .padding(.horizontal, Space.md + 2)
+        .frame(minHeight: Size.button + 2)
+        .background(Palette.card, in: Capsule())
+        .cardShadow()
+    }
+}
+
+/// Meals that are safe for you (allergens and diet) whose name or ingredients match the search.
+private struct SearchResults: View {
+    let query: String
+    let profile: UserProfile
+    let targets: DailyTargets
+    let onOpen: (PlannedMeal) -> Void
+
+    var body: some View {
+        let q = query.lowercased()
+        let pool = MealPlanner.pool(for: profile).values.flatMap { $0 }
+        let matches = Dictionary(grouping: pool, by: \.id).compactMap { $0.value.first }
+            .filter { $0.name.lowercased().contains(q) || $0.ingredients.contains { $0.name.lowercased().contains(q) } }
+            .sorted { $0.name < $1.name }
+        if matches.isEmpty {
+            Text("Nothing safe for you matches “\(query)”.")
+                .textStyle(.caption)
+                .foregroundStyle(Palette.inkMuted)
+        } else {
+            CardList {
+                ForEach(matches) { meal in
+                    let planned = PlannedMeal(meal: meal, slot: meal.slot, index: 100 + meal.id, kcal: meal.kcal,
+                                              proteinG: meal.proteinG, carbsG: meal.carbsG, fatG: meal.fatG,
+                                              ingredients: meal.ingredients, swapped: nil)
+                    MealCard(planned: planned, isEaten: false, onOpen: { onOpen(planned) }, onSwap: { onOpen(planned) })
+                }
+            }
+        }
+    }
+}
+
+private struct DayChips: View {
+    let dates: [Date]
+    @Binding var selected: Int
+
+    var body: some View {
+        ScrollViewReader { proxy in
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: Space.xs - 1) {
+                ForEach(dates.indices, id: \.self) { i in
+                    let isSelected = i == selected
+                    Button { selected = i } label: {
+                        Text(Calendar.current.isDateInToday(dates[i]) ? "Today" : "\(Weekday.shortName(i)) \(dates[i].formatted(.dateTime.day()))")
+                            .textStyle(.chip)
+                            .foregroundStyle(isSelected ? Palette.onInkFill : Palette.ink)
+                            .padding(.horizontal, Space.md - 1)
+                            .padding(.vertical, Space.sm)
+                            .background(isSelected ? Palette.inkFill : Palette.card, in: Capsule())
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityAddTraits(isSelected ? .isSelected : [])
+                    .id(i)
+                }
+            }
+            .padding(.vertical, Space.xxs)
+        }
+        // Keep the selected day (usually today) in view.
+        .onAppear { proxy.scrollTo(selected, anchor: .center) }
+        .onChange(of: selected) { withAnimation { proxy.scrollTo(selected, anchor: .center) } }
+        }
     }
 }

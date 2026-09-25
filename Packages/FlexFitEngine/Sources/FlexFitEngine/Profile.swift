@@ -18,6 +18,25 @@ public struct UserProfile: Codable, Sendable, Equatable {
     public var environment: TrainingEnvironment
     public var equipment: Set<Equipment>
     public var limitations: Set<Limitation>
+    // Food (PRD schema: diet_style, cuisines, allergens, excluded_ingredients, max_cook_minutes).
+    public var diet: DietStyle = .highProtein
+    public var cuisines: Set<Cuisine> = []
+    /// Hard filter, always.
+    public var allergens: Set<Allergen> = []
+    /// Soft filter: ingredient keywords the user won't eat.
+    public var dislikes: Set<String> = []
+    /// Nil = no limit.
+    public var maxCookMinutes: Int?
+    public var mealPattern: MealPattern = .threePlusSnack
+    // The rest of the mock's wizard.
+    public var history: TrainingHistory = .firstAttempt
+    public var dailySteps: DailySteps = .fourToEight
+    public var styles: Set<TrainingStyle> = []
+    public var sleep: SleepBand = .sixToSeven
+    public var budget: GroceryBudget = .moderate
+    public var shopDay: ShopDay = .sunday
+    public var reminder: ReminderTime = .morning
+    public var tone: CoachTone = .direct
 
     public init(name: String, age: Int, sex: Sex, heightCm: Double, weightKg: Double,
                 displayUnits: DisplayUnits, goal: Goal, targetWeightKg: Double, pacePctPerWeek: Double,
@@ -112,4 +131,85 @@ public enum Equipment: String, Codable, Sendable, CaseIterable {
 /// Fixed list, never free text (PRD F1). Flagged exercises are excluded, not modified.
 public enum Limitation: String, Codable, Sendable, CaseIterable {
     case lowerBack, knees, shoulders, wrists, hips, neck
+}
+
+public enum DietStyle: String, Codable, Sendable, CaseIterable {
+    case highProtein, balanced, vegetarian, vegan, keto, intermittentFasting
+}
+
+public enum Cuisine: String, Codable, Sendable, CaseIterable {
+    case indian = "Indian", western = "Western", mediterranean = "Mediterranean", eastAsian = "East Asian"
+    case mexican = "Mexican", middleEastern = "Middle Eastern", thai = "Thai"
+}
+
+public enum Allergen: String, Codable, Sendable, CaseIterable {
+    case peanuts, treeNuts, dairy, gluten, shellfish, fish, soy, eggs, sesame
+}
+
+public enum MealPattern: String, Codable, Sendable, CaseIterable {
+    case two, three, threePlusSnack, fourToFive
+
+    public var slots: [MealSlot] {
+        switch self {
+        case .two: [.lunch, .dinner]
+        case .three: [.breakfast, .lunch, .dinner]
+        case .threePlusSnack: [.breakfast, .lunch, .snack, .dinner]
+        case .fourToFive: [.breakfast, .snack, .lunch, .snack, .dinner]
+        }
+    }
+}
+
+public enum TrainingHistory: String, Codable, Sendable, CaseIterable {
+    case firstAttempt, restarting, plateaued, consistent
+}
+
+/// Honest daily steps; nudges the activity multiplier (steps outside training aren't in the job factor).
+public enum DailySteps: String, Codable, Sendable, CaseIterable {
+    case under4k, fourToEight, eightToTwelve, over12k
+
+    public var multiplierAdjustment: Double {
+        switch self {
+        case .under4k: -0.05
+        case .fourToEight: 0
+        case .eightToTwelve: 0.05
+        case .over12k: 0.1
+        }
+    }
+}
+
+public enum TrainingStyle: String, Codable, Sendable, CaseIterable {
+    case heavyStrength, hypertrophy, hiit, circuits, running, cycling, mobility, sport
+}
+
+public enum SleepBand: String, Codable, Sendable, CaseIterable {
+    case under5, fiveToSix, sixToSeven, sevenToEight, over8
+
+    /// Short sleep makes a low-energy day likelier; the check-in says so.
+    public var isShort: Bool { self == .under5 || self == .fiveToSix }
+}
+
+public enum GroceryBudget: String, Codable, Sendable, CaseIterable {
+    case tight, moderate, comfortable
+}
+
+public enum ShopDay: String, Codable, Sendable, CaseIterable {
+    case sunday, midweek, littleAndOften, delivery
+}
+
+public enum ReminderTime: String, Codable, Sendable, CaseIterable {
+    case morning, midday, evening, none
+
+    /// Hour of the daily check-in notification. Nil = no reminders.
+    public var hour: Int? {
+        switch self {
+        case .morning: 7
+        case .midday: 12
+        case .evening: 19
+        case .none: nil
+        }
+    }
+}
+
+public enum CoachTone: String, Codable, Sendable, CaseIterable {
+    case direct, warm, hard
 }

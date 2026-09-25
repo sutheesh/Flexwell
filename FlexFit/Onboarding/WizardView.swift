@@ -161,14 +161,20 @@ extension OnboardingDraft.Step {
         case .basics: Copy(kicker: "The basics", title: "Who am I coaching?", subtitle: "A name and two numbers. Nothing leaves your phone.")
         case .body: Copy(kicker: "Body", title: "Where are you starting?", subtitle: "Pick units first — everything after follows it.")
         case .goal: Copy(kicker: "Goal", title: "What are we actually chasing?", subtitle: "Be specific. Vague goals make vague plans.")
-        case .pace: Copy(kicker: "Pace", title: "How fast?", subtitle: "Faster is not better. Faster is harder to keep.")
+        case .pace: Copy(kicker: "Pace", title: "How fast, and how many times before?", subtitle: "Faster is not better. Faster is harder to keep.")
         case .dailyLife: Copy(kicker: "Daily life", title: "What does a normal day cost you?", subtitle: "This sets calories more than workouts do.")
         case .environment: Copy(kicker: "Training", title: "Where will you train?", subtitle: "The single biggest fork in your programme.")
         case .equipment: Copy(kicker: "Equipment", title: "What do you actually have?", subtitle: "Every exercise — and every swap — is built from this list.")
         case .schedule: Copy(kicker: "Schedule", title: "How much time is real?", subtitle: "Pick what you will still do in week six.")
         case .experience: Copy(kicker: "Experience", title: "How much have you lifted?", subtitle: "Sets starting loads and how fast they climb.")
         case .limitations: Copy(kicker: "Body signals", title: "Anything to work around?", subtitle: "Injuries get programmed around, not ignored.")
-        case .notice: Copy(kicker: "Before we start", title: "One honest note", subtitle: "Last one. Then I build your plan.")
+        case .foodStyle: Copy(kicker: "Food style", title: "How do you want to eat?", subtitle: "A plan you resent is a plan you quit.")
+        case .taste: Copy(kicker: "Taste", title: "What food do you actually like?", subtitle: "Your meals come from these kitchens.")
+        case .constraints: Copy(kicker: "Constraints", title: "What must never appear?", subtitle: "Allergies are hard rules. Dislikes are soft ones.")
+        case .kitchen: Copy(kicker: "Kitchen", title: "How much cooking is realistic?", subtitle: "The best recipe is the one you actually make.")
+        case .shopping: Copy(kicker: "Shopping", title: "How do groceries happen?", subtitle: "Your list gets built for this rhythm and budget.")
+        case .accountability: Copy(kicker: "Accountability", title: "How should I talk to you?", subtitle: "Nearly there.")
+        case .notice: Copy(kicker: "Before we start", title: "One honest note", subtitle: "Last one. Then I build your path.")
         }
     }
 }
@@ -193,6 +199,12 @@ private struct StepQuestions: View {
             case .schedule: schedule
             case .experience: experience
             case .limitations: limitations
+            case .foodStyle: foodStyle
+            case .taste: taste
+            case .constraints: constraints
+            case .kitchen: kitchen
+            case .shopping: shopping
+            case .accountability: accountability
             case .notice: notice
             }
         }
@@ -271,6 +283,9 @@ private struct StepQuestions: View {
                 }
             }
         }
+        Question("Where are you in the story?") {
+            choices(TrainingHistory.allCases, selection: $draft.history) { ($0.title, nil) }
+        }
         InlineNote(text: goal == .lose
                    ? "Loss is capped at 1% of your body weight a week. Faster than that costs muscle and rarely lasts."
                    : "Gain is capped at 0.5% a week. Faster than that adds mostly fat.")
@@ -279,6 +294,9 @@ private struct StepQuestions: View {
     @ViewBuilder private var dailyLife: some View {
         Question("Your working day") {
             choices(ActivityLevel.allCases, selection: $draft.activity) { ($0.title, $0.subtitle) }
+        }
+        Question("Daily steps, honestly") {
+            choices(DailySteps.allCases, selection: $draft.dailySteps) { ($0.title, nil) }
         }
     }
 
@@ -315,6 +333,15 @@ private struct StepQuestions: View {
         Question("Training experience") {
             choices(Experience.allCases, selection: $draft.experience) { ($0.title, $0.subtitle) }
         }
+        Question("What do you actually enjoy?", hint: "I weight the plan towards these.") {
+            FlowLayout {
+                ForEach(TrainingStyle.allCases, id: \.self) { style in
+                    Chip(title: style.title, isSelected: draft.styles.contains(style)) {
+                        draft.styles.formSymmetricDifference([style])
+                    }
+                }
+            }
+        }
     }
 
     @ViewBuilder private var limitations: some View {
@@ -335,6 +362,81 @@ private struct StepQuestions: View {
         if let set = draft.limitations, !set.isEmpty {
             InlineNote(text: "If any of these hurt right now, check with a clinician before you start training.",
                        systemImage: "cross.case")
+        }
+        Question("Typical sleep") {
+            choices(SleepBand.allCases, selection: $draft.sleep) { ($0.title, nil) }
+        }
+    }
+
+    @ViewBuilder private var foodStyle: some View {
+        Question("Diet style") {
+            choices(DietStyle.allCases, selection: $draft.diet) { ($0.title, $0.subtitle) }
+        }
+    }
+
+    @ViewBuilder private var taste: some View {
+        Question("Cuisines to pull from", hint: "Pick at least one. Tap all that apply.") {
+            FlowLayout {
+                ForEach(Cuisine.allCases, id: \.self) { cuisine in
+                    Chip(title: cuisine.rawValue, isSelected: draft.cuisines.contains(cuisine)) {
+                        draft.cuisines.formSymmetricDifference([cuisine])
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private var constraints: some View {
+        Question("Allergies", hint: "Meals with these never appear. Always check labels too.") {
+            FlowLayout {
+                Chip(title: "None", isSelected: draft.allergens?.isEmpty == true) { draft.allergens = [] }
+                ForEach(Allergen.allCases, id: \.self) { a in
+                    Chip(title: a.title, isSelected: draft.allergens?.contains(a) == true) {
+                        var set = draft.allergens ?? []
+                        set.formSymmetricDifference([a])
+                        draft.allergens = set
+                    }
+                }
+            }
+        }
+        Question("Foods you will not eat", hint: "Avoided wherever there's an alternative.") {
+            FlowLayout {
+                Chip(title: "None", isSelected: draft.dislikes?.isEmpty == true) { draft.dislikes = [] }
+                ForEach(FoodDislikes.options, id: \.self) { food in
+                    Chip(title: food, isSelected: draft.dislikes?.contains(food) == true) {
+                        var set = draft.dislikes ?? []
+                        set.formSymmetricDifference([food])
+                        draft.dislikes = set
+                    }
+                }
+            }
+        }
+    }
+
+    @ViewBuilder private var kitchen: some View {
+        Question("Max cooking time per meal") {
+            choices([10, 20, 40, 0], selection: $draft.cookLimit) { ($0 == 0 ? "No limit — I like cooking" : "\($0) minutes", nil) }
+        }
+        Question("Meals per day") {
+            choices(MealPattern.allCases, selection: $draft.mealPattern) { ($0.title, nil) }
+        }
+    }
+
+    @ViewBuilder private var shopping: some View {
+        Question("Weekly grocery budget") {
+            choices(GroceryBudget.allCases, selection: $draft.budget) { ($0.title, $0.subtitle) }
+        }
+        Question("When do you shop?") {
+            choices(ShopDay.allCases, selection: $draft.shopDay) { ($0.title, nil) }
+        }
+    }
+
+    @ViewBuilder private var accountability: some View {
+        Question("When should I check in?") {
+            choices(ReminderTime.allCases, selection: $draft.reminder) { ($0.title, nil) }
+        }
+        Question("Coaching tone") {
+            choices(CoachTone.allCases, selection: $draft.tone) { ($0.title, $0.subtitle) }
         }
     }
 

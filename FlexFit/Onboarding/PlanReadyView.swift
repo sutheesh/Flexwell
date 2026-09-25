@@ -45,9 +45,14 @@ struct PlanReadyView: View {
 
                 CardList {
                     ForEach(week, id: \.weekday) { day in
-                        WeekRow(day: day)
+                        WeekRow(day: day, foodKcal: targets.calories)
                     }
                 }
+                Text(foodLine)
+                    .textStyle(.caption)
+                    .foregroundStyle(Palette.inkMuted)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, Space.sm)
             }
             .padding(.horizontal, Space.lg)
             .padding(.top, Space.xl)
@@ -77,6 +82,12 @@ struct PlanReadyView: View {
                 "\(profile.name), here's your week"
             }
         }
+    }
+
+    private var foodLine: String {
+        let kitchens = profile.cuisines.isEmpty ? "all" : profile.cuisines.map(\.rawValue).sorted().joined(separator: " + ")
+        let never = profile.allergens.isEmpty ? "" : ", never containing " + profile.allergens.map { $0.title.lowercased() }.sorted().joined(separator: ", ")
+        return "Meals come from \(kitchens) kitchens, \(profile.diet.title.lowercased())\(never). \(profile.mealPattern.title) a day."
     }
 
     private var subtitle: String {
@@ -169,6 +180,7 @@ private struct TargetsPanel: View {
 
 private struct WeekRow: View {
     let day: PlannedDay
+    let foodKcal: Int
 
     var body: some View {
         HStack(spacing: Space.sm + 1) {
@@ -189,6 +201,10 @@ private struct WeekRow: View {
                     .foregroundStyle(Palette.inkMuted)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .trailing, spacing: Space.xxs) {
+                Text(Formatters.kcal(foodKcal)).textStyle(.label).foregroundStyle(Palette.copperText)
+                Text("kcal").textStyle(.micro).foregroundStyle(Palette.inkMuted)
+            }
         }
         .padding(.horizontal, Space.md)
         .padding(.vertical, Space.sm + 1)

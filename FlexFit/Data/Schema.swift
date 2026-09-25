@@ -10,7 +10,7 @@ import FlexFitEngine
 
 enum SchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
-    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self, PainFlag.self] }
+    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self] }
 
     @Model
     final class ProfileRecord {
@@ -39,6 +39,22 @@ enum SchemaV1: VersionedSchema {
         var travelUntil: Date?
         /// Whether the user turned on Apple Health sync.
         var healthSyncEnabled: Bool = false
+        // Food (PRD schema: diet_style, cuisines, allergens, excluded_ingredients, max_cook_minutes).
+        var dietStyle: String = DietStyle.highProtein.rawValue
+        var cuisines: [String] = []
+        var allergens: [String] = []
+        var dislikes: [String] = []
+        /// 0 = no limit.
+        var maxCookMinutes: Int = 0
+        var mealPattern: String = MealPattern.threePlusSnack.rawValue
+        var history: String = TrainingHistory.firstAttempt.rawValue
+        var dailySteps: String = DailySteps.fourToEight.rawValue
+        var styles: [String] = []
+        var sleep: String = SleepBand.sixToSeven.rawValue
+        var budget: String = GroceryBudget.moderate.rawValue
+        var shopDay: String = ShopDay.sunday.rawValue
+        var reminder: String = ReminderTime.morning.rawValue
+        var tone: String = CoachTone.direct.rawValue
 
         init() {}
     }
@@ -54,6 +70,8 @@ enum SchemaV1: VersionedSchema {
         var proteinCheck: String?
         /// Exercises ticked off in this day's session. Set logging (PRD F6) replaces this.
         var completedExercises: [String] = []
+        /// Indices (into the day's planned meals) the user marked as eaten.
+        var eatenMeals: [Int] = []
         var updatedAt: Date = Date.now
 
         init(day: Date) {
@@ -109,6 +127,37 @@ enum SchemaV1: VersionedSchema {
         init(weekOf: Date) { self.weekOf = weekOf }
     }
 
+    /// "I'm missing an ingredient": the swap for one meal on one day.
+    @Model
+    final class IngredientSwapRecord {
+        var day: Date = Date.now
+        var mealIndex: Int = 0
+        var from: String = ""
+        var to: String = ""
+
+        init(day: Date, mealIndex: Int, from: String, to: String) {
+            self.day = day
+            self.mealIndex = mealIndex
+            self.from = from
+            self.to = to
+        }
+    }
+
+    /// A ticked-off grocery item for one week.
+    @Model
+    final class GroceryCheck {
+        var weekOf: Date = Date.now
+        var name: String = ""
+        init(weekOf: Date, name: String) { self.weekOf = weekOf; self.name = name }
+    }
+
+    /// Something the user keeps at home; left off grocery lists (PRD pantry).
+    @Model
+    final class PantryItem {
+        var name: String = ""
+        init(name: String) { self.name = name }
+    }
+
     /// "This hurts": the exercise is kept out of the plan until `until` (PRD safety: 7 days).
     @Model
     final class PainFlag {
@@ -144,6 +193,9 @@ typealias SessionLog = SchemaV1.SessionLog
 typealias WeighIn = SchemaV1.WeighIn
 typealias WeeklyTargets = SchemaV1.WeeklyTargets
 typealias PainFlag = SchemaV1.PainFlag
+typealias IngredientSwapRecord = SchemaV1.IngredientSwapRecord
+typealias GroceryCheck = SchemaV1.GroceryCheck
+typealias PantryItem = SchemaV1.PantryItem
 
 struct LoggedExerciseRecord: Codable, Hashable {
     var exerciseID: String
@@ -253,10 +305,24 @@ extension ProfileRecord {
         environment = p.environment.rawValue
         equipment = p.equipment.map(\.rawValue).sorted()
         limitations = p.limitations.map(\.rawValue).sorted()
+        dietStyle = p.diet.rawValue
+        cuisines = p.cuisines.map(\.rawValue).sorted()
+        allergens = p.allergens.map(\.rawValue).sorted()
+        dislikes = p.dislikes.sorted()
+        maxCookMinutes = p.maxCookMinutes ?? 0
+        mealPattern = p.mealPattern.rawValue
+        history = p.history.rawValue
+        dailySteps = p.dailySteps.rawValue
+        styles = p.styles.map(\.rawValue).sorted()
+        sleep = p.sleep.rawValue
+        budget = p.budget.rawValue
+        shopDay = p.shopDay.rawValue
+        reminder = p.reminder.rawValue
+        tone = p.tone.rawValue
     }
 
     func profile(now: Date = .now) -> UserProfile {
-        UserProfile(
+        var p = UserProfile(
             name: name,
             age: Calendar.current.component(.year, from: now) - birthYear,
             sex: Sex(rawValue: sex) ?? .unspecified,
@@ -274,5 +340,20 @@ extension ProfileRecord {
             equipment: Set(equipment.compactMap(Equipment.init(rawValue:))),
             limitations: Set(limitations.compactMap(Limitation.init(rawValue:)))
         )
+        p.diet = DietStyle(rawValue: dietStyle) ?? .highProtein
+        p.cuisines = Set(cuisines.compactMap(Cuisine.init(rawValue:)))
+        p.allergens = Set(allergens.compactMap(Allergen.init(rawValue:)))
+        p.dislikes = Set(dislikes)
+        p.maxCookMinutes = maxCookMinutes > 0 ? maxCookMinutes : nil
+        p.mealPattern = MealPattern(rawValue: mealPattern) ?? .threePlusSnack
+        p.history = TrainingHistory(rawValue: history) ?? .firstAttempt
+        p.dailySteps = DailySteps(rawValue: dailySteps) ?? .fourToEight
+        p.styles = Set(styles.compactMap(TrainingStyle.init(rawValue:)))
+        p.sleep = SleepBand(rawValue: sleep) ?? .sixToSeven
+        p.budget = GroceryBudget(rawValue: budget) ?? .moderate
+        p.shopDay = ShopDay(rawValue: shopDay) ?? .sunday
+        p.reminder = ReminderTime(rawValue: reminder) ?? .morning
+        p.tone = CoachTone(rawValue: tone) ?? .direct
+        return p
     }
 }

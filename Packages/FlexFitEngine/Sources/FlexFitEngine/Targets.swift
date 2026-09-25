@@ -34,14 +34,19 @@ public enum TargetCalculator {
         return 10 * p.weightKg + 6.25 * p.heightCm - 5 * Double(p.age) + offset
     }
 
+    /// Working-day activity plus the honest daily-steps answer.
+    public static func activityMultiplier(_ p: UserProfile) -> Double {
+        p.activity.multiplier + p.dailySteps.multiplierAdjustment
+    }
+
     public static func expenditure(_ p: UserProfile) -> Double {
-        bmr(p) * p.activity.multiplier
+        bmr(p) * activityMultiplier(p)
     }
 
     /// Initial targets (PRD F7). Weekly adaptation is layered on later.
     public static func initialTargets(for p: UserProfile) -> DailyTargets {
         let bmr = bmr(p)
-        let tdee = bmr * p.activity.multiplier
+        let tdee = bmr * activityMultiplier(p)
         let pace = Safety.cappedPace(p.pacePctPerWeek, goal: p.goal)
         let dailyDelta = pace / 100 * p.weightKg * kcalPerKg / 7
 

@@ -1,0 +1,585 @@
+{
+ "version": 1,
+ "reviewStatus": "draft — self-authored by cuisine type (PRD Phase 3), not chain menus; estimates, verify before launch",
+ "cuisines": {
+  "Indian": [
+   {
+    "name": "Tandoori chicken + roti, skip the butter naan",
+    "tip": "Ask for dry tandoori; one roti",
+    "kcal": 560,
+    "proteinG": 48,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten",
+     "dairy"
+    ]
+   },
+   {
+    "name": "Chana masala + half portion rice",
+    "tip": "Share the rice; add a side salad",
+    "kcal": 520,
+    "proteinG": 21,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": []
+   },
+   {
+    "name": "Paneer tikka dry, salad on the side",
+    "tip": "Dry tikka, not masala",
+    "kcal": 480,
+    "proteinG": 30,
+    "vegetarian": true,
+    "vegan": false,
+    "allergens": [
+     "dairy"
+    ]
+   },
+   {
+    "name": "Chicken tikka (dry) + dal + kachumber",
+    "tip": "Skip the creamy curries",
+    "kcal": 590,
+    "proteinG": 50,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "dairy"
+    ]
+   },
+   {
+    "name": "Fish tikka + raita + one roti",
+    "tip": "Grilled, not fried",
+    "kcal": 510,
+    "proteinG": 44,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish",
+     "dairy",
+     "gluten"
+    ]
+   }
+  ],
+  "Italian": [
+   {
+    "name": "Grilled chicken + rocket parmesan salad",
+    "tip": "Dressing on the side",
+    "kcal": 510,
+    "proteinG": 45,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "dairy"
+    ]
+   },
+   {
+    "name": "Tomato pasta, half portion, add chicken",
+    "tip": "Tomato sauce, not cream",
+    "kcal": 640,
+    "proteinG": 38,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten"
+    ]
+   },
+   {
+    "name": "Minestrone + bruschetta, share the bread",
+    "tip": "Soup first slows you down",
+    "kcal": 380,
+    "proteinG": 14,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "gluten"
+    ]
+   },
+   {
+    "name": "Seafood linguine, half portion",
+    "tip": "Tomato or white wine base",
+    "kcal": 590,
+    "proteinG": 36,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten",
+     "shellfish",
+     "fish"
+    ]
+   },
+   {
+    "name": "Grilled fish + roast vegetables",
+    "tip": "Ask for olive oil on the side",
+    "kcal": 520,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish"
+    ]
+   }
+  ],
+  "Mexican": [
+   {
+    "name": "Chicken fajitas, no tortillas, extra salsa",
+    "tip": "Double the veg",
+    "kcal": 540,
+    "proteinG": 46,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": []
+   },
+   {
+    "name": "Carne asada bowl, brown rice, hold the cheese",
+    "tip": "Beans instead of sour cream",
+    "kcal": 620,
+    "proteinG": 44,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": []
+   },
+   {
+    "name": "Black bean soup + grilled veg",
+    "tip": "Skip the chips basket",
+    "kcal": 280,
+    "proteinG": 16,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": []
+   },
+   {
+    "name": "Shrimp tacos, corn tortillas (2)",
+    "tip": "Salsa verde, no crema",
+    "kcal": 450,
+    "proteinG": 30,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "shellfish"
+    ]
+   },
+   {
+    "name": "Veggie burrito bowl, no cheese or sour cream",
+    "tip": "Guac is fine, one scoop",
+    "kcal": 560,
+    "proteinG": 18,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": []
+   }
+  ],
+  "Japanese": [
+   {
+    "name": "Salmon sashimi 9 pc + edamame",
+    "tip": "Soy sauce sparingly",
+    "kcal": 470,
+    "proteinG": 49,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish",
+     "soy"
+    ]
+   },
+   {
+    "name": "Chirashi bowl, light rice",
+    "tip": "Ask for half rice",
+    "kcal": 590,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish",
+     "soy"
+    ]
+   },
+   {
+    "name": "Tuna maki 2 rolls + miso",
+    "tip": "Skip tempura and spicy mayo",
+    "kcal": 440,
+    "proteinG": 30,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish",
+     "soy",
+     "sesame"
+    ]
+   },
+   {
+    "name": "Chicken yakitori (4) + seaweed salad",
+    "tip": "Salt not tare glaze",
+    "kcal": 420,
+    "proteinG": 38,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "soy",
+     "sesame"
+    ]
+   },
+   {
+    "name": "Tofu & vegetable soba, broth on the side",
+    "tip": "Cold soba is lighter",
+    "kcal": 480,
+    "proteinG": 22,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "soy",
+     "gluten"
+    ]
+   }
+  ],
+  "Thai": [
+   {
+    "name": "Chicken satay, no peanut sauce, som tam",
+    "tip": "Ask for no peanuts in the som tam",
+    "kcal": 520,
+    "proteinG": 44,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": []
+   },
+   {
+    "name": "Beef larb + steamed rice",
+    "tip": "Larb is lean and loud",
+    "kcal": 610,
+    "proteinG": 40,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish"
+    ]
+   },
+   {
+    "name": "Tom yum + grilled prawns",
+    "tip": "Clear soup, not coconut",
+    "kcal": 390,
+    "proteinG": 34,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "shellfish",
+     "fish"
+    ]
+   },
+   {
+    "name": "Tofu & basil stir-fry + half rice",
+    "tip": "Less oil, extra basil",
+    "kcal": 520,
+    "proteinG": 24,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "soy"
+    ]
+   },
+   {
+    "name": "Grilled fish with lime & chilli + greens",
+    "tip": "Steamed rice on the side",
+    "kcal": 450,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish"
+    ]
+   }
+  ],
+  "Chinese": [
+   {
+    "name": "Steamed chicken + broccoli, sauce on the side",
+    "tip": "Steamed, not crispy",
+    "kcal": 480,
+    "proteinG": 46,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "soy"
+    ]
+   },
+   {
+    "name": "Beef & vegetable stir-fry + plain rice",
+    "tip": "Plain rice, not fried",
+    "kcal": 620,
+    "proteinG": 40,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "soy"
+    ]
+   },
+   {
+    "name": "Hot & sour soup + steamed dumplings (6)",
+    "tip": "Steamed, not fried",
+    "kcal": 520,
+    "proteinG": 26,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "soy",
+     "gluten",
+     "eggs"
+    ]
+   },
+   {
+    "name": "Ma po tofu, light oil + rice",
+    "tip": "Ask for less chilli oil",
+    "kcal": 560,
+    "proteinG": 24,
+    "vegetarian": true,
+    "vegan": false,
+    "allergens": [
+     "soy"
+    ]
+   },
+   {
+    "name": "Steamed fish with ginger & spring onion",
+    "tip": "Rice on the side",
+    "kcal": 430,
+    "proteinG": 44,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish",
+     "soy"
+    ]
+   }
+  ],
+  "Burgers": [
+   {
+    "name": "Single patty, no mayo, side salad",
+    "tip": "Swap fries for salad",
+    "kcal": 590,
+    "proteinG": 36,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten"
+    ]
+   },
+   {
+    "name": "Grilled chicken burger, skip the fries",
+    "tip": "Mustard, not mayo",
+    "kcal": 620,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten"
+    ]
+   },
+   {
+    "name": "Two patties, no bun, on salad",
+    "tip": "Protein-heavy, low carb",
+    "kcal": 520,
+    "proteinG": 48,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": []
+   },
+   {
+    "name": "Veggie bean burger + side salad",
+    "tip": "No cheese keeps it vegan",
+    "kcal": 560,
+    "proteinG": 20,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "gluten",
+     "soy"
+    ]
+   },
+   {
+    "name": "Kids' burger + a side of grilled chicken",
+    "tip": "Smaller bun, more protein",
+    "kcal": 540,
+    "proteinG": 40,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten"
+    ]
+   }
+  ],
+  "Mediterranean": [
+   {
+    "name": "Chicken souvlaki plate, extra salad, half pita",
+    "tip": "Tzatziki is fine",
+    "kcal": 620,
+    "proteinG": 48,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten",
+     "dairy"
+    ]
+   },
+   {
+    "name": "Grilled halloumi + Greek salad",
+    "tip": "One slice of bread max",
+    "kcal": 580,
+    "proteinG": 28,
+    "vegetarian": true,
+    "vegan": false,
+    "allergens": [
+     "dairy"
+    ]
+   },
+   {
+    "name": "Lentil soup + falafel (3) + salad",
+    "tip": "Falafel is fried: keep to three",
+    "kcal": 560,
+    "proteinG": 22,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "sesame",
+     "gluten"
+    ]
+   },
+   {
+    "name": "Grilled sea bass + horta + lemon potatoes",
+    "tip": "Half the potatoes",
+    "kcal": 540,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish"
+    ]
+   },
+   {
+    "name": "Lamb kofta + tabbouleh",
+    "tip": "Skip the chips",
+    "kcal": 610,
+    "proteinG": 38,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten"
+    ]
+   }
+  ],
+  "Middle Eastern": [
+   {
+    "name": "Shish taouk + fattoush, dressing on the side",
+    "tip": "Chicken skewers are lean",
+    "kcal": 540,
+    "proteinG": 46,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "gluten"
+    ]
+   },
+   {
+    "name": "Hummus + grilled chicken + half pita",
+    "tip": "One pita half",
+    "kcal": 600,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "sesame",
+     "gluten"
+    ]
+   },
+   {
+    "name": "Mujadara + salad",
+    "tip": "Lentils and rice, filling",
+    "kcal": 520,
+    "proteinG": 18,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": []
+   },
+   {
+    "name": "Mixed grill (small) + grilled veg",
+    "tip": "Skip the bread basket",
+    "kcal": 650,
+    "proteinG": 52,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": []
+   },
+   {
+    "name": "Foul medames + salad + half pita",
+    "tip": "Easy on the oil",
+    "kcal": 480,
+    "proteinG": 20,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "gluten"
+    ]
+   }
+  ],
+  "Korean": [
+   {
+    "name": "Bibimbap, half rice, extra egg",
+    "tip": "Go easy on the gochujang",
+    "kcal": 580,
+    "proteinG": 32,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "eggs",
+     "soy",
+     "sesame"
+    ]
+   },
+   {
+    "name": "Bulgogi + kimchi + lettuce wraps",
+    "tip": "Wraps instead of rice",
+    "kcal": 540,
+    "proteinG": 42,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "soy",
+     "sesame"
+    ]
+   },
+   {
+    "name": "Soondubu (tofu stew) + small rice",
+    "tip": "Ask for mild",
+    "kcal": 460,
+    "proteinG": 26,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "soy",
+     "shellfish",
+     "eggs"
+    ]
+   },
+   {
+    "name": "Grilled mackerel + banchan",
+    "tip": "Pick the veg banchan",
+    "kcal": 520,
+    "proteinG": 40,
+    "vegetarian": false,
+    "vegan": false,
+    "allergens": [
+     "fish",
+     "soy",
+     "sesame"
+    ]
+   },
+   {
+    "name": "Japchae, small, + side of tofu",
+    "tip": "Glass noodles add up fast",
+    "kcal": 520,
+    "proteinG": 20,
+    "vegetarian": true,
+    "vegan": true,
+    "allergens": [
+     "soy",
+     "sesame"
+    ]
+   }
+  ]
+ }
+}

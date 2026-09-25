@@ -7,7 +7,8 @@ import FlexFitEngine
 @Observable
 final class OnboardingDraft {
     enum Step: CaseIterable {
-        case basics, body, goal, pace, dailyLife, environment, equipment, schedule, experience, limitations, notice
+        case basics, body, goal, pace, dailyLife, environment, equipment, schedule, experience, limitations
+        case foodStyle, taste, constraints, kitchen, shopping, accountability, notice
     }
 
     var name = ""
@@ -39,6 +40,23 @@ final class OnboardingDraft {
     /// Nil until answered; empty set means "None".
     var limitations: Set<Limitation>?
     var acceptedNotice = false
+
+    var history: TrainingHistory?
+    var dailySteps: DailySteps?
+    var styles: Set<TrainingStyle> = []
+    var sleep: SleepBand?
+    var diet: DietStyle?
+    var cuisines: Set<Cuisine> = []
+    /// Nil until answered; empty = "None".
+    var allergens: Set<Allergen>?
+    var dislikes: Set<String>?
+    /// 0 = no limit; nil = unanswered.
+    var cookLimit: Int?
+    var mealPattern: MealPattern?
+    var budget: GroceryBudget?
+    var shopDay: ShopDay?
+    var reminder: ReminderTime?
+    var tone: CoachTone?
 
     var steps: [Step] {
         // Pace is counted until the user picks Maintain, so the counter doesn't jump up mid-flow.
@@ -111,9 +129,9 @@ final class OnboardingDraft {
         case .goal:
             goal != nil && targetKg != nil
         case .pace:
-            pacePct != nil
+            pacePct != nil && history != nil
         case .dailyLife:
-            activity != nil
+            activity != nil && dailySteps != nil
         case .environment:
             environment != nil
         case .equipment:
@@ -123,7 +141,19 @@ final class OnboardingDraft {
         case .experience:
             experience != nil
         case .limitations:
-            limitations != nil
+            limitations != nil && sleep != nil
+        case .foodStyle:
+            diet != nil
+        case .taste:
+            !cuisines.isEmpty
+        case .constraints:
+            allergens != nil && dislikes != nil
+        case .kitchen:
+            cookLimit != nil && mealPattern != nil
+        case .shopping:
+            budget != nil && shopDay != nil
+        case .accountability:
+            reminder != nil && tone != nil
         case .notice:
             acceptedNotice
         }
@@ -139,7 +169,7 @@ final class OnboardingDraft {
         guard let age, let sex, let units, let heightCm, let weightKg, let goal, let targetKg,
               let activity, let environment, let trainingDays, let sessionMinutes, let experience
         else { return nil }
-        return UserProfile(
+        var profile = UserProfile(
             name: name.trimmingCharacters(in: .whitespaces),
             age: age,
             sex: sex,
@@ -157,6 +187,21 @@ final class OnboardingDraft {
             equipment: equipment,
             limitations: limitations ?? []
         )
+        profile.history = history ?? .firstAttempt
+        profile.dailySteps = dailySteps ?? .fourToEight
+        profile.styles = styles
+        profile.sleep = sleep ?? .sixToSeven
+        profile.diet = diet ?? .highProtein
+        profile.cuisines = cuisines
+        profile.allergens = allergens ?? []
+        profile.dislikes = dislikes ?? []
+        profile.maxCookMinutes = (cookLimit ?? 0) > 0 ? cookLimit : nil
+        profile.mealPattern = mealPattern ?? .threePlusSnack
+        profile.budget = budget ?? .moderate
+        profile.shopDay = shopDay ?? .sunday
+        profile.reminder = reminder ?? .morning
+        profile.tone = tone ?? .direct
+        return profile
     }
 
     // MARK: Display helpers

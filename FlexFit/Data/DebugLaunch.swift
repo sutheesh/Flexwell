@@ -21,6 +21,9 @@ enum DebugLaunch {
             try? context.delete(model: WeighIn.self)
             try? context.delete(model: WeeklyTargets.self)
             try? context.delete(model: PainFlag.self)
+            try? context.delete(model: IngredientSwapRecord.self)
+            try? context.delete(model: GroceryCheck.self)
+            try? context.delete(model: PantryItem.self)
         }
         if args.contains("-FFSeedProfile") {
             context.insert(ProfileRecord(profile: .demo))
@@ -70,8 +73,19 @@ enum DebugLaunch {
 }
 
 extension UserProfile {
-    /// Alex, the PRD's primary persona.
-    static let demo = UserProfile(
+    /// Alex, the PRD's primary persona (food answers from the PRD's schema example).
+    static let demo: UserProfile = {
+        var p = demoBase
+        p.diet = .highProtein
+        p.cuisines = [.indian, .western]
+        p.allergens = [.peanuts]
+        p.dislikes = ["Mushrooms"]
+        p.maxCookMinutes = 20
+        p.mealPattern = .threePlusSnack
+        return p
+    }()
+
+    private static let demoBase = UserProfile(
         name: "Alex", age: 29, sex: .male, heightCm: 178, weightKg: 82, displayUnits: .metric,
         goal: .lose, targetWeightKg: 75, pacePctPerWeek: 0.5, activity: .seated, experience: .intermediate,
         trainingDays: 4, sessionMinutes: 45, environment: .homeGym,
