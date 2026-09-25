@@ -195,8 +195,10 @@ public enum MealPlanner {
 /// e.g. a swapped-in ingredient). Mirrors how meals.json allergens were derived.
 public enum IngredientRules {
     static let allergenWords: [Allergen: [String]] = [
-        .dairy: ["yoghurt", "paneer", "feta", "ghee", "whey", "curd", "skyr", "cheese", "butter"],
-        .gluten: ["sourdough", "rye", "pita", "roti", "tortilla", "oat", "bread", "wheat", "poha"],
+        .dairy: ["yoghurt", "paneer", "feta", "ghee", "whey", "curd", "skyr", "cheese", "cheddar", "parmesan",
+                 "halloumi", "labneh", "tzatziki", "buttermilk", "cottage"],
+        .gluten: ["sourdough", "rye", "pita", "roti", "tortilla", "oat", "bread", "wheat", "bagel", "bulgur",
+                  "semolina", "soba", "pasta", "panko", "cracker", "granola"],
         .eggs: ["egg"],
         .soy: ["tofu", "soy", "edamame"],
         .fish: ["salmon", "tuna", "fish", "mackerel"],
@@ -209,6 +211,8 @@ public enum IngredientRules {
     public static func allergens(in name: String) -> Set<Allergen> {
         let n = name.lowercased()
         var result = Set(allergenWords.filter { $0.value.contains(where: n.contains) }.keys)
+        // Butter is dairy; nut butters aren't.
+        if n.contains("butter") && !["peanut", "almond", "nut"].contains(where: n.contains) { result.insert(.dairy) }
         // Plain milk is dairy; plant milks aren't (soy milk is caught as soy above).
         if n.contains("milk") && !["soy", "oat", "almond", "coconut"].contains(where: n.contains) { result.insert(.dairy) }
         return result

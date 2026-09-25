@@ -4,7 +4,8 @@ import Testing
 let meals = MealLibrary.bundled
 
 @Test func mealLibraryLoads() {
-    #expect(meals.meals.count == 24)
+    #expect(meals.meals.count == 120)
+    #expect(Set(meals.meals.map(\.id)).count == 120)
     #expect(meals.substitutions["Eggs"] == "Firm tofu")
 }
 
@@ -99,4 +100,15 @@ let meals = MealLibrary.bundled
     #expect(MealPlanner.safeSubstitute(for: "Sirloin", profile: p) == nil)       // → Chicken thigh
     #expect(IngredientRules.allergens(in: "Soy milk") == [.soy])
     #expect(IngredientRules.allergens(in: "Milk") == [.dairy])
+}
+
+/// Tags must cover everything the ingredient rules detect, and diet flags must hold.
+@Test func everyRecipeIsTaggedConsistently() {
+    for meal in meals.meals {
+        let detected = meal.ingredients.reduce(into: Set<Allergen>()) { $0.formUnion(IngredientRules.allergens(in: $1.name)) }
+        #expect(detected.isSubset(of: Set(meal.allergens)), "\(meal.name): missing \(detected.subtracting(meal.allergens))")
+        if meal.vegan { #expect(meal.ingredients.allSatisfy { IngredientRules.isVegan($0.name) }, "\(meal.name) isn't vegan") }
+        if meal.vegetarian { #expect(!meal.ingredients.contains { IngredientRules.isMeatOrFish($0.name) }, "\(meal.name) has meat") }
+        #expect(meal.cookMinutes <= 30)
+    }
 }
