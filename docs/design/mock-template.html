@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="8297ce32-5830-48c3-8a41-20ee92142549">[..]</script>
+
+
+
+
+
+
+
+</head>
+<body>
+
+<x-dc>
+<helmet>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<style>
+body{margin:0;background:#FFFFFF;font-family:"Plus Jakarta Sans",system-ui,sans-serif}
+a{color:#B8643A}a:hover{color:#E0A27C}
+@keyframes sheetUp{from{transform:translateY(102%)}to{transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+<script src="5bc3207e-cdb3-4606-92e7-225805475ec9">[..]</script>
+</helmet>
+
+<div style="display:flex;flex-wrap:wrap;gap:52px;align-items:flex-start;padding:48px 44px 80px;background:#fff repeating-linear-gradient(180deg,transparent 0,transparent 31px,#D6E4F3 31px,#D6E4F3 32px);min-height:100vh;box-sizing:border-box;color:#14233F;font-family:'Plus Jakarta Sans',sans-serif">
+
+<div style="flex:1 1 300px;max-width:360px;min-width:260px">
+<div style="display:inline-flex;align-items:center;gap:8px;background:#14233F;color:#D6E4F3;border-radius:999px;padding:8px 14px;font:700 10.5px/1 'Plus Jakarta Sans';letter-spacing:.14em">V9 · V3 ON WHITE</div>
+<h1 style="font:800 34px/1.06 'Plus Jakarta Sans';letter-spacing:-.035em;margin:20px 0 14px">v3, on white — tighter corners</h1>
+<p style="font:400 14px/1.6 'Plus Jakarta Sans';color:rgba(20,35,63,.64);margin:0 0 20px;text-wrap:pretty">v3’s layout and spacing on white with light-blue rules. Cards are back with tighter 10–14px corners; navy carries the anchors, copper the highlights, and every image spot uses a drawn illustration.</p>
+<div style="display:flex;gap:6px;margin-bottom:22px">
+<div style="flex:1;height:44px;border-radius:8px;background:#14233F"></div>
+<div style="flex:1;height:44px;border-radius:8px;background:#D6E4F3"></div>
+<div style="flex:1;height:44px;border-radius:8px;background:#E0A27C"></div>
+<div style="flex:1;height:44px;border-radius:8px;background:#2F5C9E"></div>
+<div style="flex:1;height:44px;border-radius:8px;background:#F2F7FC;border:1px solid rgba(20,35,63,.12)"></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;font:400 13px/1.5 'Plus Jakarta Sans';color:rgba(20,35,63,.68)">
+<div style="display:flex;gap:10px"><span style="flex:0 0 20px;font-weight:800;color:#B8643A">01</span><span>Run the 16-step wizard — the path screen at the end is built from your answers (equipment, days, time, diet, cuisines, allergies).</span></div>
+<div style="display:flex;gap:10px"><span style="flex:0 0 20px;font-weight:800;color:#B8643A">02</span><span><strong style="font-weight:700;color:#14233F">Path</strong> tab: weeks to goal, phases, and a tap-any-day plan — workout, minutes, steps and every meal.</span></div>
+<div style="display:flex;gap:10px"><span style="flex:0 0 20px;font-weight:800;color:#B8643A">03</span><span><strong style="font-weight:700;color:#14233F">Train</strong> tab: the week strip, the day’s session, one-tap swaps.</span></div>
+<div style="display:flex;gap:10px"><span style="flex:0 0 20px;font-weight:800;color:#B8643A">04</span><span>Middle ⚡ button adapts today: low energy, no gym, missing ingredient, eating out.</span></div>
+</div>
+<div style="height:1px;background:rgba(20,35,63,.16);margin:24px 0"></div>
+<div style="font:400 12.5px/1.6 'Plus Jakarta Sans';color:rgba(20,35,63,.52)">Try changing “Where will you train?” to Bodyweight only, or diet to Vegetarian — the week, exercises and meals all rebuild. Drop real photos onto any image slot.</div>
+</div>
+
+<div style="flex:0 0 auto">
+<x-import component-from-global-scope="IOSDevice" from="8e5bfc3f-ccd7-4a98-ba7d-c63dd79fc34c#/ios-frame.jsx" dark="{{ darkFrame }}" hint-size="402px,874px">
+
+<div style="position:relative;height:100%;overflow:hidden;font-family:'Plus Jakarta Sans',sans-serif;background:#F2F7FC">
+
+<sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
+<div style="position:absolute;inset:0;background:#14233F;display:flex;flex-direction:column">
+<div style="position:relative;flex:0 0 452px;background:#1C3057">
+<image-slot id="v9-hero" src="{{ heroImg }}" shape="rect" fit="cover" placeholder="Drop a hero photo" style="width:100%;height:100%;display:block"></image-slot>
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,35,63,.1) 0%,rgba(20,35,63,.25) 55%,#14233F 99%);pointer-events:none"></div>
+<div style="position:absolute;left:24px;top:64px;display:flex;align-items:center;gap:8px;font:800 15px/1 'Plus Jakarta Sans';color:#fff;letter-spacing:-.01em"><span style="width:26px;height:26px;border-radius:8px;background:#D6E4F3;color:#14233F;display:flex;align-items:center;justify-content:center;font-size:13px">⚡</span>FlexFit</div>
+</div>
+<div style="flex:1 1 auto;padding:0 24px 36px;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="display:flex;gap:7px;margin-bottom:16px">
+<span style="background:rgba(214,228,243,.16);color:#D6E4F3;border-radius:999px;padding:7px 11px;font:700 10px/1 'Plus Jakarta Sans';letter-spacing:.08em">TRAINING</span>
+<span style="background:rgba(224,162,124,.18);color:#E0A27C;border-radius:999px;padding:7px 11px;font:700 10px/1 'Plus Jakarta Sans';letter-spacing:.08em">FOOD</span>
+<span style="background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);border-radius:999px;padding:7px 11px;font:700 10px/1 'Plus Jakarta Sans';letter-spacing:.08em">ONE PLAN</span>
+</div>
+<div style="font:800 36px/1.06 'Plus Jakarta Sans';letter-spacing:-.035em;color:#fff">Train and eat on the day you actually got.</div>
+<p style="font:400 14px/1.6 'Plus Jakarta Sans';color:rgba(255,255,255,.6);margin:14px 0 24px">Sixteen quick questions. Then a week-by-week path to your goal that bends when life does.</p>
+<div style="display:flex;flex-direction:column;gap:10px">
+<button sc-camel-on-click="{{ start }}" style="width:100%;height:58px;border:none;border-radius:999px;background:#D6E4F3;color:#14233F;font:800 15.5px/1 'Plus Jakarta Sans';cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#E6EEF8">Build my plan <span style="font-size:18px">→</span></button>
+<button sc-camel-on-click="{{ skip }}" style="width:100%;height:50px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:transparent;color:rgba(255,255,255,.85);font:600 13.5px/1 'Plus Jakarta Sans';cursor:pointer" style-hover="background:rgba(255,255,255,.08)">Skip to the app</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isWizard }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(180deg,#F2F7FC 0%,#D6E4F3 100%)">
+<div style="flex:0 0 auto;padding:60px 22px 0">
+<div style="display:flex;align-items:center;gap:14px">
+<button sc-camel-on-click="{{ back }}" style="width:40px;height:40px;border:none;border-radius:10px;background:#FFFFFF;color:#14233F;font:600 16px/1 'Plus Jakarta Sans';cursor:pointer;box-shadow:0 2px 8px rgba(20,35,63,.06)" style-hover="background:#fff">←</button>
+<div style="flex:1;display:flex;gap:4px">
+<sc-for list="{{ stepDots }}" as="d" hint-placeholder-count="16">
+<div style="flex:1;height:4px;border-radius:999px;background:{{ d.bg }}"></div>
+</sc-for>
+</div>
+<div style="font:700 11px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45);letter-spacing:.06em">{{ stepLabel }}</div>
+</div>
+</div>
+<div style="flex:1 1 auto;overflow-y:auto;padding:24px 22px 18px">
+<div style="display:inline-flex;align-items:center;gap:7px;background:#14233F;color:#D6E4F3;border-radius:999px;padding:7px 12px;font:700 10px/1 'Plus Jakarta Sans';letter-spacing:.12em;text-transform:uppercase">{{ stepKicker }}</div>
+<h2 style="font:800 28px/1.1 'Plus Jakarta Sans';letter-spacing:-.03em;color:#14233F;margin:14px 0 8px">{{ stepTitle }}</h2>
+<p style="font:400 13.5px/1.55 'Plus Jakarta Sans';color:rgba(20,35,63,.55);margin:0">{{ stepSub }}</p>
+
+<sc-for list="{{ questions }}" as="q" hint-placeholder-count="2">
+<div style="margin-top:24px">
+<div style="font:700 13px/1.2 'Plus Jakarta Sans';color:#14233F">{{ q.label }}</div>
+<sc-if value="{{ q.hasHint }}" hint-placeholder-val="{{ true }}"><div style="font:400 12px/1.45 'Plus Jakarta Sans';color:rgba(20,35,63,.48);margin-top:5px">{{ q.hint }}</div></sc-if>
+
+<sc-if value="{{ q.isNum }}">
+<div style="display:flex;align-items:center;margin-top:12px;background:#FFFFFF;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(20,35,63,.05)">
+<input value="{{ q.value }}" sc-camel-on-change="{{ q.onChange }}" placeholder="{{ q.ph }}" style="flex:1;min-width:0;border:none;background:transparent;padding:17px 18px;font:700 18px/1 'Plus Jakarta Sans';color:#14233F;outline:none">
+<div style="padding:0 18px;font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.4);letter-spacing:.06em;text-transform:uppercase">{{ q.unit }}</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ q.isChoice }}">
+<div style="margin-top:12px;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(20,35,63,.05)">
+<sc-for list="{{ q.options }}" as="o" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ o.onClick }}" style="display:flex;align-items:center;gap:12px;width:100%;min-height:56px;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:{{ o.bg }};color:#14233F;text-align:left;padding:11px 16px;cursor:pointer;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:1;min-width:0"><span style="display:block;font:700 14.5px/1.25 'Plus Jakarta Sans'">{{ o.label }}</span><sc-if value="{{ o.hasSub }}" hint-placeholder-val="{{ true }}"><span style="display:block;font:400 12px/1.35 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:3px">{{ o.sub }}</span></sc-if></span>
+<span style="flex:0 0 auto;width:22px;height:22px;border-radius:999px;border:1.5px solid {{ o.ring }};background:{{ o.dot }};color:#D6E4F3;font:800 11px/19px 'Plus Jakarta Sans';text-align:center">{{ o.mark }}</span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ q.isChips }}">
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+<sc-for list="{{ q.options }}" as="o" hint-placeholder-count="6">
+<button sc-camel-on-click="{{ o.onClick }}" style="border:none;border-radius:999px;background:{{ o.chipBg }};color:{{ o.chipFg }};font:600 13px/1 'Plus Jakarta Sans';padding:12px 15px;cursor:pointer;box-shadow:0 2px 8px rgba(20,35,63,.04)">{{ o.label }}</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<div style="height:10px"></div>
+</div>
+<div style="flex:0 0 auto;padding:12px 22px 34px">
+<sc-if value="{{ canGo }}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{ next }}" style="width:100%;height:58px;border:none;border-radius:999px;background:#14233F;color:#fff;font:700 15.5px/1 'Plus Jakarta Sans';cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#1C3057">{{ nextLabel }} <span style="color:#D6E4F3;font-size:18px">→</span></button>
+</sc-if>
+<sc-if value="{{ cantGo }}">
+<div style="width:100%;height:58px;border-radius:999px;background:rgba(20,35,63,.08);color:rgba(20,35,63,.4);font:600 14.5px/58px 'Plus Jakarta Sans';text-align:center">Answer to continue</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBuilding }}">
+<div style="position:absolute;inset:0;background:#14233F;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 34px">
+<div style="width:120px;height:120px;border-radius:999px;border:3px solid rgba(255,255,255,.1);border-top-color:#D6E4F3;border-right-color:#E0A27C;animation:spin 1s linear infinite"></div>
+<div style="font:800 24px/1.2 'Plus Jakarta Sans';letter-spacing:-.02em;color:#fff;text-align:center;margin-top:34px">{{ buildLine }}</div>
+<div style="width:100%;max-width:210px;height:4px;border-radius:999px;background:rgba(255,255,255,.1);margin-top:22px"><div style="height:4px;border-radius:999px;background:#D6E4F3;transition:width .4s linear;width:{{ buildPct }}"></div></div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPlan }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;background:linear-gradient(180deg,#F2F7FC 0%,#D6E4F3 100%)">
+<div style="flex:1 1 auto;overflow-y:auto;padding:62px 20px 16px">
+<div style="font:700 10.5px/1 'Plus Jakarta Sans';letter-spacing:.14em;color:#B8643A">YOUR PATH IS READY</div>
+<h2 style="font:800 29px/1.08 'Plus Jakarta Sans';letter-spacing:-.03em;color:#14233F;margin:10px 0 6px">{{ pathTitle }}</h2>
+<p style="font:400 13.5px/1.5 'Plus Jakarta Sans';color:rgba(20,35,63,.55);margin:0 0 18px">{{ pathSub }}</p>
+
+<div style="border-radius:14px;background:#14233F;padding:20px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between">
+<div><div style="font:600 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.5)">Daily food target</div><div style="display:flex;align-items:baseline;gap:6px;margin-top:9px"><span style="font:800 40px/1 'Plus Jakarta Sans';letter-spacing:-.03em;color:#fff">{{ kcal }}</span><span style="font:700 13px/1 'Plus Jakarta Sans';color:#E0A27C">kcal</span></div></div>
+<div style="text-align:right"><div style="font:600 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.5)">Goal date</div><div style="font:800 20px/1 'Plus Jakarta Sans';color:#D6E4F3;margin-top:9px">{{ etaLabel }}</div></div>
+</div>
+<div style="display:flex;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)">
+<div style="flex:1"><div style="font:800 16px/1 'Plus Jakarta Sans';color:#fff">{{ prot }}g</div><div style="font:500 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.45);margin-top:6px">Protein</div></div>
+<div style="width:1px;background:rgba(255,255,255,.1)"></div>
+<div style="flex:1;padding-left:14px"><div style="font:800 16px/1 'Plus Jakarta Sans';color:#fff">{{ carb }}g</div><div style="font:500 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.45);margin-top:6px">Carbs</div></div>
+<div style="width:1px;background:rgba(255,255,255,.1)"></div>
+<div style="flex:1;padding-left:14px"><div style="font:800 16px/1 'Plus Jakarta Sans';color:#fff">{{ fat }}g</div><div style="font:500 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.45);margin-top:6px">Fat</div></div>
+<div style="width:1px;background:rgba(255,255,255,.1)"></div>
+<div style="flex:1;padding-left:14px"><div style="font:800 16px/1 'Plus Jakarta Sans';color:#fff">{{ weeks }}</div><div style="font:500 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.45);margin-top:6px">Weeks</div></div>
+</div>
+</div>
+
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F;margin:26px 0 14px">The road</div>
+<div style="position:relative;padding-left:4px">
+<sc-for list="{{ phases }}" as="ph" hint-placeholder-count="4">
+<div style="display:flex;gap:14px;position:relative;padding-bottom:18px">
+<div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center">
+<div style="width:16px;height:16px;border-radius:999px;background:{{ ph.dot }};border:3px solid {{ ph.ring }}"></div>
+<div style="flex:1;width:2px;background:rgba(20,35,63,.12);margin-top:4px"></div>
+</div>
+<div style="flex:1;min-width:0;margin-top:-2px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px"><div style="font:800 14.5px/1.2 'Plus Jakarta Sans';color:#14233F">{{ ph.name }}</div><div style="flex:0 0 auto;font:600 11px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ ph.range }}</div></div>
+<div style="font:400 12.5px/1.5 'Plus Jakarta Sans';color:rgba(20,35,63,.6);margin-top:5px">{{ ph.desc }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F;margin:10px 0 12px">A typical week</div>
+<div style="background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(20,35,63,.05)">
+<sc-for list="{{ weekRows }}" as="w" hint-placeholder-count="7">
+<div style="display:flex;align-items:center;gap:13px;padding:13px 16px;border-bottom:1px solid rgba(20,35,63,.07)">
+<div style="flex:0 0 38px;font:800 12px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ w.dow }}</div>
+<div style="flex:0 0 auto;width:8px;height:8px;border-radius:999px;background:{{ w.dot }}"></div>
+<div style="flex:1;min-width:0"><div style="font:700 13.5px/1.25 'Plus Jakarta Sans';color:#14233F">{{ w.name }}</div><div style="font:400 11.5px/1.3 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:3px">{{ w.meta }}</div></div>
+<div style="flex:0 0 auto;text-align:right"><div style="font:800 13px/1 'Plus Jakarta Sans';color:#B8643A">{{ w.food }}</div><div style="font:500 10px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.4);margin-top:4px">kcal</div></div>
+</div>
+</sc-for>
+</div>
+<div style="font:400 12px/1.55 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:14px">Meals come from {{ cuisineLine }} kitchens, {{ dietLower }}, never containing {{ excludeLine }}.</div>
+</div>
+<div style="flex:0 0 auto;padding:12px 20px 34px">
+<button sc-camel-on-click="{{ enter }}" style="width:100%;height:58px;border:none;border-radius:999px;background:#14233F;color:#fff;font:700 15.5px/1 'Plus Jakarta Sans';cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="background:#1C3057">Start today <span style="color:#D6E4F3;font-size:18px">→</span></button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isApp }}">
+<div style="position:absolute;inset:0;display:flex;flex-direction:column;background:{{ appBg }}">
+
+<div style="flex:0 0 auto;padding:58px 20px 12px;display:flex;align-items:center;gap:12px">
+<div style="width:42px;height:42px;border-radius:999px;flex:0 0 auto;background:#E0A27C;display:flex;align-items:center;justify-content:center;font:800 15px/1 'Plus Jakarta Sans';color:#14233F">{{ initial }}</div>
+<div style="flex:1;min-width:0">
+<div style="font:500 11.5px/1 'Plus Jakarta Sans';color:{{ headDim }}">{{ headKicker }}</div>
+<div style="font:800 20px/1.1 'Plus Jakarta Sans';letter-spacing:-.02em;color:{{ headInk }};margin-top:5px">{{ headTitle }}</div>
+</div>
+<button sc-camel-on-click="{{ goShop }}" style="width:42px;height:42px;border-radius:10px;border:none;background:{{ headBtn }};color:{{ headInk }};cursor:pointer;display:flex;align-items:center;justify-content:center">
+<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 4h2.5l2.2 10h9.6L21 7H6"></path><circle cx="10" cy="19" r="1.5"></circle><circle cx="17.5" cy="19" r="1.5"></circle></svg>
+</button>
+</div>
+
+<div style="flex:1 1 auto;overflow-y:auto;padding-bottom:112px">
+
+<sc-if value="{{ tabToday }}">
+<div style="padding:2px 20px 0;display:flex;flex-direction:column;gap:14px">
+
+<div style="border-radius:14px;background:#14233F;padding:18px 20px 20px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="font:600 12px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.55)">{{ todayLabel }}</div>
+<div style="background:rgba(214,228,243,.14);color:#D6E4F3;border-radius:999px;padding:7px 11px;font:700 10.5px/1 'Plus Jakarta Sans'">🔥 {{ streak }}-day streak</div>
+</div>
+<div style="display:flex;justify-content:center;margin-top:4px">
+<div style="position:relative;width:236px;height:146px">
+<svg sc-camel-view-box="0 0 236 146" style="width:236px;height:146px;display:block">
+<g transform="translate(118,122)">
+<sc-for list="{{ arcSegs }}" as="a" hint-placeholder-count="13">
+<rect x="-9" y="-108" width="18" height="34" rx="9" fill="{{ a.fill }}" transform="{{ a.tr }}"></rect>
+</sc-for>
+</g>
+</svg>
+<div style="position:absolute;left:0;right:0;top:52px;text-align:center">
+<div style="font:700 14px/1 'Plus Jakarta Sans';color:#E0A27C">⚡</div>
+<div style="font:800 30px/1 'Plus Jakarta Sans';letter-spacing:-.03em;color:#fff;margin-top:8px">{{ kcalIn }} kcal</div>
+<div style="font:600 11.5px/1 'Plus Jakarta Sans';color:#E0A27C;margin-top:7px">Goal {{ todayTarget }} kcal</div>
+</div>
+</div>
+</div>
+<div style="display:flex;margin-top:6px;padding-top:15px;border-top:1px solid rgba(255,255,255,.09)">
+<sc-for list="{{ macroBars }}" as="m" hint-placeholder-count="3">
+<div style="flex:1;min-width:0;padding:0 10px;border-left:1px solid {{ m.line }}">
+<div style="font:500 11px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.45)">{{ m.k }}</div>
+<div style="font:700 14px/1 'Plus Jakarta Sans';color:#fff;margin:8px 0 9px">{{ m.v }}</div>
+<div style="height:4px;border-radius:999px;background:rgba(255,255,255,.1)"><div style="height:4px;border-radius:999px;background:{{ m.fill }};width:{{ m.w }}"></div></div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<sc-if value="{{ needCheckin }}">
+<div style="display:flex;align-items:center;gap:10px;padding:4px 2px">
+<div style="flex:1;min-width:0;font:700 14px/1.25 'Plus Jakarta Sans';color:#14233F">How’s your energy?</div>
+<div style="display:flex;gap:6px;background:#FFFFFF;border-radius:999px;padding:4px;box-shadow:0 2px 10px rgba(20,35,63,.05)">
+<sc-for list="{{ energyOpts }}" as="e" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ e.onClick }}" style="border:none;border-radius:999px;background:transparent;color:#14233F;font:700 12px/1 'Plus Jakarta Sans';padding:10px 12px;cursor:pointer" style-hover="background:#14233F;color:#D6E4F3">{{ e.label }}</button>
+</sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ didCheckin }}">
+<div style="display:flex;align-items:center;gap:10px;padding:2px 2px">
+<div style="flex:0 0 auto;width:30px;height:30px;border-radius:999px;background:#D6E4F3;color:#14233F;font:700 13px/30px 'Plus Jakarta Sans';text-align:center">⚡</div>
+<div style="flex:1;min-width:0;font:500 12.5px/1.45 'Plus Jakarta Sans';color:#14233F">{{ checkinLine }}</div>
+<button sc-camel-on-click="{{ openEnergy }}" style="flex:0 0 auto;border:none;background:transparent;color:#B8643A;font:700 12px/1 'Plus Jakarta Sans';cursor:pointer;padding:8px 4px">Change</button>
+</div>
+</sc-if>
+
+<div style="border-radius:14px;background:#14233F;overflow:hidden">
+<div style="position:relative;height:176px;background:#1C3057">
+<image-slot id="v9-today-workout" src="{{ sessImg }}" shape="rect" fit="cover" placeholder="Drop a workout photo" style="width:100%;height:100%;display:block"></image-slot>
+<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,35,63,.96) 0%,rgba(20,35,63,.7) 48%,rgba(20,35,63,0) 100%);pointer-events:none"></div>
+<div style="position:absolute;left:18px;top:18px;right:120px;pointer-events:none">
+<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(214,228,243,.16);color:#D6E4F3;border-radius:999px;padding:6px 10px;font:700 10px/1 'Plus Jakarta Sans'"><span style="width:6px;height:6px;border-radius:999px;background:#D6E4F3"></span>{{ sessionBadge }}</div>
+<div style="font:800 22px/1.12 'Plus Jakarta Sans';letter-spacing:-.02em;color:#fff;margin-top:12px">{{ todaySession.name }}</div>
+<div style="display:flex;gap:12px;margin-top:10px;font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.6)"><span>⏱ {{ todaySession.minLabel }}</span><span>🔥 {{ todaySession.burn }} kcal</span></div>
+</div>
+</div>
+<div style="padding:14px 16px 16px;display:flex;gap:9px">
+<button sc-camel-on-click="{{ goTrainToday }}" style="flex:1;height:48px;border:none;border-radius:999px;background:#D6E4F3;color:#14233F;font:800 13.5px/1 'Plus Jakarta Sans';cursor:pointer" style-hover="background:#E6EEF8">Start workout ›</button>
+<button sc-camel-on-click="{{ openAdapt }}" style="flex:0 0 auto;height:48px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:transparent;color:#fff;font:600 12.5px/1 'Plus Jakarta Sans';padding:0 16px;cursor:pointer" style-hover="background:rgba(255,255,255,.08)">Adapt</button>
+</div>
+<div style="padding:0 16px 14px;font:400 12px/1.5 'Plus Jakarta Sans';color:rgba(255,255,255,.5)">{{ sessionNote }}</div>
+</div>
+
+<div>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:6px 2px 11px">
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F">Today’s food</div>
+<button sc-camel-on-click="{{ goEat }}" style="border:none;background:transparent;color:#B8643A;font:700 12px/1 'Plus Jakarta Sans';cursor:pointer;padding:0">See all</button>
+</div>
+<div style="background:#FFFFFF;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(20,35,63,.05)">
+<sc-for list="{{ todayMeals }}" as="m" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ m.onOpen }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;padding:13px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:0 0 auto;width:52px;height:52px;border-radius:999px;overflow:hidden;position:relative;background:#F2F7FC;display:block"><image-slot id="{{ m.sid }}" src="{{ m.img }}" shape="rect" fit="cover" placeholder="Drop a photo of this meal" style="width:100%;height:100%;display:block"></image-slot></span>
+<span style="flex:1;min-width:0">
+<span style="display:flex;align-items:center;gap:7px"><span style="font:700 11px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ m.slot }} · {{ m.clock }}</span><span style="font:700 9.5px/1 'Plus Jakarta Sans';color:{{ m.statusFg }};background:{{ m.statusBg }};border-radius:999px;padding:4px 7px">{{ m.status }}</span></span>
+<span style="display:block;font:700 14.5px/1.25 'Plus Jakarta Sans';color:#14233F;margin-top:6px">{{ m.t }}</span>
+<span style="display:block;font:500 11.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:6px">P {{ m.p }}g · C {{ m.c }}g · F {{ m.f }}g</span>
+</span>
+<span style="flex:0 0 auto;text-align:right"><span style="display:block;font:800 16px/1 'Plus Jakarta Sans';color:#14233F">{{ m.kcal }}</span><span style="display:block;font:600 10.5px/1 'Plus Jakarta Sans';color:#B8643A;margin-top:6px">{{ m.pct }} of goal</span></span>
+</button>
+</sc-for>
+</div>
+</div>
+
+<div>
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F;margin:6px 2px 11px">Quick adjustments</div>
+<div style="background:#FFFFFF;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(20,35,63,.05)">
+<button sc-camel-on-click="{{ toggleEmergency }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;padding:14px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'">
+<span style="flex:0 0 auto;width:38px;height:38px;border-radius:8px;background:#14233F;color:#D6E4F3;font:700 15px/38px 'Plus Jakarta Sans';text-align:center">⌂</span>
+<span style="flex:1;min-width:0"><span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans';color:#14233F">Can’t make it to the gym</span><span style="display:block;font:400 11.5px/1.4 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:4px">{{ emergencySub }}</span></span>
+<span style="flex:0 0 auto;width:46px;height:28px;border-radius:999px;background:{{ swBg }};position:relative;display:block"><span style="position:absolute;top:4px;left:{{ swX }};width:20px;height:20px;border-radius:999px;background:#fff;transition:left .15s"></span></span>
+</button>
+<button sc-camel-on-click="{{ openRestaurant }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;padding:14px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:0 0 auto;width:38px;height:38px;border-radius:8px;background:rgba(224,162,124,.2);color:#A5582F;font:700 15px/38px 'Plus Jakarta Sans';text-align:center">🍽</span>
+<span style="flex:1;min-width:0"><span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans';color:#14233F">Eating out tonight</span><span style="display:block;font:400 11.5px/1.4 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:4px">3 safe orders for {{ kcalLeft }} kcal left</span></span>
+<span style="flex:0 0 auto;font:600 16px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.3)">›</span>
+</button>
+<button sc-camel-on-click="{{ goShop }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;background:transparent;padding:14px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:0 0 auto;width:38px;height:38px;border-radius:8px;background:rgba(47,92,158,.16);color:#2F5C9E;font:700 15px/38px 'Plus Jakarta Sans';text-align:center">✓</span>
+<span style="flex:1;min-width:0"><span style="display:block;font:700 14px/1.2 'Plus Jakarta Sans';color:#14233F">Grocery list</span><span style="display:block;font:400 11.5px/1.4 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:4px">{{ groceryLeft }} items for this week’s meals</span></span>
+<span style="flex:0 0 auto;font:600 16px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.3)">›</span>
+</button>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ tabTrain }}">
+<div style="padding:2px 20px 0">
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">
+<sc-for list="{{ daysDark }}" as="d" hint-placeholder-count="7">
+<button sc-camel-on-click="{{ d.onClick }}" style="height:68px;border:none;border-radius:10px;background:{{ d.bg }};color:{{ d.fg }};cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;font-family:'Plus Jakarta Sans'">
+<span style="font:600 10.5px/1 'Plus Jakarta Sans';opacity:.75">{{ d.dow }}</span>
+<span style="font:800 16px/1 'Plus Jakarta Sans'">{{ d.num }}</span>
+<span style="width:5px;height:5px;border-radius:999px;background:{{ d.dot }}"></span>
+</button>
+</sc-for>
+</div>
+
+<div style="margin-top:14px;border-radius:14px;background:#14233F;overflow:hidden;position:relative">
+<div style="position:absolute;right:0;top:0;bottom:0;width:46%;background:#1C3057"><image-slot id="{{ selSession.sid }}" src="{{ selSession.img }}" shape="rect" fit="cover" placeholder="Drop a workout photo" style="width:100%;height:100%;display:block"></image-slot></div>
+<div style="position:absolute;right:0;top:0;bottom:0;width:46%;background:linear-gradient(90deg,#14233F 0%,rgba(20,35,63,0) 60%);pointer-events:none"></div>
+<div style="position:relative;padding:18px 18px 18px;max-width:62%">
+<div style="display:inline-flex;align-items:center;gap:6px;color:#D6E4F3;font:700 10.5px/1 'Plus Jakarta Sans'"><span style="width:6px;height:6px;border-radius:999px;background:#D6E4F3"></span>{{ selSession.tag }}</div>
+<div style="font:800 21px/1.12 'Plus Jakarta Sans';letter-spacing:-.02em;color:#fff;margin-top:10px">{{ selSession.name }}</div>
+<div style="display:flex;gap:12px;margin-top:10px;font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.55)"><span>🔥 {{ selSession.burn }} kcal</span><span>⏱ {{ selSession.minLabel }}</span></div>
+<sc-if value="{{ selSession.canStart }}" hint-placeholder-val="{{ true }}">
+<button sc-camel-on-click="{{ openAdapt }}" style="margin-top:14px;border:none;border-radius:999px;background:#D6E4F3;color:#14233F;font:800 12px/1 'Plus Jakarta Sans';padding:11px 15px;cursor:pointer">Adapt session ›</button>
+</sc-if>
+</div>
+</div>
+
+<sc-if value="{{ selHasEx }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:22px 2px 11px">
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#fff">Session plan</div>
+<div style="font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.45)">{{ doneCount }} done</div>
+</div>
+<div style="background:#14233F;border-radius:12px;overflow:hidden">
+<sc-for list="{{ exercises }}" as="e" hint-placeholder-count="4">
+<div style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+<button sc-camel-on-click="{{ e.onDone }}" style="flex:0 0 auto;width:30px;height:30px;border-radius:999px;border:none;background:{{ e.numBg }};color:{{ e.numFg }};font:800 12px/1 'Plus Jakarta Sans';cursor:pointer">{{ e.mark }}</button>
+<div style="flex:1;min-width:0">
+<div style="font:700 14px/1.22 'Plus Jakarta Sans';color:{{ e.nameFg }};text-decoration:{{ e.deco }}">{{ e.n }}</div>
+<div style="font:500 11.5px/1.35 'Plus Jakarta Sans';color:rgba(255,255,255,.45);margin-top:5px">{{ e.s }} · {{ e.eq }}</div>
+<sc-if value="{{ e.wasSwapped }}" hint-placeholder-val="{{ false }}"><div style="font:700 10px/1 'Plus Jakarta Sans';color:#D6E4F3;margin-top:7px">↺ Swapped · same muscle group</div></sc-if>
+</div>
+<button sc-camel-on-click="{{ e.onSwap }}" style="flex:0 0 auto;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:transparent;color:#fff;font:600 11px/1 'Plus Jakarta Sans';padding:9px 12px;cursor:pointer" style-hover="background:rgba(255,255,255,.08)">Swap</button>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{ selNoEx }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:22px;font:400 13px/1.6 'Plus Jakarta Sans';color:rgba(255,255,255,.6)">{{ selRestNote }}</div>
+</sc-if>
+
+<div style="margin-top:14px;background:#14233F;border-radius:12px;padding:16px 18px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:700 13.5px/1 'Plus Jakarta Sans';color:#fff">This week</div><div style="font:600 11.5px/1 'Plus Jakarta Sans';color:#D6E4F3">{{ weekDoneLabel }}</div></div>
+<div style="display:flex;gap:4px;margin-top:13px">
+<sc-for list="{{ weekBars }}" as="b" hint-placeholder-count="7"><div style="flex:1;height:6px;border-radius:999px;background:{{ b.bg }}"></div></sc-for>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ tabEat }}">
+<div style="padding:2px 20px 0">
+<div style="display:flex;gap:10px;align-items:center">
+<div style="flex:1;min-width:0;height:50px;border-radius:999px;background:#FFFFFF;display:flex;align-items:center;gap:10px;padding:0 18px;box-shadow:0 2px 10px rgba(20,35,63,.05)">
+<svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="rgba(20,35,63,.4)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5 21 21"></path></svg>
+<span style="font:500 13px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.4)">Search meals, ingredients…</span>
+</div>
+<button sc-camel-on-click="{{ openAdapt }}" style="width:50px;height:50px;flex:0 0 auto;border:none;border-radius:999px;background:#FFFFFF;color:#14233F;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(20,35,63,.05)">
+<svg width="18" height="18" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"></path></svg>
+</button>
+</div>
+
+<div style="margin-top:14px;border-radius:14px;background:linear-gradient(120deg,#F4E3D6 0%,#EFD2BF 100%);padding:18px;display:flex;gap:14px;align-items:center;position:relative;overflow:hidden">
+<div style="flex:1;min-width:0;position:relative">
+<div style="font:700 10.5px/1 'Plus Jakarta Sans';color:#8F4A26">✦ Picked for you</div>
+<div style="font:800 19px/1.15 'Plus Jakarta Sans';letter-spacing:-.02em;color:#14233F;margin:9px 0 6px">{{ aiTitle }}</div>
+<div style="font:400 11.5px/1.45 'Plus Jakarta Sans';color:rgba(20,35,63,.62);margin-bottom:13px">{{ aiSub }}</div>
+<button sc-camel-on-click="{{ aiOpen }}" style="border:none;border-radius:999px;background:#14233F;color:#fff;font:700 11.5px/1 'Plus Jakarta Sans';padding:10px 14px;cursor:pointer">View meal</button>
+</div>
+<div style="flex:0 0 auto;width:104px;height:104px;border-radius:999px;overflow:hidden;position:relative;background:rgba(255,255,255,.4)"><image-slot id="{{ aiSid }}" src="{{ aiImg }}" shape="rect" fit="cover" placeholder="Drop a photo of this meal" style="width:100%;height:100%;display:block"></image-slot></div>
+</div>
+
+<div style="display:flex;gap:7px;overflow-x:auto;padding:16px 0 2px">
+<sc-for list="{{ daysChips }}" as="d" hint-placeholder-count="7">
+<button sc-camel-on-click="{{ d.onClick }}" style="flex:0 0 auto;border:none;border-radius:999px;background:{{ d.bg }};color:{{ d.fg }};font:700 12.5px/1 'Plus Jakarta Sans';padding:12px 15px;cursor:pointer">{{ d.label }}</button>
+</sc-for>
+</div>
+
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:18px 2px 11px">
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F">{{ selDayTitle }}</div>
+<div style="font:700 12px/1 'Plus Jakarta Sans';color:#B8643A">{{ selFoodKcal }} kcal</div>
+</div>
+<div style="background:#FFFFFF;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(20,35,63,.05)">
+<sc-for list="{{ selMeals }}" as="m" hint-placeholder-count="4">
+<div style="display:flex;gap:13px;padding:14px;border-bottom:1px solid rgba(20,35,63,.07)">
+<button sc-camel-on-click="{{ m.onOpen }}" style="flex:0 0 auto;width:88px;height:96px;border:none;border-radius:10px;overflow:hidden;position:relative;background:#F2F7FC;cursor:pointer;padding:0"><image-slot id="{{ m.sid }}" src="{{ m.img }}" shape="rect" fit="cover" placeholder="Drop a photo of this meal" style="width:100%;height:100%;display:block"></image-slot></button>
+<div style="flex:1;min-width:0">
+<div style="display:flex;align-items:flex-start;gap:8px">
+<button sc-camel-on-click="{{ m.onOpen }}" style="flex:1;min-width:0;border:none;background:transparent;padding:0;text-align:left;cursor:pointer;font-family:'Plus Jakarta Sans'">
+<span style="display:block;font:700 10.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.42)">{{ m.slot }} · {{ m.clock }}</span>
+<span style="display:block;font:800 15px/1.2 'Plus Jakarta Sans';color:#14233F;margin-top:6px">{{ m.t }}</span>
+</button>
+<button sc-camel-on-click="{{ m.onSwap }}" style="flex:0 0 auto;width:28px;height:28px;border:none;border-radius:999px;background:#F2F7FC;color:rgba(20,35,63,.6);font:800 13px/1 'Plus Jakarta Sans';cursor:pointer">⋮</button>
+</div>
+<div style="display:flex;align-items:flex-end;margin-top:11px">
+<div style="flex:1.1;min-width:0"><div style="font:800 15px/1 'Plus Jakarta Sans';color:#B8643A">{{ m.kcal }}</div><div style="font:500 9.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45);margin-top:5px">kcal</div></div>
+<div style="width:1px;height:24px;background:rgba(20,35,63,.1)"></div>
+<div style="flex:1;min-width:0;padding-left:8px"><div style="font:800 13px/1 'Plus Jakarta Sans';color:#14233F">{{ m.p }}g</div><div style="font:500 9.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45);margin-top:5px">Protein</div></div>
+<div style="width:1px;height:24px;background:rgba(20,35,63,.1)"></div>
+<div style="flex:1;min-width:0;padding-left:8px"><div style="font:800 13px/1 'Plus Jakarta Sans';color:#14233F">{{ m.c }}g</div><div style="font:500 9.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45);margin-top:5px">Carbs</div></div>
+<div style="width:1px;height:24px;background:rgba(20,35,63,.1)"></div>
+<div style="flex:1;min-width:0;padding-left:8px"><div style="font:800 13px/1 'Plus Jakarta Sans';color:#14233F">{{ m.f }}g</div><div style="font:500 9.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45);margin-top:5px">Fat</div></div>
+</div>
+<div style="display:flex;align-items:center;gap:7px;margin-top:10px;flex-wrap:wrap">
+<span style="font:700 11px/1 'Plus Jakarta Sans';color:#14233F">★ {{ m.rating }}</span>
+<span style="background:{{ m.tagBg }};color:{{ m.tagFg }};border-radius:999px;padding:5px 8px;font:700 9.5px/1 'Plus Jakarta Sans'">{{ m.tag }}</span>
+<span style="font:500 10.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ m.time }} · {{ m.cui }}</span>
+</div>
+<sc-if value="{{ m.wasSwapped }}" hint-placeholder-val="{{ false }}"><div style="font:600 10.5px/1.35 'Plus Jakarta Sans';color:#2F5C9E;margin-top:8px">↺ {{ m.swapNote }}</div></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ tabPath }}">
+<div style="padding:2px 20px 0">
+<div style="border-radius:14px;background:#14233F;padding:20px 18px 16px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px">
+<div><div style="font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.5)">Week {{ curWeek }} of {{ weeks }}</div><div style="font:800 24px/1.1 'Plus Jakarta Sans';letter-spacing:-.02em;color:#fff;margin-top:8px">{{ startW }} → {{ targetW }} {{ unitLabel }}</div></div>
+<div style="text-align:right"><div style="font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.5)">On track for</div><div style="font:800 17px/1 'Plus Jakarta Sans';color:#D6E4F3;margin-top:9px">{{ etaLabel }}</div></div>
+</div>
+<svg sc-camel-view-box="0 0 320 132" style="width:100%;height:auto;display:block;margin-top:14px">
+<defs><linearGradient id="v3g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E0A27C" stop-opacity=".42"></stop><stop offset="1" stop-color="#E0A27C" stop-opacity="0"></stop></linearGradient></defs>
+<line x1="8" y1="{{ goalY }}" x2="312" y2="{{ goalY }}" stroke="rgba(214,228,243,.35)" stroke-width="1" stroke-dasharray="3 4"></line>
+<polyline points="{{ projPts }}" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="5 5"></polyline>
+<polygon points="{{ actArea }}" fill="url(#v3g)"></polygon>
+<polyline points="{{ actPts }}" fill="none" stroke="#E0A27C" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"></polyline>
+<circle cx="{{ nowX }}" cy="{{ nowY }}" r="5.5" fill="#E0A27C" stroke="#14233F" stroke-width="2"></circle>
+<circle cx="312" cy="{{ goalY }}" r="5" fill="#D6E4F3"></circle>
+</svg>
+<div style="display:flex;justify-content:space-between;font:600 10px/1 'Plus Jakarta Sans';color:rgba(255,255,255,.38);margin-top:6px"><span>Start · {{ startLabel }}</span><span style="color:#E0A27C">Now · {{ nowW }}</span><span style="color:#D6E4F3">Goal</span></div>
+<div style="display:flex;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.09)">
+<sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+<div style="flex:1;min-width:0;padding:0 10px;border-left:1px solid {{ s.line }}"><div style="font:800 16px/1 'Plus Jakarta Sans';color:#fff">{{ s.v }}</div><div style="font:500 10.5px/1.3 'Plus Jakarta Sans';color:rgba(255,255,255,.45);margin-top:6px">{{ s.k }}</div></div>
+</sc-for>
+</div>
+</div>
+
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F;margin:24px 2px 14px">The road to {{ targetW }} {{ unitLabel }}</div>
+<div style="padding-left:4px">
+<sc-for list="{{ phases }}" as="ph" hint-placeholder-count="4">
+<div style="display:flex;gap:14px;padding-bottom:16px">
+<div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center">
+<div style="width:16px;height:16px;border-radius:999px;background:{{ ph.dot }};border:3px solid {{ ph.ring }}"></div>
+<div style="flex:1;width:2px;background:rgba(20,35,63,.12);margin-top:4px"></div>
+</div>
+<div style="flex:1;min-width:0;margin-top:-2px">
+<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap"><div style="font:800 14.5px/1.2 'Plus Jakarta Sans';color:#14233F">{{ ph.name }}</div><sc-if value="{{ ph.isNow }}" hint-placeholder-val="{{ false }}"><span style="background:#14233F;color:#D6E4F3;border-radius:999px;padding:4px 8px;font:700 9.5px/1 'Plus Jakarta Sans'">YOU ARE HERE</span></sc-if><div style="margin-left:auto;font:600 11px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ ph.range }}</div></div>
+<div style="font:400 12.5px/1.5 'Plus Jakarta Sans';color:rgba(20,35,63,.6);margin-top:5px">{{ ph.desc }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F;margin:10px 2px 12px">Day by day</div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:5px">
+<sc-for list="{{ daysLight }}" as="d" hint-placeholder-count="7">
+<button sc-camel-on-click="{{ d.onClick }}" style="height:66px;border:none;border-radius:10px;background:{{ d.bg }};color:{{ d.fg }};cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;font-family:'Plus Jakarta Sans';box-shadow:0 2px 8px rgba(20,35,63,.04)">
+<span style="font:600 10.5px/1 'Plus Jakarta Sans';opacity:.7">{{ d.dow }}</span>
+<span style="font:800 16px/1 'Plus Jakarta Sans'">{{ d.num }}</span>
+<span style="width:5px;height:5px;border-radius:999px;background:{{ d.dot }}"></span>
+</button>
+</sc-for>
+</div>
+
+<div style="margin-top:12px;background:#FFFFFF;border-radius:14px;overflow:hidden;box-shadow:0 2px 14px rgba(20,35,63,.05)">
+<div style="padding:15px 16px 12px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(20,35,63,.07)">
+<div style="font:800 15px/1 'Plus Jakarta Sans';color:#14233F">{{ selDayTitle }}</div>
+<div style="font:600 11.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.5)">{{ selDayKind }}</div>
+</div>
+<sc-for list="{{ selActivity }}" as="a" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ a.onClick }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;padding:13px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:0 0 auto;width:38px;height:38px;border-radius:8px;background:{{ a.icBg }};color:{{ a.icFg }};font:700 14px/38px 'Plus Jakarta Sans';text-align:center">{{ a.ic }}</span>
+<span style="flex:1;min-width:0"><span style="display:block;font:700 13.5px/1.25 'Plus Jakarta Sans';color:#14233F">{{ a.t }}</span><span style="display:block;font:400 11.5px/1.35 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:3px">{{ a.s }}</span></span>
+<span style="flex:0 0 auto;font:800 13px/1 'Plus Jakarta Sans';color:#14233F">{{ a.v }}</span>
+</button>
+</sc-for>
+<div style="padding:12px 16px 6px;font:700 10.5px/1 'Plus Jakarta Sans';letter-spacing:.1em;color:rgba(20,35,63,.42)">FOOD · {{ selFoodKcal }} KCAL</div>
+<sc-for list="{{ selMeals }}" as="m" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ m.onOpen }}" style="display:flex;align-items:center;gap:12px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;padding:11px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:0 0 58px;font:600 11px/1.2 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ m.clock }}</span>
+<span style="flex:1;min-width:0"><span style="display:block;font:700 13.5px/1.25 'Plus Jakarta Sans';color:#14233F">{{ m.t }}</span><span style="display:block;font:400 11px/1.3 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin-top:3px">{{ m.slot }} · {{ m.p }}g protein</span></span>
+<span style="flex:0 0 auto;font:800 13px/1 'Plus Jakarta Sans';color:#B8643A">{{ m.kcal }}</span>
+</button>
+</sc-for>
+<div style="height:4px"></div>
+</div>
+
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F;margin:24px 2px 14px">How the plan adapted</div>
+<div style="padding-left:4px">
+<sc-for list="{{ adaptLog }}" as="a" hint-placeholder-count="5">
+<div style="display:flex;gap:14px;padding-bottom:14px">
+<div style="flex:0 0 auto;display:flex;flex-direction:column;align-items:center"><div style="width:10px;height:10px;border-radius:999px;background:#E0A27C;margin-top:4px"></div><div style="flex:1;width:2px;background:rgba(20,35,63,.1);margin-top:4px"></div></div>
+<div style="flex:0 0 34px;font:800 11px/1.5 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ a.d }}</div>
+<div style="flex:1;min-width:0;font:500 12.5px/1.5 'Plus Jakarta Sans';color:#14233F">{{ a.t }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ tabShop }}">
+<div style="padding:2px 20px 0">
+<button sc-camel-on-click="{{ openRestaurant }}" style="width:100%;border:none;border-radius:14px;background:#14233F;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#1C3057">
+<span style="flex:1;min-width:0"><span style="display:block;font:800 16px/1.15 'Plus Jakarta Sans';color:#fff">Restaurant mode</span><span style="display:block;font:400 12px/1.4 'Plus Jakarta Sans';color:rgba(255,255,255,.55);margin-top:6px">Order well with {{ kcalLeft }} kcal left today</span></span>
+<span style="flex:0 0 auto;width:40px;height:40px;border-radius:999px;background:#E0A27C;color:#14233F;font:800 15px/40px 'Plus Jakarta Sans';text-align:center">→</span>
+</button>
+<div style="display:flex;align-items:baseline;justify-content:space-between;margin:22px 2px 4px">
+<div style="font:800 17px/1 'Plus Jakarta Sans';letter-spacing:-.01em;color:#14233F">This week’s list</div>
+<div style="font:700 12px/1 'Plus Jakarta Sans';color:#B8643A">{{ groceryLeft }} left</div>
+</div>
+<div style="font:400 12px/1.4 'Plus Jakarta Sans';color:rgba(20,35,63,.5);margin:0 2px 4px">Aggregated from all 7 days of your meal plan.</div>
+<sc-for list="{{ grocery }}" as="g" hint-placeholder-count="3">
+<div style="margin-top:16px">
+<div style="font:700 10.5px/1 'Plus Jakarta Sans';letter-spacing:.12em;color:rgba(20,35,63,.45);margin:0 2px 9px">{{ g.cat }}</div>
+<div style="background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(20,35,63,.05)">
+<sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+<button sc-camel-on-click="{{ it.onToggle }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;padding:14px 16px;cursor:pointer;text-align:left;font-family:'Plus Jakarta Sans'" style-hover="background:#FFFFFF">
+<span style="flex:0 0 auto;width:22px;height:22px;border-radius:7px;border:1.5px solid {{ it.ring }};background:{{ it.bg }};color:#D6E4F3;font:800 11px/19px 'Plus Jakarta Sans';text-align:center">{{ it.mark }}</span>
+<span style="flex:1;min-width:0;font:600 14px/1.3 'Plus Jakarta Sans';color:{{ it.fg }};text-decoration:{{ it.deco }}">{{ it.label }}</span>
+<span style="flex:0 0 auto;font:600 12px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.4)">{{ it.qty }}</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+</sc-if>
+
+</div>
+
+<div style="position:absolute;left:16px;right:16px;bottom:24px;height:70px;border-radius:999px;background:#14233F;border:1px solid rgba(255,255,255,.07);display:grid;grid-template-columns:repeat(5,1fr);align-items:center;box-shadow:0 14px 34px rgba(20,35,63,.3);z-index:60">
+<button sc-camel-on-click="{{ goToday }}" style="border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ colToday }};padding:0">
+<svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M3 10.5 12 3l9 7.5"></path><path d="M5.5 9.5V20h13V9.5"></path></svg>
+<span style="font:700 9px/1 'Plus Jakarta Sans';letter-spacing:.04em">Today</span>
+</button>
+<button sc-camel-on-click="{{ goTrain }}" style="border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ colTrain }};padding:0">
+<svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 8v8M8 6v12M16 6v12M20 8v8M8 12h8"></path></svg>
+<span style="font:700 9px/1 'Plus Jakarta Sans';letter-spacing:.04em">Train</span>
+</button>
+<div style="display:flex;justify-content:center">
+<button sc-camel-on-click="{{ openAdapt }}" style="width:60px;height:60px;margin-top:-26px;border:4px solid #14233F;border-radius:999px;background:#E0A27C;color:#14233F;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(224,162,124,.38)" style-hover="background:#E8B08E">
+<svg width="24" height="24" sc-camel-view-box="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path></svg>
+</button>
+</div>
+<button sc-camel-on-click="{{ goEat }}" style="border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ colEat }};padding:0">
+<svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M6 3v8a2.5 2.5 0 0 0 5 0V3M8.5 13v8"></path><path d="M17 3c-1.4 2-2 4-2 6h4c0-2-.6-4-2-6zM17 9v12"></path></svg>
+<span style="font:700 9px/1 'Plus Jakarta Sans';letter-spacing:.04em">Eat</span>
+</button>
+<button sc-camel-on-click="{{ goPath }}" style="border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;color:{{ colPath }};padding:0">
+<svg width="21" height="21" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M5 20c0-5 4-5 7-8s2-6 7-8"></path><circle cx="5" cy="20" r="1.6"></circle><circle cx="19" cy="4" r="1.6"></circle></svg>
+<span style="font:700 9px/1 'Plus Jakarta Sans';letter-spacing:.04em">Path</span>
+</button>
+</div>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:20px;right:20px;bottom:106px;background:#14233F;color:#fff;border-radius:10px;padding:14px 16px;font:600 12.5px/1.45 'Plus Jakarta Sans';animation:pop .22s ease;z-index:70;display:flex;gap:10px;align-items:center"><span style="color:#D6E4F3">⚡</span><span>{{ toast }}</span></div>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;background:linear-gradient(180deg,#F2F7FC 0%,#D6E4F3 100%);display:flex;flex-direction:column;animation:fadeIn .2s ease;z-index:75">
+<div style="flex:0 0 auto;padding:58px 20px 0;display:flex;align-items:center;justify-content:space-between">
+<button sc-camel-on-click="{{ closeDetail }}" style="width:44px;height:44px;border:none;border-radius:10px;background:#FFFFFF;color:#14233F;font:600 20px/1 'Plus Jakarta Sans';cursor:pointer;box-shadow:0 2px 8px rgba(20,35,63,.06)">‹</button>
+<div style="font:700 11px/1 'Plus Jakarta Sans';letter-spacing:.1em;color:rgba(20,35,63,.45)">{{ dSlot }}</div>
+<button sc-camel-on-click="{{ closeDetail }}" style="width:44px;height:44px;border:none;border-radius:10px;background:#FFFFFF;color:#B8643A;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(20,35,63,.06)"><svg width="15" height="15" sc-camel-view-box="0 0 24 24" fill="currentColor"><path d="M6 3h12v18l-6-5-6 5z"></path></svg></button>
+</div>
+<div style="flex:1 1 auto;overflow-y:auto;padding:0 20px 34px">
+<div style="position:relative;width:100%;height:318px">
+<sc-for list="{{ petals }}" as="p" hint-placeholder-count="6">
+<div style="position:absolute;left:50%;top:50%;width:104px;height:150px;margin:-75px 0 0 -52px;border-radius:14px 14px 14px 14px;background:radial-gradient(62% 56% at 50% 84%, #E0A27C 0%, #EBC9B2 34%, #E6EEF8 64%, #FFFFFF 100%);transform:{{ p.tr }};filter:saturate(1.05)"></div>
+</sc-for>
+<sc-for list="{{ petals }}" as="p" hint-placeholder-count="6">
+<div style="position:absolute;left:{{ p.lx }};top:{{ p.ly }};width:86px;margin:-19px 0 0 -43px;text-align:center">
+<div style="font:800 16px/1 'Plus Jakarta Sans';color:#14233F">{{ p.pct }}</div>
+<div style="font:600 10.5px/1.2 'Plus Jakarta Sans';color:rgba(20,35,63,.55);margin-top:5px">{{ p.name }}</div>
+</div>
+</sc-for>
+<div style="position:absolute;left:50%;top:50%;width:100px;height:100px;margin:-50px 0 0 -50px;border-radius:999px;overflow:hidden;background:#FFFFFF;border:4px solid #fff;box-shadow:0 8px 22px rgba(20,35,63,.14)"><image-slot id="{{ dSid }}" src="{{ dImg }}" shape="rect" fit="cover" placeholder="Drop a photo of this meal" style="width:100%;height:100%;display:block"></image-slot></div>
+</div>
+<div style="text-align:center">
+<div style="font:800 25px/1.12 'Plus Jakarta Sans';letter-spacing:-.025em;color:#14233F">{{ dTitle }}</div>
+<div style="font:600 14px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.45);margin-top:9px">{{ dWeight }} · {{ dKcal }} kcal</div>
+</div>
+<div style="display:flex;margin-top:20px;background:#FFFFFF;border-radius:12px;padding:15px 4px;box-shadow:0 2px 12px rgba(20,35,63,.05)">
+<div style="flex:1;text-align:center"><div style="font:800 17px/1 'Plus Jakarta Sans';color:#14233F">{{ dP }}g</div><div style="font:600 10.5px/1 'Plus Jakarta Sans';color:#2F5C9E;margin-top:6px">Protein</div></div>
+<div style="width:1px;background:rgba(20,35,63,.1)"></div>
+<div style="flex:1;text-align:center"><div style="font:800 17px/1 'Plus Jakarta Sans';color:#14233F">{{ dC }}g</div><div style="font:600 10.5px/1 'Plus Jakarta Sans';color:#B8643A;margin-top:6px">Carbs</div></div>
+<div style="width:1px;background:rgba(20,35,63,.1)"></div>
+<div style="flex:1;text-align:center"><div style="font:800 17px/1 'Plus Jakarta Sans';color:#14233F">{{ dF }}g</div><div style="font:600 10.5px/1 'Plus Jakarta Sans';color:#2F5C9E;margin-top:6px">Fat</div></div>
+</div>
+<div style="margin-top:14px;background:#FFFFFF;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(20,35,63,.05)">
+<sc-for list="{{ dRows }}" as="r" hint-placeholder-count="5">
+<div style="display:flex;gap:13px;align-items:center;padding:13px 16px;border-bottom:1px solid rgba(20,35,63,.07)">
+<div style="flex:0 0 auto;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#EBC9B2,#E6EEF8);display:flex;align-items:center;justify-content:center;font:800 11.5px/1 'Plus Jakarta Sans';color:#14233F">{{ r.pct }}</div>
+<div style="flex:1;min-width:0">
+<div style="display:flex;justify-content:space-between;gap:8px"><span style="font:700 14px/1.2 'Plus Jakarta Sans';color:#14233F">{{ r.name }}</span><span style="font:600 12px/1.2 'Plus Jakarta Sans';color:rgba(20,35,63,.45)">{{ r.g }}</span></div>
+<div style="display:flex;gap:12px;margin-top:7px;font:600 10.5px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.55)"><span><span style="color:#2F5C9E">●</span> P {{ r.p }}g</span><span><span style="color:#B8643A">●</span> C {{ r.c }}g</span><span><span style="color:#2F5C9E">●</span> F {{ r.f }}g</span></div>
+</div>
+</div>
+</sc-for>
+</div>
+<button sc-camel-on-click="{{ openSwapDetail }}" style="width:100%;height:54px;margin-top:14px;border:none;border-radius:999px;background:#14233F;color:#fff;font:700 14px/1 'Plus Jakarta Sans';cursor:pointer">I’m missing an ingredient</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ sheetOpen }}" hint-placeholder-val="{{ false }}">
+<div sc-camel-on-click="{{ closeSheet }}" style="position:absolute;inset:0;background:rgba(20,35,63,.55);animation:fadeIn .18s ease;z-index:80"></div>
+<div style="position:absolute;left:0;right:0;bottom:0;max-height:86%;display:flex;flex-direction:column;background:#F2F7FC;border-radius:14px 14px 0 0;animation:sheetUp .26s cubic-bezier(.2,.85,.2,1);z-index:90;overflow:hidden">
+<div style="flex:0 0 auto;padding:14px 22px 14px">
+<div style="width:40px;height:4px;border-radius:999px;background:rgba(20,35,63,.2);margin:0 auto 16px"></div>
+<div style="display:flex;align-items:flex-start;gap:12px">
+<div style="flex:1;min-width:0">
+<div style="font:700 10.5px/1 'Plus Jakarta Sans';letter-spacing:.12em;color:#B8643A">{{ sheetKicker }}</div>
+<div style="font:800 21px/1.15 'Plus Jakarta Sans';letter-spacing:-.02em;color:#14233F;margin-top:9px">{{ sheetTitle }}</div>
+<div style="font:400 12.5px/1.5 'Plus Jakarta Sans';color:rgba(20,35,63,.55);margin-top:7px">{{ sheetSub }}</div>
+</div>
+<button sc-camel-on-click="{{ closeSheet }}" style="flex:0 0 auto;width:34px;height:34px;border:none;border-radius:999px;background:#D6E4F3;color:#14233F;font:700 13px/1 'Plus Jakarta Sans';cursor:pointer">✕</button>
+</div>
+</div>
+<div style="flex:1 1 auto;overflow-y:auto;padding:4px 22px 36px">
+<sc-if value="{{ sheetHasChips }}" hint-placeholder-val="{{ false }}">
+<div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px">
+<sc-for list="{{ sheetChips }}" as="c" hint-placeholder-count="5">
+<button sc-camel-on-click="{{ c.onClick }}" style="border:none;border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};font:700 12.5px/1 'Plus Jakarta Sans';padding:11px 14px;cursor:pointer">{{ c.label }}</button>
+</sc-for>
+</div>
+</sc-if>
+<div style="background:#FFFFFF;border-radius:12px;overflow:hidden">
+<sc-for list="{{ sheetRows }}" as="r" hint-placeholder-count="3">
+<button sc-camel-on-click="{{ r.onClick }}" style="display:flex;align-items:center;gap:13px;width:100%;border:none;border-bottom:1px solid rgba(20,35,63,.07);background:transparent;color:#14233F;text-align:left;padding:14px 16px;cursor:pointer;font-family:'Plus Jakarta Sans'" style-hover="background:#F2F7FC">
+<span style="flex:0 0 auto;width:36px;height:36px;border-radius:8px;background:#14233F;color:#D6E4F3;font:800 13px/36px 'Plus Jakarta Sans';text-align:center">{{ r.n }}</span>
+<span style="flex:1;min-width:0"><span style="display:block;font:700 14px/1.25 'Plus Jakarta Sans'">{{ r.t }}</span><span style="display:block;font:400 11.5px/1.45 'Plus Jakarta Sans';color:rgba(20,35,63,.55);margin-top:4px">{{ r.s }}</span></span>
+<span style="flex:0 0 auto;font:600 16px/1 'Plus Jakarta Sans';color:rgba(20,35,63,.3)">›</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{ sheetHasFoot }}" hint-placeholder-val="{{ false }}">
+<div style="margin-top:14px;font:400 12px/1.55 'Plus Jakarta Sans';color:rgba(20,35,63,.5)">{{ sheetFoot }}</div>
+</sc-if>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-import>
+</div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1000&quot;,&quot;height&quot;:&quot;1000&quot;}}">
+class Component extends DCLogic {
+  state = {
+    phase: 'intro', step: 0, buildPct: '8%',
+    p: { name:'Alex', age:'29', sex:'', units:'', height:'', weight:'', goal:'', target:'', pace:'', history:'',
+         job:'', steps:'', env:'', equip:[], days:'', session:'', exp:'', styles:[], limits:[], sleep:'',
+         diet:'', cuisines:[], allergies:[], bans:[], cook:'', meals:'', budget:'', shopday:'', remind:'', voice:'' },
+    tab: 'today', day: 1, energy: null, emergency: false,
+    sheet: null, swapKey: null, swapped: {}, ingSwap: {}, exDone: {},
+    checked: {}, cuisine: 'Mexican', toast: '', detail: null
+  };
+
+  TODAY = 1;
+  DOW = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  DNUM = [21,22,23,24,25,26,27];
+
+  MEALS = [
+    { id:1, slot:'B', t:'Masala Egg Bhurji & Sourdough', cui:'Indian', veg:1, has:['eggs','gluten','dairy'], kcal:520, p:38, c:44, f:22, time:'12 min', r:'4.8', ing:[['Eggs',120],['Sourdough',90],['Tomato',50],['Onion',40],['Ghee',15],['Coriander',10]] },
+    { id:2, slot:'B', t:'Moong Dal Chilla, Mint Yoghurt', cui:'Indian', veg:1, has:['dairy'], kcal:430, p:26, c:48, f:12, time:'15 min', r:'4.7', ing:[['Moong dal',80],['Greek yoghurt',100],['Onion',30],['Spinach',30],['Mint',10]] },
+    { id:3, slot:'B', t:'Greek Yoghurt Oat Bowl', cui:'Western', veg:1, has:['dairy','gluten'], kcal:480, p:34, c:58, f:12, time:'5 min', r:'4.8', ing:[['Greek yoghurt',200],['Rolled oats',50],['Blueberries',60],['Honey',15],['Chia seeds',10]] },
+    { id:4, slot:'B', t:'Tofu Scramble on Rye', cui:'Western', veg:1, vegan:1, has:['soy','gluten'], kcal:450, p:30, c:40, f:18, time:'10 min', r:'4.6', ing:[['Firm tofu',200],['Rye bread',70],['Tomato',50],['Spinach',40],['Olive oil',8]] },
+    { id:5, slot:'B', t:'Eggs, Avocado & Feta Plate', cui:'Mediterranean', veg:1, keto:1, has:['eggs','dairy'], kcal:540, p:28, c:8, f:44, time:'8 min', r:'4.7', ing:[['Eggs',150],['Avocado',100],['Spinach',50],['Feta',30],['Olive oil',10]] },
+    { id:6, slot:'B', t:'Shakshuka & Pita', cui:'Middle Eastern', veg:1, has:['eggs','gluten'], kcal:500, p:30, c:38, f:24, time:'18 min', r:'4.8', ing:[['Eggs',150],['Tomato',150],['Red pepper',80],['Pita',60],['Olive oil',10]] },
+    { id:7, slot:'L', t:'Chicken Tikka Rice Bowl', cui:'Indian', has:['dairy'], kcal:680, p:52, c:71, f:18, time:'20 min', r:'4.9', ing:[['Chicken thigh',200],['Basmati rice',150],['Greek yoghurt',60],['Cucumber',50],['Mint',10]] },
+    { id:8, slot:'L', t:'Rajma Chawal & Kachumber', cui:'Indian', veg:1, vegan:1, has:[], kcal:610, p:24, c:98, f:12, time:'25 min', r:'4.8', ing:[['Kidney beans',180],['Basmati rice',150],['Tomato',60],['Cucumber',50],['Onion',40]] },
+    { id:9, slot:'L', t:'Chicken Power Bowl', cui:'Western', has:[], kcal:620, p:50, c:58, f:18, time:'20 min', r:'4.9', ing:[['Chicken breast',180],['Quinoa',120],['Sweet potato',100],['Avocado',40],['Greens',40]] },
+    { id:10, slot:'L', t:'Paneer Tikka Wrap', cui:'Indian', veg:1, has:['dairy','gluten'], kcal:640, p:38, c:56, f:28, time:'15 min', r:'4.7', ing:[['Paneer',140],['Whole-wheat roti',80],['Red pepper',60],['Onion',40],['Mint chutney',30]] },
+    { id:11, slot:'L', t:'Salmon Poke Bowl', cui:'East Asian', has:['soy'], kcal:650, p:42, c:64, f:22, time:'15 min', r:'4.8', ing:[['Salmon',140],['Sushi rice',150],['Edamame',60],['Cucumber',50],['Sesame',8]] },
+    { id:12, slot:'L', t:'Chicken Burrito Bowl', cui:'Mexican', has:[], kcal:660, p:48, c:70, f:18, time:'20 min', r:'4.8', ing:[['Chicken breast',170],['Brown rice',140],['Black beans',80],['Salsa',60],['Lettuce',40]] },
+    { id:13, slot:'L', t:'Steak, Greens & Chimichurri', cui:'Western', keto:1, has:[], kcal:600, p:50, c:10, f:40, time:'15 min', r:'4.7', ing:[['Sirloin',200],['Greens',80],['Olive oil',15],['Parsley',15],['Cherry tomato',60]] },
+    { id:14, slot:'S', t:'Yoghurt, Berries & Honey', cui:'Western', veg:1, has:['dairy'], kcal:240, p:22, c:26, f:5, time:'2 min', r:'4.7', ing:[['Greek yoghurt',200],['Blueberries',60],['Honey',15],['Pumpkin seeds',15]] },
+    { id:15, slot:'S', t:'Roasted Chana & Apple', cui:'Indian', veg:1, vegan:1, has:[], kcal:220, p:11, c:34, f:5, time:'1 min', r:'4.5', ing:[['Roasted chana',40],['Apple',150],['Chaat masala',3]] },
+    { id:16, slot:'S', t:'Protein Shake & Banana', cui:'Western', veg:1, has:['dairy'], kcal:280, p:30, c:32, f:4, time:'2 min', r:'4.6', ing:[['Whey',30],['Milk',250],['Banana',120]] },
+    { id:17, slot:'S', t:'Boiled Eggs & Cucumber', cui:'Western', veg:1, keto:1, has:['eggs'], kcal:180, p:13, c:4, f:11, time:'10 min', r:'4.5', ing:[['Eggs',100],['Cucumber',120],['Salt & pepper',2]] },
+    { id:18, slot:'D', t:'Paneer & Chickpea Skillet', cui:'Indian', veg:1, has:['dairy'], kcal:610, p:41, c:48, f:26, time:'18 min', r:'4.8', ing:[['Paneer',150],['Chickpeas',120],['Spinach',80],['Tomato',60],['Garlic',15]] },
+    { id:19, slot:'D', t:'Dal Tadka, Roti & Sabzi', cui:'Indian', veg:1, vegan:1, has:['gluten'], kcal:560, p:24, c:80, f:14, time:'25 min', r:'4.9', ing:[['Toor dal',90],['Whole-wheat roti',80],['Mixed veg',120],['Onion',40],['Cumin',4]] },
+    { id:20, slot:'D', t:'Baked Salmon, Potatoes & Greens', cui:'Western', has:[], kcal:620, p:44, c:48, f:26, time:'25 min', r:'4.9', ing:[['Salmon',160],['Baby potatoes',200],['Green beans',100],['Lemon',20],['Olive oil',10]] },
+    { id:21, slot:'D', t:'Chicken Stir-Fry & Rice', cui:'East Asian', has:['soy'], kcal:600, p:46, c:62, f:16, time:'15 min', r:'4.7', ing:[['Chicken breast',170],['Jasmine rice',140],['Broccoli',100],['Pak choi',60],['Soy sauce',15]] },
+    { id:22, slot:'D', t:'Lemon Herb Chicken & Roast Veg', cui:'Mediterranean', keto:1, has:[], kcal:540, p:50, c:22, f:26, time:'30 min', r:'4.8', ing:[['Chicken thigh',200],['Courgette',120],['Red pepper',80],['Olive oil',12],['Lemon',20]] },
+    { id:23, slot:'D', t:'Tofu Thai Green Curry', cui:'Thai', veg:1, vegan:1, has:['soy'], kcal:580, p:26, c:62, f:24, time:'20 min', r:'4.7', ing:[['Firm tofu',180],['Jasmine rice',130],['Coconut milk',80],['Green beans',60],['Thai basil',8]] },
+    { id:24, slot:'D', t:'Chicken Fajita Plate', cui:'Mexican', has:['gluten'], kcal:590, p:46, c:44, f:24, time:'20 min', r:'4.8', ing:[['Chicken breast',170],['Tortillas',70],['Red pepper',80],['Onion',60],['Guacamole',40]] }
+  ];
+
+  SUB = { 'Eggs':'Firm tofu', 'Sourdough':'Roti', 'Tomato':'Tinned tomato', 'Onion':'Spring onion', 'Ghee':'Olive oil', 'Coriander':'Parsley',
+    'Greek yoghurt':'Hung curd', 'Rolled oats':'Poha', 'Blueberries':'Frozen berries', 'Honey':'Maple syrup', 'Chicken thigh':'Paneer', 'Chicken breast':'Firm tofu',
+    'Basmati rice':'Quinoa', 'Brown rice':'Basmati rice', 'Jasmine rice':'Basmati rice', 'Cucumber':'Celery', 'Mint':'Coriander', 'Kidney beans':'Black beans', 'Paneer':'Firm tofu',
+    'Salmon':'Tinned tuna', 'Spinach':'Kale', 'Chickpeas':'Black beans', 'Avocado':'Hummus', 'Quinoa':'Brown rice', 'Sweet potato':'Potato', 'Firm tofu':'Paneer',
+    'Whey':'Skyr', 'Milk':'Soy milk', 'Banana':'Dates', 'Broccoli':'Green beans', 'Garlic':'Garlic powder', 'Tortillas':'Lettuce cups', 'Sirloin':'Chicken thigh' };
+
+  EXS = {
+    gym: {
+      push:[['Barbell Bench Press','4 × 6','Barbell','Chest'],['Seated DB Shoulder Press','3 × 10','Dumbbells','Shoulders'],['Cable Fly','3 × 12','Cable','Chest'],['Rope Pushdown','3 × 12','Cable','Triceps']],
+      lower:[['Back Squat','4 × 6','Barbell','Quads'],['Leg Press','3 × 10','Machine','Quads'],['Walking Lunge','3 × 12','Dumbbells','Glutes'],['Standing Calf Raise','3 × 15','Machine','Calves']],
+      pull:[['Lat Pulldown','4 × 10','Cable','Back'],['Seated Cable Row','3 × 10','Cable','Back'],['Face Pull','3 × 15','Cable','Rear delts'],['EZ-bar Curl','3 × 12','Barbell','Biceps']],
+      hinge:[['Romanian Deadlift','4 × 8','Barbell','Hamstrings'],['Barbell Hip Thrust','3 × 10','Barbell','Glutes'],['Lying Leg Curl','3 × 12','Machine','Hamstrings'],['Hanging Leg Raise','3 × 12','Pull-up bar','Core']],
+      full:[['Trap-bar Deadlift','4 × 5','Trap bar','Full body'],['Incline DB Press','3 × 10','Dumbbells','Chest'],['Pull-Up','3 × 8','Pull-up bar','Back'],['Farmer Carry','4 × 30 m','Dumbbells','Core']],
+      cond:[['Rower Intervals','8 × 250 m','Rower','Cardio'],['Incline Treadmill Walk','15 min','Treadmill','Cardio'],['Sled Push','6 × 20 m','Sled','Full body'],['Plank','3 × 45 s','Mat','Core']]
+    },
+    home: {
+      push:[['Dumbbell Floor Press','4 × 8','Dumbbells','Chest'],['DB Shoulder Press','3 × 10','Dumbbells','Shoulders'],['Push-Up','3 × max','Bodyweight','Chest'],['Band Pushdown','3 × 15','Bands','Triceps']],
+      lower:[['Goblet Squat','4 × 10','Dumbbells','Quads'],['DB Split Squat','3 × 10 each','Dumbbells','Quads'],['Step-Up','3 × 12 each','Bench','Glutes'],['Single-leg Calf Raise','3 × 15','Bodyweight','Calves']],
+      pull:[['Band-assisted Pull-Up','4 × 6','Pull-up bar','Back'],['One-arm DB Row','3 × 10','Dumbbells','Back'],['Band Face Pull','3 × 15','Bands','Rear delts'],['Hammer Curl','3 × 12','Dumbbells','Biceps']],
+      hinge:[['DB Romanian Deadlift','4 × 10','Dumbbells','Hamstrings'],['Single-leg Hip Thrust','3 × 12','Bench','Glutes'],['Kettlebell Swing','3 × 15','Kettlebell','Hamstrings'],['Dead Bug','3 × 10 each','Mat','Core']],
+      full:[['DB Thruster','4 × 10','Dumbbells','Full body'],['Renegade Row','3 × 8 each','Dumbbells','Back'],['KB Goblet Reverse Lunge','3 × 10','Kettlebell','Glutes'],['Plank Shoulder Tap','3 × 20','Mat','Core']],
+      cond:[['Jump Rope Intervals','10 × 1 min','Jump rope','Cardio'],['DB Complex','4 rounds','Dumbbells','Full body'],['Mountain Climber','4 × 30 s','Mat','Core'],['Easy Walk','10 min','Outdoors','Cardio']]
+    },
+    body: {
+      push:[['Push-Up','4 × 12','Bodyweight','Chest'],['Pike Push-Up','3 × 8','Bodyweight','Shoulders'],['Chair Dip','3 × 12','Chair','Triceps'],['Plank Shoulder Tap','3 × 20','Bodyweight','Core']],
+      lower:[['Tempo Squat','4 × 15','Bodyweight','Quads'],['Bulgarian Split Squat','3 × 10 each','Chair','Quads'],['Glute Bridge','3 × 20','Bodyweight','Glutes'],['Wall Sit','3 × 45 s','Wall','Quads']],
+      pull:[['Towel Door Row','4 × 12','Towel','Back'],['Superman Pull','3 × 12','Bodyweight','Back'],['Prone Y-Raise','3 × 12','Bodyweight','Rear delts'],['Hollow Hold','3 × 30 s','Bodyweight','Core']],
+      hinge:[['Single-leg RDL','3 × 10 each','Bodyweight','Hamstrings'],['Hip Thrust off Sofa','3 × 15','Sofa','Glutes'],['Good Morning','3 × 15','Bodyweight','Hamstrings'],['Dead Bug','3 × 10 each','Bodyweight','Core']],
+      full:[['Burpee','4 × 10','Bodyweight','Full body'],['Jump Squat','3 × 12','Bodyweight','Quads'],['Push-Up to T','3 × 10','Bodyweight','Chest'],['Mountain Climber','3 × 30 s','Bodyweight','Core']],
+      cond:[['Park Run Intervals','8 × 1 min','Outdoors','Cardio'],['Stair Climb','10 min','Stairs','Cardio'],['Skater Hops','4 × 30 s','Bodyweight','Glutes'],['Plank','3 × 45 s','Bodyweight','Core']]
+    }
+  };
+
+  ALTS = {
+    Chest:[['Push-Up, feet elevated','Zero equipment · same push'],['Dumbbell Floor Press','Shoulder-friendly'],['Band Chest Press','Door anchor · 4 × 12']],
+    Shoulders:[['Pike Push-Up','Bodyweight · 3 × 8'],['Band Overhead Press','3 × 12'],['Arnold Press','Dumbbells · 3 × 10']],
+    Triceps:[['Close-grip Push-Up','3 × 10'],['Chair Dip','3 × 12'],['Overhead Band Extension','3 × 15']],
+    Quads:[['Bodyweight Split Squat','3 × 12 each'],['Wall Sit','3 × 45 s'],['Heels-elevated Goblet Squat','3 × 12']],
+    Glutes:[['Glute Bridge','3 × 20'],['Reverse Lunge','3 × 12 each'],['Band Kickback','3 × 15 each']],
+    Calves:[['Stair Calf Raise','3 × 20'],['Single-leg Calf Raise','3 × 15'],['Pogo Hops','3 × 30 s']],
+    Back:[['Inverted Row','Bar at hip height · 4 × 10'],['Band Seated Row','Low-back friendly'],['Towel Door Row','4 × 12']],
+    'Rear delts':[['Prone Y-Raise','3 × 12'],['Band Pull-Apart','3 × 20'],['Reverse DB Fly','3 × 15']],
+    Biceps:[['Band Curl','3 × 15'],['Towel Curl','Isometric · 3 × 20 s'],['Hammer Curl','3 × 12']],
+    Hamstrings:[['Single-leg RDL','3 × 10 each'],['Band Pull-Through','3 × 15'],['Slider Leg Curl','3 × 10']],
+    Core:[['Dead Bug','3 × 10 each'],['Reverse Crunch','3 × 15'],['Side Plank','3 × 30 s each']],
+    'Full body':[['Burpee','4 × 8'],['Bear Crawl','4 × 20 m'],['DB Complex','3 rounds']],
+    Cardio:[['Brisk Walk','15 min'],['Stationary Bike','12 min'],['Jumping Jacks','5 × 40 s']],
+    Recovery:[['Cat-Cow + 90/90','5 min'],['Walk, zone 1','15 min'],['Box breathing','3 min']]
+  };
+
+  HOTEL = [['Push-Up Ladder','5·4·3·2·1','No equipment','Chest'],['Towel Door Row','4 × 12','Towel','Back'],['Split Squat off the Chair','3 × 10 each','Chair','Quads'],['Hollow Hold + Dead Bug','3 rounds','No equipment','Core']];
+
+  TYPES = ['push','lower','pull','hinge','full','cond'];
+  TNAME = { push:'Upper · Push', lower:'Lower · Squat', pull:'Upper · Pull', hinge:'Lower · Hinge', full:'Full Body', cond:'Conditioning' };
+  SESS_DAYS = { 2:[0,3], 3:[0,2,4], 4:[0,1,3,4], 5:[0,1,3,4,5], 6:[0,1,2,3,4,5] };
+
+  REST = {
+    'Mexican': [['Chicken fajitas, no tortillas, extra salsa','540 kcal · 46 g protein · ask for double veg'],['Carne asada bowl, brown rice, hold the cheese','620 kcal · 44 g protein'],['Black bean soup + grilled veg','280 kcal · 16 g protein']],
+    'Indian': [['Tandoori chicken + roti, skip the butter naan','560 kcal · 48 g protein'],['Chana masala + half portion rice','520 kcal · 21 g protein'],['Paneer tikka dry, salad on the side','480 kcal · 30 g protein']],
+    'Italian': [['Grilled chicken + rocket parmesan salad','510 kcal · 45 g protein'],['Tomato pasta, half portion, add chicken','640 kcal · 38 g protein'],['Minestrone + bruschetta, share the bread','380 kcal · 14 g protein']],
+    'Sushi': [['Salmon sashimi 9 pc + edamame','470 kcal · 49 g protein'],['Chirashi bowl, light rice','590 kcal · 42 g protein'],['Tuna maki 2 rolls + miso','440 kcal · 30 g protein']],
+    'Thai': [['Chicken satay, no peanut sauce, som tam','520 kcal · 44 g protein'],['Beef larb + steamed rice','610 kcal · 40 g protein'],['Tom yum + grilled prawns','390 kcal · 34 g protein']],
+    'Burgers': [['Single patty, no mayo, side salad','590 kcal · 36 g protein'],['Grilled chicken burger, skip the fries','620 kcal · 42 g protein'],['Two patties, no bun, on salad','520 kcal · 48 g protein']]
+  };
+
+  ACTUAL = [182, 181.2, 180.4, 179.9, 178.6, 177.8, 176.9, 176.4];
+
+  setP(k, v) { this.setState(s => ({ p: { ...s.p, [k]: v } })); }
+  togP(k, v) {
+    this.setState(s => {
+      const a = s.p[k] || [];
+      return { p: { ...s.p, [k]: a.indexOf(v) > -1 ? a.filter(x => x !== v) : a.concat([v]) } };
+    });
+  }
+  say(msg) { this.setState({ toast: msg }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: '' }), 2600); }
+  imperial() { return this.state.p.units !== 'Metric — kg / cm'; }
+
+  stepDefs() {
+    const p = this.state.p, imp = this.imperial();
+    const equipOpts = p.env === 'Full gym access'
+      ? ['Barbell + rack','Dumbbells','Cable machine','Leg press','Smith machine','Kettlebells','Rower','Treadmill']
+      : p.env === 'Bodyweight only'
+      ? ['Pull-up bar','Resistance bands','A chair','Stairs','A park','Nothing at all']
+      : ['Adjustable dumbbells','Resistance bands','Pull-up bar','Kettlebell','Bench','Jump rope','Yoga mat'];
+    return [
+      { kicker:'The basics', title:'Who am I coaching?', sub:'A name and two numbers. Nothing leaves your phone.',
+        qs:[ {k:'name', t:'text', label:'What should I call you?', unit:'name', ph:'Alex'}, {k:'age', t:'num', label:'Age', unit:'yrs', ph:'29'},
+             {k:'sex', t:'choice', label:'Biological sex', hint:'Only used to size your energy needs.', opts:['Male','Female','Prefer not to say']} ] },
+      { kicker:'Body', title:'Where are you starting?', sub:'Pick units first — everything after follows it.',
+        qs:[ {k:'units', t:'choice', label:'Units', opts:['Imperial — lb / ft','Metric — kg / cm']},
+             {k:'height', t:'num', label:'Height', unit: imp ? 'ft / in' : 'cm', ph: imp ? '5\u201910"' : '178'},
+             {k:'weight', t:'num', label:'Current weight', unit: imp ? 'lb' : 'kg', ph: imp ? '182' : '82.5'} ] },
+      { kicker:'Goal', title:'What are we actually chasing?', sub:'Be specific. Vague goals make vague plans.',
+        qs:[ {k:'goal', t:'choice', label:'Primary goal', opts:[['Lose fat','Keep the muscle you have'],['Build muscle','Accept a little fat gain'],['Recomp','Slower, both at once'],['Maintain','Hold the line, train for health']] },
+             {k:'target', t:'num', label:'Target weight', unit: imp ? 'lb' : 'kg', ph: imp ? '167' : '75'} ] },
+      { kicker:'Pace', title:'How fast, and how many times before?', sub:'Faster is not better. Faster is harder to keep.',
+        qs:[ {k:'pace', t:'choice', label:'Rate of change per week', opts:[['0.5 lb','Barely noticeable, very sustainable'],['1.0 lb','Recommended for you'],['1.5 lb','Aggressive — hunger shows up'],['2.0 lb','Short blocks only']] },
+             {k:'history', t:'choice', label:'Where are you in the story?', opts:['First serious attempt','Restarting after a break','Plateaued for months','Consistent, want better programming']} ] },
+      { kicker:'Daily life', title:'What does a normal day cost you?', sub:'This sets calories more than workouts do.',
+        qs:[ {k:'job', t:'choice', label:'Your working day', opts:[['Desk, mostly seated','Sedentary'],['Mixed, on and off my feet','Lightly active'],['On my feet all day','Active'],['Physical labour','Very active']] },
+             {k:'steps', t:'choice', label:'Daily steps, honestly', opts:['Under 4,000','4,000 – 8,000','8,000 – 12,000','Over 12,000']} ] },
+      { kicker:'Training', title:'Where will you train?', sub:'The single biggest fork in your programme.',
+        qs:[ {k:'env', t:'choice', label:'Main training environment', opts:[['Full gym access','Barbells, machines, cables'],['Basic home gym','Dumbbells, bands, a bar'],['Bodyweight only','No equipment at all']] } ] },
+      { kicker:'Equipment', title:'What do you actually have?', sub:'Every exercise — and every swap — is built from this list.',
+        qs:[ {k:'equip', t:'chips', label:'Select everything available to you', hint:'Tap all that apply.', opts: equipOpts } ] },
+      { kicker:'Schedule', title:'How much time is real?', sub:'Pick what you will still do in week six.',
+        qs:[ {k:'days', t:'choice', label:'Training days per week', opts:['2 days','3 days','4 days','5 days','6 days']},
+             {k:'session', t:'choice', label:'Time per session', opts:['20 minutes','30 minutes','45 minutes','60 minutes +']} ] },
+      { kicker:'Experience', title:'How much have you lifted?', sub:'Sets starting loads and how fast they climb.',
+        qs:[ {k:'exp', t:'choice', label:'Training experience', opts:[['Beginner','Under 6 months'],['Intermediate','6 months – 3 years'],['Advanced','3 years +']] },
+             {k:'styles', t:'chips', label:'What do you actually enjoy?', hint:'I weight the plan towards these.', opts:['Heavy strength','Hypertrophy','HIIT','Circuits','Running','Cycling','Mobility','Sport'] } ] },
+      { kicker:'Body signals', title:'Anything to work around?', sub:'Injuries get programmed around, not ignored.',
+        qs:[ {k:'limits', t:'chips', label:'Limitations or niggles', opts:['None','Lower-back tightness','Knee pain','Shoulder impingement','Wrist pain','Core caution','Hypertension'] },
+             {k:'sleep', t:'choice', label:'Typical sleep', opts:['Under 5 hrs','5 – 6 hrs','6 – 7 hrs','7 – 8 hrs','8 hrs +']} ] },
+      { kicker:'Food style', title:'How do you want to eat?', sub:'A plan you resent is a plan you quit.',
+        qs:[ {k:'diet', t:'choice', label:'Diet style', opts:[['High protein','Flexible, protein-led'],['Balanced / flexible','No rules beyond calories'],['Vegetarian','No meat or fish'],['Vegan','No animal products'],['Keto','Very low carb'],['Intermittent fasting','8-hour eating window']] } ] },
+      { kicker:'Taste', title:'What food do you actually like?', sub:'Your meals come from these kitchens.',
+        qs:[ {k:'cuisines', t:'chips', label:'Cuisines to pull from', opts:['Indian','Western','Mediterranean','East Asian','Mexican','Middle Eastern','Thai'] } ] },
+      { kicker:'Constraints', title:'What must never appear?', sub:'Allergies are hard rules. Dislikes are soft ones.',
+        qs:[ {k:'allergies', t:'chips', label:'Allergies', opts:['None','Peanuts','Tree nuts','Dairy','Gluten','Shellfish','Soy','Eggs'] },
+             {k:'bans', t:'chips', label:'Foods you will not eat', opts:['None','Tofu','Salmon','Paneer','Coriander','Avocado','Chickpeas'] } ] },
+      { kicker:'Kitchen', title:'How much cooking is realistic?', sub:'The best recipe is the one you actually make.',
+        qs:[ {k:'cook', t:'choice', label:'Max cooking time per meal', opts:['10 minutes','20 minutes','40 minutes','No limit — I like cooking']},
+             {k:'meals', t:'choice', label:'Meals per day', opts:['2 meals','3 meals','3 meals + snack','4 – 5 small meals']} ] },
+      { kicker:'Shopping', title:'How do groceries happen?', sub:'Your list gets built for this rhythm and budget.',
+        qs:[ {k:'budget', t:'choice', label:'Weekly grocery budget', opts:[['Tight','Staples, batch cooking'],['Moderate','Some convenience items'],['Comfortable','Whatever hits the macros']] },
+             {k:'shopday', t:'choice', label:'When do you shop?', opts:['Sunday','Midweek','Little and often','Delivery, whenever']} ] },
+      { kicker:'Accountability', title:'How should I talk to you?', sub:'Last one. Then I build your path.',
+        qs:[ {k:'remind', t:'choice', label:'When should I check in?', opts:['Morning, before work','Midday','Evening','Do not remind me']},
+             {k:'voice', t:'choice', label:'Coaching tone', opts:[['Direct','Short, factual, no fluff'],['Warm','Encouraging but honest'],['Hard','Tell me when I am slipping']] } ] }
+    ];
+  }
+
+  answered(q) { const v = this.state.p[q.k]; return Array.isArray(v) ? v.length > 0 : !!(v && String(v).trim()); }
+
+  next() {
+    const n = this.stepDefs().length, i = this.state.step;
+    if (i < n - 1) { this.setState({ step: i + 1 }); return; }
+    this.setState({ phase: 'building', buildPct: '8%' });
+    ['24%','52%','76%','100%'].forEach((w, k) => setTimeout(() => this.setState({ buildPct: w }), 400 + k * 520));
+    setTimeout(() => this.setState({ phase: 'plan' }), 2700);
+  }
+  back() {
+    if (this.state.phase !== 'wizard' || this.state.step === 0) { this.setState({ phase: 'intro' }); return; }
+    this.setState({ step: this.state.step - 1 });
+  }
+
+  numbers() {
+    const p = this.state.p, imp = this.imperial();
+    const w = parseFloat(p.weight) || (imp ? 182 : 82.5);
+    const t = parseFloat(p.target) || (imp ? 167 : 75.5);
+    const kg = imp ? w * 0.4536 : w;
+    const age = parseInt(p.age, 10) || 29;
+    const bmr = 10 * kg + 6.25 * 178 - 5 * age + (p.sex === 'Female' ? -161 : 5);
+    const mult = p.job === 'On my feet all day' ? 1.6 : p.job === 'Physical labour' ? 1.75 : p.job === 'Mixed, on and off my feet' ? 1.5 : 1.42;
+    const tdee = Math.round(bmr * mult / 10) * 10;
+    const paceLb = parseFloat(p.pace) || 1;
+    const pace = imp ? paceLb : paceLb * 0.45;
+    const deficit = p.goal === 'Build muscle' ? -250 : p.goal === 'Maintain' ? 0 : Math.round(paceLb * 500);
+    const kcal = Math.round((tdee - deficit) / 10) * 10;
+    const prot = Math.round(kg * 2), fat = Math.round(kg * 0.8);
+    const carb = Math.max(60, Math.round((kcal - prot * 4 - fat * 9) / 4));
+    const weeks = Math.max(4, Math.min(52, Math.ceil(Math.abs(w - t) / pace) || 12));
+    return { tdee, kcal, prot, fat, carb, w, t, weeks, pace };
+  }
+
+  envKey() { const e = this.state.p.env; return e === 'Full gym access' ? 'gym' : e === 'Bodyweight only' ? 'body' : 'home'; }
+
+  mealPool() {
+    const p = this.state.p;
+    const allergyMap = { 'Peanuts':'peanuts', 'Tree nuts':'nuts', 'Dairy':'dairy', 'Gluten':'gluten', 'Shellfish':'shellfish', 'Soy':'soy', 'Eggs':'eggs' };
+    const al = (p.allergies || []).map(a => allergyMap[a]).filter(Boolean);
+    const bans = (p.bans || []).filter(b => b !== 'None').map(b => b.toLowerCase());
+    const cu = p.cuisines && p.cuisines.length ? p.cuisines : ['Indian', 'Western'];
+    const diet = p.diet;
+    const ok = m => {
+      if (diet === 'Vegetarian' && !m.veg) return false;
+      if (diet === 'Vegan' && !m.vegan) return false;
+      if (diet === 'Keto' && !m.keto) return false;
+      if (m.has.some(h => al.indexOf(h) > -1)) return false;
+      if (m.ing.some(i => bans.some(b => i[0].toLowerCase().indexOf(b) > -1))) return false;
+      return true;
+    };
+    const bySlot = {};
+    ['B','L','S','D'].forEach(sl => {
+      const all = this.MEALS.filter(m => m.slot === sl);
+      const passing = all.filter(ok);
+      const pref = passing.filter(m => cu.indexOf(m.cui) > -1);
+      bySlot[sl] = pref.length ? pref.concat(passing.filter(m => pref.indexOf(m) < 0)) : (passing.length ? passing : all);
+    });
+    return bySlot;
+  }
+
+  slotPlan() {
+    const m = this.state.p.meals;
+    if (m === '2 meals') return ['L','D'];
+    if (m === '3 meals') return ['B','L','D'];
+    if (m === '4 – 5 small meals') return ['B','S','L','S','D'];
+    return ['B','L','S','D'];
+  }
+
+  buildWeek() {
+    const s = this.state, p = s.p, N = this.numbers(), env = this.envKey();
+    const count = parseInt(p.days, 10) || 4;
+    const sessDays = this.SESS_DAYS[count] || this.SESS_DAYS[4];
+    const mins = parseInt(p.session, 10) || 45;
+    const pool = this.mealPool(), slots = this.slotPlan();
+    const SLOTNAME = { B:'Breakfast', L:'Lunch', S:'Snack', D:'Dinner' };
+    const CLOCK = { B:'8:00 am', L:'1:00 pm', S:'4:30 pm', D:'8:00 pm' };
+    return this.DOW.map((dow, i) => {
+      const si = sessDays.indexOf(i);
+      const isSession = si > -1, isRest = !isSession && i === 6;
+      const type = isSession ? this.TYPES[si % this.TYPES.length] : null;
+      let name = isSession ? this.TNAME[type] : isRest ? 'Rest day' : 'Walk + mobility';
+      let min = isSession ? mins : isRest ? 0 : 25;
+      let ex = isSession ? this.EXS[env][type].map(e => e.slice()) : [];
+      let tag = isSession ? 'Training day' : isRest ? 'Rest' : 'Active recovery';
+      if (i === this.TODAY && isSession) {
+        if (s.emergency) { name = 'Room Session · Full Body'; min = 15; ex = this.HOTEL.map(e => e.slice()); tag = 'No-gym mode'; }
+        else if (s.energy === 'Low') { min = 20; ex = ex.slice(0, 3).map(e => [e[0], '2 × 10', e[2], e[3]]); ex.push(['Hip + T-spine Flow','6 min','Mat','Recovery']); tag = 'Adapted · low energy'; name = name + ' (light)'; }
+      }
+      const burn = Math.round(min * (isSession ? 7.5 : 4.5));
+      const target = isRest ? N.kcal - 150 : N.kcal;
+      const picks = slots.map((sl, k) => { const arr = pool[sl]; return arr[(i * 3 + k * 2) % arr.length]; });
+      const raw = picks.reduce((a, m) => a + m.kcal, 0);
+      const f = target / raw;
+      const meals = picks.map((m, k) => {
+        const key = i + '-' + k;
+        const sw = s.ingSwap[key];
+        return { key, day: i, k, id: m.id, slot: SLOTNAME[slots[k]], clock: CLOCK[slots[k]], t: m.t, cui: m.cui, time: m.time, rating: m.r,
+          kcal: Math.round(m.kcal * f / 5) * 5, p: Math.round(m.p * f), c: Math.round(m.c * f), f: Math.round(m.f * f),
+          ing: m.ing.map(g => [sw && sw.from === g[0] ? sw.to : g[0], Math.round(g[1] * f)]),
+          tag: m.keto ? 'Low carb' : m.vegan ? 'Vegan' : m.p * 4 / m.kcal > 0.28 ? 'High protein' : m.veg ? 'Vegetarian' : 'Balanced',
+          sw };
+      });
+      const foodKcal = meals.reduce((a, m) => a + m.kcal, 0);
+      const steps = isRest ? 7000 : isSession ? 8000 : 10000;
+      return { i, dow, num: this.DNUM[i], isSession, isRest, type, name, min, burn, ex, tag, meals, foodKcal, steps };
+    });
+  }
+
+  renderVals() {
+    const s = this.state, p = s.p, N = this.numbers(), imp = this.imperial();
+    const defs = this.stepDefs(), st = defs[Math.min(s.step, defs.length - 1)];
+    const pad = n => (n < 10 ? '0' + n : '' + n);
+    const unit = imp ? 'lb' : 'kg';
+
+    const questions = st.qs.map(q => {
+      const v = p[q.k];
+      const base = { label: q.label, hint: q.hint || '', hasHint: !!q.hint, isNum: q.t === 'num' || q.t === 'text', isChoice: q.t === 'choice', isChips: q.t === 'chips' };
+      if (base.isNum) return { ...base, value: v || '', ph: q.ph || '', unit: q.unit || '', onChange: e => this.setP(q.k, e.target.value) };
+      return { ...base, options: (q.opts || []).map(o => {
+        const label = Array.isArray(o) ? o[0] : o, sub = Array.isArray(o) ? o[1] : '';
+        const sel = q.t === 'chips' ? (v || []).indexOf(label) > -1 : v === label;
+        return { label, sub, hasSub: !!sub, bg: sel ? '#FFFFFF' : 'transparent', ring: sel ? '#14233F' : 'rgba(20,35,63,.2)', dot: sel ? '#14233F' : 'transparent', mark: sel ? '✓' : '',
+          chipBg: sel ? '#14233F' : '#FFFFFF', chipFg: sel ? '#D6E4F3' : '#14233F',
+          onClick: () => (q.t === 'chips' ? this.togP(q.k, label) : this.setP(q.k, label)) };
+      }) };
+    });
+    const canGo = st.qs.every(q => this.answered(q));
+
+    const week = this.buildWeek();
+    const today = week[this.TODAY];
+    const sel = week[s.day];
+
+    const eaten = today.meals.slice(0, Math.min(2, today.meals.length));
+    const kcalIn = eaten.reduce((a, m) => a + m.kcal, 0);
+    const pIn = eaten.reduce((a, m) => a + m.p, 0), cIn = eaten.reduce((a, m) => a + m.c, 0), fIn = eaten.reduce((a, m) => a + m.f, 0);
+    const todayTarget = today.foodKcal;
+    const kcalLeft = todayTarget - kcalIn;
+
+    const openMeal = m => () => this.setState({ detail: { day: m.day, k: m.k } });
+    const swapMeal = m => () => this.setState({ sheet: 'swapIng', swapKey: m.key });
+
+    const todayMeals = today.meals.map((m, k) => ({ ...m, sid: 'v3-meal-' + m.id, img: ((window.__resources||{})[String(m.slot || 'lunch').toLowerCase()]||('assets/'+String(m.slot || 'lunch').toLowerCase()+'.svg')), pct: Math.round(m.kcal / todayTarget * 100) + '%',
+      status: k < eaten.length ? 'Logged' : k === eaten.length ? 'Up next' : 'Planned',
+      statusBg: k < eaten.length ? 'rgba(47,92,158,.15)' : k === eaten.length ? 'rgba(224,162,124,.2)' : 'rgba(20,35,63,.06)',
+      statusFg: k < eaten.length ? '#2F5C9E' : k === eaten.length ? '#8F4A26' : 'rgba(20,35,63,.5)',
+      onOpen: openMeal(m) }));
+
+    const TAGC = { 'High protein':['rgba(224,162,124,.2)','#8F4A26'], 'Low carb':['rgba(47,92,158,.15)','#2F5C9E'], 'Vegan':['rgba(47,92,158,.15)','#2F5C9E'], 'Vegetarian':['rgba(47,92,158,.15)','#2F5C9E'], 'Balanced':['rgba(20,35,63,.07)','rgba(20,35,63,.6)'] };
+    const selMeals = sel.meals.map(m => ({ ...m, sid: 'v3-meal-' + m.id, img: ((window.__resources||{})[String(m.slot || 'lunch').toLowerCase()]||('assets/'+String(m.slot || 'lunch').toLowerCase()+'.svg')), tagBg: TAGC[m.tag][0], tagFg: TAGC[m.tag][1],
+      wasSwapped: !!m.sw, swapNote: m.sw ? m.sw.from + ' → ' + m.sw.to + ', macros held' : '', onOpen: openMeal(m), onSwap: swapMeal(m) }));
+
+    const exKey = i => s.day + '-' + i;
+    const exercises = sel.ex.map((e, i) => {
+      const sw = s.swapped[exKey(i)], done = !!s.exDone[exKey(i)];
+      return { n: sw ? sw[0] : e[0], s: e[1], eq: sw ? sw[1] : e[2], m: e[3], wasSwapped: !!sw, mark: done ? '✓' : String(i + 1),
+        numBg: done ? '#D6E4F3' : 'rgba(214,228,243,.14)', numFg: done ? '#14233F' : '#D6E4F3',
+        nameFg: done ? 'rgba(255,255,255,.45)' : '#fff', deco: done ? 'line-through' : 'none',
+        onDone: () => this.setState(st2 => ({ exDone: { ...st2.exDone, [exKey(i)]: !st2.exDone[exKey(i)] } })),
+        onSwap: () => this.setState({ sheet: 'swapEx', swapKey: exKey(i) }) };
+    });
+    const doneCount = sel.ex.filter((_, i) => s.exDone[exKey(i)]).length + '/' + sel.ex.length;
+
+    let sheetKicker = '', sheetTitle = '', sheetSub = '', sheetRows = [], sheetChips = [], sheetFoot = '';
+    if (s.sheet === 'adapt') {
+      sheetKicker = 'ADAPT TODAY'; sheetTitle = 'What changed?'; sheetSub = 'One tap — the session and the food both move with you.';
+      sheetRows = [
+        { n:'☾', t:'I’m low on energy', s:'Session drops to 20 min, volume halved.', onClick: () => { this.setState({ energy:'Low', sheet:null }); this.say('Cut to 20 minutes. Streak intact.'); } },
+        { n:'⌂', t:'I can’t reach the gym', s:'15-minute zero-equipment session, same muscles.', onClick: () => { this.setState({ emergency:true, sheet:null }); this.say('No-gym mode on — 15-minute room session.'); } },
+        { n:'◍', t:'I’m missing an ingredient', s:'Rebuild your next meal from what you have.', onClick: () => this.setState({ sheet:'swapIng', swapKey: today.meals[eaten.length] ? today.meals[eaten.length].key : today.meals[0].key }) },
+        { n:'▣', t:'I’m eating out', s:'Three safe orders for the cuisine you’re at.', onClick: () => this.setState({ sheet:'restaurant' }) },
+        { n:'✦', t:'I feel strong', s:'Full session, loads up where you earned them.', onClick: () => { this.setState({ energy:'High', emergency:false, sheet:null }); this.say('Full session. Press goes up 2.5 kg.'); } }
+      ];
+      sheetFoot = 'Adapting is the streak. Skipping is what ends it.';
+    } else if (s.sheet === 'energy') {
+      sheetKicker = 'DAILY CHECK-IN'; sheetTitle = 'How much have you got today?'; sheetSub = 'Ten seconds — the plan reshapes itself.';
+      sheetRows = [
+        { n:'✦', t:'High — let’s go', s:'Full session, loads up where earned.', onClick: () => { this.setState({ energy:'High', sheet:null }); this.say('Full session locked in.'); } },
+        { n:'⚡', t:'Medium — normal day', s:'Session as written, hold the loads.', onClick: () => { this.setState({ energy:'Medium', sheet:null }); this.say('Session as written.'); } },
+        { n:'☾', t:'Low — barely slept', s:'20 minutes, lighter dinner.', onClick: () => { this.setState({ energy:'Low', sheet:null }); this.say('Downsized to 20 min. Still counts.'); } }
+      ];
+    } else if (s.sheet === 'swapEx' && s.swapKey) {
+      const idx = parseInt(s.swapKey.split('-')[1], 10);
+      const e = sel.ex[idx] || sel.ex[0];
+      if (e) {
+        sheetKicker = 'SWAP · ' + e[3].toUpperCase(); sheetTitle = 'Replace ' + e[0]; sheetSub = 'Same muscle group, same set volume, only gear you have.';
+        sheetRows = (this.ALTS[e[3]] || this.ALTS.Core).map((a, n) => ({ n: String.fromCharCode(65 + n), t: a[0], s: a[1],
+          onClick: () => { this.setState(st2 => ({ swapped: { ...st2.swapped, [st2.swapKey]: [a[0], e[2]] }, sheet: null, swapKey: null })); this.say('Swapped in ' + a[0] + '.'); } }));
+        sheetFoot = 'Bench taken, shoulder cranky, rack is a queue — swapping is not cheating.';
+      }
+    } else if (s.sheet === 'swapIng' && s.swapKey) {
+      const [dd, kk] = s.swapKey.split('-').map(Number);
+      const m = week[dd] && week[dd].meals[kk];
+      if (m) {
+        sheetKicker = 'INGREDIENT SWAP'; sheetTitle = 'What are you missing?'; sheetSub = m.t + ' — tap what you don’t have. Macros stay within 2%.';
+        sheetRows = m.ing.map((g, n) => ({ n: String.fromCharCode(65 + n), t: g[0], s: 'Swap for ' + (this.SUB[g[0]] || 'a similar-macro option'),
+          onClick: () => { const to = this.SUB[g[0]] || 'Similar-macro swap';
+            this.setState(st2 => ({ ingSwap: { ...st2.ingSwap, [st2.swapKey]: { from: g[0], to } }, sheet: null, swapKey: null }));
+            this.say(g[0] + ' → ' + to + '. Macros held.'); } }));
+      }
+    } else if (s.sheet === 'restaurant') {
+      sheetKicker = 'RESTAURANT MODE'; sheetTitle = 'Order without guessing';
+      sheetSub = 'You have ' + kcalLeft + ' kcal and ' + Math.max(0, N.prot - pIn) + ' g protein left today.';
+      sheetChips = Object.keys(this.REST).map(c => ({ label: c, bg: s.cuisine === c ? '#14233F' : '#FFFFFF', fg: s.cuisine === c ? '#D6E4F3' : '#14233F', onClick: () => this.setState({ cuisine: c }) }));
+      sheetRows = this.REST[s.cuisine].map((r, n) => ({ n: String(n + 1), t: r[0], s: r[1], onClick: () => { this.setState({ sheet: null }); this.say('Logged ' + s.cuisine + ' — dinner adjusted.'); } }));
+      sheetFoot = 'Order the first one you can find on the menu. Don’t optimise at the table.';
+    }
+
+    let detailVals = { detailOpen: false, petals: [], dRows: [] };
+    if (s.detail) {
+      const m = week[s.detail.day] && week[s.detail.day].meals[s.detail.k];
+      if (m) {
+        const tot = m.ing.reduce((a, g) => a + g[1], 0);
+        const ings = m.ing.slice(0, 6);
+        const n = ings.length;
+        detailVals = { detailOpen: true, dSlot: m.slot.toUpperCase() + ' · ' + m.clock.toUpperCase(), dTitle: m.t, dWeight: tot + ' g', dKcal: m.kcal, dP: m.p, dC: m.c, dF: m.f, dSid: 'v3-meal-' + m.id, dImg: ((window.__resources||{})[String(m.slot || 'lunch').toLowerCase()]||('assets/'+String(m.slot || 'lunch').toLowerCase()+'.svg')),
+          petals: ings.map((g, i) => { const rad = (-90 + i * 360 / n) * Math.PI / 180;
+            return { pct: (g[1] / tot * 100).toFixed(1) + '%', name: g[0], tr: 'rotate(' + (i * 360 / n) + 'deg) translateY(-76px)',
+              lx: 'calc(50% + ' + Math.round(Math.cos(rad) * 118) + 'px)', ly: 'calc(50% + ' + Math.round(Math.sin(rad) * 118) + 'px)' }; }),
+          dRows: m.ing.map(g => { const sh = g[1] / tot; return { name: g[0], g: g[1] + ' g', pct: Math.round(sh * 100) + '%', p: Math.round(m.p * sh), c: Math.round(m.c * sh), f: Math.round(m.f * sh) }; }),
+          openSwapDetail: () => this.setState({ sheet: 'swapIng', swapKey: m.key }) };
+      }
+    }
+
+    const groc = {};
+    const cat = n => /chicken|salmon|sirloin|egg|paneer|tofu|whey|tuna/i.test(n) ? 'PROTEIN' : /yoghurt|milk|feta|ghee/i.test(n) ? 'DAIRY' : /rice|oat|bread|roti|pita|quinoa|dal|beans|chickpea|chana|tortilla|sourdough|rye/i.test(n) ? 'PANTRY' : 'PRODUCE';
+    week.forEach(d => d.meals.forEach(m => m.ing.forEach(g => { const c = cat(g[0]); groc[c] = groc[c] || {}; groc[c][g[0]] = (groc[c][g[0]] || 0) + g[1]; })));
+    const grocery = ['PROTEIN','PRODUCE','DAIRY','PANTRY'].filter(c => groc[c]).map(c => ({ cat: c, items: Object.keys(groc[c]).slice(0, 7).map(n => {
+      const key = c + '|' + n, on = !!s.checked[key], g = groc[c][n];
+      return { label: n, qty: g >= 1000 ? (g / 1000).toFixed(1) + ' kg' : g + ' g', mark: on ? '✓' : '', bg: on ? '#14233F' : 'transparent', ring: on ? '#14233F' : 'rgba(20,35,63,.22)',
+        fg: on ? 'rgba(20,35,63,.4)' : '#14233F', deco: on ? 'line-through' : 'none',
+        onToggle: () => this.setState(st2 => ({ checked: { ...st2.checked, [key]: !st2.checked[key] } })) };
+    }) }));
+    const groceryCount = grocery.reduce((a, g) => a + g.items.length, 0);
+    const groceryLeft = groceryCount - grocery.reduce((a, g) => a + g.items.filter(i => i.mark).length, 0);
+
+    const segs = 13, filled = Math.round(kcalIn / todayTarget * segs);
+    const arcSegs = [];
+    for (let i = 0; i < segs; i++) arcSegs.push({ fill: i < filled ? '#E0A27C' : 'rgba(255,255,255,.1)', tr: 'rotate(' + (-102 + i * (204 / (segs - 1))) + ')' });
+
+    const weeks = N.weeks, curWeek = 8;
+    const start = new Date(2026, 7, 3);
+    const eta = new Date(start.getTime() + weeks * 7 * 86400000);
+    const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const etaLabel = eta.getDate() + ' ' + MON[eta.getMonth()];
+    const sW = N.w, tW = N.t, span = Math.max(1, Math.abs(sW - tW));
+    const actual = imp ? this.ACTUAL : this.ACTUAL.map(v => v * 0.4536);
+    const x = wk => 8 + wk / weeks * 304;
+    const y = v => 14 + (sW - v) / span * 96 * (sW >= tW ? 1 : -1);
+    const actPtsArr = actual.map((v, i) => [x(i), y(sW - (actual[0] - v))]);
+    const actPts = actPtsArr.map(a => a[0].toFixed(1) + ',' + a[1].toFixed(1)).join(' ');
+    const last = actPtsArr[actPtsArr.length - 1];
+    const nowW = (sW - (actual[0] - actual[actual.length - 1])).toFixed(1);
+
+    const fEnd = Math.max(2, Math.round(weeks * 0.27)), bEnd = Math.max(fEnd + 1, Math.round(weeks * 0.67));
+    const phaseDefs = [
+      ['Foundation', 1, fEnd, 'Learn the lifts, ' + Math.max(2, (parseInt(p.days, 10) || 4) - 1) + ' sessions a week, a gentle ' + Math.round(N.tdee - N.kcal - 200 > 0 ? N.tdee - N.kcal - 200 : 250) + ' kcal deficit.'],
+      ['Build momentum', fEnd + 1, bEnd, 'Full ' + (parseInt(p.days, 10) || 4) + '-day split, ' + N.kcal + ' kcal, 9k steps. Loads climb weekly.'],
+      ['Sharpen', bEnd + 1, weeks, 'Protein up to ' + Math.round(N.prot * 1.1) + ' g, one extra conditioning block, refeed every 10 days.'],
+      ['Hold the line', weeks + 1, null, 'Reverse diet +150 kcal a week to ~' + N.tdee + ' kcal. Keep the habits, drop the tracking.']
+    ];
+    const phases = phaseDefs.map(ph => {
+      const done = ph[2] && curWeek > ph[2], now = curWeek >= ph[1] && (!ph[2] || curWeek <= ph[2]);
+      return { name: ph[0], range: ph[2] ? 'Wk ' + ph[1] + '–' + ph[2] : 'After wk ' + weeks, desc: ph[3], isNow: now,
+        dot: done ? '#2F5C9E' : now ? '#E0A27C' : '#FFFFFF', ring: done ? '#2F5C9E' : now ? 'rgba(224,162,124,.35)' : 'rgba(20,35,63,.18)' };
+    });
+
+    const dayColors = (d, dark) => {
+      const selD = d.i === s.day;
+      return { dow: d.dow, num: d.num,
+        bg: selD ? (dark ? '#D6E4F3' : '#14233F') : (dark ? '#14233F' : '#FFFFFF'),
+        fg: selD ? (dark ? '#14233F' : '#fff') : (dark ? '#fff' : '#14233F'),
+        dot: d.isSession ? (selD && !dark ? '#D6E4F3' : dark && selD ? '#14233F' : '#E0A27C') : d.isRest ? 'transparent' : (dark ? 'rgba(255,255,255,.3)' : 'rgba(20,35,63,.25)'),
+        onClick: () => this.setState({ day: d.i }) };
+    };
+
+    const minLabel = d => d.min ? d.min + ' min' : 'Steps only';
+    const selSession = { name: sel.name, tag: sel.i === this.TODAY ? 'Today’s focus · ' + sel.tag : sel.tag, burn: sel.burn, minLabel: minLabel(sel), sid: 'v3-sess-' + (sel.type || 'rest'), img: sel.isSession ? ((window.__resources||{})['lift']||('assets/'+'lift'+'.svg')) : ((window.__resources||{})['walk']||('assets/'+'walk'+'.svg')), canStart: sel.isSession };
+
+    const col = t => (s.tab === t ? (t === 'train' ? '#D6E4F3' : '#E0A27C') : 'rgba(255,255,255,.5)');
+    const dark = s.tab === 'train';
+    const cuisines = (p.cuisines && p.cuisines.length ? p.cuisines : ['Indian','Western']);
+    const excl = (p.allergies || []).concat(p.bans || []).filter(v => v !== 'None');
+
+    return {
+      darkFrame: s.phase === 'intro' || s.phase === 'building' || (s.phase === 'app' && dark && !s.detail),
+      isIntro: s.phase === 'intro', isWizard: s.phase === 'wizard', isBuilding: s.phase === 'building', isPlan: s.phase === 'plan', isApp: s.phase === 'app',
+      start: () => this.setState({ phase: 'wizard', step: 0 }), skip: () => this.setState({ phase: 'app', tab: 'today' }), enter: () => this.setState({ phase: 'app', tab: 'today', day: this.TODAY }),
+      next: () => this.next(), back: () => this.back(), canGo, cantGo: !canGo,
+      nextLabel: s.step === defs.length - 1 ? 'Build my path' : 'Continue', stepLabel: pad(s.step + 1) + '/' + pad(defs.length),
+      stepDots: defs.map((_, i) => ({ bg: i <= s.step ? '#14233F' : 'rgba(20,35,63,.14)' })),
+      stepKicker: st.kicker, stepTitle: st.title, stepSub: st.sub, questions,
+      buildPct: s.buildPct,
+      buildLine: { '8%':'Reading your constraints', '24%':'Sizing your energy needs', '52%':'Programming your week', '76%':'Picking food you’ll actually eat', '100%':'Your path is ready' }[s.buildPct] || 'Building',
+
+      pathTitle: (p.name || 'Alex') + ', ' + weeks + ' weeks to ' + tW + ' ' + unit,
+      pathSub: (p.days || '4 days') + ' of training a week, ' + (p.session || '45 minutes') + ' each, ' + (p.env || 'basic home gym').toLowerCase() + '.',
+      kcal: N.kcal, prot: N.prot, carb: N.carb, fat: N.fat, weeks, etaLabel, curWeek,
+      phases,
+      weekRows: week.map(d => ({ dow: d.dow, name: d.name, meta: d.isSession ? d.min + ' min · ' + d.ex.length + ' movements · ~' + d.burn + ' kcal burn' : d.isRest ? d.steps.toLocaleString() + ' steps · recover' : d.min + ' min walk + mobility · ' + d.steps.toLocaleString() + ' steps',
+        food: d.foodKcal.toLocaleString(), dot: d.isSession ? '#E0A27C' : d.isRest ? 'rgba(20,35,63,.2)' : '#2F5C9E' })),
+      cuisineLine: cuisines.join(' + '), dietLower: (p.diet || 'high protein').toLowerCase(), excludeLine: excl.length ? excl.join(', ').toLowerCase() : 'anything you flagged',
+
+      appBg: dark ? '#14233F' : 'linear-gradient(180deg,#F2F7FC 0%,#D6E4F3 100%)',
+      headInk: dark ? '#fff' : '#14233F', headDim: dark ? 'rgba(255,255,255,.5)' : 'rgba(20,35,63,.5)', headBtn: dark ? '#14233F' : '#FFFFFF',
+      tabToday: s.tab === 'today', tabTrain: s.tab === 'train', tabEat: s.tab === 'eat', tabPath: s.tab === 'path', tabShop: s.tab === 'shop',
+      goToday: () => this.setState({ tab:'today' }), goTrain: () => this.setState({ tab:'train' }), goEat: () => this.setState({ tab:'eat' }),
+      goPath: () => this.setState({ tab:'path' }), goShop: () => this.setState({ tab:'shop' }),
+      goTrainToday: () => this.setState({ tab:'train', day: this.TODAY }),
+      colToday: col('today'), colTrain: col('train'), colEat: col('eat'), colPath: col('path'),
+      initial: (p.name || 'A').slice(0, 1).toUpperCase(),
+      headKicker: { today:'Tue 22 Sep · week ' + curWeek, train:'Workout plan · week ' + curWeek, eat:(p.diet || 'High protein') + ' · ' + cuisines.join(' + '), path:'Your path', shop:'7 days ahead' }[s.tab],
+      headTitle: { today:'Hi ' + (p.name || 'Alex'), train:'Schedule', eat:'Discover meals', path:weeks + ' weeks to goal', shop:'Groceries' }[s.tab],
+
+      todayLabel: 'Tuesday, 22 September', streak: 19, kcalIn, todayTarget, kcalLeft,
+      arcSegs,
+      macroBars: [
+        { k:'Protein', v: pIn + ' / ' + N.prot + 'g', w: Math.min(100, Math.round(pIn / N.prot * 100)) + '%', fill:'#D6E4F3', line:'transparent' },
+        { k:'Carbs', v: cIn + ' / ' + N.carb + 'g', w: Math.min(100, Math.round(cIn / N.carb * 100)) + '%', fill:'#E0A27C', line:'rgba(255,255,255,.09)' },
+        { k:'Fat', v: fIn + ' / ' + N.fat + 'g', w: Math.min(100, Math.round(fIn / N.fat * 100)) + '%', fill:'#EBC9B2', line:'rgba(255,255,255,.09)' }
+      ],
+      needCheckin: !s.energy, didCheckin: !!s.energy,
+      energyOpts: [ { label:'High', onClick: () => { this.setState({ energy:'High' }); this.say('Full session. Loads up.'); } },
+                    { label:'OK', onClick: () => { this.setState({ energy:'Medium' }); this.say('Session as written.'); } },
+                    { label:'Low', onClick: () => { this.setState({ energy:'Low' }); this.say('Cut to 20 min. Still counts.'); } } ],
+      checkinLine: s.energy === 'Low' ? 'Low energy — today cut to 20 min, dinner lighter.' : s.energy === 'High' ? 'High energy — full session, loads up 2.5 kg.' : 'Normal day — session as written.',
+      openEnergy: () => this.setState({ sheet: 'energy' }), openAdapt: () => this.setState({ sheet: 'adapt' }),
+      toggleEmergency: () => { const on = !s.emergency; this.setState({ emergency: on }); this.say(on ? 'No-gym mode on — 15-minute room session.' : 'Back to your normal session.'); },
+      emergencySub: s.emergency ? 'On — today is a 15-min room session' : 'Converts today to zero equipment',
+      swBg: s.emergency ? '#14233F' : 'rgba(20,35,63,.16)', swX: s.emergency ? '22px' : '4px',
+      todaySession: { name: today.name, minLabel: minLabel(today), burn: today.burn },
+      sessionBadge: today.i === this.TODAY ? today.tag : 'Today',
+      sessionNote: s.emergency ? 'No gym, no gear — same muscle groups in fifteen minutes.' : s.energy === 'Low' ? 'Running on empty: volume halved, heavy work moved to Thursday.' : today.isSession ? today.ex.length + ' movements · loads go up if last week felt clean.' : 'Recovery day — walk, stretch, eat well.',
+      todayMeals,
+
+      daysDark: week.map(d => dayColors(d, true)), daysLight: week.map(d => dayColors(d, false)),
+      daysChips: week.map(d => ({ label: d.i === this.TODAY ? 'Today' : d.dow + ' ' + d.num, bg: d.i === s.day ? '#14233F' : '#FFFFFF', fg: d.i === s.day ? '#fff' : '#14233F', onClick: () => this.setState({ day: d.i }) })),
+      selSession, selHasEx: sel.ex.length > 0, selNoEx: sel.ex.length === 0,
+      selRestNote: sel.isRest ? 'Rest day. ' + sel.steps.toLocaleString() + ' easy steps, 10 minutes of stretching, and food at ' + sel.foodKcal + ' kcal — 150 lower than training days.' : '25-minute brisk walk plus hips and T-spine mobility. Keeps the legs fresh for tomorrow.',
+      exercises, doneCount,
+      weekDoneLabel: '1 of ' + week.filter(d => d.isSession).length + ' sessions',
+      weekBars: week.map(d => ({ bg: d.i < this.TODAY && d.isSession ? '#D6E4F3' : d.i === this.TODAY ? 'rgba(214,228,243,.45)' : d.isSession ? 'rgba(255,255,255,.14)' : 'rgba(255,255,255,.05)' })),
+
+      aiTitle: (s.energy === 'Low' ? 'A lighter ' : '') + (today.meals[eaten.length] || today.meals[0]).t,
+      aiSub: 'Fits your ' + kcalLeft + ' kcal left and ' + (p.diet || 'high protein').toLowerCase() + ' style.',
+      aiSid: 'v3-meal-' + (today.meals[eaten.length] || today.meals[0]).id, aiImg: ((window.__resources||{})[String((today.meals[eaten.length] || today.meals[0]).slot || 'lunch').toLowerCase()]||('assets/'+String((today.meals[eaten.length] || today.meals[0]).slot || 'lunch').toLowerCase()+'.svg')), heroImg: ((window.__resources||{})['hero']||('assets/'+'hero'+'.svg')), sessImg: s.emergency ? ((window.__resources||{})['walk']||('assets/'+'walk'+'.svg')) : ((window.__resources||{})['lift']||('assets/'+'lift'+'.svg')),
+      aiOpen: openMeal(today.meals[eaten.length] || today.meals[0]),
+      selMeals, selFoodKcal: sel.foodKcal.toLocaleString(),
+      selDayTitle: (sel.i === this.TODAY ? 'Today' : sel.dow) + ', ' + sel.num + ' Sep',
+      selDayKind: sel.isSession ? 'Training day' : sel.isRest ? 'Rest day' : 'Active recovery',
+      selActivity: [
+        sel.isSession
+          ? { ic:'▲', icBg:'#14233F', icFg:'#D6E4F3', t: sel.name, s: sel.ex.length + ' movements · ~' + sel.burn + ' kcal burn', v: sel.min + ' min', onClick: () => this.setState({ tab:'train' }) }
+          : { ic:'◐', icBg:'rgba(47,92,158,.16)', icFg:'#2F5C9E', t: sel.isRest ? 'Full rest' : 'Brisk walk + mobility', s: sel.isRest ? 'Let the week land' : 'Hips, T-spine, calves', v: sel.min ? sel.min + ' min' : '—', onClick: () => this.setState({ tab:'train' }) },
+        { ic:'⋯', icBg:'rgba(224,162,124,.2)', icFg:'#8F4A26', t:'Steps', s:'Spread across the day', v: sel.steps.toLocaleString(), onClick: () => {} },
+        { ic:'☾', icBg:'rgba(20,35,63,.07)', icFg:'#14233F', t:'Sleep window', s:'Lights out 11:00 pm', v:'7.5 h', onClick: () => {} }
+      ],
+
+      startW: sW, targetW: tW, unitLabel: unit, nowW: nowW + ' ' + unit, startLabel: '3 Aug',
+      goalY: y(tW).toFixed(1), projPts: x(0).toFixed(1) + ',' + y(sW).toFixed(1) + ' ' + x(weeks).toFixed(1) + ',' + y(tW).toFixed(1),
+      actPts, actArea: x(0).toFixed(1) + ',124 ' + actPts + ' ' + last[0].toFixed(1) + ',124', nowX: last[0].toFixed(1), nowY: last[1].toFixed(1),
+      stats: [ { k:'lost so far', v: (actual[0] - actual[actual.length - 1]).toFixed(1) + ' ' + unit, line:'transparent' }, { k:'sessions done', v:'27 / 30', line:'rgba(255,255,255,.09)' }, { k:'plan adapted', v:'11×', line:'rgba(255,255,255,.09)' } ],
+      adaptLog: [ { d:'MON', t:'Bench taken — swapped to dumbbell floor press.' }, { d:'SUN', t:'No paneer in the fridge — dinner rebuilt with tofu.' },
+                  { d:'FRI', t:'Travel day — no-gym mode, 15-minute room session.' }, { d:'THU', t:'Slept 5 hours — session cut to 20 min, streak kept.' }, { d:'WED', t:'Ate out, Thai — followed the 3-item order.' } ],
+
+      grocery, groceryLeft, openRestaurant: () => this.setState({ sheet: 'restaurant' }),
+
+      toast: s.toast, hasToast: !!s.toast,
+      ...detailVals,
+      closeDetail: () => this.setState({ detail: null }),
+      sheetOpen: !!s.sheet && sheetRows.length > 0, closeSheet: () => this.setState({ sheet: null, swapKey: null }),
+      sheetKicker, sheetTitle, sheetSub, sheetRows, sheetChips, sheetHasChips: sheetChips.length > 0, sheetFoot, sheetHasFoot: !!sheetFoot
+    };
+  }
+}
+
+</script>
+
+
+</body></html>

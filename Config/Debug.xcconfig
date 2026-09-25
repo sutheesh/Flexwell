@@ -1,0 +1,4 @@
+#include "Shared.xcconfig"
+
+// Debug-only values. Nothing here should ever point at production.
+FF_ENVIRONMENT = debug

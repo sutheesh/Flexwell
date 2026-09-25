@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C1403F4E879304A6772307B /* FlexFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DA19983009626E575050E3 /* FlexFitApp.swift */; };
+		1110D95B8ABAB7E1A7BD0517 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */; };
+		18689C3AA0A93C6358F7857D /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB90510968BA28DD217767 /* DebugLaunch.swift */; };
+		329CCD5395EFE752A24ADADC /* PlanReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1448D532A2C19586D41DEC06 /* PlanReadyView.swift */; };
+		3839DC01FD6605745F3D45EB /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */; };
+		51D6359ABC7713024096DFFA /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DB5D273E519402662ADE /* Controls.swift */; };
+		52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21784056B85AB72E023F29C /* OnboardingDraft.swift */; };
+		59C21BCE89182BD84AEAB048 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D1DC0A572FAE9A427DEF5 /* RootView.swift */; };
+		607E4391A37857E05F798995 /* FlexFitEngine in Frameworks */ = {isa = PBXBuildFile; productRef = EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */; };
+		A55690E83A67069F5C80110E /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */; };
+		BC505F7D4A18056E78920262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99167C14D606648373727810 /* Assets.xcassets */; };
+		D1C293FE44D851A4BE64151B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */; };
+		D4FF7CE6D108A581E5F542EB /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3055FFD42860FE10325647 /* DesignTokens.swift */; };
+		E0A0B1D34F9058D6158D82CC /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B12283F57E4B38ECA9D774F /* OnboardingFlow.swift */; };
+		E5B8FEAE8F088611ABDDE343 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */; };
+		E63AFA867514A5121C5297F4 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B178EE4264D6FED7AA019 /* Labels.swift */; };
+		E8B6A4DAB6DF548718DABD21 /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */; };
+		EFAEF54DBCE54C6558E545DD /* WizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43611D1D53C5019AC7BE40C /* WizardView.swift */; };
+		F208F9937B7776640A45A1E1 /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB0EEB6F0791E7BBE22B2C3 /* Schema.swift */; };
+		F2B554DC7040E9B3ED63E262 /* BuildingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210B436C2AFD24E32EF575 /* BuildingView.swift */; };
+		F40255F6EC3C07EB4D6544F4 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FECA0E4F3289209780AEBA /* IntroView.swift */; };
+		F4633202A733B71777E902DF /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC1EFD33521403541F3E4344 /* OFL.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		021B178EE4264D6FED7AA019 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
+		0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
+		1448D532A2C19586D41DEC06 /* PlanReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanReadyView.swift; sourceTree = "<group>"; };
+		212D1DC0A572FAE9A427DEF5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		2B12283F57E4B38ECA9D774F /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		3BB0EEB6F0791E7BBE22B2C3 /* Schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
+		52AB90510968BA28DD217767 /* DebugLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunch.swift; sourceTree = "<group>"; };
+		5E8D5ED6AD38164124121C27 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		6F3055FFD42860FE10325647 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
+		72210B436C2AFD24E32EF575 /* BuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingView.swift; sourceTree = "<group>"; };
+		87FECA0E4F3289209780AEBA /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		9107581F9BCE843835DCAAA8 /* FlexFit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FlexFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		99167C14D606648373727810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
+		B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		B5DA19983009626E575050E3 /* FlexFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexFitApp.swift; sourceTree = "<group>"; };
+		BFA2DB5D273E519402662ADE /* Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
+		CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		E43611D1D53C5019AC7BE40C /* WizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardView.swift; sourceTree = "<group>"; };
+		E94D867AE3A7FE5323F922BC /* FlexFitEngine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FlexFitEngine; path = Packages/FlexFitEngine; sourceTree = SOURCE_ROOT; };
+		E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		EC1EFD33521403541F3E4344 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		F21784056B85AB72E023F29C /* OnboardingDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDraft.swift; sourceTree = "<group>"; };
+		F873368EE8983679C9EF1505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FDC2ED8DBE3B3C6AA0BEADE2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8739B39B8F244377D4FDB120 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				607E4391A37857E05F798995 /* FlexFitEngine in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		50A1397D8383BC2217AF09E3 /* FlexFit */ = {
+			isa = PBXGroup;
+			children = (
+				F873368EE8983679C9EF1505 /* Info.plist */,
+				966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */,
+				E795649DBB933CEAB6E8DF74 /* App */,
+				EA1F7BB2F5A32A094F0D8814 /* Components */,
+				ABD4BB8A0F93D80F26254098 /* Data */,
+				7C133F6B7C7CB87D70F6AD0A /* Onboarding */,
+				B533A438D2FCD8156E46BE7D /* Resources */,
+				AD15994B155137C7A9B17199 /* Theme */,
+			);
+			path = FlexFit;
+			sourceTree = "<group>";
+		};
+		5512556FF3DB33E057725269 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9107581F9BCE843835DCAAA8 /* FlexFit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C133F6B7C7CB87D70F6AD0A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				72210B436C2AFD24E32EF575 /* BuildingView.swift */,
+				87FECA0E4F3289209780AEBA /* IntroView.swift */,
+				F21784056B85AB72E023F29C /* OnboardingDraft.swift */,
+				2B12283F57E4B38ECA9D774F /* OnboardingFlow.swift */,
+				1448D532A2C19586D41DEC06 /* PlanReadyView.swift */,
+				E43611D1D53C5019AC7BE40C /* WizardView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		894B37687F72901C361EE29B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EC1EFD33521403541F3E4344 /* OFL.txt */,
+				E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */,
+				B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */,
+				9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */,
+				0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */,
+				CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8AEAE5E1FA46E81D13D76558 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				E94D867AE3A7FE5323F922BC /* FlexFitEngine */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		A371934A3A16D7A6A7B2494D = {
+			isa = PBXGroup;
+			children = (
+				B0FBB6FAD9E608D1DAEC9B54 /* Config */,
+				50A1397D8383BC2217AF09E3 /* FlexFit */,
+				8AEAE5E1FA46E81D13D76558 /* Packages */,
+				5512556FF3DB33E057725269 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ABD4BB8A0F93D80F26254098 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				52AB90510968BA28DD217767 /* DebugLaunch.swift */,
+				3BB0EEB6F0791E7BBE22B2C3 /* Schema.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		AD15994B155137C7A9B17199 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				6F3055FFD42860FE10325647 /* DesignTokens.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		B0FBB6FAD9E608D1DAEC9B54 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5E8D5ED6AD38164124121C27 /* Debug.xcconfig */,
+				FDC2ED8DBE3B3C6AA0BEADE2 /* Release.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		B533A438D2FCD8156E46BE7D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				99167C14D606648373727810 /* Assets.xcassets */,
+				894B37687F72901C361EE29B /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E795649DBB933CEAB6E8DF74 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B5DA19983009626E575050E3 /* FlexFitApp.swift */,
+				212D1DC0A572FAE9A427DEF5 /* RootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		EA1F7BB2F5A32A094F0D8814 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BFA2DB5D273E519402662ADE /* Controls.swift */,
+				021B178EE4264D6FED7AA019 /* Labels.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A25D89457C171DCCE24F0213 /* FlexFit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2651CE74324F6163A086882A /* Build configuration list for PBXNativeTarget "FlexFit" */;
+			buildPhases = (
+				7BE7E1C04208E0F6B85A4C1A /* Sources */,
+				ACC5ACFE110E18A3A9AFC419 /* Resources */,
+				8739B39B8F244377D4FDB120 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlexFit;
+			packageProductDependencies = (
+				EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */,
+			);
+			productName = FlexFit;
+			productReference = 9107581F9BCE843835DCAAA8 /* FlexFit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AD3E5C8E6F6FEE0AC9C5D550 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					A25D89457C171DCCE24F0213 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = A71E43B4F60F3A8642CE45E9 /* Build configuration list for PBXProject "FlexFit" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = A371934A3A16D7A6A7B2494D;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5F780FEA4C5293AC7BD2B091 /* XCLocalSwiftPackageReference "Packages/FlexFitEngine" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5512556FF3DB33E057725269 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A25D89457C171DCCE24F0213 /* FlexFit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ACC5ACFE110E18A3A9AFC419 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC505F7D4A18056E78920262 /* Assets.xcassets in Resources */,
+				F4633202A733B71777E902DF /* OFL.txt in Resources */,
+				3839DC01FD6605745F3D45EB /* PlusJakartaSans-Bold.ttf in Resources */,
+				E8B6A4DAB6DF548718DABD21 /* PlusJakartaSans-ExtraBold.ttf in Resources */,
+				1110D95B8ABAB7E1A7BD0517 /* PlusJakartaSans-Medium.ttf in Resources */,
+				E5B8FEAE8F088611ABDDE343 /* PlusJakartaSans-Regular.ttf in Resources */,
+				A55690E83A67069F5C80110E /* PlusJakartaSans-SemiBold.ttf in Resources */,
+				D1C293FE44D851A4BE64151B /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7BE7E1C04208E0F6B85A4C1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2B554DC7040E9B3ED63E262 /* BuildingView.swift in Sources */,
+				51D6359ABC7713024096DFFA /* Controls.swift in Sources */,
+				18689C3AA0A93C6358F7857D /* DebugLaunch.swift in Sources */,
+				D4FF7CE6D108A581E5F542EB /* DesignTokens.swift in Sources */,
+				0C1403F4E879304A6772307B /* FlexFitApp.swift in Sources */,
+				F40255F6EC3C07EB4D6544F4 /* IntroView.swift in Sources */,
+				E63AFA867514A5121C5297F4 /* Labels.swift in Sources */,
+				52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */,
+				E0A0B1D34F9058D6158D82CC /* OnboardingFlow.swift in Sources */,
+				329CCD5395EFE752A24ADADC /* PlanReadyView.swift in Sources */,
+				59C21BCE89182BD84AEAB048 /* RootView.swift in Sources */,
+				F208F9937B7776640A45A1E1 /* Schema.swift in Sources */,
+				EFAEF54DBCE54C6558E545DD /* WizardView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		12DC72F2EA88FC8B93255E89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FlexFit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilabbs.flexfit;
+				PRODUCT_NAME = FlexFit;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		999BBBC32DE7ED0295489F89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E8D5ED6AD38164124121C27 /* Debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AD5225D5D605897CDE598C58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FDC2ED8DBE3B3C6AA0BEADE2 /* Release.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		CA5CDCA43B3BB4A959C176EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FlexFit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilabbs.flexfit;
+				PRODUCT_NAME = FlexFit;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2651CE74324F6163A086882A /* Build configuration list for PBXNativeTarget "FlexFit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12DC72F2EA88FC8B93255E89 /* Debug */,
+				CA5CDCA43B3BB4A959C176EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A71E43B4F60F3A8642CE45E9 /* Build configuration list for PBXProject "FlexFit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999BBBC32DE7ED0295489F89 /* Debug */,
+				AD5225D5D605897CDE598C58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		5F780FEA4C5293AC7BD2B091 /* XCLocalSwiftPackageReference "Packages/FlexFitEngine" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/FlexFitEngine;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FlexFitEngine;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AD3E5C8E6F6FEE0AC9C5D550 /* Project object */;
+}

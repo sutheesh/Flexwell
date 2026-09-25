@@ -1,0 +1,3 @@
+#include "Shared.xcconfig"
+
+FF_ENVIRONMENT = release

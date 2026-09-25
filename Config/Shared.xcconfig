@@ -1,0 +1,7 @@
+// Settings common to every configuration.
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1
+
+// Set your Apple Developer Team ID here. It must be present for Release too,
+// or archiving fails at the very end of the build.
+DEVELOPMENT_TEAM =

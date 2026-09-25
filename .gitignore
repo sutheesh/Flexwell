@@ -1,0 +1,11 @@
+.DS_Store
+xcuserdata/
+DerivedData/
+build/
+.build/
+*.xcuserstate
+.swiftpm/
+
+# Personal Claude Code permissions (local paths) — not shared
+.claude/settings.json
+.claude/settings.local.json
