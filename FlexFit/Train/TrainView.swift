@@ -7,12 +7,12 @@ import FlexFitEngine
 /// Always dark by design — the mock draws this tab on navy in both appearances.
 /// This is the one screen that forces the scheme; don't copy the pattern elsewhere.
 struct TrainView: View {
-    let onAdapt: () -> Void
-
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppRouter.self) private var router
     @Query private var profiles: [ProfileRecord]
     @Query private var logs: [DailyLog]
     @Query private var swaps: [ExerciseSwap]
+    @Query private var painFlags: [PainFlag]
     @State private var selectedWeekday = TrainView.todayWeekday
     @State private var swapTarget: SwapTarget?
 
@@ -26,14 +26,15 @@ struct TrainView: View {
     var body: some View {
         Group {
             if let record = profiles.first {
-                content(profile: record.profile(), week: TodayPlan.weekNumber(since: record.createdAt, now: .now))
+                content(record: record, week: TodayPlan.weekNumber(since: record.createdAt, now: .now))
             }
         }
         .environment(\.colorScheme, .dark)
     }
 
-    private func content(profile: UserProfile, week weekNumber: Int) -> some View {
-        let resolver = PlanResolver(profile: profile, swaps: swaps, logs: logs)
+    private func content(record: ProfileRecord, week weekNumber: Int) -> some View {
+        let resolver = PlanResolver(record: record, swaps: swaps, logs: logs, painFlags: painFlags)
+        let profile = resolver.profile
         let dates = weekDates()
         let selectedDate = dates[selectedWeekday]
         let isToday = selectedWeekday == Self.todayWeekday
@@ -43,12 +44,14 @@ struct TrainView: View {
 
         return ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                ScreenHeader(initial: profile.name, kicker: "Workout plan · week \(weekNumber)", title: "Schedule")
+                HeaderButton(name: profile.name, kicker: "Workout plan · week \(weekNumber)", title: "Schedule")
 
                 WeekStrip(week: resolver.week, dates: dates, selected: $selectedWeekday)
                     .padding(.top, Space.sm)
 
-                SessionPanel(day: day, plan: plan, isToday: isToday, onAdapt: onAdapt)
+                SessionPanel(day: day, plan: plan, isToday: isToday, travel: resolver.travelKit(on: selectedDate),
+                             onStart: { router.workoutDay = selectedDate },
+                             onAdapt: { router.isAdaptPresented = true })
                     .padding(.top, Space.md - 2)
 
                 if let plan, !plan.exercises.isEmpty {
@@ -69,7 +72,7 @@ struct TrainView: View {
                                     index: index + 1,
                                     planned: planned,
                                     exercise: exercise,
-                                    owned: profile.equipment,
+                                    owned: resolver.equipment(on: selectedDate),
                                     isDone: done.contains(planned.exerciseID),
                                     wasSwapped: isSwapped(planned.exerciseID, on: selectedDate),
                                     onToggleDone: { toggleDone(planned.exerciseID, on: selectedDate) },
@@ -101,6 +104,7 @@ struct TrainView: View {
             SwapSheet(
                 exercise: target.exercise,
                 profile: profile,
+                equipment: resolver.equipment(on: selectedDate),
                 history: resolver.history,
                 usedThisWeek: resolver.usedThisWeek(on: selectedDate),
                 onChoose: { replacement, scope in
@@ -241,6 +245,8 @@ private struct SessionPanel: View {
     let day: PlannedDay
     let plan: SessionPlan?
     let isToday: Bool
+    let travel: TravelKit?
+    let onStart: () -> Void
     let onAdapt: () -> Void
 
     var body: some View {
@@ -263,15 +269,26 @@ private struct SessionPanel: View {
                     .foregroundStyle(Palette.onPanelMuted)
                     .padding(.top, Space.sm - 2)
                 if isToday, day.kind == .training {
-                    Button(action: onAdapt) {
-                        Text("Adapt session")
-                            .textStyle(.chip)
-                            .foregroundStyle(Palette.navy)
-                            .padding(.horizontal, Space.md - 1)
-                            .padding(.vertical, Space.sm - 1)
-                            .background(Palette.ice, in: Capsule())
+                    HStack(spacing: Space.xs) {
+                        Button(action: onStart) {
+                            Text("Start")
+                                .textStyle(.chip)
+                                .foregroundStyle(Palette.navy)
+                                .padding(.horizontal, Space.md - 1)
+                                .padding(.vertical, Space.sm - 1)
+                                .background(Palette.ice, in: Capsule())
+                        }
+                        .buttonStyle(PressableStyle())
+                        Button(action: onAdapt) {
+                            Text("Adapt")
+                                .textStyle(.chip)
+                                .foregroundStyle(Palette.onPanel)
+                                .padding(.horizontal, Space.md - 1)
+                                .padding(.vertical, Space.sm - 1)
+                                .overlay(Capsule().strokeBorder(Palette.onPanelOutline))
+                        }
+                        .buttonStyle(PressableStyle())
                     }
-                    .buttonStyle(PressableStyle())
                     .padding(.top, Space.md - 2)
                 }
             }
@@ -299,6 +316,7 @@ private struct SessionPanel: View {
     }
 
     private var tag: String {
+        if travel != nil && day.kind == .training { return isToday ? "Today · Travel mode" : "Travel mode" }
         let base: String = switch plan?.variant {
         case .trimmed?: "Adapted · low energy"
         case .minimum?: "Minimum session"

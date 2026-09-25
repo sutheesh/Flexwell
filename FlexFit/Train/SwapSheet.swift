@@ -5,6 +5,8 @@ import FlexFitEngine
 struct SwapSheet: View {
     let exercise: Exercise
     let profile: UserProfile
+    /// What's in play today (the travel kit while Travel Mode is on).
+    let equipment: Set<Equipment>
     let history: Set<String>
     let usedThisWeek: Set<String>
     let onChoose: (Exercise, SwapScope) -> Void
@@ -12,7 +14,7 @@ struct SwapSheet: View {
     @State private var scope: SwapScope = .today
 
     private var options: [SwapOption] {
-        SwapRanker.alternatives(for: exercise, equipment: profile.equipment, limitations: profile.limitations,
+        SwapRanker.alternatives(for: exercise, equipment: equipment, limitations: profile.limitations,
                                 history: history, usedThisWeek: usedThisWeek)
     }
 
@@ -42,13 +44,13 @@ struct SwapSheet: View {
                     .padding(.top, Space.xs)
 
                 if options.isEmpty {
-                    InlineNote(text: "Nothing else with your equipment trains this movement safely. Keep it, or add equipment in settings.")
+                    InlineNote(text: "Nothing else with your equipment trains this movement safely. Keep it, or add equipment in Settings (tap your initial).")
                         .padding(.top, Space.md)
                 } else {
                     CardList {
                         ForEach(options, id: \.exercise.id) { option in
                             Button { onChoose(option.exercise, scope) } label: {
-                                OptionRow(option: option, owned: profile.equipment)
+                                OptionRow(option: option, owned: equipment)
                             }
                             .buttonStyle(.plain)
                         }

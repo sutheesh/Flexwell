@@ -35,6 +35,9 @@ targets:
         SWIFT_VERSION: "6.0"
         ENABLE_PREVIEWS: YES
         CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: FlexFit/FlexFit.entitlements
     scheme:
+      # Local StoreKit testing. Only applies when Xcode launches the app; the file isn't bundled.
+      storeKitConfiguration: Config/FlexFit.storekit
       testTargets:
         - package: FlexFitEngine/FlexFitEngineTests

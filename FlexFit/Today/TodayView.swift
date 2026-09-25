@@ -4,13 +4,15 @@ import FlexFitEngine
 
 /// Today: the day's targets and protein check, the energy check-in, and the session it shapes.
 struct TodayView: View {
-    let onStartWorkout: () -> Void
-    let onAdapt: () -> Void
-    let onWeighIn: () -> Void
-
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppRouter.self) private var router
+    @Environment(EntitlementService.self) private var entitlements
     @Query private var profiles: [ProfileRecord]
     @Query(sort: \DailyLog.day, order: .reverse) private var logs: [DailyLog]
+    @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
+    @Query private var sessions: [SessionLog]
+    @Query private var swaps: [ExerciseSwap]
+    @Query private var painFlags: [PainFlag]
 
     var body: some View {
         if let record = profiles.first {
@@ -22,40 +24,53 @@ struct TodayView: View {
         let now = Date.now
         let plannedToday = TodayPlan.plannedDay(for: profile, on: now)
         let todayLog = log(for: now)
-        let lowYesterday = log(for: Calendar.current.date(byAdding: .day, value: -1, to: now) ?? now)?.energyValue == .low
-        let pivot = todayLog?.energyValue.map {
-            EnergyPivot.pivot(energy: $0, lowYesterday: lowYesterday, plannedMinutes: plannedToday.minutes)
-        }
-        let targets = TargetCalculator.initialTargets(for: profile)
+        let resolver = PlanResolver(record: record, swaps: swaps, logs: logs, painFlags: painFlags)
+        let plan = resolver.session(forWeekday: TrainView.todayWeekday, on: now, applyPivot: true)
+        let pivot = resolver.pivot(on: now, plannedMinutes: plannedToday.minutes)
+        let targets = TargetsStore.current(weekly, profile: profile, now: now)
         let week = TodayPlan.weekNumber(since: record.createdAt, now: now)
         let totalWeeks = TargetCalculator.weeksToGoal(for: profile)
+        let streak = Streak.weeks(sessionsPerWeek: sessionsPerWeek(now: now), planned: profile.trainingDays)
+        let doneToday = sessions.contains { Calendar.current.isDate($0.day, inSameDayAs: now) }
 
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
-                TodayHeader(name: profile.name, date: now, week: week)
+                Button { router.isSettingsPresented = true } label: {
+                    TodayHeader(name: profile.name, date: now, week: week)
+                }
+                .buttonStyle(.plain)
+                .accessibilityHint("Opens settings")
 
                 TargetsCard(
                     targets: targets,
                     date: now,
-                    weekLabel: totalWeeks.map { "Week \(min(week, $0)) of \($0)" } ?? "Week \(week)",
+                    weekLabel: streak > 0 ? "🔥 \(streak)-week streak"
+                        : (totalWeeks.map { "Week \(min(week, $0)) of \($0)" } ?? "Week \(week)"),
                     protein: todayLog?.proteinValue,
                     onProtein: { answer in setProtein(answer, on: now) }
                 )
 
                 if plannedToday.kind == .training {
                     EnergyCheckIn(energy: todayLog?.energyValue, pivot: pivot,
-                                  onPick: { setEnergy($0, on: now) },
+                                  onPick: { pick($0, on: now) },
                                   onChange: { setEnergy(nil, on: now) })
                 }
 
-                SessionCard(day: plannedToday, pivot: pivot, onStart: onStartWorkout, onAdapt: onAdapt)
+                SessionCard(day: plannedToday, pivot: pivot, plan: plan, travel: record.activeTravelKit(now: now),
+                            isDone: doneToday,
+                            onStart: { router.workoutDay = Calendar.current.startOfDay(for: now) },
+                            onAdapt: { router.isAdaptPresented = true })
 
                 SectionHeader(title: "Quick adjustments")
                 CardList {
                     ActionRow(icon: "airplane", tint: .navy, title: "Travel mode",
-                              subtitle: "Same muscles with bodyweight or bands", badge: "Pro", action: onAdapt)
+                              subtitle: record.activeTravelKit(now: now).map { "On · \($0.title.lowercased())" }
+                                  ?? "Same muscles with bodyweight or bands",
+                              badge: entitlements.canUseTravelMode ? nil : "Pro") {
+                        if entitlements.canUseTravelMode { router.isAdaptPresented = true } else { router.paywall = .travel }
+                    }
                     ActionRow(icon: "scalemass", tint: .blue, title: "Weekly weigh-in",
-                              subtitle: "Keeps your targets honest", action: onWeighIn)
+                              subtitle: "Keeps your targets honest") { router.tab = .eat }
                 }
             }
             .padding(.horizontal, Space.lg)
@@ -72,6 +87,25 @@ struct TodayView: View {
     private func log(for date: Date) -> DailyLog? {
         let start = Calendar.current.startOfDay(for: date)
         return logs.first { $0.day == start }
+    }
+
+    /// Low energy spends one of the free tier's monthly pivots; out of pivots opens the paywall.
+    private func pick(_ energy: Energy, on date: Date) {
+        if energy == .low, entitlements.lowNeedsPro(todayIsLow: log(for: date)?.energyValue == .low, logs: logs, now: date) {
+            router.paywall = .pivots
+            return
+        }
+        setEnergy(energy, on: date)
+    }
+
+    private func sessionsPerWeek(now: Date) -> [Int] {
+        let thisWeek = Week.start(of: now)
+        var counts = Array(repeating: 0, count: 53)
+        for s in sessions {
+            let weeksAgo = (Calendar.current.dateComponents([.day], from: Week.start(of: s.day), to: thisWeek).day ?? 0) / 7
+            if (0..<counts.count).contains(weeksAgo) { counts[weeksAgo] += 1 }
+        }
+        return counts
     }
 
     private func setEnergy(_ energy: Energy?, on date: Date) {
@@ -370,11 +404,14 @@ enum EnergyCopy {
 private struct SessionCard: View {
     let day: PlannedDay
     let pivot: PivotResult?
+    let plan: SessionPlan?
+    let travel: TravelKit?
+    let isDone: Bool
     let onStart: () -> Void
     let onAdapt: () -> Void
 
     private var isTraining: Bool { day.kind == .training }
-    private var minutes: Int { pivot?.minutes ?? day.minutes }
+    private var minutes: Int { plan?.minutes ?? pivot?.minutes ?? day.minutes }
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -403,7 +440,7 @@ private struct SessionCard: View {
             if isTraining {
                 HStack(spacing: Space.xs + 1) {
                     Button(action: onStart) {
-                        Text("Start workout")
+                        Text(isDone ? "Log another" : "Start workout")
                             .textStyle(.button)
                             .foregroundStyle(Palette.navy)
                             .frame(maxWidth: .infinity, minHeight: Size.button)
@@ -467,7 +504,9 @@ private struct SessionCard: View {
     }
 
     private var badge: String {
-        switch (day.kind, pivot?.variant) {
+        if isDone { return "Done today · streak kept" }
+        if travel != nil && isTraining { return "Travel mode" }
+        return switch (day.kind, pivot?.variant) {
         case (.training, .trimmed?): "Adapted · low energy"
         case (.training, .minimum?): "Minimum session"
         case (.training, _): "Training day"
@@ -488,7 +527,7 @@ private struct SessionCard: View {
 
     private var meta: String {
         switch day.kind {
-        case .training: "\(minutes) min · RPE ≤ \(pivot?.rpeCap ?? 8)"
+        case .training: "\(minutes) min · \(plan?.exercises.count ?? 0) exercises · RPE ≤ \(pivot?.rpeCap ?? 8)"
         case .activeRecovery: "\(minutes) min · easy"
         case .rest: "Recover"
         }

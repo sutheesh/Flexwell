@@ -4,6 +4,10 @@ import SwiftData
 @main
 struct FlexFitApp: App {
     let container: ModelContainer
+    // Created once here, in init, so the instance wired into the entitlements is the one the app keeps.
+    let entitlements: EntitlementService
+    let store: StoreService
+    @State private var router = AppRouter()
 
     init() {
         do {
@@ -15,11 +19,18 @@ struct FlexFitApp: App {
             fatalError("Could not open the data store: \(error)")
         }
         DebugLaunch.apply(to: container)
+        let entitlements = EntitlementService()
+        self.entitlements = entitlements
+        self.store = StoreService(entitlements: entitlements)
     }
 
     var body: some Scene {
         WindowGroup {
             AppRoot()
+                .environment(entitlements)
+                .environment(store)
+                .environment(router)
+                .task { await store.refreshPurchaseStatus() }
         }
         .modelContainer(container)
     }
@@ -34,6 +45,7 @@ struct AppRoot: View {
             OnboardingFlow()
         } else {
             RootView()
+                .weeklyTargetsUpkeep()
         }
     }
 }

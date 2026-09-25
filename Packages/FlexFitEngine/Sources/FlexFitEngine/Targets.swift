@@ -10,6 +10,15 @@ public struct DailyTargets: Codable, Sendable, Equatable {
     public var expenditure: Int
     /// True when the safety floor raised the target above the goal-derived number.
     public var floorApplied: Bool
+
+    public init(calories: Int, proteinG: Int, carbsG: Int, fatG: Int, expenditure: Int, floorApplied: Bool) {
+        self.calories = calories
+        self.proteinG = proteinG
+        self.carbsG = carbsG
+        self.fatG = fatG
+        self.expenditure = expenditure
+        self.floorApplied = floorApplied
+    }
 }
 
 public enum TargetCalculator {

@@ -20,6 +20,11 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<!-- Apple Health: asked only when the user turns on sync in Settings. -->
+	<key>NSHealthShareUsageDescription</key>
+	<string>FlexFit reads your body weight to track your weekly trend and adjust your calorie and protein targets.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>FlexFit saves your finished sessions to Apple Health as strength workouts.</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<!-- HTTPS only; exempt. Stops App Store Connect asking on every upload. -->

@@ -1,15 +1,30 @@
 import Foundation
 import FlexFitEngine
 
-/// Resolves what the user should actually do on a given day: the built session,
-/// then saved swaps, then today's energy pivot.
+/// Resolves what the user should actually do on a given day:
+/// built session → saved swaps → Travel Mode → "This hurts" exclusions → sore areas → energy pivot.
 struct PlanResolver {
+    let record: ProfileRecord
     let profile: UserProfile
     let swaps: [ExerciseSwap]
     let logs: [DailyLog]
+    var painFlags: [PainFlag] = []
     var library: ExerciseLibrary = .bundled
 
+    init(record: ProfileRecord, swaps: [ExerciseSwap], logs: [DailyLog], painFlags: [PainFlag] = []) {
+        self.record = record
+        self.profile = record.profile()
+        self.swaps = swaps
+        self.logs = logs
+        self.painFlags = painFlags
+    }
+
     var week: [PlannedDay] { WeekPlanner.week(for: profile) }
+
+    func travelKit(on date: Date) -> TravelKit? { record.activeTravelKit(now: date) }
+
+    /// Equipment in play on `date`: the travel kit while Travel Mode is on.
+    func equipment(on date: Date) -> Set<Equipment> { travelKit(on: date)?.equipment ?? profile.equipment }
 
     func session(forWeekday weekday: Int, on date: Date, applyPivot: Bool) -> SessionPlan? {
         let day = week[weekday]
@@ -18,13 +33,28 @@ struct PlanResolver {
                                         variation: WeekPlanner.variation(forWeekday: weekday, in: week))
         plan.exercises = plan.exercises.map { applySwaps(to: $0, on: date) }
 
-        if applyPivot, let energy = log(for: date)?.energyValue {
-            let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: date) ?? date
-            let pivot = EnergyPivot.pivot(energy: energy, lowYesterday: log(for: yesterday)?.energyValue == .low,
-                                          plannedMinutes: plan.minutes)
-            plan = SessionBuilder.apply(pivot, to: plan, profile: profile, library: library)
+        let owned = equipment(on: date)
+        if let kit = travelKit(on: date) {
+            plan = TravelConverter.convert(plan, kit: kit, limitations: profile.limitations, library: library)
+        }
+        let hurting = Set(painFlags.filter { $0.until > date }.map(\.exerciseID))
+        plan = SessionAdjuster.exclude(hurting, in: plan, profile: profile, equipment: owned, library: library)
+
+        if applyPivot, let log = log(for: date) {
+            let sore = Set(log.soreAreas.compactMap(SoreArea.init(rawValue:)))
+            plan = SessionAdjuster.avoid(sore, in: plan, profile: profile, equipment: owned, library: library)
+            if let pivot = pivot(on: date, plannedMinutes: plan.minutes) {
+                plan = SessionBuilder.apply(pivot, to: plan, profile: profile, library: library, equipment: owned)
+            }
         }
         return plan
+    }
+
+    func pivot(on date: Date, plannedMinutes: Int) -> PivotResult? {
+        guard let energy = log(for: date)?.energyValue else { return nil }
+        let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: date) ?? date
+        return EnergyPivot.pivot(energy: energy, lowYesterday: log(for: yesterday)?.energyValue == .low,
+                                 plannedMinutes: plannedMinutes)
     }
 
     private func applySwaps(to planned: PlannedExercise, on date: Date) -> PlannedExercise {

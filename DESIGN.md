@@ -78,6 +78,9 @@ All styles scale with Dynamic Type relative to the listed system style. Use `.te
 - Images: the mock's image slots are placeholders. The mock's own drawn illustrations (hero, lift, walk) are in `Assets.xcassets/Illustrations` until real art exists.
 - Shared controls live in `FlexFit/Components/Controls.swift`: `PrimaryButton` (inkFill), `IceButton` (on always-dark grounds), `DisabledCTA`, `KickerPill`, `CardList`, `ChoiceRow`, `Chip`, `FlowLayout`, `UnitField`, `InlineNote`.
 - Layout helpers: `.readableColumn()` caps content at 560pt (iPad); `.bottomBarBackground()` behind any bar pinned over scrolling content; `.statusBarBackdrop()` on scrolling screens with no navigation bar.
+- **Always-dark screens (deliberate):** Intro, "building your plan", the Paywall (fixed `navy` ground) and the Train tab (`.environment(\.colorScheme, .dark)`, because the mock draws Train on navy). No other screen forces a scheme.
+- Charts (Eat, Path) use Swift Charts with token colours: trend `copperText`/`copper`, plan line `onPanelOutline` dashed, target rule `blueText`.
+- Sheets that need the paywall close themselves first; the paywall is presented only from the root.
 - Bottom CTAs over forms hide while a text field is focused — otherwise they ride up on the keyboard and cover the field.
 
 ## MVP scope vs the mock
