@@ -13,7 +13,11 @@ struct RootView: View {
     var body: some View {
         TabView(selection: tabSelection) {
             Tab("Today", systemImage: "house", value: AppTab.today) {
-                PlaceholderScreen(kicker: "Today", title: "Hi Alex")
+                TodayView(
+                    onStartWorkout: { selection = .train },
+                    onAdapt: { isAdaptPresented = true },
+                    onWeighIn: { selection = .eat }
+                )
             }
             Tab("Train", systemImage: "dumbbell", value: AppTab.train) {
                 PlaceholderScreen(kicker: "Workout plan", title: "Schedule")

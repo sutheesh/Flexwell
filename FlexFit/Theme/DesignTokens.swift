@@ -252,6 +252,10 @@ enum Size {
     static let logoTile: CGFloat = 26
     /// Plan-building spinner.
     static let spinner: CGFloat = 120
+    /// Status dots in badges.
+    static let dot: CGFloat = 6
+    /// Max width of text laid over a panel illustration.
+    static let panelTextWidth: CGFloat = 260
     /// Width of the plan-building progress track.
     static let progressTrack: CGFloat = 210
 }

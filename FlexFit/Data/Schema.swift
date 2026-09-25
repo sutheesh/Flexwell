@@ -10,7 +10,7 @@ import FlexFitEngine
 
 enum SchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
-    static var models: [any PersistentModel.Type] { [ProfileRecord.self] }
+    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self] }
 
     @Model
     final class ProfileRecord {
@@ -37,9 +37,54 @@ enum SchemaV1: VersionedSchema {
 
         init() {}
     }
+
+    /// One row per calendar day: the energy check-in and the protein check.
+    /// Not unique-constrained (CloudKit can't be); look it up by `day`.
+    @Model
+    final class DailyLog {
+        /// Start of the local day.
+        var day: Date = Date.now
+        var energy: String?
+        var soreAreas: [String] = []
+        var proteinCheck: String?
+        var updatedAt: Date = Date.now
+
+        init(day: Date) {
+            self.day = day
+        }
+    }
 }
 
 typealias ProfileRecord = SchemaV1.ProfileRecord
+typealias DailyLog = SchemaV1.DailyLog
+
+extension DailyLog {
+    var energyValue: Energy? {
+        get { energy.flatMap(Energy.init(rawValue:)) }
+        set { energy = newValue?.rawValue; updatedAt = .now }
+    }
+
+    var proteinValue: ProteinCheck? {
+        get { proteinCheck.flatMap(ProteinCheck.init(rawValue:)) }
+        set { proteinCheck = newValue?.rawValue; updatedAt = .now }
+    }
+
+    /// The log for `date`'s day, creating it if needed.
+    static func forDay(_ date: Date, in context: ModelContext) -> DailyLog {
+        let start = Calendar.current.startOfDay(for: date)
+        if let existing = existing(start, in: context) { return existing }
+        let log = DailyLog(day: start)
+        context.insert(log)
+        return log
+    }
+
+    static func existing(_ date: Date, in context: ModelContext) -> DailyLog? {
+        let start = Calendar.current.startOfDay(for: date)
+        var descriptor = FetchDescriptor<DailyLog>(predicate: #Predicate { $0.day == start })
+        descriptor.fetchLimit = 1
+        return try? context.fetch(descriptor).first
+    }
+}
 
 enum FlexFitMigrationPlan: SchemaMigrationPlan {
     static var schemas: [any VersionedSchema.Type] { [SchemaV1.self] }

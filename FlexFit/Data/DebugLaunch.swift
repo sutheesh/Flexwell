@@ -5,6 +5,7 @@ import FlexFitEngine
 /// Launch arguments for development and UI tests. Compiled out of Release.
 ///   -FFResetData      wipe the store on launch (see onboarding again)
 ///   -FFSeedProfile    insert the PRD's demo user and skip onboarding
+///   -FFLowYesterday   with -FFSeedProfile: log yesterday as a low-energy day
 enum DebugLaunch {
     static func apply(to container: ModelContainer) {
         #if DEBUG
@@ -12,9 +13,13 @@ enum DebugLaunch {
         let context = ModelContext(container)
         if args.contains("-FFResetData") || args.contains("-FFSeedProfile") {
             try? context.delete(model: ProfileRecord.self)
+            try? context.delete(model: DailyLog.self)
         }
         if args.contains("-FFSeedProfile") {
             context.insert(ProfileRecord(profile: .demo))
+            if args.contains("-FFLowYesterday"), let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: .now) {
+                DailyLog.forDay(yesterday, in: context).energyValue = .low
+            }
         }
         try? context.save()
         #endif
