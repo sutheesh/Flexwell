@@ -122,3 +122,21 @@ let library = ExerciseLibrary.bundled
     #expect(minimum.exercises.filter { library[$0.exerciseID]!.compound }.count == 1)
     #expect(minimum.variant == .minimum)
 }
+
+@Test func loadedLiftSwapsToALoadedLiftWhenGearAllows() {
+    let press = library["db_flat_press"]!
+    let options = SwapRanker.alternatives(for: press, equipment: TrainingEnvironment.homeGym.presetEquipment,
+                                          limitations: [], currentLoadKg: 20)
+    #expect(options.first?.exercise.loadGroup == "press_horizontal")
+    #expect(options.first?.carriedLoadKg != nil)
+}
+
+@Test func verticalPullSlotPrefersACompoundPull() {
+    var p = alex
+    p.limitations = []
+    for variation in 0...1 {
+        let plan = SessionBuilder.build(focus: .upper, profile: p, variation: variation)
+        let pulls = plan.exercises.compactMap { library[$0.exerciseID] }.filter { $0.pattern == .verticalPull }
+        #expect(pulls.allSatisfy { $0.compound }, "\(pulls.map(\.id))")
+    }
+}

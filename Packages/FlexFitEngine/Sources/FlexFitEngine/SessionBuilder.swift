@@ -84,7 +84,8 @@ public enum SessionBuilder {
             .filter { !used.contains($0.id) && $0.difficulty <= maxDifficulty }
             .map { ex -> (Exercise, Double) in
                 var score = 1 - abs(Double(ex.difficulty) - target) / 2
-                if slot < 3 && ex.compound { score += 1 }
+                // Compounds lead every slot they can fill; isolation work only when the pattern has nothing else.
+                if ex.compound { score += 1 }
                 if ex.isLoadable { score += 0.3 }
                 return (ex, score)
             }
