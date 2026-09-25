@@ -50,3 +50,12 @@ public enum WeekPlanner {
         }
     }
 }
+
+extension WeekPlanner {
+    /// How many times this day's focus already appeared earlier in the week (0 for the first),
+    /// so repeated sessions (Upper on Mon and Thu) pick different exercises.
+    public static func variation(forWeekday weekday: Int, in week: [PlannedDay]) -> Int {
+        guard let focus = week[weekday].focus else { return 0 }
+        return week[..<weekday].filter { $0.focus == focus }.count
+    }
+}

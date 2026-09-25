@@ -14,6 +14,7 @@ enum DebugLaunch {
         if args.contains("-FFResetData") || args.contains("-FFSeedProfile") {
             try? context.delete(model: ProfileRecord.self)
             try? context.delete(model: DailyLog.self)
+            try? context.delete(model: ExerciseSwap.self)
         }
         if args.contains("-FFSeedProfile") {
             context.insert(ProfileRecord(profile: .demo))

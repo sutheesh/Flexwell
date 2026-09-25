@@ -10,7 +10,7 @@ import FlexFitEngine
 
 enum SchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
-    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self] }
+    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self] }
 
     @Model
     final class ProfileRecord {
@@ -47,15 +47,34 @@ enum SchemaV1: VersionedSchema {
         var energy: String?
         var soreAreas: [String] = []
         var proteinCheck: String?
+        /// Exercises ticked off in this day's session. Set logging (PRD F6) replaces this.
+        var completedExercises: [String] = []
         var updatedAt: Date = Date.now
 
         init(day: Date) {
             self.day = day
         }
     }
+
+    /// A swap the user chose (PRD F3). `day` set → today only ("machine taken");
+    /// `day` nil → applies to future weeks too ("I don't like this").
+    @Model
+    final class ExerciseSwap {
+        var day: Date?
+        var originalID: String = ""
+        var replacementID: String = ""
+        var createdAt: Date = Date.now
+
+        init(day: Date?, originalID: String, replacementID: String) {
+            self.day = day
+            self.originalID = originalID
+            self.replacementID = replacementID
+        }
+    }
 }
 
 typealias ProfileRecord = SchemaV1.ProfileRecord
+typealias ExerciseSwap = SchemaV1.ExerciseSwap
 typealias DailyLog = SchemaV1.DailyLog
 
 extension DailyLog {

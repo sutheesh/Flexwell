@@ -10,7 +10,7 @@ let package = Package(
         .library(name: "FlexFitEngine", targets: ["FlexFitEngine"]),
     ],
     targets: [
-        .target(name: "FlexFitEngine"),
+        .target(name: "FlexFitEngine", resources: [.copy("Resources/exercises.json")]),
         .testTarget(name: "FlexFitEngineTests", dependencies: ["FlexFitEngine"]),
     ]
 )

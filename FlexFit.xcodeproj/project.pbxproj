@@ -10,13 +10,16 @@
 		0C1403F4E879304A6772307B /* FlexFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DA19983009626E575050E3 /* FlexFitApp.swift */; };
 		1110D95B8ABAB7E1A7BD0517 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */; };
 		18689C3AA0A93C6358F7857D /* DebugLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB90510968BA28DD217767 /* DebugLaunch.swift */; };
+		2BD3FEBFDD7BDBE98D3A8F71 /* TrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFD7B7BF6FC2BE8CBA44DC /* TrainView.swift */; };
 		329CCD5395EFE752A24ADADC /* PlanReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1448D532A2C19586D41DEC06 /* PlanReadyView.swift */; };
 		3839DC01FD6605745F3D45EB /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */; };
 		51D6359ABC7713024096DFFA /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DB5D273E519402662ADE /* Controls.swift */; };
 		52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21784056B85AB72E023F29C /* OnboardingDraft.swift */; };
 		59C21BCE89182BD84AEAB048 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D1DC0A572FAE9A427DEF5 /* RootView.swift */; };
+		59CFD98A021C7C781BDED674 /* PlanResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BA482AA556BE8A397B8372 /* PlanResolver.swift */; };
 		5B83A1F0D60AB8F44EA8F329 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB65212CC71A46ADF0E587A /* TodayView.swift */; };
 		607E4391A37857E05F798995 /* FlexFitEngine in Frameworks */ = {isa = PBXBuildFile; productRef = EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */; };
+		7DD92D04CC33694A4AB6FC6E /* SwapSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E50B85B5EFD34245E91357 /* SwapSheet.swift */; };
 		A55690E83A67069F5C80110E /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */; };
 		BC505F7D4A18056E78920262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99167C14D606648373727810 /* Assets.xcassets */; };
 		D1C293FE44D851A4BE64151B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */; };
@@ -44,15 +47,18 @@
 		5E8D5ED6AD38164124121C27 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		6F3055FFD42860FE10325647 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
 		72210B436C2AFD24E32EF575 /* BuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingView.swift; sourceTree = "<group>"; };
+		7DEFD7B7BF6FC2BE8CBA44DC /* TrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainView.swift; sourceTree = "<group>"; };
 		87FECA0E4F3289209780AEBA /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
-		9107581F9BCE843835DCAAA8 /* FlexFit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FlexFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		9107581F9BCE843835DCAAA8 /* FlexFit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		99167C14D606648373727810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
 		B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		B5DA19983009626E575050E3 /* FlexFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexFitApp.swift; sourceTree = "<group>"; };
 		BFA2DB5D273E519402662ADE /* Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
+		C1BA482AA556BE8A397B8372 /* PlanResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanResolver.swift; sourceTree = "<group>"; };
 		CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		D1E50B85B5EFD34245E91357 /* SwapSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwapSheet.swift; sourceTree = "<group>"; };
 		E43611D1D53C5019AC7BE40C /* WizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardView.swift; sourceTree = "<group>"; };
 		E94D867AE3A7FE5323F922BC /* FlexFitEngine */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FlexFitEngine; path = Packages/FlexFitEngine; sourceTree = SOURCE_ROOT; };
 		E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -86,8 +92,19 @@
 				B533A438D2FCD8156E46BE7D /* Resources */,
 				AD15994B155137C7A9B17199 /* Theme */,
 				F4085E12E715DBEF588A02F5 /* Today */,
+				5282697CAB330284C1DE4923 /* Train */,
 			);
 			path = FlexFit;
+			sourceTree = "<group>";
+		};
+		5282697CAB330284C1DE4923 /* Train */ = {
+			isa = PBXGroup;
+			children = (
+				C1BA482AA556BE8A397B8372 /* PlanResolver.swift */,
+				D1E50B85B5EFD34245E91357 /* SwapSheet.swift */,
+				7DEFD7B7BF6FC2BE8CBA44DC /* TrainView.swift */,
+			);
+			path = Train;
 			sourceTree = "<group>";
 		};
 		5512556FF3DB33E057725269 /* Products */ = {
@@ -236,7 +253,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					A25D89457C171DCCE24F0213 = {
-						DevelopmentTeam = "";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -296,9 +312,12 @@
 				52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */,
 				E0A0B1D34F9058D6158D82CC /* OnboardingFlow.swift in Sources */,
 				329CCD5395EFE752A24ADADC /* PlanReadyView.swift in Sources */,
+				59CFD98A021C7C781BDED674 /* PlanResolver.swift in Sources */,
 				59C21BCE89182BD84AEAB048 /* RootView.swift in Sources */,
 				F208F9937B7776640A45A1E1 /* Schema.swift in Sources */,
+				7DD92D04CC33694A4AB6FC6E /* SwapSheet.swift in Sources */,
 				5B83A1F0D60AB8F44EA8F329 /* TodayView.swift in Sources */,
+				2BD3FEBFDD7BDBE98D3A8F71 /* TrainView.swift in Sources */,
 				EFAEF54DBCE54C6558E545DD /* WizardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,6 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8SY27AD3L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FlexFit/Info.plist;
@@ -456,6 +476,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8SY27AD3L4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = FlexFit/Info.plist;

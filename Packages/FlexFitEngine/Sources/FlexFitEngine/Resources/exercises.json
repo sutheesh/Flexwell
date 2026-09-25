@@ -1,0 +1,4430 @@
+{
+ "version": 1,
+ "reviewStatus": "draft — authored for development, pending review by a qualified strength coach (PRD: CSCS or similar) before launch",
+ "exercises": [
+  {
+   "id": "bb_bench_press",
+   "name": "Barbell Bench Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_bench_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_incline_bench",
+   "name": "Incline Barbell Bench Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest",
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "benchAdjustable"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.8,
+   "media": {
+    "clip": "r2://clips/bb_incline_bench.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_close_grip_bench",
+   "name": "Close-grip Bench Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "triceps",
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders",
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.85,
+   "media": {
+    "clip": "r2://clips/bb_close_grip_bench.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "smith_bench_press",
+   "name": "Smith Machine Bench Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "smithMachine"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.9,
+   "media": {
+    "clip": "r2://clips/smith_bench_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_flat_press",
+   "name": "Dumbbell Flat Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_flat_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_incline_press",
+   "name": "Incline Dumbbell Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest",
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.33,
+   "media": {
+    "clip": "r2://clips/db_incline_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_floor_press",
+   "name": "Dumbbell Floor Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/db_floor_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "kb_floor_press",
+   "name": "Kettlebell Floor Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.3,
+   "media": {
+    "clip": "r2://clips/kb_floor_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_chest_press",
+   "name": "Standing Cable Chest Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "press_horizontal",
+   "loadFactor": 0.6,
+   "media": {
+    "clip": "r2://clips/cable_chest_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_fly",
+   "name": "Cable Fly",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/cable_fly.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_fly",
+   "name": "Dumbbell Fly",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/db_fly.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_chest_press",
+   "name": "Band Chest Press",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_chest_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "push_up",
+   "name": "Push-Up",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "frontDelts",
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/push_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "incline_push_up",
+   "name": "Incline Push-Up",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "frontDelts"
+   ],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/incline_push_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "decline_push_up",
+   "name": "Feet-elevated Push-Up",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest",
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "wrists",
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/decline_push_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_overhead_press",
+   "name": "Barbell Overhead Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "upperBack",
+    "core"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "shoulders",
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 8,
+   "loadGroup": "press_vertical",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_overhead_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_push_press",
+   "name": "Barbell Push Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "quads",
+    "core"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "shoulders",
+    "lowerBack",
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 4,
+   "targetHigh": 6,
+   "loadGroup": "press_vertical",
+   "loadFactor": 1.15,
+   "media": {
+    "clip": "r2://clips/bb_push_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "smith_overhead_press",
+   "name": "Smith Machine Seated Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "smithMachine"
+    ],
+    [
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.95,
+   "media": {
+    "clip": "r2://clips/smith_overhead_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_seated_press",
+   "name": "Seated Dumbbell Shoulder Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "sideDelts"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_seated_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_standing_press",
+   "name": "Standing Dumbbell Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.37,
+   "media": {
+    "clip": "r2://clips/db_standing_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_arnold_press",
+   "name": "Arnold Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts",
+    "sideDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.33,
+   "media": {
+    "clip": "r2://clips/db_arnold_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_half_kneeling_press",
+   "name": "Half-kneeling Single-arm Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_half_kneeling_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "kb_overhead_press",
+   "name": "Kettlebell Overhead Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders",
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/kb_overhead_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_overhead_press",
+   "name": "Band Overhead Press",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_overhead_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "pike_push_up",
+   "name": "Pike Push-Up",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders",
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/pike_push_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "elevated_pike_push_up",
+   "name": "Feet-elevated Pike Push-Up",
+   "pattern": "verticalPush",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "shoulders",
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/elevated_pike_push_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_bent_over_row",
+   "name": "Barbell Bent-over Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack",
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "rearDelts"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "row",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_bent_over_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_pendlay_row",
+   "name": "Pendlay Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack",
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "lowerBack"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 8,
+   "loadGroup": "row",
+   "loadFactor": 0.95,
+   "media": {
+    "clip": "r2://clips/bb_pendlay_row.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_one_arm_row",
+   "name": "One-arm Dumbbell Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "lats",
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "row",
+   "loadFactor": 0.45,
+   "media": {
+    "clip": "r2://clips/db_one_arm_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_chest_supported_row",
+   "name": "Chest-supported Dumbbell Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "lats",
+    "biceps",
+    "rearDelts"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": "row",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/db_chest_supported_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "kb_row",
+   "name": "Kettlebell Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "lats",
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "row",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/kb_row.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_seated_row",
+   "name": "Seated Cable Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack",
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": "row",
+   "loadFactor": 0.9,
+   "media": {
+    "clip": "r2://clips/cable_seated_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "inverted_row",
+   "name": "Inverted Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack",
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "core"
+   ],
+   "equipment": [
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/inverted_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "band_seated_row",
+   "name": "Band Seated Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "lats",
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_seated_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "towel_door_row",
+   "name": "Towel Door Row",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "lats"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/towel_door_row.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "cable_face_pull",
+   "name": "Cable Face Pull",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "rearDelts"
+   ],
+   "secondaryMuscles": [
+    "upperBack",
+    "traps"
+   ],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/cable_face_pull.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_face_pull",
+   "name": "Band Face Pull",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "rearDelts"
+   ],
+   "secondaryMuscles": [
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_face_pull.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "band_pull_apart",
+   "name": "Band Pull-Apart",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "rearDelts"
+   ],
+   "secondaryMuscles": [
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 25,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_pull_apart.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_rear_delt_fly",
+   "name": "Reverse Dumbbell Fly",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "rearDelts"
+   ],
+   "secondaryMuscles": [
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/db_rear_delt_fly.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "prone_y_raise",
+   "name": "Prone Y-Raise",
+   "pattern": "horizontalPull",
+   "primaryMuscles": [
+    "rearDelts",
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "traps"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/prone_y_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "pull_up",
+   "name": "Pull-Up",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 4,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/pull_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "chin_up",
+   "name": "Chin-Up",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats",
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 4,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/chin_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "neutral_grip_pull_up",
+   "name": "Neutral-grip Pull-Up",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 4,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/neutral_grip_pull_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_assisted_pull_up",
+   "name": "Band-assisted Pull-Up",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ],
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_assisted_pull_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "negative_pull_up",
+   "name": "Pull-Up Negative",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 3,
+   "targetHigh": 6,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/negative_pull_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "lat_pulldown",
+   "name": "Lat Pulldown",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps",
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "latPulldown",
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "pulldown",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/lat_pulldown.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "close_grip_pulldown",
+   "name": "Close-grip Pulldown",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "latPulldown",
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": "pulldown",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/close_grip_pulldown.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "straight_arm_pulldown",
+   "name": "Straight-arm Pulldown",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": "pulldown",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/straight_arm_pulldown.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_lat_pulldown",
+   "name": "Band Lat Pulldown",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats"
+   ],
+   "secondaryMuscles": [
+    "biceps"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_lat_pulldown.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_pullover",
+   "name": "Dumbbell Pullover",
+   "pattern": "verticalPull",
+   "primaryMuscles": [
+    "lats",
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/db_pullover.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_back_squat",
+   "name": "Barbell Back Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "adductors",
+    "core",
+    "lowerBack"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "knees",
+    "lowerBack",
+    "neck"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 8,
+   "loadGroup": "squat",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_back_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_front_squat",
+   "name": "Barbell Front Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes",
+    "core",
+    "upperBack"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "knees",
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 8,
+   "loadGroup": "squat",
+   "loadFactor": 0.8,
+   "media": {
+    "clip": "r2://clips/bb_front_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_box_squat",
+   "name": "Barbell Box Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings",
+    "core"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack",
+    "neck"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "squat",
+   "loadFactor": 0.9,
+   "media": {
+    "clip": "r2://clips/bb_box_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "smith_squat",
+   "name": "Smith Machine Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "squat",
+   "loadFactor": 0.95,
+   "media": {
+    "clip": "r2://clips/smith_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "leg_press",
+   "name": "Leg Press",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "legPress"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "squat",
+   "loadFactor": 2.0,
+   "media": {
+    "clip": "r2://clips/leg_press.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_goblet_squat",
+   "name": "Dumbbell Goblet Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core",
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "squat",
+   "loadFactor": 0.3,
+   "media": {
+    "clip": "r2://clips/db_goblet_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "kb_goblet_squat",
+   "name": "Kettlebell Goblet Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core",
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "squat",
+   "loadFactor": 0.3,
+   "media": {
+    "clip": "r2://clips/kb_goblet_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "heels_elevated_goblet_squat",
+   "name": "Heels-elevated Goblet Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes",
+    "core"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "squat",
+   "loadFactor": 0.28,
+   "media": {
+    "clip": "r2://clips/heels_elevated_goblet_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bodyweight_squat",
+   "name": "Bodyweight Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 25,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bodyweight_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "tempo_squat",
+   "name": "Tempo Squat (3 s down)",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/tempo_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "chair_squat",
+   "name": "Sit-to-Stand Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/chair_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "wall_sit",
+   "name": "Wall Sit",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/wall_sit.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "cossack_squat",
+   "name": "Cossack Squat",
+   "pattern": "squat",
+   "primaryMuscles": [
+    "adductors",
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "equipment": [],
+   "difficulty": 3,
+   "contraindications": [
+    "knees",
+    "hips"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/cossack_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_deadlift",
+   "name": "Conventional Deadlift",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes",
+    "lowerBack"
+   ],
+   "secondaryMuscles": [
+    "upperBack",
+    "forearms",
+    "traps"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 3,
+   "targetHigh": 6,
+   "loadGroup": "hinge",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_deadlift.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_romanian_deadlift",
+   "name": "Romanian Deadlift",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "lowerBack",
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "hinge",
+   "loadFactor": 0.75,
+   "media": {
+    "clip": "r2://clips/bb_romanian_deadlift.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_hip_thrust",
+   "name": "Barbell Hip Thrust",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "hinge",
+   "loadFactor": 1.1,
+   "media": {
+    "clip": "r2://clips/bb_hip_thrust.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bb_good_morning",
+   "name": "Good Morning",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "hamstrings",
+    "lowerBack"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "lowerBack",
+    "neck"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "hinge",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/bb_good_morning.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_romanian_deadlift",
+   "name": "Dumbbell Romanian Deadlift",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "lowerBack",
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "hinge",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/db_romanian_deadlift.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_single_leg_rdl",
+   "name": "Single-leg Dumbbell RDL",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "hinge",
+   "loadFactor": 0.2,
+   "media": {
+    "clip": "r2://clips/db_single_leg_rdl.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_hip_thrust",
+   "name": "Dumbbell Hip Thrust",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "hinge",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/db_hip_thrust.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "kb_deadlift",
+   "name": "Kettlebell Deadlift",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "secondaryMuscles": [
+    "lowerBack",
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "hinge",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/kb_deadlift.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "kb_swing",
+   "name": "Kettlebell Swing",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "secondaryMuscles": [
+    "core",
+    "lowerBack"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": "hinge",
+   "loadFactor": 0.25,
+   "media": {
+    "clip": "r2://clips/kb_swing.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "cable_pull_through",
+   "name": "Cable Pull-Through",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": "hinge",
+   "loadFactor": 0.3,
+   "media": {
+    "clip": "r2://clips/cable_pull_through.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_pull_through",
+   "name": "Band Pull-Through",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes",
+    "hamstrings"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_pull_through.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bodyweight_single_leg_rdl",
+   "name": "Single-leg RDL (bodyweight)",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "hamstrings",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bodyweight_single_leg_rdl.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "glute_bridge",
+   "name": "Glute Bridge",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 25,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/glute_bridge.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "single_leg_glute_bridge",
+   "name": "Single-leg Glute Bridge",
+   "pattern": "hinge",
+   "primaryMuscles": [
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "hamstrings",
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/single_leg_glute_bridge.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_reverse_lunge",
+   "name": "Barbell Reverse Lunge",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core",
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ],
+    [
+     "squatRack",
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "knees",
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "lunge",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_reverse_lunge.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "smith_split_squat",
+   "name": "Smith Machine Split Squat",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "lunge",
+   "loadFactor": 0.9,
+   "media": {
+    "clip": "r2://clips/smith_split_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_reverse_lunge",
+   "name": "Dumbbell Reverse Lunge",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "lunge",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_reverse_lunge.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_walking_lunge",
+   "name": "Dumbbell Walking Lunge",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core",
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 14,
+   "loadGroup": "lunge",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_walking_lunge.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_bulgarian_split_squat",
+   "name": "Dumbbell Bulgarian Split Squat",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "knees",
+    "hips"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "lunge",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/db_bulgarian_split_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_step_up",
+   "name": "Dumbbell Step-Up",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "lunge",
+   "loadFactor": 0.35,
+   "media": {
+    "clip": "r2://clips/db_step_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "kb_goblet_lateral_lunge",
+   "name": "Goblet Lateral Lunge",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "adductors",
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "knees",
+    "hips"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 10,
+   "loadGroup": "lunge",
+   "loadFactor": 0.3,
+   "media": {
+    "clip": "r2://clips/kb_goblet_lateral_lunge.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "reverse_lunge",
+   "name": "Reverse Lunge",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/reverse_lunge.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "split_squat",
+   "name": "Split Squat",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/split_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bulgarian_split_squat",
+   "name": "Bulgarian Split Squat (chair)",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "adductors"
+   ],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "knees",
+    "hips"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bulgarian_split_squat.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "step_up",
+   "name": "Step-Up (chair)",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/step_up.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "lateral_lunge",
+   "name": "Lateral Lunge",
+   "pattern": "lunge",
+   "primaryMuscles": [
+    "adductors",
+    "quads"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "hips"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/lateral_lunge.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_farmer_carry",
+   "name": "Dumbbell Farmer Carry",
+   "pattern": "carry",
+   "primaryMuscles": [
+    "forearms",
+    "traps"
+   ],
+   "secondaryMuscles": [
+    "core",
+    "glutes"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
+   "loadGroup": "carry",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/db_farmer_carry.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "kb_farmer_carry",
+   "name": "Kettlebell Farmer Carry",
+   "pattern": "carry",
+   "primaryMuscles": [
+    "forearms",
+    "traps"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
+   "loadGroup": "carry",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/kb_farmer_carry.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_suitcase_carry",
+   "name": "Suitcase Carry",
+   "pattern": "carry",
+   "primaryMuscles": [
+    "obliques",
+    "forearms"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
+   "loadGroup": "carry",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/db_suitcase_carry.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "kb_rack_carry",
+   "name": "Kettlebell Front-rack Carry",
+   "pattern": "carry",
+   "primaryMuscles": [
+    "core",
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
+   "loadGroup": "carry",
+   "loadFactor": 0.8,
+   "media": {
+    "clip": "r2://clips/kb_rack_carry.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_overhead_carry",
+   "name": "Overhead Dumbbell Carry",
+   "pattern": "carry",
+   "primaryMuscles": [
+    "core",
+    "frontDelts"
+   ],
+   "secondaryMuscles": [
+    "traps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": true,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
+   "loadGroup": "carry",
+   "loadFactor": 0.5,
+   "media": {
+    "clip": "r2://clips/db_overhead_carry.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "plank",
+   "name": "Forearm Plank",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core"
+   ],
+   "secondaryMuscles": [
+    "frontDelts"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/plank.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "side_plank",
+   "name": "Side Plank",
+   "pattern": "core",
+   "primaryMuscles": [
+    "obliques"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/side_plank.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "dead_bug",
+   "name": "Dead Bug",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core"
+   ],
+   "secondaryMuscles": [
+    "hipFlexors"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/dead_bug.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "bird_dog",
+   "name": "Bird Dog",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core",
+    "lowerBack"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bird_dog.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "hollow_hold",
+   "name": "Hollow Hold",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core"
+   ],
+   "secondaryMuscles": [
+    "hipFlexors"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/hollow_hold.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "reverse_crunch",
+   "name": "Reverse Crunch",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core"
+   ],
+   "secondaryMuscles": [
+    "hipFlexors"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/reverse_crunch.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bicycle_crunch",
+   "name": "Bicycle Crunch",
+   "pattern": "core",
+   "primaryMuscles": [
+    "obliques",
+    "core"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "neck",
+    "lowerBack"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bicycle_crunch.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "hanging_knee_raise",
+   "name": "Hanging Knee Raise",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core",
+    "hipFlexors"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/hanging_knee_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "hanging_leg_raise",
+   "name": "Hanging Leg Raise",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core",
+    "hipFlexors"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "pullUpBar"
+    ]
+   ],
+   "difficulty": 3,
+   "contraindications": [
+    "shoulders",
+    "lowerBack"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/hanging_leg_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_crunch",
+   "name": "Cable Crunch",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/cable_crunch.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_pallof_press",
+   "name": "Cable Pallof Press",
+   "pattern": "core",
+   "primaryMuscles": [
+    "obliques",
+    "core"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/cable_pallof_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_pallof_press",
+   "name": "Band Pallof Press",
+   "pattern": "core",
+   "primaryMuscles": [
+    "obliques",
+    "core"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_pallof_press.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "kb_russian_twist",
+   "name": "Kettlebell Russian Twist",
+   "pattern": "core",
+   "primaryMuscles": [
+    "obliques"
+   ],
+   "secondaryMuscles": [
+    "core"
+   ],
+   "equipment": [
+    [
+     "kettlebell"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/kb_russian_twist.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bear_plank_hold",
+   "name": "Bear Plank Hold",
+   "pattern": "core",
+   "primaryMuscles": [
+    "core"
+   ],
+   "secondaryMuscles": [
+    "frontDelts",
+    "quads"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bear_plank_hold.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bb_curl",
+   "name": "Barbell Curl",
+   "pattern": "elbowFlexion",
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "barbell"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "curl",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/bb_curl.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_curl",
+   "name": "Dumbbell Curl",
+   "pattern": "elbowFlexion",
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "curl",
+   "loadFactor": 0.45,
+   "media": {
+    "clip": "r2://clips/db_curl.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_hammer_curl",
+   "name": "Hammer Curl",
+   "pattern": "elbowFlexion",
+   "primaryMuscles": [
+    "biceps",
+    "forearms"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "curl",
+   "loadFactor": 0.5,
+   "media": {
+    "clip": "r2://clips/db_hammer_curl.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_incline_curl",
+   "name": "Incline Dumbbell Curl",
+   "pattern": "elbowFlexion",
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": "curl",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_incline_curl.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_curl",
+   "name": "Cable Curl",
+   "pattern": "elbowFlexion",
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "curl",
+   "loadFactor": 0.9,
+   "media": {
+    "clip": "r2://clips/cable_curl.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_curl",
+   "name": "Band Curl",
+   "pattern": "elbowFlexion",
+   "primaryMuscles": [
+    "biceps"
+   ],
+   "secondaryMuscles": [
+    "forearms"
+   ],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_curl.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cable_pushdown",
+   "name": "Cable Triceps Pushdown",
+   "pattern": "elbowExtension",
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "triceps",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/cable_pushdown.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "db_overhead_extension",
+   "name": "Overhead Dumbbell Extension",
+   "pattern": "elbowExtension",
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "triceps",
+   "loadFactor": 0.6,
+   "media": {
+    "clip": "r2://clips/db_overhead_extension.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_skull_crusher",
+   "name": "Dumbbell Skull Crusher",
+   "pattern": "elbowExtension",
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ],
+    [
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": "triceps",
+   "loadFactor": 0.4,
+   "media": {
+    "clip": "r2://clips/db_skull_crusher.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_pushdown",
+   "name": "Band Triceps Pushdown",
+   "pattern": "elbowExtension",
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_pushdown.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bench_dip",
+   "name": "Bench Dip",
+   "pattern": "elbowExtension",
+   "primaryMuscles": [
+    "triceps"
+   ],
+   "secondaryMuscles": [
+    "frontDelts",
+    "chest"
+   ],
+   "equipment": [
+    [
+     "chair",
+     "benchFlat",
+     "benchAdjustable"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders",
+    "wrists"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bench_dip.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "diamond_push_up",
+   "name": "Diamond Push-Up",
+   "pattern": "elbowExtension",
+   "primaryMuscles": [
+    "triceps",
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "frontDelts"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/diamond_push_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_lateral_raise",
+   "name": "Dumbbell Lateral Raise",
+   "pattern": "shoulderRaise",
+   "primaryMuscles": [
+    "sideDelts"
+   ],
+   "secondaryMuscles": [
+    "traps"
+   ],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": "raise",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/db_lateral_raise.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "cable_lateral_raise",
+   "name": "Cable Lateral Raise",
+   "pattern": "shoulderRaise",
+   "primaryMuscles": [
+    "sideDelts"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "cableMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 15,
+   "loadGroup": "raise",
+   "loadFactor": 0.7,
+   "media": {
+    "clip": "r2://clips/cable_lateral_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_lateral_raise",
+   "name": "Band Lateral Raise",
+   "pattern": "shoulderRaise",
+   "primaryMuscles": [
+    "sideDelts"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_lateral_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_front_raise",
+   "name": "Dumbbell Front Raise",
+   "pattern": "shoulderRaise",
+   "primaryMuscles": [
+    "frontDelts"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "raise",
+   "loadFactor": 1.1,
+   "media": {
+    "clip": "r2://clips/db_front_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "fist_push_up",
+   "name": "Fist Push-Up (neutral wrist)",
+   "pattern": "horizontalPush",
+   "primaryMuscles": [
+    "chest"
+   ],
+   "secondaryMuscles": [
+    "triceps",
+    "frontDelts",
+    "core"
+   ],
+   "equipment": [
+    [
+     "mat"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 6,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/fist_push_up.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "standing_calf_raise",
+   "name": "Standing Calf Raise",
+   "pattern": "calf",
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 15,
+   "targetHigh": 25,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/standing_calf_raise.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "single_leg_calf_raise",
+   "name": "Single-leg Calf Raise",
+   "pattern": "calf",
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 20,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/single_leg_calf_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "db_calf_raise",
+   "name": "Dumbbell Calf Raise",
+   "pattern": "calf",
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "dumbbells",
+     "adjustableDumbbells"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": "calf",
+   "loadFactor": 0.25,
+   "media": {
+    "clip": "r2://clips/db_calf_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "smith_calf_raise",
+   "name": "Smith Machine Calf Raise",
+   "pattern": "calf",
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "smithMachine"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 15,
+   "loadGroup": "calf",
+   "loadFactor": 1.0,
+   "media": {
+    "clip": "r2://clips/smith_calf_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "leg_press_calf_raise",
+   "name": "Leg Press Calf Raise",
+   "pattern": "calf",
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "legPress"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 12,
+   "targetHigh": 20,
+   "loadGroup": "calf",
+   "loadFactor": 1.4,
+   "media": {
+    "clip": "r2://clips/leg_press_calf_raise.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "cat_cow",
+   "name": "Cat-Cow",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "lowerBack",
+    "upperBack"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/cat_cow.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "hip_90_90",
+   "name": "90/90 Hip Switch",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "hips"
+   ],
+   "secondaryMuscles": [
+    "glutes"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/hip_90_90.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "worlds_greatest_stretch",
+   "name": "World's Greatest Stretch",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "hips",
+    "upperBack"
+   ],
+   "secondaryMuscles": [
+    "hamstrings"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 5,
+   "targetHigh": 6,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/worlds_greatest_stretch.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "thoracic_rotation",
+   "name": "Thoracic Rotation",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "upperBack"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 10,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/thoracic_rotation.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "hip_flexor_stretch",
+   "name": "Half-kneeling Hip Flexor Stretch",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "hipFlexors"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/hip_flexor_stretch.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "deep_squat_hold",
+   "name": "Deep Squat Hold",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "hips",
+    "adductors"
+   ],
+   "secondaryMuscles": [
+    "calves"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "knees",
+    "hips"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/deep_squat_hold.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "band_shoulder_dislocate",
+   "name": "Band Shoulder Pass-through",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "frontDelts",
+    "upperBack"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [
+    [
+     "bands"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/band_shoulder_dislocate.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "childs_pose",
+   "name": "Child's Pose",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "lowerBack",
+    "lats"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/childs_pose.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "hamstring_floss",
+   "name": "Hamstring Floss",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "hamstrings"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/hamstring_floss.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "ankle_rocks",
+   "name": "Ankle Rocks",
+   "pattern": "mobility",
+   "primaryMuscles": [
+    "calves"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "reps",
+   "targetLow": 10,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/ankle_rocks.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "rower_intervals",
+   "name": "Rower Intervals",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "upperBack",
+    "quads"
+   ],
+   "equipment": [
+    [
+     "rower"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [
+    "lowerBack"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 60,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/rower_intervals.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bike_intervals",
+   "name": "Bike Intervals",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "quads"
+   ],
+   "equipment": [
+    [
+     "bike"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 60,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bike_intervals.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "incline_walk",
+   "name": "Incline Treadmill Walk",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "glutes",
+    "calves"
+   ],
+   "equipment": [
+    [
+     "treadmill"
+    ]
+   ],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 600,
+   "targetHigh": 900,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/incline_walk.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "brisk_walk",
+   "name": "Brisk Walk",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 900,
+   "targetHigh": 1500,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/brisk_walk.mp4",
+    "bundled": true
+   }
+  },
+  {
+   "id": "jump_rope",
+   "name": "Jump Rope",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "calves"
+   ],
+   "equipment": [
+    [
+     "jumpRope"
+    ]
+   ],
+   "difficulty": 2,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 60,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/jump_rope.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "burpee",
+   "name": "Burpee",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "chest",
+    "quads",
+    "core"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "knees",
+    "wrists",
+    "lowerBack"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/burpee.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "jumping_jacks",
+   "name": "Jumping Jacks",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "calves"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/jumping_jacks.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "mountain_climber",
+   "name": "Mountain Climber",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "cardio",
+    "core"
+   ],
+   "secondaryMuscles": [
+    "hipFlexors"
+   ],
+   "equipment": [],
+   "difficulty": 1,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/mountain_climber.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "jump_squat",
+   "name": "Jump Squat",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "quads",
+    "glutes"
+   ],
+   "secondaryMuscles": [
+    "cardio",
+    "calves"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "knees"
+   ],
+   "compound": true,
+   "measure": "reps",
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/jump_squat.mp4",
+    "bundled": false
+   }
+  },
+  {
+   "id": "bear_crawl",
+   "name": "Bear Crawl",
+   "pattern": "conditioning",
+   "primaryMuscles": [
+    "core",
+    "cardio"
+   ],
+   "secondaryMuscles": [
+    "frontDelts",
+    "quads"
+   ],
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "wrists"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
+   "loadGroup": null,
+   "loadFactor": null,
+   "media": {
+    "clip": "r2://clips/bear_crawl.mp4",
+    "bundled": false
+   }
+  }
+ ]
+}

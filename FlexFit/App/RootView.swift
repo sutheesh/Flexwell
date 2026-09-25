@@ -20,7 +20,7 @@ struct RootView: View {
                 )
             }
             Tab("Train", systemImage: "dumbbell", value: AppTab.train) {
-                PlaceholderScreen(kicker: "Workout plan", title: "Schedule")
+                TrainView(onAdapt: { isAdaptPresented = true })
             }
             Tab("Adapt", systemImage: "bolt.fill", value: AppTab.adapt) {
                 Color.clear
