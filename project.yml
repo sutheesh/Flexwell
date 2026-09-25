@@ -20,8 +20,10 @@ targets:
     platform: iOS
     sources:
       - path: FlexFit
+      - path: Shared
     dependencies:
       - package: FlexFitEngine
+      - target: FlexFitWidgets
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.ilabbs.flexfit
@@ -41,3 +43,23 @@ targets:
       storeKitConfiguration: Config/FlexFit.storekit
       testTargets:
         - package: FlexFitEngine/FlexFitEngineTests
+  FlexFitWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: FlexFitWidgets
+      - path: Shared
+      - path: FlexFit/Theme/DesignTokens.swift
+      - path: FlexFit/Resources/Fonts
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.ilabbs.flexfit.widgets
+        PRODUCT_NAME: FlexFitWidgets
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: FlexFitWidgets/Info.plist
+        CODE_SIGN_ENTITLEMENTS: FlexFitWidgets/FlexFitWidgets.entitlements
+        SWIFT_VERSION: "6.0"
+        SKIP_INSTALL: YES
+        CODE_SIGN_STYLE: Automatic

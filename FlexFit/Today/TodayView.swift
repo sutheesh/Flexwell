@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import WidgetKit
 import FlexFitEngine
 
 /// Today: the day's targets and protein check, the energy check-in, and the session it shapes.
@@ -15,6 +16,7 @@ struct TodayView: View {
     @Query private var painFlags: [PainFlag]
     @Query private var ingredientSwaps: [IngredientSwapRecord]
     @State private var mealDetail: MealSelection?
+    @State private var intro: String?
 
     var body: some View {
         if let record = profiles.first {
@@ -40,6 +42,16 @@ struct TodayView: View {
         let eaten = (kcal: eatenMeals.reduce(0) { $0 + $1.kcal }, protein: eatenMeals.reduce(0) { $0 + $1.proteinG },
                      carbs: eatenMeals.reduce(0) { $0 + $1.carbsG }, fat: eatenMeals.reduce(0) { $0 + $1.fatG })
         let next = MealPlanContext.nextMeal(meals, eaten: eatenIdx, now: now)
+        let snapshot = WidgetSnapshot(
+            date: Calendar.current.startOfDay(for: now),
+            sessionTitle: plannedToday.kind == .training ? (plan?.focus.title ?? "Training")
+                : (plannedToday.kind == .rest ? "Rest day" : "Walk + mobility"),
+            sessionDetail: plan.map { "\($0.minutes) min · \($0.exercises.count) exercises" }
+                ?? (plannedToday.minutes > 0 ? "\(plannedToday.minutes) min · easy" : "Recover"),
+            isTrainingDay: plannedToday.kind == .training,
+            kcalEaten: eaten.kcal, kcalTarget: targets.calories, proteinTarget: targets.proteinG,
+            streakWeeks: streak, nextMeal: next?.meal.name
+        )
 
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
@@ -73,7 +85,7 @@ struct TodayView: View {
                 }
 
                 SessionCard(day: plannedToday, pivot: pivot, plan: plan, travel: record.activeTravelKit(now: now),
-                            isDone: doneToday,
+                            isDone: doneToday, intro: intro,
                             onStart: { router.workoutDay = Calendar.current.startOfDay(for: now) },
                             onAdapt: { router.isAdaptPresented = true })
 
@@ -126,12 +138,29 @@ struct TodayView: View {
         }
         .statusBarBackdrop()
         .pageBackground()
+        .task(id: snapshot) {
+            // Keep the home-screen widget in step with Today.
+            if WidgetSnapshot.load() != snapshot {
+                snapshot.save()
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
+        .task(id: plan.map { introFacts(plan: $0, profile: profile, travel: record.activeTravelKit(now: now) != nil) }) {
+            guard let plan else { intro = nil; return }
+            intro = await CoachText.sessionIntro(introFacts(plan: plan, profile: profile, travel: record.activeTravelKit(now: now) != nil))
+        }
         .sheet(item: $mealDetail) { selection in
             MealDetailView(planned: selection.planned,
                            isEaten: log(for: selection.date)?.eatenMeals.contains(selection.planned.index) == true,
                            onToggleEaten: { toggleEaten(selection) },
                            onMissingIngredient: { mealDetail = nil; router.tab = .eat })
         }
+    }
+
+    private func introFacts(plan: SessionPlan, profile: UserProfile, travel: Bool) -> CoachText.SessionFacts {
+        CoachText.SessionFacts(name: profile.name, focus: plan.focus.title, minutes: plan.minutes,
+                               exercises: plan.exercises.count, rpeCap: plan.exercises.first?.rpeCap ?? 8,
+                               variant: plan.variant, travel: travel, tone: profile.tone)
     }
 
     // MARK: Meals & no-gym
@@ -516,6 +545,8 @@ private struct SessionCard: View {
     let plan: SessionPlan?
     let travel: TravelKit?
     let isDone: Bool
+    /// On-device (or template) intro for today's session.
+    var intro: String?
     let onStart: () -> Void
     let onAdapt: () -> Void
 
@@ -570,7 +601,7 @@ private struct SessionCard: View {
                 .padding(.top, Space.md - 2)
             }
 
-            Text(EnergyCopy.sessionNote(day: day, pivot: pivot))
+            Text(intro ?? EnergyCopy.sessionNote(day: day, pivot: pivot))
                 .textStyle(.caption)
                 .foregroundStyle(Palette.onPanelMuted)
                 .fixedSize(horizontal: false, vertical: true)
