@@ -31,7 +31,6 @@ struct PathView: View {
         let weeks = TargetCalculator.weeksToGoal(for: profile)
         let elapsed = TodayPlan.weekNumber(since: record.createdAt, now: .now) - 1
         let remaining = weeks.map { max(0, $0 - elapsed) }
-        let streak = Streak.weeks(sessionsPerWeek: sessionsPerWeek(), planned: profile.trainingDays)
 
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
@@ -40,8 +39,9 @@ struct PathView: View {
 
                 // The trend is computed from every weigh-in; the free tier only limits what's drawn.
                 GoalPanel(profile: profile, start: record.createdAt, entries: TargetsStore.weightEntries(weighIns),
-                          visibleFrom: since,
-                          weeks: weeks, streak: streak, sessions: sessions.count, adaptations: adaptationCount())
+                          visibleFrom: since, weeks: weeks, currentWeek: elapsed + 1,
+                          sessions: sessions.count, plannedSessions: profile.trainingDays * (elapsed + 1),
+                          adaptations: adaptationCount())
 
                 if since != nil {
                     Button { router.paywall = .history } label: {
@@ -123,72 +123,134 @@ struct PathView: View {
     }
 }
 
-/// Navy goal panel with the trend chart. Fixed-dark content.
+/// The mock's goal card: week N of W, start → goal, "on track for", filled trend with a now dot,
+/// the plan line and goal marker, then lost so far / sessions done / plan adapted. Fixed-dark content.
 private struct GoalPanel: View {
     let profile: UserProfile
     let start: Date
     let entries: [WeightEntry]
     let visibleFrom: Date?
     let weeks: Int?
-    let streak: Int
+    let currentWeek: Int
     let sessions: Int
+    let plannedSessions: Int
     let adaptations: Int
 
     var body: some View {
+        let units = profile.displayUnits
         let fullTrend = WeightTrend.series(entries)
         let trend = fullTrend.filter { visibleFrom == nil || $0.date >= visibleFrom! }
-        let units = profile.displayUnits
-        // Window: plan start (or the visible limit) to four weeks past today, so the real trend isn't squashed.
         let windowStart = max(start, visibleFrom ?? start)
         let windowEnd = Calendar.current.date(byAdding: .day, value: 28, to: .now) ?? .now
-        VStack(alignment: .leading, spacing: Space.md) {
-            HStack {
-                stat(Formatters.mass(profile.weightKg, units: units), "Start")
-                stat(fullTrend.last.map { Formatters.mass($0.kg, units: units) } ?? "—", "Now")
-                stat(Formatters.mass(profile.targetWeightKg, units: units), "Goal")
+        let now = fullTrend.last
+        let lost = now.map { profile.weightKg - $0.kg } ?? 0
+
+        VStack(alignment: .leading, spacing: 0) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: Space.xs) {
+                    Text(weeks.map { "Week \(min(currentWeek, $0)) of \($0)" } ?? "Week \(currentWeek)")
+                        .textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
+                    Text("\(number(profile.weightKg, units)) → \(Formatters.mass(profile.targetWeightKg, units: units))")
+                        .textStyle(.title2).foregroundStyle(Palette.onPanel)
+                }
+                Spacer()
+                VStack(alignment: .trailing, spacing: Space.xs) {
+                    Text("On track for").textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
+                    Text(eta).textStyle(.headline).foregroundStyle(Palette.ice)
+                }
             }
 
             if trend.count >= 2 {
                 Chart {
+                    RuleMark(y: .value("Goal", Mass.display(kilograms: profile.targetWeightKg, in: units)))
+                        .foregroundStyle(Palette.ice.opacity(0.35))
+                        .lineStyle(StrokeStyle(lineWidth: 1, dash: [3, 4]))
                     if weeks != nil {
                         ForEach([windowStart, windowEnd], id: \.self) { date in
                             LineMark(x: .value("Date", date), y: .value("Plan", Mass.display(kilograms: planned(at: date), in: units)),
                                      series: .value("Line", "Plan"))
                                 .foregroundStyle(Palette.onPanelOutline)
-                                .lineStyle(StrokeStyle(lineWidth: 1.5, dash: [5, 4]))
+                                .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
                         }
                     }
                     ForEach(trend, id: \.date) { e in
-                        LineMark(x: .value("Date", e.date), y: .value("Trend", Mass.display(kilograms: e.kg, in: units)), series: .value("Line", "Trend"))
+                        AreaMark(x: .value("Date", e.date),
+                                 yStart: .value("Base", Mass.display(kilograms: lowerBound(trend), in: units)),
+                                 yEnd: .value("Trend", Mass.display(kilograms: e.kg, in: units)))
+                            .foregroundStyle(LinearGradient(colors: [Palette.copper.opacity(0.42), Palette.copper.opacity(0)],
+                                                            startPoint: .top, endPoint: .bottom))
+                        LineMark(x: .value("Date", e.date), y: .value("Trend", Mass.display(kilograms: e.kg, in: units)),
+                                 series: .value("Line", "Trend"))
                             .foregroundStyle(Palette.copper)
-                            .lineStyle(StrokeStyle(lineWidth: 2.5))
+                            .lineStyle(StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                     }
+                    if let last = trend.last {
+                        PointMark(x: .value("Date", last.date), y: .value("Trend", Mass.display(kilograms: last.kg, in: units)))
+                            .foregroundStyle(Palette.copper)
+                            .symbolSize(90)
+                    }
+                    PointMark(x: .value("Date", windowEnd), y: .value("Goal", Mass.display(kilograms: planned(at: windowEnd), in: units)))
+                        .foregroundStyle(Palette.ice)
+                        .symbolSize(60)
                 }
-                .chartLegend(.hidden)
                 .chartYScale(domain: .automatic(includesZero: false))
                 .chartXScale(domain: windowStart...windowEnd)
-                .chartXAxis { AxisMarks { _ in AxisValueLabel().foregroundStyle(Palette.onPanelMuted) } }
-                .chartYAxis { AxisMarks { _ in AxisGridLine().foregroundStyle(Palette.onPanelHairline); AxisValueLabel().foregroundStyle(Palette.onPanelMuted) } }
-                .frame(height: Size.row * 2.5)
+                .chartXAxis(.hidden)
+                .chartYAxis(.hidden)
+                .chartLegend(.hidden)
+                .frame(height: Size.row * 2.4)
+                .padding(.top, Space.md - 2)
                 .accessibilityLabel("Weight trend against the planned line")
+
+                HStack {
+                    Text("Start · \(start.formatted(.dateTime.day().month(.abbreviated)))").foregroundStyle(Palette.onPanelMuted)
+                    Spacer()
+                    Text("Now · \(now.map { Formatters.mass($0.kg, units: units) } ?? "—")").foregroundStyle(Palette.copper)
+                    Spacer()
+                    Text("Goal").foregroundStyle(Palette.ice)
+                }
+                .textStyle(.micro)
+                .padding(.top, Space.xs - 2)
             } else {
                 Text("Log two weigh-ins on the Eat tab to see your trend against the plan.")
                     .textStyle(.caption)
                     .foregroundStyle(Palette.onPanelMuted)
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, Space.md)
             }
 
             HStack(spacing: 0) {
-                stat(streak == 1 ? "1 week" : "\(streak) weeks", "Streak")
-                stat("\(sessions)", "Sessions done")
-                stat("\(adaptations)×", "Plan adapted")
+                stat(Formatters.mass(max(0, lost), units: units), "lost so far")
+                divider
+                stat("\(sessions) / \(plannedSessions)", "sessions done")
+                divider
+                stat("\(adaptations)×", "plan adapted")
             }
-            .padding(.top, Space.sm)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding(.top, Space.md - 2)
             .overlay(alignment: .top) { Rectangle().fill(Palette.onPanelHairline).frame(height: 1) }
+            .padding(.top, Space.md)
         }
-        .padding(Space.lg)
+        .padding(.horizontal, Space.lg - 2)
+        .padding(.top, Space.lg)
+        .padding(.bottom, Space.md)
         .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
         .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.panelEdge))
+    }
+
+    private var eta: String {
+        guard let weeks, let date = Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: start) else { return "Ongoing" }
+        return date.formatted(.dateTime.day().month(.abbreviated))
+    }
+
+    private var divider: some View { Rectangle().fill(Palette.onPanelHairline).frame(width: 1) }
+
+    private func number(_ kg: Double, _ units: DisplayUnits) -> String {
+        Mass.display(kilograms: kg, in: units).formatted(.number.precision(.fractionLength(0...1)))
+    }
+
+    private func lowerBound(_ trend: [WeightEntry]) -> Double {
+        min(trend.map(\.kg).min() ?? profile.targetWeightKg, profile.targetWeightKg) - 0.5
     }
 
     /// Where the plan says the weight should be on `date`: a straight line from start to goal.
@@ -204,6 +266,7 @@ private struct GoalPanel: View {
             Text(label).textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.leading, Space.sm - 2)
         .accessibilityElement(children: .combine)
     }
 }
@@ -296,23 +359,28 @@ private struct AdaptLog: View {
                 .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.md))
                 .cardShadow()
         } else {
-            CardList {
+            VStack(alignment: .leading, spacing: 0) {
                 ForEach(items, id: \.self) { item in
-                    HStack(alignment: .top, spacing: Space.sm) {
+                    HStack(alignment: .top, spacing: Space.md - 2) {
+                        VStack(spacing: Space.xxs) {
+                            Circle().fill(Palette.copper).frame(width: Size.dot + 4, height: Size.dot + 4).padding(.top, Space.xxs)
+                            Rectangle().fill(Palette.track).frame(width: 2)
+                        }
                         Text(item.date.formatted(.dateTime.weekday(.abbreviated)).uppercased())
                             .textStyle(.micro)
-                            .foregroundStyle(Palette.copperText)
-                            .frame(width: Size.control, alignment: .leading)
+                            .foregroundStyle(Palette.inkMuted)
+                            .frame(width: Size.control - 6, alignment: .leading)
                         Text(item.text)
                             .textStyle(.caption)
                             .foregroundStyle(Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.bottom, Space.md - 2)
                     }
-                    .padding(.horizontal, Space.md)
-                    .padding(.vertical, Space.sm)
+                    .accessibilityElement(children: .combine)
                 }
             }
+            .padding(.leading, Space.xxs)
         }
     }
 }

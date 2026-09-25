@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import FlexFitEngine
 
 // MARK: - Meal card (Eat day list)
@@ -197,9 +198,46 @@ struct MealDetailView: View {
     let onToggleEaten: () -> Void
     let onMissingIngredient: () -> Void
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+    @Environment(AppRouter.self) private var router
+    @Query private var saved: [SavedMeal]
+
+    private var isSaved: Bool { saved.contains { $0.mealID == planned.meal.id } }
 
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            // The mock's top bar: back · slot · bookmark.
+            HStack {
+                Button { dismiss() } label: {
+                    Image(systemName: "chevron.left")
+                        .font(TextStyle.rowTitle.font)
+                        .foregroundStyle(Palette.ink)
+                        .frame(width: Size.avatar + 2, height: Size.avatar + 2)
+                        .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.sm))
+                        .cardShadow()
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Back")
+                Spacer()
+                Text("\(planned.slot.title) · \(planned.slot.clock)")
+                    .textStyle(.kicker)
+                    .foregroundStyle(Palette.inkMuted)
+                Spacer()
+                Button(action: toggleSaved) {
+                    Image(systemName: isSaved ? "bookmark.fill" : "bookmark")
+                        .font(TextStyle.rowTitle.font)
+                        .foregroundStyle(Palette.copperText)
+                        .frame(width: Size.avatar + 2, height: Size.avatar + 2)
+                        .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.sm))
+                        .cardShadow()
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel(isSaved ? "Remove from saved meals" : "Save meal")
+            }
+            .padding(.horizontal, Space.lg)
+            .padding(.top, Space.md)
+            .readableColumn()
+
             ScrollView {
                 VStack(spacing: 0) {
                     IngredientFlower(planned: planned)
@@ -242,29 +280,40 @@ struct MealDetailView: View {
                             .padding(.top, Space.md - 2)
                     }
 
-                    PrimaryButton(title: isEaten ? "Eaten ✓ — tap to undo" : "Mark as eaten", showsArrow: false, action: onToggleEaten)
+                    PrimaryButton(title: "I’m missing an ingredient", showsArrow: false, action: onMissingIngredient)
                         .padding(.top, Space.md)
-                    Button("I'm missing an ingredient", action: onMissingIngredient)
-                        .textStyle(.chip)
-                        .foregroundStyle(Palette.ink)
-                        .frame(maxWidth: .infinity, minHeight: Size.button)
-                        .overlay(Capsule().strokeBorder(Palette.track))
-                        .padding(.top, Space.sm)
+                    Button(action: onToggleEaten) {
+                        Label(isEaten ? "Logged — tap to undo" : "Log as eaten", systemImage: isEaten ? "checkmark" : "plus")
+                            .textStyle(.chip)
+                            .foregroundStyle(Palette.ink)
+                            .frame(maxWidth: .infinity, minHeight: Size.button)
+                            .overlay(Capsule().strokeBorder(Palette.track))
+                            .contentShape(Capsule())
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.top, Space.sm)
                 }
                 .padding(.horizontal, Space.lg)
                 .padding(.bottom, Space.xl)
                 .readableColumn()
             }
-            .pageBackground()
-            .navigationTitle("\(planned.slot.title) · \(planned.slot.clock)")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
         }
+        .pageBackground()
     }
 
     /// The recipe's tags plus anything a swapped-in ingredient brings (conservative: nothing is removed).
     private var allergens: Set<Allergen> {
         Set(planned.meal.allergens).union(planned.swapped.map { IngredientRules.allergens(in: $0.to) } ?? [])
+    }
+
+    private func toggleSaved() {
+        if let existing = saved.first(where: { $0.mealID == planned.meal.id }) {
+            modelContext.delete(existing)
+        } else {
+            // The filled bookmark is the confirmation; a toast would sit hidden behind this sheet.
+            modelContext.insert(SavedMeal(mealID: planned.meal.id))
+        }
+        try? modelContext.save()
     }
 
     private func macro(_ value: String, _ label: String, color: Color) -> some View {
@@ -383,39 +432,24 @@ struct IngredientSwapSheet: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: Space.sm) {
-                    Text("\(planned.meal.name): tap what you don't have. The swap keeps the macros close.")
-                        .textStyle(.caption)
-                        .foregroundStyle(Palette.inkMuted)
-                        .fixedSize(horizontal: false, vertical: true)
-                    CardList {
-                        ForEach(planned.ingredients, id: \.name) { ing in
-                            if let sub = MealPlanner.safeSubstitute(for: ing.name, profile: profile) {
-                                Button { onSwap(ing.name, sub); dismiss() } label: {
-                                    ActionRowContent(icon: "arrow.triangle.2.circlepath", title: ing.name, subtitle: "Swap for \(sub)")
-                                }
-                                .buttonStyle(.plain)
-                            } else {
-                                HStack {
-                                    Text(ing.name).textStyle(.rowTitle).foregroundStyle(Palette.inkMuted)
-                                    Spacer()
-                                    Text(MealPlanner.substitute(for: ing.name) == nil ? "No swap listed" : "No safe swap for you")
-                                        .textStyle(.micro).foregroundStyle(Palette.inkMuted)
-                                }
-                                .padding(Space.md)
-                            }
+        MockSheet(kicker: "Ingredient swap", title: "What are you missing?",
+                  subtitle: "\(planned.meal.name) — tap what you don’t have. The swap keeps the macros close.") {
+            CardList {
+                ForEach(Array(planned.ingredients.enumerated()), id: \.element.name) { i, ing in
+                    let letter = String(UnicodeScalar(UInt8(65 + i)))
+                    if let sub = MealPlanner.safeSubstitute(for: ing.name, profile: profile) {
+                        SheetRow(badge: letter, title: ing.name, subtitle: "Swap for \(sub)") {
+                            onSwap(ing.name, sub)
+                            dismiss()
                         }
+                    } else {
+                        SheetRow(badge: letter, title: ing.name,
+                                 subtitle: MealPlanner.substitute(for: ing.name) == nil ? "No swap listed" : "No safe swap for your allergies or diet") {}
+                            .disabled(true)
+                            .opacity(0.6)
                     }
                 }
-                .padding(Space.lg)
-                .readableColumn()
             }
-            .pageBackground()
-            .navigationTitle("What are you missing?")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar { ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } } }
         }
         .presentationDetents([.medium, .large])
     }

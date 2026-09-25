@@ -14,7 +14,18 @@ struct MealPlanContext {
         let choices = swaps.filter { $0.day == start }
             .map { IngredientSwapChoice(mealIndex: $0.mealIndex, from: $0.from, to: $0.to) }
         return MealPlanner.day(weekday: Self.weekday(of: date), profile: profile,
-                               targetCalories: targets.calories, swaps: choices)
+                               targetCalories: calories(on: date), swaps: choices)
+    }
+
+    /// The mock's day target: full on training and recovery days, 150 kcal lower on the full-rest day.
+    func calories(on date: Date) -> Int {
+        Self.calories(base: targets.calories, kind: WeekPlanner.week(for: profile)[Self.weekday(of: date)].kind)
+    }
+
+    static let restDayReduction = 150
+
+    static func calories(base: Int, kind: DayKind) -> Int {
+        kind == .rest ? base - restDayReduction : base
     }
 
     /// The next meal not yet eaten, by time of day; falls back to the first uneaten one.

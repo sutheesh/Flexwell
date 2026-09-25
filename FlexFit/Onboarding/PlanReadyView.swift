@@ -13,7 +13,7 @@ struct PlanReadyView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                Text("Your plan is ready")
+                Text("Your path is ready")
                     .textStyle(.kicker)
                     .foregroundStyle(Palette.copperText)
                 Text(title)
@@ -36,6 +36,14 @@ struct PlanReadyView: View {
                         .padding(.top, Space.sm)
                 }
 
+                Text("The road")
+                    .textStyle(.headline)
+                    .foregroundStyle(Palette.ink)
+                    .padding(.top, Space.xl + 2)
+                    .padding(.bottom, Space.md - 2)
+                    .accessibilityAddTraits(.isHeader)
+                RoadSection(profile: profile, targets: targets, weeks: weeks, currentWeek: 1)
+
                 Text("A typical week")
                     .textStyle(.headline)
                     .foregroundStyle(Palette.ink)
@@ -45,7 +53,7 @@ struct PlanReadyView: View {
 
                 CardList {
                     ForEach(week, id: \.weekday) { day in
-                        WeekRow(day: day, foodKcal: targets.calories)
+                        WeekRow(day: day, foodKcal: MealPlanContext.calories(base: targets.calories, kind: day.kind))
                     }
                 }
                 Text(foodLine)

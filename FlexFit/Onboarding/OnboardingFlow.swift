@@ -18,10 +18,10 @@ struct OnboardingFlow: View {
         ZStack {
             switch phase {
             case .intro:
-                IntroView {
+                IntroView(onStart: {
                     stepIndex = 0
                     phase = .wizard
-                }
+                }, onSkip: skip)
                 .transition(.opacity)
             case .wizard:
                 WizardView(draft: draft, stepIndex: $stepIndex, onExit: { phase = .intro }, onFinish: finishWizard)
@@ -43,6 +43,16 @@ struct OnboardingFlow: View {
         guard let made = draft.makeProfile() else { return }
         profile = made
         phase = .building
+    }
+
+    /// "Skip to the app": a sample plan built from the mock's placeholder answers, clearly marked as such.
+    private func skip() {
+        var sample = UserProfile.demo
+        sample.name = ""
+        let record = ProfileRecord(profile: sample)
+        record.isSample = true
+        modelContext.insert(record)
+        try? modelContext.save()
     }
 
     private func save(_ profile: UserProfile) {

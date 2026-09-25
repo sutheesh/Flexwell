@@ -13,6 +13,7 @@ struct TrainView: View {
     @Query private var logs: [DailyLog]
     @Query private var swaps: [ExerciseSwap]
     @Query private var painFlags: [PainFlag]
+    @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @State private var selectedWeekday = TrainView.todayWeekday
     @State private var swapTarget: SwapTarget?
 
@@ -82,7 +83,7 @@ struct TrainView: View {
                         }
                     }
                 } else {
-                    Text(restNote(for: day))
+                    Text(restNote(for: day, kcal: MealPlanContext.calories(base: TargetsStore.current(weekly, profile: profile).calories, kind: day.kind)))
                         .textStyle(.body)
                         .foregroundStyle(Palette.inkMuted)
                         .fixedSize(horizontal: false, vertical: true)
@@ -135,6 +136,7 @@ struct TrainView: View {
         ))
         try? modelContext.save()
         swapTarget = nil
+        router.toast("Swapped in \(ExerciseLibrary.bundled[replacement]?.name ?? "the alternative").")
     }
 
     // MARK: Helpers
@@ -151,9 +153,9 @@ struct TrainView: View {
         return swaps.contains { $0.replacementID == id && ($0.day == nil || $0.day == start) }
     }
 
-    private func restNote(for day: PlannedDay) -> String {
+    private func restNote(for day: PlannedDay, kcal: Int) -> String {
         day.kind == .rest
-            ? "Rest day. Easy steps, ten minutes of stretching, and food at your normal target."
+            ? "Rest day. 7,000 easy steps, 10 minutes of stretching, and food at \(Formatters.kcal(kcal)) kcal — \(MealPlanContext.restDayReduction) lower than training days."
             : "25-minute brisk walk plus hips and T-spine mobility. Keeps the legs fresh for tomorrow."
     }
 }
@@ -164,6 +166,7 @@ struct ScreenHeader: View {
     let initial: String
     let kicker: String
     let title: String
+    var showsCart = true
 
     var body: some View {
         HStack(spacing: Space.sm) {
@@ -185,6 +188,25 @@ struct ScreenHeader: View {
             Spacer(minLength: 0)
         }
         .padding(.vertical, Space.xs)
+    }
+}
+
+/// Avatar + title (opens Settings) with the mock's cart button (opens Groceries) on the right.
+struct TabHeader: View {
+    let name: String
+    let kicker: String
+    let title: String
+    @Environment(AppRouter.self) private var router
+
+    var body: some View {
+        HStack(spacing: Space.sm) {
+            Button { router.isSettingsPresented = true } label: {
+                ScreenHeader(initial: name, kicker: kicker, title: title)
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("Opens settings")
+            CartButton()
+        }
     }
 }
 
@@ -269,26 +291,15 @@ private struct SessionPanel: View {
                     .foregroundStyle(Palette.onPanelMuted)
                     .padding(.top, Space.sm - 2)
                 if isToday, day.kind == .training {
-                    HStack(spacing: Space.xs) {
-                        Button(action: onStart) {
-                            Text("Start")
-                                .textStyle(.chip)
-                                .foregroundStyle(Palette.navy)
-                                .padding(.horizontal, Space.md - 1)
-                                .padding(.vertical, Space.sm - 1)
-                                .background(Palette.ice, in: Capsule())
-                        }
-                        .buttonStyle(PressableStyle())
-                        Button(action: onAdapt) {
-                            Text("Adapt")
-                                .textStyle(.chip)
-                                .foregroundStyle(Palette.onPanel)
-                                .padding(.horizontal, Space.md - 1)
-                                .padding(.vertical, Space.sm - 1)
-                                .overlay(Capsule().strokeBorder(Palette.onPanelOutline))
-                        }
-                        .buttonStyle(PressableStyle())
+                    Button(action: onAdapt) {
+                        Text("Adapt session ›")
+                            .textStyle(.chip)
+                            .foregroundStyle(Palette.navy)
+                            .padding(.horizontal, Space.md - 1)
+                            .padding(.vertical, Space.sm - 1)
+                            .background(Palette.ice, in: Capsule())
                     }
+                    .buttonStyle(PressableStyle())
                     .padding(.top, Space.md - 2)
                 }
             }
@@ -316,13 +327,13 @@ private struct SessionPanel: View {
     }
 
     private var tag: String {
-        if travel != nil && day.kind == .training { return isToday ? "Today · Travel mode" : "Travel mode" }
+        if travel != nil && day.kind == .training { return isToday ? "Today’s focus · Travel mode" : "Travel mode" }
         let base: String = switch plan?.variant {
         case .trimmed?: "Adapted · low energy"
         case .minimum?: "Minimum session"
         default: day.kind == .training ? "Training day" : day.kind == .rest ? "Rest" : "Active recovery"
         }
-        return isToday ? "Today · \(base)" : base
+        return isToday ? "Today’s focus · \(base)" : base
     }
 
     private var title: String {
@@ -335,9 +346,9 @@ private struct SessionPanel: View {
 
     private var meta: String {
         if let plan {
-            return "\(plan.minutes) min · \(plan.exercises.count) exercises"
+            return "🔥 \(Burn.kcal(minutes: plan.minutes, training: true)) kcal · ⏱ \(plan.minutes) min"
         }
-        return day.minutes > 0 ? "\(day.minutes) min · easy" : "Recover"
+        return day.minutes > 0 ? "🔥 \(Burn.kcal(minutes: day.minutes, training: false)) kcal · ⏱ \(day.minutes) min" : "Recover"
     }
 }
 

@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 enum AppTab: Hashable {
     case today, train, adapt, eat, path
@@ -28,20 +29,16 @@ struct RootView: View {
                 PathView()
             }
         }
-        .sheet(isPresented: $router.isAdaptPresented) {
-            AdaptSheet()
-        }
-        .sheet(isPresented: $router.isSettingsPresented) {
-            SettingsView()
-        }
-        .sheet(isPresented: $router.isGroceryPresented) {
-            GroceryView()
-        }
-        .sheet(isPresented: $router.isRestaurantPresented) {
-            RestaurantSheet()
-        }
-        .sheet(item: $router.paywall) { reason in
-            PaywallView(reason: reason)
+        .sheet(item: $router.sheet) { sheet in
+            switch sheet {
+            case .adapt: AdaptSheet()
+            case .energy: EnergySheet()
+            case .settings: SettingsView()
+            case .grocery: GroceryView()
+            case .restaurant: RestaurantSheet()
+            case .paywall(let reason): PaywallView(reason: reason)
+            case .ingredientSwap(let selection): RootIngredientSwap(selection: selection)
+            }
         }
         .fullScreenCover(item: Binding(
             get: { router.workoutDay.map(WorkoutDay.init) },
@@ -49,6 +46,7 @@ struct RootView: View {
         )) { day in
             WorkoutView(date: day.date)
         }
+        .toastOverlay(router)
     }
 
     private var tabSelection: Binding<AppTab> {
@@ -68,4 +66,23 @@ struct RootView: View {
 struct WorkoutDay: Identifiable {
     let date: Date
     var id: Date { date }
+}
+
+/// Ingredient swap reachable from anywhere (Adapt, Today, meal detail).
+private struct RootIngredientSwap: View {
+    let selection: MealSelection
+    @Environment(\.modelContext) private var modelContext
+    @Environment(AppRouter.self) private var router
+    @Query private var profiles: [ProfileRecord]
+
+    var body: some View {
+        if let record = profiles.first {
+            IngredientSwapSheet(planned: selection.planned, profile: record.profile()) { from, to in
+                modelContext.insert(IngredientSwapRecord(day: Calendar.current.startOfDay(for: selection.date),
+                                                         mealIndex: selection.planned.index, from: from, to: to))
+                try? modelContext.save()
+                router.toast("\(from) → \(to). Macros held close.")
+            }
+        }
+    }
 }

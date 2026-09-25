@@ -238,6 +238,10 @@ enum Space {
 }
 
 enum Size {
+    /// Space the toast keeps above the tab bar.
+    static let tabBarClearance: CGFloat = 96
+    /// The mock's pill switch.
+    static let switchSize = CGSize(width: 46, height: 28)
     /// Calorie arc on Today (mock: 18×34 segments at radius 108).
     static let arcRadius: CGFloat = 92
     static let segment = CGSize(width: 16, height: 30)

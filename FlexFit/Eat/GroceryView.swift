@@ -2,27 +2,30 @@ import SwiftUI
 import SwiftData
 import FlexFitEngine
 
-/// Groceries for the rest of this week's meals (mock "Groceries"), with a pantry the list skips.
+/// Groceries (mock "7 days ahead"): Restaurant mode on top, then this week's list aggregated
+/// from all 7 days of meals, with a pantry the list skips.
 struct GroceryView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
+    @Environment(AppRouter.self) private var router
     @Query private var profiles: [ProfileRecord]
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @Query private var swaps: [IngredientSwapRecord]
     @Query private var checks: [GroceryCheck]
     @Query(sort: \PantryItem.name) private var pantry: [PantryItem]
+    @Query private var logs: [DailyLog]
 
     var body: some View {
-        NavigationStack {
-            if let record = profiles.first {
-                content(record.profile())
-                    .navigationTitle("Groceries")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
+        if let record = profiles.first {
+            let profile = record.profile()
+            MockSheet(kicker: "7 days ahead", title: "Groceries") {
+                content(profile)
             }
+            .presentationDetents([.large])
         }
     }
 
+    @ViewBuilder
     private func content(_ profile: UserProfile) -> some View {
         let context = MealPlanContext(profile: profile, targets: TargetsStore.current(weekly, profile: profile), swaps: swaps)
         let monday = Week.start(of: .now)
@@ -32,58 +35,79 @@ struct GroceryView: View {
         let needed = items.filter { !pantryNames.contains($0.name) }
         let checked = Set(checks.filter { $0.weekOf == monday }.map(\.name))
         let left = needed.filter { !checked.contains($0.name) }.count
+        let todayMeals = context.meals(on: .now)
+        let log = logs.first { Calendar.current.isDateInToday($0.day) }
+        let kcalLeft = context.calories(on: .now) - todayMeals.filter { log?.eatenMeals.contains($0.index) == true }.reduce(0) { $0 + $1.kcal }
+            - (log?.eatenOutKcal ?? 0)
 
-        return ScrollView {
-            VStack(alignment: .leading, spacing: Space.md) {
-                VStack(alignment: .leading, spacing: Space.xxs) {
-                    Text("\(left) of \(needed.count) left · \(profile.shopDay.title)")
-                        .textStyle(.caption)
-                        .foregroundStyle(Palette.inkMuted)
-                    Text(budgetNote(profile.budget))
-                        .textStyle(.caption)
-                        .foregroundStyle(Palette.inkMuted)
-                        .fixedSize(horizontal: false, vertical: true)
+        Button {
+            dismiss()
+            Task { @MainActor in try? await Task.sleep(for: .milliseconds(450)); router.isRestaurantPresented = true }
+        } label: {
+            HStack(spacing: Space.md - 2) {
+                VStack(alignment: .leading, spacing: Space.xs - 2) {
+                    Text("Restaurant mode").textStyle(.statValue).foregroundStyle(Palette.onPanel)
+                    Text("Order well with \(Formatters.kcal(max(0, kcalLeft))) kcal left today")
+                        .textStyle(.caption).foregroundStyle(Palette.onPanelMuted)
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Image(systemName: "arrow.right")
+                    .font(TextStyle.button.font)
+                    .foregroundStyle(Palette.navy)
+                    .frame(width: Size.control, height: Size.control)
+                    .background(Palette.copper, in: Circle())
+            }
+            .padding(.horizontal, Space.lg)
+            .padding(.vertical, Space.lg - 2)
+            .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
+        }
+        .buttonStyle(PressableStyle())
 
-                ForEach(GroceryCategory.allCases, id: \.self) { category in
-                    let rows = needed.filter { $0.category == category }
-                    if !rows.isEmpty {
-                        Text(category.title)
-                            .textStyle(.kicker)
-                            .foregroundStyle(Palette.copperText)
-                            .padding(.top, Space.xs)
-                        CardList {
-                            ForEach(rows, id: \.name) { item in
-                                GroceryRow(item: item, isChecked: checked.contains(item.name),
-                                           onToggle: { toggle(item.name, week: monday) },
-                                           onPantry: { modelContext.insert(PantryItem(name: item.name)); try? modelContext.save() })
-                            }
-                        }
-                    }
-                }
+        VStack(alignment: .leading, spacing: Space.xxs) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("This week’s list").textStyle(.headline).foregroundStyle(Palette.ink)
+                Spacer()
+                Text("\(left) left").textStyle(.label).foregroundStyle(Palette.copperText)
+            }
+            Text("Aggregated from all 7 days of your meal plan. \(budgetNote(profile.budget)) Shopping day: \(profile.shopDay.title.lowercased()).")
+                .textStyle(.caption).foregroundStyle(Palette.inkMuted).fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.top, Space.sm)
 
-                if !pantry.isEmpty {
-                    Text("In your pantry")
-                        .textStyle(.kicker)
-                        .foregroundStyle(Palette.copperText)
-                        .padding(.top, Space.xs)
-                    Text("Left off the list. Tap to add back.")
-                        .textStyle(.caption)
-                        .foregroundStyle(Palette.inkMuted)
-                    FlowLayout {
-                        ForEach(pantry) { item in
-                            Chip(title: item.name, isSelected: true) {
-                                modelContext.delete(item)
-                                try? modelContext.save()
-                            }
+        ForEach(GroceryCategory.allCases, id: \.self) { category in
+            let rows = needed.filter { $0.category == category }
+            if !rows.isEmpty {
+                VStack(alignment: .leading, spacing: Space.xs + 1) {
+                    Text(category.title).textStyle(.kicker).foregroundStyle(Palette.inkMuted)
+                    CardList {
+                        ForEach(rows, id: \.name) { item in
+                            GroceryRow(item: item, isChecked: checked.contains(item.name),
+                                       onToggle: { toggle(item.name, week: monday) },
+                                       onPantry: {
+                                           modelContext.insert(PantryItem(name: item.name))
+                                           try? modelContext.save()
+                                           router.toast("\(item.name) moved to your pantry.")
+                                       })
                         }
                     }
                 }
             }
-            .padding(Space.lg)
-            .readableColumn()
         }
-        .pageBackground()
+
+        if !pantry.isEmpty {
+            VStack(alignment: .leading, spacing: Space.xs) {
+                Text("In your pantry").textStyle(.kicker).foregroundStyle(Palette.inkMuted)
+                Text("Left off the list. Tap to add back.").textStyle(.caption).foregroundStyle(Palette.inkMuted)
+                FlowLayout {
+                    ForEach(pantry) { item in
+                        Chip(title: item.name, isSelected: true) {
+                            modelContext.delete(item)
+                            try? modelContext.save()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private func toggle(_ name: String, week: Date) {
@@ -97,9 +121,9 @@ struct GroceryView: View {
 
     private func budgetNote(_ budget: GroceryBudget) -> String {
         switch budget {
-        case .tight: "Tight budget: buy staples in bulk and batch-cook the grains and dals."
+        case .tight: "Tight budget: buy staples in bulk and batch-cook grains and dals."
         case .moderate: "Frozen veg and pre-cooked grains are fine where they save time."
-        case .comfortable: "Buy whatever makes the macros easiest to hit."
+        case .comfortable: "Buy whatever makes the macros easiest."
         }
     }
 }
@@ -113,8 +137,13 @@ private struct GroceryRow: View {
     var body: some View {
         HStack(spacing: Space.sm) {
             Button(action: onToggle) {
-                HStack(spacing: Space.sm) {
-                    SelectionRing(isSelected: isChecked)
+                HStack(spacing: Space.sm + 1) {
+                    // The mock's rounded-square checkbox.
+                    RoundedRectangle(cornerRadius: Radius.xs - 1)
+                        .fill(isChecked ? Palette.inkFill : Color.clear)
+                        .overlay(RoundedRectangle(cornerRadius: Radius.xs - 1).strokeBorder(isChecked ? Color.clear : Palette.track, lineWidth: 1.5))
+                        .overlay { if isChecked { Image(systemName: "checkmark").font(TextStyle.micro.font.weight(.heavy)).foregroundStyle(Palette.onInkFill) } }
+                        .frame(width: Size.checkRing, height: Size.checkRing)
                     Text(item.name)
                         .textStyle(.rowTitle)
                         .foregroundStyle(isChecked ? Palette.inkMuted : Palette.ink)
@@ -138,7 +167,7 @@ private struct GroceryRow: View {
             .accessibilityLabel("More for \(item.name)")
         }
         .padding(.horizontal, Space.md)
-        .padding(.vertical, Space.sm)
+        .padding(.vertical, Space.sm + 1)
     }
 }
 
@@ -153,90 +182,70 @@ extension GroceryCategory {
     }
 }
 
-/// "Eating out tonight": three safe orders for what's left today (mock restaurant mode, PRD guide).
+/// "Eating out tonight" (mock "Restaurant mode"): three safe orders for what's left today.
+/// Tapping one logs it in place of dinner.
 struct RestaurantSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(AppRouter.self) private var router
     @Query private var profiles: [ProfileRecord]
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @Query private var logs: [DailyLog]
     @Query private var swaps: [IngredientSwapRecord]
     @State private var cuisine = RestaurantGuide.cuisines.first ?? ""
-    @State private var logged: String?
 
     var body: some View {
-        NavigationStack {
-            if let record = profiles.first {
-                content(record.profile())
-                    .navigationTitle("Order without guessing")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-            }
-        }
-        .presentationDetents([.large])
-    }
-
-    private func content(_ profile: UserProfile) -> some View {
-        let targets = TargetsStore.current(weekly, profile: profile)
-        let meals = MealPlanContext(profile: profile, targets: targets, swaps: swaps).meals(on: .now)
-        let eaten = Set(logs.first { Calendar.current.isDateInToday($0.day) }?.eatenMeals ?? [])
-        let kcalLeft = targets.calories - meals.filter { eaten.contains($0.index) }.reduce(0) { $0 + $1.kcal }
-        let picks = RestaurantGuide.picks(cuisine: cuisine, profile: profile, kcalLeft: kcalLeft)
-
-        return ScrollView {
-            VStack(alignment: .leading, spacing: Space.md) {
-                Text("You have \(Formatters.kcal(max(0, kcalLeft))) kcal left today.")
-                    .textStyle(.body)
-                    .foregroundStyle(Palette.inkMuted)
+        if let record = profiles.first {
+            let profile = record.profile()
+            let left = remaining(profile)
+            MockSheet(kicker: "Restaurant mode", title: "Order without guessing",
+                      subtitle: "You have \(Formatters.kcal(max(0, left.kcal))) kcal and \(max(0, left.protein)) g protein left today.",
+                      footer: "Order the first one you can find on the menu. Don’t optimise at the table. These are estimates, and allergens depend on the kitchen: always ask.") {
                 FlowLayout {
                     ForEach(RestaurantGuide.cuisines, id: \.self) { c in
                         Chip(title: c, isSelected: c == cuisine) { cuisine = c }
                     }
                 }
+                let picks = RestaurantGuide.picks(cuisine: cuisine, profile: profile, kcalLeft: left.kcal)
                 if picks.isEmpty {
                     InlineNote(text: "Nothing here fits your allergies and diet. Try another cuisine.")
                 } else {
                     CardList {
                         ForEach(Array(picks.enumerated()), id: \.element.name) { i, pick in
-                            Button {
-                                logged = pick.name
-                            } label: {
-                                HStack(alignment: .top, spacing: Space.sm) {
-                                    Text("\(i + 1)")
-                                        .textStyle(.label)
-                                        .foregroundStyle(Palette.onInkFill)
-                                        .frame(width: Size.checkRing + 6, height: Size.checkRing + 6)
-                                        .background(Palette.inkFill, in: Circle())
-                                    VStack(alignment: .leading, spacing: Space.xxs) {
-                                        Text(pick.name).textStyle(.rowTitle).foregroundStyle(Palette.ink)
-                                            .fixedSize(horizontal: false, vertical: true)
-                                        Text("\(pick.kcal) kcal · \(pick.proteinG) g protein · \(pick.tip)")
-                                            .textStyle(.caption).foregroundStyle(Palette.inkMuted)
-                                            .fixedSize(horizontal: false, vertical: true)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    if logged == pick.name {
-                                        Image(systemName: "checkmark.circle.fill").foregroundStyle(Palette.blueText)
-                                    }
-                                }
-                                .padding(Space.md)
-                                .contentShape(Rectangle())
+                            SheetRow(badge: "\(i + 1)", title: pick.name,
+                                     subtitle: "\(pick.kcal) kcal · \(pick.proteinG) g protein · \(pick.tip)") {
+                                log(pick)
                             }
-                            .buttonStyle(.plain)
                         }
                     }
                 }
-                Text("Order the first one you can find on the menu. Don't optimise at the table. Portions vary: these are estimates, and allergens depend on the kitchen, so always ask.")
-                    .textStyle(.caption)
-                    .foregroundStyle(Palette.inkMuted)
-                    .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(Space.lg)
-            .readableColumn()
+            .presentationDetents([.large])
+            .onAppear {
+                if let liked = profile.cuisines.map(\.rawValue).first(where: RestaurantGuide.cuisines.contains) { cuisine = liked }
+            }
         }
-        .pageBackground()
-        .onAppear {
-            if let liked = profile.cuisines.map(\.rawValue).first(where: RestaurantGuide.cuisines.contains) { cuisine = liked }
-        }
+    }
+
+    private func remaining(_ profile: UserProfile) -> (kcal: Int, protein: Int) {
+        let targets = TargetsStore.current(weekly, profile: profile)
+        let context = MealPlanContext(profile: profile, targets: targets, swaps: swaps)
+        let meals = context.meals(on: .now)
+        let today = logs.first { Calendar.current.isDateInToday($0.day) }
+        let eaten = meals.filter { today?.eatenMeals.contains($0.index) == true }
+        let kcal = context.calories(on: .now) - eaten.reduce(0) { $0 + $1.kcal } - (today?.eatenOutKcal ?? 0)
+        let protein = targets.proteinG - eaten.reduce(0) { $0 + $1.proteinG } - (today?.eatenOutProteinG ?? 0)
+        return (kcal, protein)
+    }
+
+    private func log(_ pick: RestaurantPick) {
+        let today = DailyLog.forDay(.now, in: modelContext)
+        today.eatenOutName = pick.name
+        today.eatenOutKcal = pick.kcal
+        today.eatenOutProteinG = pick.proteinG
+        today.updatedAt = .now
+        try? modelContext.save()
+        dismiss()
+        router.toast("Logged \(cuisine) — dinner adjusted.")
     }
 }

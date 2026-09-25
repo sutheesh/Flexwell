@@ -10,7 +10,7 @@ import FlexFitEngine
 
 enum SchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
-    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self] }
+    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self, SavedMeal.self] }
 
     @Model
     final class ProfileRecord {
@@ -39,6 +39,8 @@ enum SchemaV1: VersionedSchema {
         var travelUntil: Date?
         /// Whether the user turned on Apple Health sync.
         var healthSyncEnabled: Bool = false
+        /// Created by "Skip to the app": a sample plan until the user builds their own.
+        var isSample: Bool = false
         // Food (PRD schema: diet_style, cuisines, allergens, excluded_ingredients, max_cook_minutes).
         var dietStyle: String = DietStyle.highProtein.rawValue
         var cuisines: [String] = []
@@ -72,6 +74,10 @@ enum SchemaV1: VersionedSchema {
         var completedExercises: [String] = []
         /// Indices (into the day's planned meals) the user marked as eaten.
         var eatenMeals: [Int] = []
+        /// "I'm eating out": the order logged in place of dinner.
+        var eatenOutName: String?
+        var eatenOutKcal: Int = 0
+        var eatenOutProteinG: Int = 0
         var updatedAt: Date = Date.now
 
         init(day: Date) {
@@ -151,6 +157,14 @@ enum SchemaV1: VersionedSchema {
         init(weekOf: Date, name: String) { self.weekOf = weekOf; self.name = name }
     }
 
+    /// A meal bookmarked from its detail screen.
+    @Model
+    final class SavedMeal {
+        var mealID: Int = 0
+        var savedAt: Date = Date.now
+        init(mealID: Int) { self.mealID = mealID }
+    }
+
     /// Something the user keeps at home; left off grocery lists (PRD pantry).
     @Model
     final class PantryItem {
@@ -196,6 +210,7 @@ typealias PainFlag = SchemaV1.PainFlag
 typealias IngredientSwapRecord = SchemaV1.IngredientSwapRecord
 typealias GroceryCheck = SchemaV1.GroceryCheck
 typealias PantryItem = SchemaV1.PantryItem
+typealias SavedMeal = SchemaV1.SavedMeal
 
 struct LoggedExerciseRecord: Codable, Hashable {
     var exerciseID: String

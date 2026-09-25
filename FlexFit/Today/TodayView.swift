@@ -36,11 +36,18 @@ struct TodayView: View {
         let totalWeeks = TargetCalculator.weeksToGoal(for: profile)
         let streak = Streak.weeks(sessionsPerWeek: sessionsPerWeek(now: now), planned: profile.trainingDays)
         let doneToday = sessions.contains { Calendar.current.isDate($0.day, inSameDayAs: now) }
-        let meals = MealPlanContext(profile: profile, targets: targets, swaps: ingredientSwaps).meals(on: now)
+        let mealContext = MealPlanContext(profile: profile, targets: targets, swaps: ingredientSwaps)
+        let meals = mealContext.meals(on: now)
+        let dayTarget = mealContext.calories(on: now)
         let eatenIdx = Set(todayLog?.eatenMeals ?? [])
         let eatenMeals = meals.filter { eatenIdx.contains($0.index) }
-        let eaten = (kcal: eatenMeals.reduce(0) { $0 + $1.kcal }, protein: eatenMeals.reduce(0) { $0 + $1.proteinG },
+        // An eating-out order counts toward today (logged from Restaurant mode in place of dinner).
+        let eaten = (kcal: eatenMeals.reduce(0) { $0 + $1.kcal } + (todayLog?.eatenOutKcal ?? 0),
+                     protein: eatenMeals.reduce(0) { $0 + $1.proteinG } + (todayLog?.eatenOutProteinG ?? 0),
                      carbs: eatenMeals.reduce(0) { $0 + $1.carbsG }, fat: eatenMeals.reduce(0) { $0 + $1.fatG })
+        let groceryCount = GroceryList.build(from: (0..<7).compactMap {
+            Calendar.current.date(byAdding: .day, value: $0, to: Week.start(of: now)).map { mealContext.meals(on: $0) }
+        }).count
         let next = MealPlanContext.nextMeal(meals, eaten: eatenIdx, now: now)
         let snapshot = WidgetSnapshot(
             date: Calendar.current.startOfDay(for: now),
@@ -49,20 +56,23 @@ struct TodayView: View {
             sessionDetail: plan.map { "\($0.minutes) min · \($0.exercises.count) exercises" }
                 ?? (plannedToday.minutes > 0 ? "\(plannedToday.minutes) min · easy" : "Recover"),
             isTrainingDay: plannedToday.kind == .training,
-            kcalEaten: eaten.kcal, kcalTarget: targets.calories, proteinTarget: targets.proteinG,
+            kcalEaten: eaten.kcal, kcalTarget: dayTarget, proteinTarget: targets.proteinG,
             streakWeeks: streak, nextMeal: next?.meal.name
         )
 
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
-                Button { router.isSettingsPresented = true } label: {
-                    TodayHeader(name: profile.name, date: now, week: week)
+                TabHeader(name: profile.name.isEmpty ? "Y" : profile.name,
+                          kicker: "\(now.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))) · week \(week)",
+                          title: profile.name.isEmpty ? "Hi there" : "Hi \(profile.name)")
+
+                if record.isSample {
+                    SampleBanner { startOver() }
                 }
-                .buttonStyle(.plain)
-                .accessibilityHint("Opens settings")
 
                 TargetsCard(
-                    targets: targets,
+                    targets: DailyTargets(calories: dayTarget, proteinG: targets.proteinG, carbsG: targets.carbsG,
+                                          fatG: targets.fatG, expenditure: targets.expenditure, floorApplied: targets.floorApplied),
                     date: now,
                     weekLabel: streak > 0 ? "🔥 \(streak)-week streak"
                         : (totalWeeks.map { "Week \(min(week, $0)) of \($0)" } ?? "Week \(week)"),
@@ -81,7 +91,7 @@ struct TodayView: View {
                     }
                     EnergyCheckIn(energy: todayLog?.energyValue, pivot: pivot,
                                   onPick: { pick($0, on: now) },
-                                  onChange: { setEnergy(nil, on: now) })
+                                  onChange: { router.isEnergyPresented = true })
                 }
 
                 SessionCard(day: plannedToday, pivot: pivot, plan: plan, travel: record.activeTravelKit(now: now),
@@ -98,9 +108,14 @@ struct TodayView: View {
                             .foregroundStyle(Palette.copperText)
                     }
                     CardList {
-                        ForEach(meals) { meal in
+                        if let out = todayLog?.eatenOutName {
+                            EatingOutRow(name: out, kcal: todayLog?.eatenOutKcal ?? 0, protein: todayLog?.eatenOutProteinG ?? 0) {
+                                clearEatingOut(now)
+                            }
+                        }
+                        ForEach(meals.filter { todayLog?.eatenOutName == nil || $0.slot != .dinner }) { meal in
                             Button { mealDetail = MealSelection(date: now, planned: meal) } label: {
-                                TodayMealRow(meal: meal, target: targets.calories,
+                                TodayMealRow(meal: meal, target: dayTarget,
                                              status: eatenIdx.contains(meal.index) ? .eaten : (meal.id == next?.id ? .upNext : .planned))
                             }
                             .buttonStyle(.plain)
@@ -110,17 +125,18 @@ struct TodayView: View {
 
                 SectionHeader(title: "Quick adjustments")
                 CardList {
-                    ActionRow(icon: "house", tint: .navy, title: "Can't make it to the gym",
-                              subtitle: record.activeTravelKit(now: now) == TravelKit.none ? "On: today is a no-equipment session" : "Converts today to zero equipment",
-                              badge: entitlements.canUseTravelMode ? nil : "Pro") {
+                    let noGymOn = record.activeTravelKit(now: now) == TravelKit.none
+                    ActionRow(icon: "house", tint: .navy, title: "Can’t make it to the gym",
+                              subtitle: noGymOn ? "On — today is a zero-equipment session" : "Converts today to zero equipment",
+                              badge: entitlements.canUseTravelMode ? nil : "Pro", toggle: noGymOn) {
                         toggleNoGym(record, now: now)
                     }
                     ActionRow(icon: "fork.knife", tint: .copper, title: "Eating out tonight",
-                              subtitle: "3 safe orders for \(Formatters.kcal(max(0, targets.calories - eaten.kcal))) kcal left") {
+                              subtitle: "3 safe orders for \(Formatters.kcal(max(0, dayTarget - eaten.kcal))) kcal left") {
                         router.isRestaurantPresented = true
                     }
                     ActionRow(icon: "checklist", tint: .blue, title: "Grocery list",
-                              subtitle: "Everything for this week's meals") { router.isGroceryPresented = true }
+                              subtitle: "\(groceryCount) items for this week’s meals") { router.isGroceryPresented = true }
                     ActionRow(icon: "airplane", tint: .navy, title: "Travel mode",
                               subtitle: record.activeTravelKit(now: now).map { "On · \($0.title.lowercased())" }
                                   ?? "Same muscles with bodyweight or bands",
@@ -184,9 +200,11 @@ struct TodayView: View {
         if record.activeTravelKit(now: now) == TravelKit.none {
             record.travelKit = nil
             record.travelUntil = nil
+            router.toast("Back to your normal session.")
         } else {
             record.travelKit = TravelKit.none.rawValue
             record.travelUntil = Calendar.current.date(bySettingHour: 23, minute: 59, second: 0, of: now)
+            router.toast("No-gym mode on — zero-equipment session, same muscles.")
         }
         try? modelContext.save()
     }
@@ -205,6 +223,30 @@ struct TodayView: View {
             return
         }
         setEnergy(energy, on: date)
+        let message = switch energy {
+        case .high: "Full session. Loads up."
+        case .ok: "Session as written."
+        case .low: "Cut short. Still counts."
+        }
+        router.toast(message)
+    }
+
+    private func clearEatingOut(_ date: Date) {
+        let log = DailyLog.forDay(date, in: modelContext)
+        log.eatenOutName = nil
+        log.eatenOutKcal = 0
+        log.eatenOutProteinG = 0
+        try? modelContext.save()
+        router.toast("Back to your planned dinner.")
+    }
+
+    /// "Build my plan" from a sample: clear the sample so onboarding starts.
+    private func startOver() {
+        for model in [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self,
+                      PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self, SavedMeal.self] as [any PersistentModel.Type] {
+            try? modelContext.delete(model: model)
+        }
+        try? modelContext.save()
     }
 
     private func sessionsPerWeek(now: Date) -> [Int] {
@@ -244,36 +286,6 @@ enum TodayPlan {
         let days = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: start),
                                                    to: Calendar.current.startOfDay(for: now)).day ?? 0
         return max(0, days) / 7 + 1
-    }
-}
-
-// MARK: - Header
-
-private struct TodayHeader: View {
-    let name: String
-    let date: Date
-    let week: Int
-
-    var body: some View {
-        HStack(spacing: Space.sm) {
-            Text(String(name.prefix(1)).uppercased())
-                .textStyle(.button)
-                .foregroundStyle(Palette.navy)
-                .frame(width: Size.avatar, height: Size.avatar)
-                .background(Palette.copper, in: Circle())
-                .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: Space.xxs + 1) {
-                Text("\(date.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))) · week \(week)")
-                    .textStyle(.caption)
-                    .foregroundStyle(Palette.inkMuted)
-                Text("Hi \(name)")
-                    .textStyle(.title2)
-                    .foregroundStyle(Palette.ink)
-                    .accessibilityAddTraits(.isHeader)
-            }
-            Spacer(minLength: 0)
-        }
-        .padding(.vertical, Space.xs)
     }
 }
 
@@ -466,11 +478,16 @@ private struct EnergyCheckIn: View {
                     .foregroundStyle(Palette.ink)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .fixedSize(horizontal: false, vertical: true)
-                Button("Change", action: onChange)
-                    .textStyle(.label)
-                    .foregroundStyle(Palette.copperText)
-                    .buttonStyle(.plain)
-                    .padding(.vertical, Space.xs)
+                Button(action: onChange) {
+                    Text("Change")
+                        .textStyle(.label)
+                        .foregroundStyle(Palette.copperText)
+                        .padding(.vertical, Space.sm)
+                        .padding(.horizontal, Space.xs)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Change")
             }
             .padding(.horizontal, Space.xxs)
         } else {
@@ -635,7 +652,7 @@ private struct SessionCard: View {
                 .padding(.top, Space.sm)
                 .accessibilityAddTraits(.isHeader)
 
-            Label(meta, systemImage: "clock")
+            Text(meta)
                 .textStyle(.micro)
                 .foregroundStyle(Palette.onPanelMuted)
                 .padding(.top, Space.sm - 2)
@@ -669,8 +686,8 @@ private struct SessionCard: View {
 
     private var meta: String {
         switch day.kind {
-        case .training: "\(minutes) min · \(plan?.exercises.count ?? 0) exercises · RPE ≤ \(pivot?.rpeCap ?? 8)"
-        case .activeRecovery: "\(minutes) min · easy"
+        case .training: "🔥 \(Burn.kcal(minutes: minutes, training: true)) kcal · ⏱ \(minutes) min · RPE ≤ \(pivot?.rpeCap ?? 8)"
+        case .activeRecovery: "🔥 \(Burn.kcal(minutes: minutes, training: false)) kcal · ⏱ \(minutes) min"
         case .rest: "Recover"
         }
     }
@@ -699,6 +716,8 @@ struct ActionRow: View {
     let title: String
     let subtitle: String
     var badge: String?
+    /// When set, the row shows the mock's pill switch in this state instead of a chevron.
+    var toggle: Bool? = nil
     let action: () -> Void
 
     var body: some View {
@@ -730,16 +749,21 @@ struct ActionRow: View {
                         .fixedSize(horizontal: false, vertical: true)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                Image(systemName: "chevron.right")
-                    .font(TextStyle.chip.font)
-                    .foregroundStyle(Palette.inkMuted)
-                    .accessibilityHidden(true)
+                if let toggle {
+                    MockSwitch(isOn: toggle)
+                } else {
+                    Image(systemName: "chevron.right")
+                        .font(TextStyle.chip.font)
+                        .foregroundStyle(Palette.inkMuted)
+                        .accessibilityHidden(true)
+                }
             }
             .padding(.horizontal, Space.md)
             .padding(.vertical, Space.md - 2)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .accessibilityValue(toggle.map { $0 ? "On" : "Off" } ?? "")
     }
 
     private var iconColor: Color {
@@ -808,12 +832,83 @@ private struct TodayMealRow: View {
     }
 
     private var statusTitle: String {
-        switch status { case .eaten: "Eaten"; case .upNext: "Up next"; case .planned: "Planned" }
+        switch status { case .eaten: "Logged"; case .upNext: "Up next"; case .planned: "Planned" }
     }
     private var statusFg: Color {
         switch status { case .eaten: Palette.blueText; case .upNext: Palette.copperText; case .planned: Palette.inkMuted }
     }
     private var statusBg: Color {
         switch status { case .eaten: Palette.blueTint; case .upNext: Palette.copperTint; case .planned: Palette.hairline }
+    }
+}
+
+/// Rough session burn, as the mock estimates it: ~7.5 kcal/min lifting, ~4.5 kcal/min walking.
+enum Burn {
+    static func kcal(minutes: Int, training: Bool) -> Int {
+        Int((Double(minutes) * (training ? 7.5 : 4.5)).rounded())
+    }
+}
+
+/// Shown while the plan comes from "Skip to the app".
+private struct SampleBanner: View {
+    let onBuild: () -> Void
+
+    var body: some View {
+        HStack(spacing: Space.sm) {
+            VStack(alignment: .leading, spacing: Space.xxs) {
+                Text("This is a sample plan").textStyle(.rowTitle).foregroundStyle(Palette.ink)
+                Text("Built from example answers. Yours takes about three minutes.")
+                    .textStyle(.caption).foregroundStyle(Palette.inkMuted)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Button(action: onBuild) {
+                Text("Build mine")
+                    .textStyle(.chip)
+                    .foregroundStyle(Palette.onInkFill)
+                    .padding(.horizontal, Space.md - 2)
+                    .padding(.vertical, Space.sm - 2)
+                    .background(Palette.inkFill, in: Capsule())
+            }
+            .buttonStyle(PressableStyle())
+        }
+        .padding(Space.md)
+        .background(Palette.copperTint, in: RoundedRectangle(cornerRadius: Radius.md))
+    }
+}
+
+/// Tonight's restaurant order, logged in place of dinner.
+private struct EatingOutRow: View {
+    let name: String
+    let kcal: Int
+    let protein: Int
+    let onUndo: () -> Void
+
+    var body: some View {
+        HStack(spacing: Space.sm + 1) {
+            Image(systemName: "fork.knife")
+                .font(TextStyle.rowTitle.font)
+                .foregroundStyle(Palette.copperText)
+                .frame(width: Size.avatar + 10, height: Size.avatar + 10)
+                .background(Palette.copperTint, in: Circle())
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: Space.xxs + 2) {
+                HStack(spacing: Space.xs - 1) {
+                    Text("Dinner · eating out").textStyle(.micro).foregroundStyle(Palette.inkMuted)
+                    Text("Logged").textStyle(.micro).foregroundStyle(Palette.blueText)
+                        .padding(.horizontal, Space.xs - 1).padding(.vertical, Space.xxs)
+                        .background(Palette.blueTint, in: Capsule())
+                }
+                Text(name).textStyle(.rowTitle).foregroundStyle(Palette.ink).fixedSize(horizontal: false, vertical: true)
+                Text("\(protein)g protein").textStyle(.micro).foregroundStyle(Palette.inkMuted)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            VStack(alignment: .trailing, spacing: Space.xs - 2) {
+                Text("\(kcal)").textStyle(.statValue).foregroundStyle(Palette.ink)
+                Button("Undo", action: onUndo).textStyle(.micro).foregroundStyle(Palette.copperText)
+            }
+        }
+        .padding(.horizontal, Space.md)
+        .padding(.vertical, Space.sm + 1)
     }
 }

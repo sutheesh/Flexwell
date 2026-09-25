@@ -4,6 +4,7 @@ import SwiftUI
 /// so everything here uses fixed tokens rather than roles.
 struct IntroView: View {
     let onStart: () -> Void
+    let onSkip: () -> Void
 
     var body: some View {
         VStack(spacing: 0) {
@@ -63,7 +64,7 @@ struct IntroView: View {
         VStack(alignment: .leading, spacing: 0) {
             HStack(spacing: Space.xs - 1) {
                 pill("Training", fg: Palette.ice, bg: Palette.ice.opacity(0.16))
-                pill("Targets", fg: Palette.copper, bg: Palette.copper.opacity(0.18))
+                pill("Food", fg: Palette.copper, bg: Palette.copper.opacity(0.18))
                 pill("One plan", fg: Palette.onPanel.opacity(0.75), bg: Palette.onPanelHairline)
             }
             .padding(.bottom, Space.md)
@@ -74,7 +75,7 @@ struct IntroView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .accessibilityAddTraits(.isHeader)
 
-            Text("A few quick questions. Then a week-by-week plan that bends when life does.")
+            Text("Sixteen quick questions. Then a week-by-week path to your goal that bends when life does.")
                 .textStyle(.body)
                 .foregroundStyle(Palette.onPanelMuted)
                 .fixedSize(horizontal: false, vertical: true)
@@ -82,6 +83,16 @@ struct IntroView: View {
                 .padding(.bottom, Space.xl)
 
             IceButton(title: "Build my plan", action: onStart)
+            Button(action: onSkip) {
+                Text("Skip to the app")
+                    .textStyle(.chip)
+                    .foregroundStyle(Palette.onPanel.opacity(0.85))
+                    .frame(maxWidth: .infinity, minHeight: Size.button + 2)
+                    .overlay(Capsule().strokeBorder(Palette.onPanelOutline))
+                    .contentShape(Capsule())
+            }
+            .buttonStyle(PressableStyle())
+            .padding(.top, Space.sm - 2)
         }
         .padding(.horizontal, Space.xl)
         .padding(.bottom, Space.md)
@@ -98,4 +109,4 @@ struct IntroView: View {
     }
 }
 
-#Preview { IntroView {} }
+#Preview { IntroView(onStart: {}, onSkip: {}) }

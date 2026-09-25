@@ -2,7 +2,8 @@ import SwiftUI
 import SwiftData
 import FlexFitEngine
 
-/// ⚡ Adapt: reshape today — energy, soreness, Travel Mode (PRD F4, F5).
+/// ⚡ Adapt (mock "What changed?"): one tap and the session and the food both move.
+/// Below the mock's five rows: soreness (PRD F4) and multi-day Travel Mode (PRD F5).
 struct AdaptSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -12,27 +13,22 @@ struct AdaptSheet: View {
     @Query private var logs: [DailyLog]
     @Query private var swaps: [ExerciseSwap]
     @Query private var painFlags: [PainFlag]
+    @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
+    @Query private var ingredientSwaps: [IngredientSwapRecord]
 
     @State private var travelUntil = Calendar.current.date(byAdding: .day, value: 3, to: .now) ?? .now
-
     private let today = Date.now
 
     var body: some View {
-        NavigationStack {
-            if let record = profiles.first {
-                content(record)
-                    .navigationTitle("Adapt today")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Done") { dismiss() }
-                        }
-                    }
-            }
+        MockSheet(kicker: "Adapt today", title: "What changed?",
+                  subtitle: "One tap — the session and the food both move with you.",
+                  footer: "Adapting is the streak. Skipping is what ends it.") {
+            if let record = profiles.first { content(record) }
         }
         .presentationDetents([.large])
     }
 
+    @ViewBuilder
     private func content(_ record: ProfileRecord) -> some View {
         let resolver = PlanResolver(record: record, swaps: swaps, logs: logs, painFlags: painFlags)
         let weekday = TrainView.todayWeekday
@@ -40,53 +36,62 @@ struct AdaptSheet: View {
         let log = resolver.log(for: today)
         let plan = resolver.session(forWeekday: weekday, on: today, applyPivot: true)
         let pivotsLeft = entitlements.pivotsLeftThisMonth(logs: logs, now: today)
+        let lowMinutes = EnergyPivot.pivot(energy: .low, lowYesterday: resolver.log(for: today.addingTimeInterval(-86_400))?.energyValue == .low,
+                                           plannedMinutes: day.minutes).minutes
 
-        return ScrollView {
-            VStack(alignment: .leading, spacing: Space.xl) {
-                PreviewCard(day: day, plan: plan, travel: record.activeTravelKit(now: today))
+        PreviewCard(day: day, plan: plan, travel: record.activeTravelKit(now: today))
 
-                if day.kind == .training {
-                    section(title: "Energy", trailing: pivotsLeft.map { "\($0) of \(FreeTier.pivotsPerMonth) low-energy pivots left this month" }) {
-                        CardList {
-                            ForEach(Energy.allCases, id: \.self) { energy in
-                                ChoiceRow(title: energy.title, subtitle: energySubtitle(energy),
-                                          isSelected: log?.energyValue == energy) {
-                                    pick(energy, current: log?.energyValue, pivotsLeft: pivotsLeft)
-                                }
-                            }
-                        }
-                    }
-
-                    section(title: "Anything sore?", trailing: "Optional. Exercises that load it are swapped today.") {
-                        FlowLayout {
-                            ForEach(SoreArea.allCases, id: \.self) { area in
-                                Chip(title: area.title, isSelected: log?.soreAreas.contains(area.rawValue) == true) {
-                                    toggleSore(area)
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    InlineNote(text: day.kind == .rest
-                               ? "Rest day, nothing to adapt. Travel Mode below applies to your next sessions."
-                               : "Recovery day: a walk and mobility. Travel Mode below applies to your next sessions.")
-                }
-
-                travelSection(record)
+        CardList {
+            SheetRow(badge: "☾", title: "I’m low on energy",
+                     subtitle: "Session drops to \(lowMinutes) min, top lifts only." + (pivotsLeft.map { " \($0) of \(FreeTier.pivotsPerMonth) left this month." } ?? "")) {
+                setEnergy(.low, current: log?.energyValue, toast: "Cut to \(lowMinutes) minutes. Streak intact.")
             }
-            .padding(Space.lg)
-            .readableColumn()
+            SheetRow(badge: "⌂", title: "I can’t reach the gym",
+                     subtitle: "Zero-equipment session, same muscles." + (entitlements.canUseTravelMode ? "" : " Pro.")) {
+                noGym(record)
+            }
+            SheetRow(badge: "◍", title: "I’m missing an ingredient", subtitle: "Rebuild your next meal from what you have.") {
+                missingIngredient(record)
+            }
+            SheetRow(badge: "▣", title: "I’m eating out", subtitle: "Three safe orders for the cuisine you’re at.") {
+                handOff { router.isRestaurantPresented = true }
+            }
+            SheetRow(badge: "✦", title: "I feel strong", subtitle: "Full session, loads up where you earned them.") {
+                if record.activeTravelKit(now: today) == TravelKit.none, record.travelUntil.map({ Calendar.current.isDateInToday($0) }) == true {
+                    record.travelKit = nil; record.travelUntil = nil
+                }
+                setEnergy(.high, current: log?.energyValue, toast: "Full session. Loads go up where you've earned them.")
+            }
         }
-        .pageBackground()
+
+        if day.kind == .training {
+            VStack(alignment: .leading, spacing: Space.sm) {
+                Text("Anything sore?").textStyle(.headline).foregroundStyle(Palette.ink)
+                Text("Exercises that load it are swapped today.").textStyle(.caption).foregroundStyle(Palette.inkMuted)
+                FlowLayout {
+                    ForEach(SoreArea.allCases, id: \.self) { area in
+                        Chip(title: area.title, isSelected: log?.soreAreas.contains(area.rawValue) == true) { toggleSore(area) }
+                    }
+                }
+            }
+            .padding(.top, Space.xs)
+        }
+
+        travelSection(record)
     }
 
-    // MARK: Travel Mode
+    // MARK: Travel Mode (multi-day)
 
     @ViewBuilder
     private func travelSection(_ record: ProfileRecord) -> some View {
         let active = record.activeTravelKit(now: today)
-        section(title: "Travel mode", badge: entitlements.canUseTravelMode ? nil : "Pro",
-                trailing: "Same muscle groups with what you have on the road.") {
+        VStack(alignment: .leading, spacing: Space.sm) {
+            HStack(spacing: Space.xs - 2) {
+                Text("Travelling for a few days?").textStyle(.headline).foregroundStyle(Palette.ink)
+                if !entitlements.canUseTravelMode { ProBadge() }
+            }
+            Text("Travel mode: same muscle groups with what you have on the road, until the date you pick.")
+                .textStyle(.caption).foregroundStyle(Palette.inkMuted).fixedSize(horizontal: false, vertical: true)
             if entitlements.canUseTravelMode {
                 CardList {
                     ForEach(TravelKit.allCases, id: \.self) { kit in
@@ -105,10 +110,9 @@ struct AdaptSheet: View {
                     .padding(.horizontal, Space.md)
                     .padding(.vertical, Space.xs)
                     .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.md))
-                    .padding(.top, Space.xs)
                 }
             } else {
-                Button { showPaywall(.travel) } label: {
+                Button { handOff { router.paywall = .travel } } label: {
                     ActionRowContent(icon: "airplane", title: "Unlock Travel Mode",
                                      subtitle: "Bodyweight, bands or hotel dumbbells, until the date you pick")
                 }
@@ -116,25 +120,46 @@ struct AdaptSheet: View {
                 .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.md))
             }
         }
+        .padding(.top, Space.xs)
     }
 
     // MARK: Actions
 
-    private func pick(_ energy: Energy, current: Energy?, pivotsLeft: Int?) {
+    private func setEnergy(_ energy: Energy, current: Energy?, toast: String) {
         if energy == .low, entitlements.lowNeedsPro(todayIsLow: current == .low, logs: logs, now: today) {
-            showPaywall(.pivots)
+            handOff { router.paywall = .pivots }
             return
         }
         DailyLog.forDay(today, in: modelContext).energyValue = energy
         try? modelContext.save()
+        dismiss()
+        router.toast(toast)
     }
 
-    /// A sheet can't present the root's paywall over itself: close first, then ask for it.
-    private func showPaywall(_ reason: AppRouter.PaywallReason) {
+    private func noGym(_ record: ProfileRecord) {
+        guard entitlements.canUseTravelMode else { handOff { router.paywall = .travel }; return }
+        record.travelKit = TravelKit.none.rawValue
+        record.travelUntil = Calendar.current.date(bySettingHour: 23, minute: 59, second: 0, of: today)
+        try? modelContext.save()
+        dismiss()
+        router.toast("No-gym mode on — zero-equipment session, same muscles.")
+    }
+
+    private func missingIngredient(_ record: ProfileRecord) {
+        let profile = record.profile()
+        let context = MealPlanContext(profile: profile, targets: TargetsStore.current(weekly, profile: profile), swaps: ingredientSwaps)
+        let meals = context.meals(on: today)
+        let eaten = Set(logs.first { Calendar.current.isDateInToday($0.day) }?.eatenMeals ?? [])
+        guard let next = MealPlanContext.nextMeal(meals, eaten: eaten) ?? meals.first else { return }
+        handOff { router.ingredientSwap = MealSelection(date: today, planned: next) }
+    }
+
+    /// A sheet can't present the root's sheets over itself: close first, then ask for the next one.
+    private func handOff(_ action: @escaping @MainActor () -> Void) {
         dismiss()
         Task { @MainActor in
             try? await Task.sleep(for: .milliseconds(450))
-            router.paywall = reason
+            action()
         }
     }
 
@@ -144,6 +169,7 @@ struct AdaptSheet: View {
             log.soreAreas.remove(at: i)
         } else {
             log.soreAreas.append(area.rawValue)
+            router.toast("Sore \(area.title.lowercased()): those exercises are swapped today.")
         }
         log.updatedAt = .now
         try? modelContext.save()
@@ -153,36 +179,41 @@ struct AdaptSheet: View {
         record.travelKit = kit?.rawValue
         record.travelUntil = kit == nil ? nil : (record.travelUntil.flatMap { $0 > today ? $0 : nil } ?? travelUntil)
         try? modelContext.save()
+        router.toast(kit == nil ? "Travel mode off. Back to your normal sessions." : "Travel mode on: \(kit!.title.lowercased()).")
+    }
+}
+
+/// The mock's "Daily check-in" sheet (opened by "Change" on Today).
+struct EnergySheet: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+    @Environment(AppRouter.self) private var router
+    @Environment(EntitlementService.self) private var entitlements
+    @Query private var logs: [DailyLog]
+
+    var body: some View {
+        MockSheet(kicker: "Daily check-in", title: "How much have you got today?",
+                  subtitle: "Ten seconds — the plan reshapes itself.") {
+            CardList {
+                SheetRow(badge: "✦", title: "High — let’s go", subtitle: "Full session, loads up where earned.") { pick(.high, "Full session locked in.") }
+                SheetRow(badge: "⚡", title: "Medium — normal day", subtitle: "Session as written, hold the loads.") { pick(.ok, "Session as written.") }
+                SheetRow(badge: "☾", title: "Low — barely slept", subtitle: "Trimmed session. Calories stay put: tired days aren't diet days.") { pick(.low, "Downsized. Still counts.") }
+            }
+        }
+        .presentationDetents([.medium])
     }
 
-    private func energySubtitle(_ energy: Energy) -> String {
-        switch energy {
-        case .high: "Full session, loads up. Optional finisher."
-        case .ok: "Session as written."
-        case .low: "Trimmed: top 3 lifts, 2 sets each. Still counts."
+    private func pick(_ energy: Energy, _ message: String) {
+        let todayLog = logs.first { Calendar.current.isDateInToday($0.day) }
+        if energy == .low, entitlements.lowNeedsPro(todayIsLow: todayLog?.energyValue == .low, logs: logs) {
+            dismiss()
+            Task { @MainActor in try? await Task.sleep(for: .milliseconds(450)); router.paywall = .pivots }
+            return
         }
-    }
-
-    // MARK: Layout
-
-    private func section<Content: View>(title: String, badge: String? = nil, trailing: String? = nil,
-                                        @ViewBuilder content: () -> Content) -> some View {
-        VStack(alignment: .leading, spacing: Space.sm) {
-            HStack(spacing: Space.xs - 2) {
-                Text(title)
-                    .textStyle(.headline)
-                    .foregroundStyle(Palette.ink)
-                    .accessibilityAddTraits(.isHeader)
-                if let badge { ProBadge(text: badge) }
-            }
-            if let trailing {
-                Text(trailing)
-                    .textStyle(.caption)
-                    .foregroundStyle(Palette.inkMuted)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            content()
-        }
+        DailyLog.forDay(.now, in: modelContext).energyValue = energy
+        try? modelContext.save()
+        dismiss()
+        router.toast(message)
     }
 }
 

@@ -155,7 +155,7 @@ struct SettingsView: View {
     private func reset() {
         for model in [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self,
                       WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self,
-                      GroceryCheck.self, PantryItem.self] as [any PersistentModel.Type] {
+                      GroceryCheck.self, PantryItem.self, SavedMeal.self] as [any PersistentModel.Type] {
             try? modelContext.delete(model: model)
         }
         try? modelContext.save()

@@ -19,6 +19,7 @@ struct EatView: View {
     @State private var detail: MealSelection?
     @State private var swapping: MealSelection?
     @State private var search = ""
+    @Query(sort: \SavedMeal.savedAt, order: .reverse) private var savedMeals: [SavedMeal]
 
     var body: some View {
         if let record = profiles.first {
@@ -42,6 +43,7 @@ struct EatView: View {
                         modelContext.insert(IngredientSwapRecord(day: Calendar.current.startOfDay(for: selection.date),
                                                                  mealIndex: selection.planned.index, from: from, to: to))
                         try? modelContext.save()
+                        router.toast("\(from) → \(to). Macros held close.")
                     }
                 }
                 .sheet(isPresented: $isLoggingWeight) {
@@ -75,7 +77,19 @@ struct EatView: View {
             VStack(alignment: .leading, spacing: Space.md - 2) {
                 HeaderButton(name: profile.name, kicker: "\(profile.diet.title) · \(cuisineLine)", title: "Discover meals")
 
-                SearchField(text: $search)
+                HStack(spacing: Space.sm - 2) {
+                    SearchField(text: $search)
+                    Button { router.isAdaptPresented = true } label: {
+                        Image(systemName: "bolt")
+                            .font(TextStyle.rowTitle.font)
+                            .foregroundStyle(Palette.ink)
+                            .frame(width: Size.button + 2, height: Size.button + 2)
+                            .background(Palette.card, in: Circle())
+                            .cardShadow()
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Adapt today")
+                }
 
                 if !search.trimmingCharacters(in: .whitespaces).isEmpty {
                     SearchResults(query: search, profile: profile, targets: targets) { meal in
@@ -106,6 +120,19 @@ struct EatView: View {
                                 MealCard(planned: meal, isEaten: eaten(on: selectedDate).contains(meal.index),
                                          onOpen: { detail = MealSelection(date: selectedDate, planned: meal) },
                                          onSwap: { swapping = MealSelection(date: selectedDate, planned: meal) })
+                            }
+                        }
+                    }
+                    if !savedMeals.isEmpty {
+                        SectionHeader(title: "Saved meals")
+                        CardList {
+                            ForEach(savedMeals.compactMap { MealLibrary.bundled[$0.mealID] }) { meal in
+                                let planned = PlannedMeal(meal: meal, slot: meal.slot, index: 200 + meal.id, kcal: meal.kcal,
+                                                          proteinG: meal.proteinG, carbsG: meal.carbsG, fatG: meal.fatG,
+                                                          ingredients: meal.ingredients, swapped: nil)
+                                MealCard(planned: planned, isEaten: false,
+                                         onOpen: { detail = MealSelection(date: .now, planned: planned) },
+                                         onSwap: { swapping = MealSelection(date: .now, planned: planned) })
                             }
                         }
                     }
@@ -191,21 +218,8 @@ struct EatView: View {
     }
 }
 
-/// Avatar + title header whose avatar opens Settings.
-struct HeaderButton: View {
-    let name: String
-    let kicker: String
-    let title: String
-    @Environment(AppRouter.self) private var router
-
-    var body: some View {
-        Button { router.isSettingsPresented = true } label: {
-            ScreenHeader(initial: name, kicker: kicker, title: title)
-        }
-        .buttonStyle(.plain)
-        .accessibilityHint("Opens settings")
-    }
-}
+/// Avatar + title header (opens Settings) with the cart button on the right.
+typealias HeaderButton = TabHeader
 
 /// Navy targets panel. Fixed-dark content.
 private struct TargetsPanel: View {

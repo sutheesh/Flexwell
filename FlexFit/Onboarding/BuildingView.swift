@@ -10,7 +10,8 @@ struct BuildingView: View {
     @State private var lineIndex = 0
     @State private var spinning = false
 
-    private let lines = ["Reading your constraints", "Sizing your energy needs", "Programming your week", "Your plan is ready"]
+    private let lines = ["Reading your constraints", "Sizing your energy needs", "Programming your week",
+                         "Picking food you’ll actually eat", "Your path is ready"]
 
     var body: some View {
         VStack(spacing: 0) {
@@ -63,7 +64,8 @@ struct BuildingView: View {
                 lineIndex = i
                 progress = Double(i + 1) / Double(lines.count)
             }
-            try? await Task.sleep(for: .milliseconds(i == lines.count - 1 ? 350 : 380))
+            // Five beats inside the PRD's 2-second budget.
+            try? await Task.sleep(for: .milliseconds(i == lines.count - 1 ? 300 : 320))
         }
         onDone()
     }

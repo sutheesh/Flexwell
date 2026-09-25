@@ -19,51 +19,40 @@ struct SwapSheet: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("Swap")
-                    .textStyle(.kicker)
-                    .foregroundStyle(Palette.copperText)
-                Text(exercise.name)
-                    .textStyle(.title2)
-                    .foregroundStyle(Palette.ink)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .padding(.top, Space.xs - 2)
-                    .accessibilityAddTraits(.isHeader)
-
-                Picker("Why", selection: $scope) {
-                    Text("Machine taken").tag(SwapScope.today)
-                    Text("Don't like it").tag(SwapScope.always)
-                }
-                .pickerStyle(.segmented)
-                .padding(.top, Space.md)
-
-                Text(scope == .today ? "Just for today. Your plan stays the same next week." : "From now on, in every week of your plan.")
-                    .textStyle(.caption)
-                    .foregroundStyle(Palette.inkMuted)
-                    .padding(.top, Space.xs)
-
-                if options.isEmpty {
-                    InlineNote(text: "Nothing else with your equipment trains this movement safely. Keep it, or add equipment in Settings (tap your initial).")
-                        .padding(.top, Space.md)
-                } else {
-                    CardList {
-                        ForEach(options, id: \.exercise.id) { option in
-                            Button { onChoose(option.exercise, scope) } label: {
-                                OptionRow(option: option, owned: equipment)
-                            }
-                            .buttonStyle(.plain)
+        MockSheet(kicker: "Swap · \(exercise.primaryMuscles.first?.title ?? "")", title: "Replace \(exercise.name)",
+                  subtitle: "Same movement, same set volume, only gear you have.",
+                  footer: "Bench taken, shoulder cranky, rack is a queue — swapping is not cheating.") {
+            Picker("Why", selection: $scope) {
+                Text("Machine taken").tag(SwapScope.today)
+                Text("Don't like it").tag(SwapScope.always)
+            }
+            .pickerStyle(.segmented)
+            Text(scope == .today ? "Just for today. Your plan stays the same next week." : "From now on, in every week of your plan.")
+                .textStyle(.caption)
+                .foregroundStyle(Palette.inkMuted)
+            if options.isEmpty {
+                InlineNote(text: "Nothing else with your equipment trains this movement safely. Keep it, or add equipment in Settings (tap your initial).")
+            } else {
+                CardList {
+                    ForEach(Array(options.enumerated()), id: \.element.exercise.id) { i, option in
+                        SheetRow(badge: String(UnicodeScalar(UInt8(65 + i))), title: option.exercise.name,
+                                 subtitle: why(option),
+                                 trailing: option.carriedLoadKg.map { $0.formatted(.number.precision(.fractionLength(0...1))) + " kg" }) {
+                            onChoose(option.exercise, scope)
                         }
                     }
-                    .padding(.top, Space.md)
                 }
             }
-            .padding(Space.lg)
-            .readableColumn()
         }
-        .background(Palette.page)
         .presentationDetents([.medium, .large])
-        .presentationDragIndicator(.visible)
+    }
+
+    /// "Why this": same muscles, joint-friendlier, and what it needs.
+    private func why(_ option: SwapOption) -> String {
+        var parts: [String] = [option.sameMuscles ? "Same muscles" : "Same movement"]
+        if option.easierOnJoints { parts.append("easier on your joints") }
+        parts.append(ExerciseCopy.equipment(option.exercise, owned: equipment))
+        return parts.joined(separator: " · ")
     }
 }
 

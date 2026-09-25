@@ -36,6 +36,7 @@
 		607E4391A37857E05F798995 /* FlexFitEngine in Frameworks */ = {isa = PBXBuildFile; productRef = EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */; };
 		6200FB36D835B41033BA4799 /* TargetsUpkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48BEFB13249F47C8E0D02 /* TargetsUpkeep.swift */; };
 		6672FCD2D55A0F9BF7FBC4B3 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC1EFD33521403541F3E4344 /* OFL.txt */; };
+		66D7438BE2CEB6C890A7420C /* MockChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F3D8A98C5ED48E5CF3C8C /* MockChrome.swift */; };
 		7795EDDA64F24CF5BE5F0009 /* FontRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF19C91501D2C123504332A /* FontRegistration.swift */; };
 		7DD92D04CC33694A4AB6FC6E /* SwapSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E50B85B5EFD34245E91357 /* SwapSheet.swift */; };
 		7E440F94641721C30C1CD0B8 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAEA9319DBF622DD05990C /* WatchPayload.swift */; };
@@ -123,6 +124,7 @@
 		0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
 		1448D532A2C19586D41DEC06 /* PlanReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanReadyView.swift; sourceTree = "<group>"; };
 		212D1DC0A572FAE9A427DEF5 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		299F3D8A98C5ED48E5CF3C8C /* MockChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChrome.swift; sourceTree = "<group>"; };
 		2B12283F57E4B38ECA9D774F /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		2B6C83EDD7050DCA664F2F90 /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		3BB0EEB6F0791E7BBE22B2C3 /* Schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			children = (
 				BFA2DB5D273E519402662ADE /* Controls.swift */,
 				021B178EE4264D6FED7AA019 /* Labels.swift */,
+				299F3D8A98C5ED48E5CF3C8C /* MockChrome.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				32CADF1ADBF6DF971D41A316 /* LegalPage.swift in Sources */,
 				0C088A3E170B2087CD85FFF8 /* MealPlanContext.swift in Sources */,
 				8A8DF4FCD952E72D9247897E /* MealViews.swift in Sources */,
+				66D7438BE2CEB6C890A7420C /* MockChrome.swift in Sources */,
 				52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */,
 				E0A0B1D34F9058D6158D82CC /* OnboardingFlow.swift in Sources */,
 				FAAED40322343CA5D5C6EE05 /* PathView.swift in Sources */,
