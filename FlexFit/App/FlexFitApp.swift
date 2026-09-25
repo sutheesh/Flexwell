@@ -10,19 +10,32 @@ struct FlexFitApp: App {
     @State private var router = AppRouter()
 
     init() {
-        do {
-            container = try ModelContainer(
-                for: Schema(versionedSchema: SchemaV1.self),
-                migrationPlan: FlexFitMigrationPlan.self
-            )
-        } catch {
-            fatalError("Could not open the data store: \(error)")
-        }
+        container = Self.makeContainer()
         DebugLaunch.apply(to: container)
         let entitlements = EntitlementService()
         self.entitlements = entitlements
         self.store = StoreService(entitlements: entitlements)
     }
+
+    /// Backed up to the user's own iCloud (CloudKit private database, PRD "Backup/sync").
+    /// If CloudKit can't start (no iCloud account, UI tests), fall back to a local store so the app always opens.
+    private static func makeContainer() -> ModelContainer {
+        let schema = Schema(versionedSchema: SchemaV1.self)
+        let useCloud = !ProcessInfo.processInfo.arguments.contains("-FFLocalOnly")
+        if useCloud,
+           let container = try? ModelContainer(for: schema, migrationPlan: FlexFitMigrationPlan.self,
+                                               configurations: ModelConfiguration(schema: schema, cloudKitDatabase: .private(cloudContainer))) {
+            return container
+        }
+        do {
+            return try ModelContainer(for: schema, migrationPlan: FlexFitMigrationPlan.self,
+                                      configurations: ModelConfiguration(schema: schema, cloudKitDatabase: .none))
+        } catch {
+            fatalError("Could not open the data store: \(error)")
+        }
+    }
+
+    static let cloudContainer = "iCloud.com.ilabbs.flexfit"
 
     var body: some Scene {
         WindowGroup {
