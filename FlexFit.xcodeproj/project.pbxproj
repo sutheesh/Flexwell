@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09797B42081C75DD8111AC81 /* FlexFitWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE244EABAB27E55AD05A15B /* FlexFitWatchApp.swift */; };
 		0C088A3E170B2087CD85FFF8 /* MealPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C15ECC659B71DC22022D64 /* MealPlanContext.swift */; };
 		0C1403F4E879304A6772307B /* FlexFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DA19983009626E575050E3 /* FlexFitApp.swift */; };
 		1110D95B8ABAB7E1A7BD0517 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */; };
@@ -26,6 +27,7 @@
 		51D6359ABC7713024096DFFA /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DB5D273E519402662ADE /* Controls.swift */; };
 		52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21784056B85AB72E023F29C /* OnboardingDraft.swift */; };
 		53EF2A2BC5363334BE1B4EEE /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660C257864812C7BAC0EE0C /* PaywallView.swift */; };
+		53F9F6C39F7FB13CCB48C532 /* SessionViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE552A8017C7561415DB1CB /* SessionViews.swift */; };
 		54B03DAD1002ED29B7B9EDA5 /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E7FD5CC32E31E963BBBCC3 /* StoreService.swift */; };
 		54E0944B4C4E17D43F63198C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76AFFB8763AC53408C9A83C /* SettingsView.swift */; };
 		59C21BCE89182BD84AEAB048 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212D1DC0A572FAE9A427DEF5 /* RootView.swift */; };
@@ -36,19 +38,24 @@
 		6672FCD2D55A0F9BF7FBC4B3 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC1EFD33521403541F3E4344 /* OFL.txt */; };
 		7795EDDA64F24CF5BE5F0009 /* FontRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF19C91501D2C123504332A /* FontRegistration.swift */; };
 		7DD92D04CC33694A4AB6FC6E /* SwapSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E50B85B5EFD34245E91357 /* SwapSheet.swift */; };
+		7E440F94641721C30C1CD0B8 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAEA9319DBF622DD05990C /* WatchPayload.swift */; };
 		8A8DF4FCD952E72D9247897E /* MealViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C881A91936EEA09A5BCC76 /* MealViews.swift */; };
 		8C458478157B7C8C3E9DCBD7 /* RoadAndDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1745D057A7983026CE2FB /* RoadAndDays.swift */; };
 		A097095CD4CDBF71F38BA4DD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F707686257874AA7F9F534E /* WidgetSnapshot.swift */; };
 		A55690E83A67069F5C80110E /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */; };
 		A9DCD330191D652F1727F5A1 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27026A4D0EE3EB1C8F7A964 /* WorkoutView.swift */; };
 		B1BC702596B4B30399C45EFE /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */; };
+		B520DAA2F896DA1B9D00B63C /* FlexFitWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7C45EB628C4DB9177ECA6D08 /* FlexFitWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BC505F7D4A18056E78920262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99167C14D606648373727810 /* Assets.xcassets */; };
+		C36A1C126BDD0377AD6D0EE6 /* WatchTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32A07315118D6202A286EC /* WatchTheme.swift */; };
 		CACC8C24A45F8BEB2B86A2BC /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */; };
 		CF61299F166C6525B72FE164 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3055FFD42860FE10325647 /* DesignTokens.swift */; };
 		D1C293FE44D851A4BE64151B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */; };
 		D1F9AC814C941F49DCD94C9D /* GroceryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 083D30FD0DBC3C8AB171BF92 /* GroceryView.swift */; };
 		D4FF7CE6D108A581E5F542EB /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3055FFD42860FE10325647 /* DesignTokens.swift */; };
+		DA8FE7CBEFD4F57CF8CBD621 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAEA9319DBF622DD05990C /* WatchPayload.swift */; };
 		E0A0B1D34F9058D6158D82CC /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B12283F57E4B38ECA9D774F /* OnboardingFlow.swift */; };
+		E44266BC07558856D8C114D8 /* WatchSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77EC667CEDF84286F4ABC20A /* WatchSync.swift */; };
 		E5B8FEAE8F088611ABDDE343 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */; };
 		E63AFA867514A5121C5297F4 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 021B178EE4264D6FED7AA019 /* Labels.swift */; };
 		E67B23311D2797D6DB4D9327 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953AE17B1B1C15A5511B5494 /* Reminders.swift */; };
@@ -63,6 +70,7 @@
 		FA2DD9B5D47B8B416DCFBE0F /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */; };
 		FAA795B57331E654EF2C0DFD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F707686257874AA7F9F534E /* WidgetSnapshot.swift */; };
 		FAAED40322343CA5D5C6EE05 /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061332175FD25A3E3FE08E17 /* PathView.swift */; };
+		FEB414F844E06617C773C4B3 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAEA9319DBF622DD05990C /* WatchPayload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,9 +81,27 @@
 			remoteGlobalIDString = 31B9DDDDCE176C98694536DD;
 			remoteInfo = FlexFitWidgets;
 		};
+		F0BEF76F573B14C37D3BC168 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD3E5C8E6F6FEE0AC9C5D550 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7B6651A36494C9F6E9759137;
+			remoteInfo = FlexFitWatch;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E19C5E80D1846E25F8E47156 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B520DAA2F896DA1B9D00B63C /* FlexFitWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ECCD3A7C340EF67ACFE194D3 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -109,8 +135,11 @@
 		5E8D5ED6AD38164124121C27 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		6F3055FFD42860FE10325647 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
 		72210B436C2AFD24E32EF575 /* BuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingView.swift; sourceTree = "<group>"; };
+		77EC667CEDF84286F4ABC20A /* WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSync.swift; sourceTree = "<group>"; };
+		7C45EB628C4DB9177ECA6D08 /* FlexFitWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexFitWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DEFD7B7BF6FC2BE8CBA44DC /* TrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainView.swift; sourceTree = "<group>"; };
 		87FECA0E4F3289209780AEBA /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		8A32A07315118D6202A286EC /* WatchTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTheme.swift; sourceTree = "<group>"; };
 		8F567DA0525F760EE3EAA414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9107581F9BCE843835DCAAA8 /* FlexFit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FlexFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953AE17B1B1C15A5511B5494 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
@@ -123,6 +152,7 @@
 		B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		B5DA19983009626E575050E3 /* FlexFitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexFitApp.swift; sourceTree = "<group>"; };
 		B8E1745D057A7983026CE2FB /* RoadAndDays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadAndDays.swift; sourceTree = "<group>"; };
+		BDE244EABAB27E55AD05A15B /* FlexFitWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexFitWatchApp.swift; sourceTree = "<group>"; };
 		BFA2DB5D273E519402662ADE /* Controls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controls.swift; sourceTree = "<group>"; };
 		C1BA482AA556BE8A397B8372 /* PlanResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanResolver.swift; sourceTree = "<group>"; };
 		C35435FF3ECD8F799B64EE0D /* FlexFitWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FlexFitWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +163,7 @@
 		D27026A4D0EE3EB1C8F7A964 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		D76AFFB8763AC53408C9A83C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DD80EB9503FC4DD0BD43F9A2 /* Entitlements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entitlements.swift; sourceTree = "<group>"; };
+		DEE552A8017C7561415DB1CB /* SessionViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViews.swift; sourceTree = "<group>"; };
 		DFD49026F8EC1CB5C706DD4B /* FlexFitWidgets.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlexFitWidgets.entitlements; sourceTree = "<group>"; };
 		E43611D1D53C5019AC7BE40C /* WizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardView.swift; sourceTree = "<group>"; };
 		E624E2FD08A7E90A45EF47BD /* AdaptSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptSheet.swift; sourceTree = "<group>"; };
@@ -142,6 +173,7 @@
 		F21784056B85AB72E023F29C /* OnboardingDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDraft.swift; sourceTree = "<group>"; };
 		F873368EE8983679C9EF1505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F8E7FD5CC32E31E963BBBCC3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
+		FCAAEA9319DBF622DD05990C /* WatchPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayload.swift; sourceTree = "<group>"; };
 		FCF19C91501D2C123504332A /* FontRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontRegistration.swift; sourceTree = "<group>"; };
 		FDC2ED8DBE3B3C6AA0BEADE2 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		FFBC0F702FEDCA6B2E81FFD5 /* FlexFitWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexFitWidgets.swift; sourceTree = "<group>"; };
@@ -185,6 +217,14 @@
 			path = Adapt;
 			sourceTree = "<group>";
 		};
+		4EDEA01A720E5917B1AC30CF /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8A32A07315118D6202A286EC /* WatchTheme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
 		50A1397D8383BC2217AF09E3 /* FlexFit */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +259,7 @@
 				953AE17B1B1C15A5511B5494 /* Reminders.swift */,
 				F8E7FD5CC32E31E963BBBCC3 /* StoreService.swift */,
 				02A48BEFB13249F47C8E0D02 /* TargetsUpkeep.swift */,
+				77EC667CEDF84286F4ABC20A /* WatchSync.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -237,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				9107581F9BCE843835DCAAA8 /* FlexFit.app */,
+				7C45EB628C4DB9177ECA6D08 /* FlexFitWatch.app */,
 				C35435FF3ECD8F799B64EE0D /* FlexFitWidgets.appex */,
 			);
 			name = Products;
@@ -303,6 +345,7 @@
 			children = (
 				B0FBB6FAD9E608D1DAEC9B54 /* Config */,
 				50A1397D8383BC2217AF09E3 /* FlexFit */,
+				B0058819F718D1AB5B59D77B /* FlexFitWatch */,
 				7525970F32DA4D63D54067B4 /* FlexFitWidgets */,
 				8AEAE5E1FA46E81D13D76558 /* Packages */,
 				DF872FDDE13B35ABAE3C018A /* Shared */,
@@ -325,6 +368,16 @@
 				6F3055FFD42860FE10325647 /* DesignTokens.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		B0058819F718D1AB5B59D77B /* FlexFitWatch */ = {
+			isa = PBXGroup;
+			children = (
+				BDE244EABAB27E55AD05A15B /* FlexFitWatchApp.swift */,
+				DEE552A8017C7561415DB1CB /* SessionViews.swift */,
+				4EDEA01A720E5917B1AC30CF /* Theme */,
+			);
+			path = FlexFitWatch;
 			sourceTree = "<group>";
 		};
 		B0FBB6FAD9E608D1DAEC9B54 /* Config */ = {
@@ -356,6 +409,7 @@
 		DF872FDDE13B35ABAE3C018A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				FCAAEA9319DBF622DD05990C /* WatchPayload.swift */,
 				4F707686257874AA7F9F534E /* WidgetSnapshot.swift */,
 			);
 			path = Shared;
@@ -417,6 +471,23 @@
 			productReference = C35435FF3ECD8F799B64EE0D /* FlexFitWidgets.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		7B6651A36494C9F6E9759137 /* FlexFitWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 867B5A21E1B6DD5242DFEB3F /* Build configuration list for PBXNativeTarget "FlexFitWatch" */;
+			buildPhases = (
+				3C75ABDF2275B538BAE13D42 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlexFitWatch;
+			packageProductDependencies = (
+			);
+			productName = FlexFitWatch;
+			productReference = 7C45EB628C4DB9177ECA6D08 /* FlexFitWatch.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A25D89457C171DCCE24F0213 /* FlexFit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2651CE74324F6163A086882A /* Build configuration list for PBXNativeTarget "FlexFit" */;
@@ -425,11 +496,13 @@
 				ACC5ACFE110E18A3A9AFC419 /* Resources */,
 				8739B39B8F244377D4FDB120 /* Frameworks */,
 				ECCD3A7C340EF67ACFE194D3 /* Embed Foundation Extensions */,
+				E19C5E80D1846E25F8E47156 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				799D2224555DA9C514753EEC /* PBXTargetDependency */,
+				947C06ACDC1F47F1C6180E73 /* PBXTargetDependency */,
 			);
 			name = FlexFit;
 			packageProductDependencies = (
@@ -449,6 +522,10 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					31B9DDDDCE176C98694536DD = {
+						DevelopmentTeam = 8SY27AD3L4;
+						ProvisioningStyle = Automatic;
+					};
+					7B6651A36494C9F6E9759137 = {
 						DevelopmentTeam = 8SY27AD3L4;
 						ProvisioningStyle = Automatic;
 					};
@@ -476,6 +553,7 @@
 			projectRoot = "";
 			targets = (
 				A25D89457C171DCCE24F0213 /* FlexFit */,
+				7B6651A36494C9F6E9759137 /* FlexFitWatch */,
 				31B9DDDDCE176C98694536DD /* FlexFitWidgets */,
 			);
 		};
@@ -513,6 +591,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3C75ABDF2275B538BAE13D42 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09797B42081C75DD8111AC81 /* FlexFitWatchApp.swift in Sources */,
+				53F9F6C39F7FB13CCB48C532 /* SessionViews.swift in Sources */,
+				7E440F94641721C30C1CD0B8 /* WatchPayload.swift in Sources */,
+				C36A1C126BDD0377AD6D0EE6 /* WatchTheme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7BE7E1C04208E0F6B85A4C1A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -550,6 +639,8 @@
 				6200FB36D835B41033BA4799 /* TargetsUpkeep.swift in Sources */,
 				5B83A1F0D60AB8F44EA8F329 /* TodayView.swift in Sources */,
 				2BD3FEBFDD7BDBE98D3A8F71 /* TrainView.swift in Sources */,
+				FEB414F844E06617C773C4B3 /* WatchPayload.swift in Sources */,
+				E44266BC07558856D8C114D8 /* WatchSync.swift in Sources */,
 				A097095CD4CDBF71F38BA4DD /* WidgetSnapshot.swift in Sources */,
 				EFAEF54DBCE54C6558E545DD /* WizardView.swift in Sources */,
 				A9DCD330191D652F1727F5A1 /* WorkoutView.swift in Sources */,
@@ -563,6 +654,7 @@
 				CF61299F166C6525B72FE164 /* DesignTokens.swift in Sources */,
 				2D02E058C3F3872366017EB9 /* FlexFitWidgets.swift in Sources */,
 				7795EDDA64F24CF5BE5F0009 /* FontRegistration.swift in Sources */,
+				DA8FE7CBEFD4F57CF8CBD621 /* WatchPayload.swift in Sources */,
 				FAA795B57331E654EF2C0DFD /* WidgetSnapshot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,9 +667,33 @@
 			target = 31B9DDDDCE176C98694536DD /* FlexFitWidgets */;
 			targetProxy = 127376C3DB536DF0E217CBA7 /* PBXContainerItemProxy */;
 		};
+		947C06ACDC1F47F1C6180E73 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7B6651A36494C9F6E9759137 /* FlexFitWatch */;
+			targetProxy = F0BEF76F573B14C37D3BC168 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		10B0DB93A2EEDED7BA952327 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FlexFit;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ilabbs.flexfit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilabbs.flexfit.watchkitapp;
+				PRODUCT_NAME = FlexFit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
 		12DC72F2EA88FC8B93255E89 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -700,7 +816,6 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -757,7 +872,6 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -787,6 +901,25 @@
 			};
 			name = Release;
 		};
+		DD39A572DA6E5D3EDACFE0E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = FlexFit;
+				INFOPLIST_KEY_WKApplication = YES;
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.ilabbs.flexfit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ilabbs.flexfit.watchkitapp;
+				PRODUCT_NAME = FlexFit;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -795,6 +928,15 @@
 			buildConfigurations = (
 				12DC72F2EA88FC8B93255E89 /* Debug */,
 				CA5CDCA43B3BB4A959C176EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		867B5A21E1B6DD5242DFEB3F /* Build configuration list for PBXNativeTarget "FlexFitWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10B0DB93A2EEDED7BA952327 /* Debug */,
+				DD39A572DA6E5D3EDACFE0E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

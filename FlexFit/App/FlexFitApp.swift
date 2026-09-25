@@ -12,6 +12,8 @@ struct FlexFitApp: App {
     init() {
         container = Self.makeContainer()
         DebugLaunch.apply(to: container)
+        let container = self.container
+        Task { @MainActor in WatchSync.shared.activate(container: container) }
         let entitlements = EntitlementService()
         self.entitlements = entitlements
         self.store = StoreService(entitlements: entitlements)

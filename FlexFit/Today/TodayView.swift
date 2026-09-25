@@ -144,6 +144,8 @@ struct TodayView: View {
                 snapshot.save()
                 WidgetCenter.shared.reloadAllTimelines()
             }
+            // And the Watch session view.
+            if let plan { WatchSync.shared.send(WatchSync.payload(plan: plan, day: now, sessions: sessions)) }
         }
         .task(id: plan.map { introFacts(plan: $0, profile: profile, travel: record.activeTravelKit(now: now) != nil) }) {
             guard let plan else { intro = nil; return }
