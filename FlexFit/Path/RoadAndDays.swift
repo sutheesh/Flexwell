@@ -32,12 +32,12 @@ struct RoadSection: View {
                         HStack(spacing: Space.xs) {
                             Text(phase.name).textStyle(.rowTitle).foregroundStyle(Palette.ink)
                             if phase.state == .now {
-                                Text("Now")
-                                    .textStyle(.micro)
-                                    .foregroundStyle(Palette.onInkFill)
+                                Text("YOU ARE HERE")
+                                    .textStyle(.badge)
+                                    .foregroundStyle(Palette.ice)
                                     .padding(.horizontal, Space.xs)
                                     .padding(.vertical, Space.xxs)
-                                    .background(Palette.inkFill, in: Capsule())
+                                    .background(Palette.navy, in: Capsule())
                             }
                             Spacer()
                             Text(phase.range).textStyle(.micro).foregroundStyle(Palette.inkMuted)
@@ -67,7 +67,7 @@ struct RoadSection: View {
             ("Foundation", 1, fEnd, "Learn the lifts. Loads start conservative and reps climb week to week."),
             ("Build momentum", fEnd + 1, bEnd, "Full \(profile.trainingDays)-day split at \(Formatters.kcal(targets.calories)) kcal. Loads go up once you hit the top of each rep range."),
             ("Sharpen", bEnd + 1, w, "Protein stays at \(targets.proteinG) g. Targets keep adjusting to your weight trend every week."),
-            ("Hold the line", w + 1, nil, "At your goal, switch the goal to Maintain in Settings. Targets move to about \(Formatters.kcal(targets.expenditure)) kcal."),
+            ("Hold the line", w + 1, nil, "At your goal, switch the goal to Maintain in Profile. Targets move to about \(Formatters.kcal(targets.expenditure)) kcal."),
         ]
         return defs.map { name, from, to, text in
             let state: Phase.State = if let to, currentWeek > to { .done }
@@ -81,7 +81,7 @@ struct RoadSection: View {
         switch s { case .done: Palette.blueText; case .now: Palette.copper; case .next: Palette.card }
     }
     private func ring(_ s: Phase.State) -> Color {
-        switch s { case .done: Palette.blueText; case .now: Palette.copperTint; case .next: Palette.track }
+        switch s { case .done: Palette.blueText; case .now: Palette.copper.opacity(0.35); case .next: Palette.ink.opacity(0.18) }
     }
 }
 
@@ -107,11 +107,11 @@ struct DayByDaySection: View {
                     let isSelected = i == selected
                     Button { selected = i } label: {
                         VStack(spacing: Space.xxs + 1) {
-                            Text(Weekday.shortName(i)).textStyle(.micro).opacity(0.75)
+                            Text(Weekday.shortName(i)).textStyle(.micro).opacity(0.7)
                             Text(dates[i].formatted(.dateTime.day())).textStyle(.statValue)
                             Circle()
-                                .fill(week[i].kind == .training ? (isSelected ? Palette.onInkFill : Palette.copper)
-                                      : week[i].kind == .activeRecovery ? Palette.blueText : .clear)
+                                .fill(week[i].kind == .training ? (isSelected ? Palette.ice : Palette.copper)
+                                      : week[i].kind == .activeRecovery ? (isSelected ? Palette.onInkFill.opacity(0.4) : Palette.ink.opacity(0.25)) : .clear)
                                 .frame(width: Size.dot - 1, height: Size.dot - 1)
                         }
                         .foregroundStyle(isSelected ? Palette.onInkFill : Palette.ink)
@@ -126,22 +126,30 @@ struct DayByDaySection: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .firstTextBaseline) {
-                    Text(Calendar.current.isDateInToday(dates[selected]) ? "Today, \(dates[selected].formatted(.dateTime.day().month(.abbreviated)))"
-                         : dates[selected].formatted(.dateTime.weekday(.wide).day().month(.abbreviated)))
-                        .textStyle(.rowTitle).foregroundStyle(Palette.ink)
+                    Text("\(Calendar.current.isDateInToday(dates[selected]) ? "Today" : dates[selected].formatted(.dateTime.weekday(.abbreviated))), \(DayMonth.text(dates[selected]))")
+                        .textStyle(.mealName).foregroundStyle(Palette.ink)
                     Spacer()
                     Text(kindTitle(day)).textStyle(.micro).foregroundStyle(Palette.inkMuted)
                 }
-                .padding(Space.md)
+                .padding(.horizontal, Space.md)
+                .padding(.top, Space.md - 1)
+                .padding(.bottom, Space.sm)
                 Rectangle().fill(Palette.hairline).frame(height: 1)
 
-                activityRow(icon: day.kind == .training ? "dumbbell" : "figure.walk",
-                            title: day.kind == .training ? (day.focus?.title ?? "Training") : day.kind == .rest ? "Full rest" : "Brisk walk + mobility",
-                            subtitle: day.kind == .training ? "Tap to see the session" : day.kind == .rest ? "Let the week land" : "Hips, T-spine, calves",
-                            value: day.minutes > 0 ? "\(day.minutes) min" : "—") { router.tab = .train }
-                activityRow(icon: "shoeprints.fill", title: "Steps", subtitle: "Spread across the day",
+                if day.kind == .training {
+                    activityRow(glyph: "▲", tile: Palette.navy, ink: Palette.ice,
+                                title: day.focus?.title ?? "Training",
+                                subtitle: (day.focus.map { $0.moves + "\n" } ?? "") + "\(SessionBuilder.slotCount(forMinutes: day.minutes)) movements · ~\(Burn.kcal(minutes: day.minutes, training: true)) kcal burn",
+                                value: "\(day.minutes) min") { router.tab = .train }
+                } else {
+                    activityRow(glyph: "◐", tile: Palette.blueTint, ink: Palette.blueText,
+                                title: day.kind == .rest ? "Full rest" : "Brisk walk + mobility",
+                                subtitle: day.kind == .rest ? "Let the week land" : "Hips, T-spine, calves",
+                                value: day.minutes > 0 ? "\(day.minutes) min" : "—") { router.tab = .train }
+                }
+                activityRow(glyph: "⋯", tile: Palette.copperTint, ink: Palette.copperText, title: "Steps", subtitle: "Spread across the day",
                             value: stepTarget(day).formatted(.number)) {}
-                activityRow(icon: "moon", title: "Sleep window", subtitle: sleepNote,
+                activityRow(glyph: "☾", tile: Palette.chipFill, ink: Palette.ink, title: "Sleep window", subtitle: sleepNote,
                             value: profile.sleep.isShort ? "8 h" : "7.5 h") {}
 
                 Text("Food · \(Formatters.kcal(meals.reduce(0) { $0 + $1.kcal })) kcal")
@@ -161,13 +169,15 @@ struct DayByDaySection: View {
                                 Text("\(meal.slot.title) · \(meal.proteinG)g protein").textStyle(.micro).foregroundStyle(Palette.inkMuted)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
-                            Text("\(meal.kcal)").textStyle(.label).foregroundStyle(Palette.copperText)
+                            Text("\(meal.kcal)").textStyle(.macroValue).foregroundStyle(Palette.copperText)
                         }
                         .padding(.horizontal, Space.md)
                         .padding(.vertical, Space.sm - 1)
+                        .frame(maxWidth: .infinity)
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
+                    .overlay(alignment: .bottom) { Rectangle().fill(Palette.hairline).frame(height: 1) }
                 }
             }
             .padding(.bottom, Space.xs)
@@ -176,27 +186,30 @@ struct DayByDaySection: View {
         }
     }
 
-    private func activityRow(icon: String, title: String, subtitle: String, value: String, action: @escaping () -> Void) -> some View {
+    /// Mock: a 38 pt glyph tile, title + note, and the value on the right; a hairline under each row.
+    private func activityRow(glyph: String, tile: Color, ink: Color, title: String, subtitle: String, value: String,
+                             action: @escaping () -> Void) -> some View {
         Button(action: action) {
             HStack(spacing: Space.sm + 1) {
-                Image(systemName: icon)
-                    .font(TextStyle.label.font)
-                    .foregroundStyle(Palette.copperText)
+                Text(glyph)
+                    .textStyle(.label)
+                    .foregroundStyle(ink)
                     .frame(width: Size.iconTile, height: Size.iconTile)
-                    .background(Palette.copperTint, in: RoundedRectangle(cornerRadius: Radius.xs))
+                    .background(tile, in: RoundedRectangle(cornerRadius: Radius.xs))
                     .accessibilityHidden(true)
                 VStack(alignment: .leading, spacing: Space.xxs - 1) {
                     Text(title).textStyle(.label).foregroundStyle(Palette.ink)
-                    Text(subtitle).textStyle(.micro).foregroundStyle(Palette.inkMuted)
+                    Text(subtitle).textStyle(.micro).foregroundStyle(Palette.inkMuted).fixedSize(horizontal: false, vertical: true)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                Text(value).textStyle(.label).foregroundStyle(Palette.ink)
+                Text(value).textStyle(.macroValue).foregroundStyle(Palette.ink)
             }
             .padding(.horizontal, Space.md)
-            .padding(.vertical, Space.sm)
+            .padding(.vertical, Space.sm + 1)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .overlay(alignment: .bottom) { Rectangle().fill(Palette.hairline).frame(height: 1) }
     }
 
     private func kindTitle(_ day: PlannedDay) -> String {

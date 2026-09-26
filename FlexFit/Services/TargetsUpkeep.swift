@@ -35,16 +35,12 @@ enum TargetsStore {
         new.trendKg = trend
 
         if isPro, let trend, let change = WeightTrend.weeklyChange(entries, asOf: thisWeek) {
-            let lastWeek = Calendar.current.date(byAdding: .day, value: -7, to: thisWeek) ?? thisWeek
-            let logs = (try? context.fetch(FetchDescriptor<DailyLog>())) ?? []
-            let noDays = logs.filter { $0.day >= lastWeek && $0.day < thisWeek && $0.proteinValue == .no }.count
             let fastNow = AdaptiveTargets.isFastLoss(trendChangeKg: change, trendWeightKg: trend)
             let fastWeeks = fastNow ? (previousWasFast(previous, weekly) ? 2 : 1) : 0
             let update = AdaptiveTargets.weeklyUpdate(profile: profile, previous: previous.dailyTargets,
                                                       trendChangeKg: change, trendWeightKg: trend,
-                                                      proteinNoDays: noDays, fastLossWeeks: fastWeeks)
+                                                      fastLossWeeks: fastWeeks)
             new.apply(update.targets)
-            new.skippedForIntake = update.skippedForIntake
             new.rapidLossWarning = update.rapidLossWarning
         } else {
             new.apply(previous.dailyTargets)
@@ -71,6 +67,22 @@ enum TargetsStore {
         }
         try? context.save()
     }
+
+    /// Pulls body fat, lean mass and waist from Health (from the last imported sample, or 180 days back).
+    @MainActor
+    static func importHealthBodyMetrics(context: ModelContext) async {
+        let existing = (try? context.fetch(FetchDescriptor<BodyMeasurement>())) ?? []
+        for metric in ProgressReport.BodyMetric.allCases {
+            let mine = existing.filter { $0.kind == metric.rawValue }
+            let since = mine.filter { $0.source == "health" }.map(\.date).max()
+                ?? Calendar.current.date(byAdding: .day, value: -180, to: .now) ?? .now
+            let known = Set(mine.map(\.date))
+            for (date, value) in await HealthService.shared.bodyMetrics(metric, since: since) where !known.contains(date) {
+                context.insert(BodyMeasurement(date: date, kind: metric, value: value, source: "health"))
+            }
+        }
+        try? context.save()
+    }
 }
 
 private struct WeeklyTargetsUpkeep: ViewModifier {
@@ -84,7 +96,14 @@ private struct WeeklyTargetsUpkeep: ViewModifier {
             .task(id: phase) {
                 guard phase == .active, let record = profiles.first else { return }
                 if record.healthSyncEnabled {
+                    // Health sync turned on before body composition and walking were read: ask once for the
+                    // new types (iOS only prompts for ones not yet answered).
+                    if !UserDefaults.standard.bool(forKey: "healthReadsV2") {
+                        _ = await HealthService.shared.requestAuthorization()
+                        UserDefaults.standard.set(true, forKey: "healthReadsV2")
+                    }
                     await TargetsStore.importHealthWeights(context: context)
+                    await TargetsStore.importHealthBodyMetrics(context: context)
                 }
                 TargetsStore.upkeep(context: context, record: record, isPro: entitlements.isPro)
             }

@@ -10,6 +10,7 @@
 		09797B42081C75DD8111AC81 /* FlexFitWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE244EABAB27E55AD05A15B /* FlexFitWatchApp.swift */; };
 		0C088A3E170B2087CD85FFF8 /* MealPlanContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C15ECC659B71DC22022D64 /* MealPlanContext.swift */; };
 		0C1403F4E879304A6772307B /* FlexFitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DA19983009626E575050E3 /* FlexFitApp.swift */; };
+		1026118F121AB7213DA796B0 /* FoodEntryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51C1524098F56B85D2C7D66 /* FoodEntryRow.swift */; };
 		1110D95B8ABAB7E1A7BD0517 /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */; };
 		111101559BFED2445F60C78C /* EatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441C3CB6AF6725289250EE3F /* EatView.swift */; };
 		13AE1C3969B2497D1EDCF9B1 /* Entitlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD80EB9503FC4DD0BD43F9A2 /* Entitlements.swift */; };
@@ -17,13 +18,16 @@
 		1D73F238E85080919D55BF13 /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6C83EDD7050DCA664F2F90 /* HealthService.swift */; };
 		2507973FA4348DF7FC55D63F /* AdaptSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E2FD08A7E90A45EF47BD /* AdaptSheet.swift */; };
 		2915FA92EE6711B16745B35B /* FlexFitWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C35435FF3ECD8F799B64EE0D /* FlexFitWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2A828A4526D29BA228058DA5 /* BodyFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CA0F1ED404AC0A8916A40F /* BodyFigure.swift */; };
 		2BD3FEBFDD7BDBE98D3A8F71 /* TrainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DEFD7B7BF6FC2BE8CBA44DC /* TrainView.swift */; };
 		2D02E058C3F3872366017EB9 /* FlexFitWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFBC0F702FEDCA6B2E81FFD5 /* FlexFitWidgets.swift */; };
 		329CCD5395EFE752A24ADADC /* PlanReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1448D532A2C19586D41DEC06 /* PlanReadyView.swift */; };
 		32CADF1ADBF6DF971D41A316 /* LegalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A18078734DAFAE78B39BBA9A /* LegalPage.swift */; };
 		34A99CE97E53260FCB162FF8 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379207C4CC1DC32084BA37D /* AppRouter.swift */; };
+		3596F4ECD17404DB96E08863 /* ExerciseLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D895B8AC170F2E7BFEC971 /* ExerciseLibrary.swift */; };
 		3839DC01FD6605745F3D45EB /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */; };
 		40140CEAE2B36E533A73D33F /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */; };
+		45028A2771833727EC6745D5 /* ProgressViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7ADCC183B25E41B7F44BBD /* ProgressViews.swift */; };
 		51D6359ABC7713024096DFFA /* Controls.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA2DB5D273E519402662ADE /* Controls.swift */; };
 		52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21784056B85AB72E023F29C /* OnboardingDraft.swift */; };
 		53EF2A2BC5363334BE1B4EEE /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660C257864812C7BAC0EE0C /* PaywallView.swift */; };
@@ -35,11 +39,13 @@
 		5B83A1F0D60AB8F44EA8F329 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB65212CC71A46ADF0E587A /* TodayView.swift */; };
 		607E4391A37857E05F798995 /* FlexFitEngine in Frameworks */ = {isa = PBXBuildFile; productRef = EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */; };
 		6200FB36D835B41033BA4799 /* TargetsUpkeep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A48BEFB13249F47C8E0D02 /* TargetsUpkeep.swift */; };
+		621825F5C0BEE75A983248B6 /* WeighInSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D234C2C2B000DCB10EAD88 /* WeighInSheet.swift */; };
 		6672FCD2D55A0F9BF7FBC4B3 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = EC1EFD33521403541F3E4344 /* OFL.txt */; };
 		66D7438BE2CEB6C890A7420C /* MockChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299F3D8A98C5ED48E5CF3C8C /* MockChrome.swift */; };
 		7795EDDA64F24CF5BE5F0009 /* FontRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF19C91501D2C123504332A /* FontRegistration.swift */; };
 		7DD92D04CC33694A4AB6FC6E /* SwapSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E50B85B5EFD34245E91357 /* SwapSheet.swift */; };
 		7E440F94641721C30C1CD0B8 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAEA9319DBF622DD05990C /* WatchPayload.swift */; };
+		847095BEA44C0C1E9B015E17 /* MuscleMap in Frameworks */ = {isa = PBXBuildFile; productRef = 9424E0162F85631750E60013 /* MuscleMap */; };
 		8A8DF4FCD952E72D9247897E /* MealViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C881A91936EEA09A5BCC76 /* MealViews.swift */; };
 		8C458478157B7C8C3E9DCBD7 /* RoadAndDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E1745D057A7983026CE2FB /* RoadAndDays.swift */; };
 		A097095CD4CDBF71F38BA4DD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F707686257874AA7F9F534E /* WidgetSnapshot.swift */; };
@@ -48,7 +54,9 @@
 		B1BC702596B4B30399C45EFE /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */; };
 		B520DAA2F896DA1B9D00B63C /* FlexFitWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7C45EB628C4DB9177ECA6D08 /* FlexFitWatch.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BC505F7D4A18056E78920262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99167C14D606648373727810 /* Assets.xcassets */; };
+		C2EAF3BB0D4D02734A4CD8E9 /* FoodScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045238FACD5ADA40ADCA8503 /* FoodScannerView.swift */; };
 		C36A1C126BDD0377AD6D0EE6 /* WatchTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A32A07315118D6202A286EC /* WatchTheme.swift */; };
+		C856326A84E602082FDE2998 /* FoodDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B565EE97A02C972C376B7B7 /* FoodDetailsView.swift */; };
 		CACC8C24A45F8BEB2B86A2BC /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9D064DE0FFDB27B579DB2C3E /* PlusJakartaSans-Medium.ttf */; };
 		CF61299F166C6525B72FE164 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3055FFD42860FE10325647 /* DesignTokens.swift */; };
 		D1C293FE44D851A4BE64151B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */; };
@@ -62,6 +70,7 @@
 		E67B23311D2797D6DB4D9327 /* Reminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953AE17B1B1C15A5511B5494 /* Reminders.swift */; };
 		E8B6A4DAB6DF548718DABD21 /* PlusJakartaSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B344B26272128321FBEB056B /* PlusJakartaSans-ExtraBold.ttf */; };
 		EB22DE26118CE8CF89FCCF20 /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */; };
+		EB5CB6DCC9D280E1A0933D93 /* ScanServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 744F804F1ABA7725F8BD8E8B /* ScanServices.swift */; };
 		EFAEF54DBCE54C6558E545DD /* WizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43611D1D53C5019AC7BE40C /* WizardView.swift */; };
 		F208F9937B7776640A45A1E1 /* Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB0EEB6F0791E7BBE22B2C3 /* Schema.swift */; };
 		F2B554DC7040E9B3ED63E262 /* BuildingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72210B436C2AFD24E32EF575 /* BuildingView.swift */; };
@@ -71,6 +80,7 @@
 		FA2DD9B5D47B8B416DCFBE0F /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD178EC5F2165362068BDAD3 /* PlusJakartaSans-SemiBold.ttf */; };
 		FAA795B57331E654EF2C0DFD /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F707686257874AA7F9F534E /* WidgetSnapshot.swift */; };
 		FAAED40322343CA5D5C6EE05 /* PathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 061332175FD25A3E3FE08E17 /* PathView.swift */; };
+		FD5A4516E1341915DFC999EA /* MockTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFECFE0F07E3322488DFA93 /* MockTabBar.swift */; };
 		FEB414F844E06617C773C4B3 /* WatchPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCAAEA9319DBF622DD05990C /* WatchPayload.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +129,7 @@
 /* Begin PBXFileReference section */
 		021B178EE4264D6FED7AA019 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		02A48BEFB13249F47C8E0D02 /* TargetsUpkeep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetsUpkeep.swift; sourceTree = "<group>"; };
+		045238FACD5ADA40ADCA8503 /* FoodScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodScannerView.swift; sourceTree = "<group>"; };
 		061332175FD25A3E3FE08E17 /* PathView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathView.swift; sourceTree = "<group>"; };
 		083D30FD0DBC3C8AB171BF92 /* GroceryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryView.swift; sourceTree = "<group>"; };
 		0B5A3242CD260488ACC09FA2 /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -127,9 +138,13 @@
 		299F3D8A98C5ED48E5CF3C8C /* MockChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockChrome.swift; sourceTree = "<group>"; };
 		2B12283F57E4B38ECA9D774F /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		2B6C83EDD7050DCA664F2F90 /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
+		33D895B8AC170F2E7BFEC971 /* ExerciseLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLibrary.swift; sourceTree = "<group>"; };
+		34CA0F1ED404AC0A8916A40F /* BodyFigure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyFigure.swift; sourceTree = "<group>"; };
+		3B565EE97A02C972C376B7B7 /* FoodDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsView.swift; sourceTree = "<group>"; };
 		3BB0EEB6F0791E7BBE22B2C3 /* Schema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schema.swift; sourceTree = "<group>"; };
 		43C15ECC659B71DC22022D64 /* MealPlanContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealPlanContext.swift; sourceTree = "<group>"; };
 		441C3CB6AF6725289250EE3F /* EatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EatView.swift; sourceTree = "<group>"; };
+		4C7ADCC183B25E41B7F44BBD /* ProgressViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViews.swift; sourceTree = "<group>"; };
 		4EB65212CC71A46ADF0E587A /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		4F707686257874AA7F9F534E /* WidgetSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		52AB90510968BA28DD217767 /* DebugLaunch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugLaunch.swift; sourceTree = "<group>"; };
@@ -137,12 +152,15 @@
 		5E8D5ED6AD38164124121C27 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		6F3055FFD42860FE10325647 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
 		72210B436C2AFD24E32EF575 /* BuildingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingView.swift; sourceTree = "<group>"; };
+		744F804F1ABA7725F8BD8E8B /* ScanServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanServices.swift; sourceTree = "<group>"; };
 		77EC667CEDF84286F4ABC20A /* WatchSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSync.swift; sourceTree = "<group>"; };
 		7C45EB628C4DB9177ECA6D08 /* FlexFitWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlexFitWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DEFD7B7BF6FC2BE8CBA44DC /* TrainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainView.swift; sourceTree = "<group>"; };
+		84D234C2C2B000DCB10EAD88 /* WeighInSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeighInSheet.swift; sourceTree = "<group>"; };
 		87FECA0E4F3289209780AEBA /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		8A32A07315118D6202A286EC /* WatchTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTheme.swift; sourceTree = "<group>"; };
 		8F567DA0525F760EE3EAA414 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8FFECFE0F07E3322488DFA93 /* MockTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBar.swift; sourceTree = "<group>"; };
 		9107581F9BCE843835DCAAA8 /* FlexFit.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = FlexFit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		953AE17B1B1C15A5511B5494 /* Reminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminders.swift; sourceTree = "<group>"; };
 		966070CDB160F3E1FF244CCF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
@@ -173,6 +191,7 @@
 		E9506EE4FD3888C933414077 /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
 		EC1EFD33521403541F3E4344 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		F21784056B85AB72E023F29C /* OnboardingDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDraft.swift; sourceTree = "<group>"; };
+		F51C1524098F56B85D2C7D66 /* FoodEntryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodEntryRow.swift; sourceTree = "<group>"; };
 		F873368EE8983679C9EF1505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F8E7FD5CC32E31E963BBBCC3 /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
 		FCAAEA9319DBF622DD05990C /* WatchPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchPayload.swift; sourceTree = "<group>"; };
@@ -187,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607E4391A37857E05F798995 /* FlexFitEngine in Frameworks */,
+				847095BEA44C0C1E9B015E17 /* MuscleMap in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,8 +227,19 @@
 			children = (
 				061332175FD25A3E3FE08E17 /* PathView.swift */,
 				B8E1745D057A7983026CE2FB /* RoadAndDays.swift */,
+				84D234C2C2B000DCB10EAD88 /* WeighInSheet.swift */,
 			);
 			path = Path;
+			sourceTree = "<group>";
+		};
+		202A24E2B677604537CAC609 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				3B565EE97A02C972C376B7B7 /* FoodDetailsView.swift */,
+				045238FACD5ADA40ADCA8503 /* FoodScannerView.swift */,
+				744F804F1ABA7725F8BD8E8B /* ScanServices.swift */,
+			);
+			path = Scan;
 			sourceTree = "<group>";
 		};
 		2B25C36FDA74725B6EB6D5F4 /* Adapt */ = {
@@ -238,10 +269,12 @@
 				EA1F7BB2F5A32A094F0D8814 /* Components */,
 				ABD4BB8A0F93D80F26254098 /* Data */,
 				5DBE489C01FC3D707AD0AB3D /* Eat */,
+				EF8DB5B1033DDF5EAC488FD5 /* Gym */,
 				7C133F6B7C7CB87D70F6AD0A /* Onboarding */,
 				1EB8EDAC44BC2C243FEFB1FB /* Path */,
 				C99A5427778851E6A0D64B35 /* Paywall */,
 				B533A438D2FCD8156E46BE7D /* Resources */,
+				202A24E2B677604537CAC609 /* Scan */,
 				518733F8425D2200483E34D7 /* Services */,
 				1EB3A1E40D0F743ACA644C22 /* Settings */,
 				AD15994B155137C7A9B17199 /* Theme */,
@@ -290,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				441C3CB6AF6725289250EE3F /* EatView.swift */,
+				F51C1524098F56B85D2C7D66 /* FoodEntryRow.swift */,
 				083D30FD0DBC3C8AB171BF92 /* GroceryView.swift */,
 				43C15ECC659B71DC22022D64 /* MealPlanContext.swift */,
 				A4C881A91936EEA09A5BCC76 /* MealViews.swift */,
@@ -422,6 +456,7 @@
 			children = (
 				5379207C4CC1DC32084BA37D /* AppRouter.swift */,
 				B5DA19983009626E575050E3 /* FlexFitApp.swift */,
+				8FFECFE0F07E3322488DFA93 /* MockTabBar.swift */,
 				212D1DC0A572FAE9A427DEF5 /* RootView.swift */,
 			);
 			path = App;
@@ -445,9 +480,19 @@
 			path = Workout;
 			sourceTree = "<group>";
 		};
+		EF8DB5B1033DDF5EAC488FD5 /* Gym */ = {
+			isa = PBXGroup;
+			children = (
+				34CA0F1ED404AC0A8916A40F /* BodyFigure.swift */,
+				33D895B8AC170F2E7BFEC971 /* ExerciseLibrary.swift */,
+			);
+			path = Gym;
+			sourceTree = "<group>";
+		};
 		F4085E12E715DBEF588A02F5 /* Today */ = {
 			isa = PBXGroup;
 			children = (
+				4C7ADCC183B25E41B7F44BBD /* ProgressViews.swift */,
 				4EB65212CC71A46ADF0E587A /* TodayView.swift */,
 			);
 			path = Today;
@@ -510,6 +555,7 @@
 			name = FlexFit;
 			packageProductDependencies = (
 				EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */,
+				9424E0162F85631750E60013 /* MuscleMap */,
 			);
 			productName = FlexFit;
 			productReference = 9107581F9BCE843835DCAAA8 /* FlexFit.app */;
@@ -548,6 +594,7 @@
 			mainGroup = A371934A3A16D7A6A7B2494D;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				69416B82B85BC13664132BDD /* XCRemoteSwiftPackageReference "MuscleMap" */,
 				5F780FEA4C5293AC7BD2B091 /* XCLocalSwiftPackageReference "Packages/FlexFitEngine" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -611,6 +658,7 @@
 			files = (
 				2507973FA4348DF7FC55D63F /* AdaptSheet.swift in Sources */,
 				34A99CE97E53260FCB162FF8 /* AppRouter.swift in Sources */,
+				2A828A4526D29BA228058DA5 /* BodyFigure.swift in Sources */,
 				F2B554DC7040E9B3ED63E262 /* BuildingView.swift in Sources */,
 				F6430CC3350FB13134397012 /* CoachText.swift in Sources */,
 				51D6359ABC7713024096DFFA /* Controls.swift in Sources */,
@@ -618,7 +666,11 @@
 				D4FF7CE6D108A581E5F542EB /* DesignTokens.swift in Sources */,
 				111101559BFED2445F60C78C /* EatView.swift in Sources */,
 				13AE1C3969B2497D1EDCF9B1 /* Entitlements.swift in Sources */,
+				3596F4ECD17404DB96E08863 /* ExerciseLibrary.swift in Sources */,
 				0C1403F4E879304A6772307B /* FlexFitApp.swift in Sources */,
+				C856326A84E602082FDE2998 /* FoodDetailsView.swift in Sources */,
+				1026118F121AB7213DA796B0 /* FoodEntryRow.swift in Sources */,
+				C2EAF3BB0D4D02734A4CD8E9 /* FoodScannerView.swift in Sources */,
 				D1F9AC814C941F49DCD94C9D /* GroceryView.swift in Sources */,
 				1D73F238E85080919D55BF13 /* HealthService.swift in Sources */,
 				F40255F6EC3C07EB4D6544F4 /* IntroView.swift in Sources */,
@@ -627,15 +679,18 @@
 				0C088A3E170B2087CD85FFF8 /* MealPlanContext.swift in Sources */,
 				8A8DF4FCD952E72D9247897E /* MealViews.swift in Sources */,
 				66D7438BE2CEB6C890A7420C /* MockChrome.swift in Sources */,
+				FD5A4516E1341915DFC999EA /* MockTabBar.swift in Sources */,
 				52EA9B07BF806131FF94B0E0 /* OnboardingDraft.swift in Sources */,
 				E0A0B1D34F9058D6158D82CC /* OnboardingFlow.swift in Sources */,
 				FAAED40322343CA5D5C6EE05 /* PathView.swift in Sources */,
 				53EF2A2BC5363334BE1B4EEE /* PaywallView.swift in Sources */,
 				329CCD5395EFE752A24ADADC /* PlanReadyView.swift in Sources */,
 				59CFD98A021C7C781BDED674 /* PlanResolver.swift in Sources */,
+				45028A2771833727EC6745D5 /* ProgressViews.swift in Sources */,
 				E67B23311D2797D6DB4D9327 /* Reminders.swift in Sources */,
 				8C458478157B7C8C3E9DCBD7 /* RoadAndDays.swift in Sources */,
 				59C21BCE89182BD84AEAB048 /* RootView.swift in Sources */,
+				EB5CB6DCC9D280E1A0933D93 /* ScanServices.swift in Sources */,
 				F208F9937B7776640A45A1E1 /* Schema.swift in Sources */,
 				54E0944B4C4E17D43F63198C /* SettingsView.swift in Sources */,
 				54B03DAD1002ED29B7B9EDA5 /* StoreService.swift in Sources */,
@@ -645,6 +700,7 @@
 				2BD3FEBFDD7BDBE98D3A8F71 /* TrainView.swift in Sources */,
 				FEB414F844E06617C773C4B3 /* WatchPayload.swift in Sources */,
 				E44266BC07558856D8C114D8 /* WatchSync.swift in Sources */,
+				621825F5C0BEE75A983248B6 /* WeighInSheet.swift in Sources */,
 				A097095CD4CDBF71F38BA4DD /* WidgetSnapshot.swift in Sources */,
 				EFAEF54DBCE54C6558E545DD /* WizardView.swift in Sources */,
 				A9DCD330191D652F1727F5A1 /* WorkoutView.swift in Sources */,
@@ -972,7 +1028,23 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		69416B82B85BC13664132BDD /* XCRemoteSwiftPackageReference "MuscleMap" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/melihcolpan/MuscleMap.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.6.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		9424E0162F85631750E60013 /* MuscleMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69416B82B85BC13664132BDD /* XCRemoteSwiftPackageReference "MuscleMap" */;
+			productName = MuscleMap;
+		};
 		EAEAE83B1E6D7491CAF4B090 /* FlexFitEngine */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FlexFitEngine;

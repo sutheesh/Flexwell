@@ -89,6 +89,16 @@ extension TrainingEnvironment {
     }
 }
 
+extension TrainingEnvironment {
+    var shortTitle: String {
+        switch self {
+        case .fullGym: "Gym"
+        case .homeGym: "Home gym"
+        case .bodyweight: "Bodyweight"
+        }
+    }
+}
+
 extension Equipment {
     var title: String {
         switch self {
@@ -159,14 +169,40 @@ extension Limitation {
 extension SessionFocus {
     var title: String {
         switch self {
-        case .fullBodyA: "Full body A"
-        case .fullBodyB: "Full body B"
-        case .fullBodyC: "Full body C"
+        case .fullBodyA: "Full body · Squat day"
+        case .fullBodyB: "Full body · Deadlift day"
+        case .fullBodyC: "Full body · Lunge day"
         case .upper: "Upper body"
         case .lower: "Lower body"
         case .push: "Push"
         case .pull: "Pull"
         case .legs: "Legs"
+        }
+    }
+
+    /// One sentence for session cards: what leads and what follows.
+    var summary: String {
+        switch self {
+        case .fullBodyA: "Leads with squats, then a press, a row and a hip hinge."
+        case .fullBodyB: "Leads with deadlifts, then an overhead press, pull-ups and lunges."
+        case .fullBodyC: "Leads with lunges, then a press, pull-ups and squats."
+        case .upper: "Presses and pulls for chest, back, shoulders and arms."
+        case .lower, .legs: "Squats, hinges and lunges, plus calves and core."
+        case .push: "Chest, shoulders and triceps: presses, raises and extensions."
+        case .pull: "Back and biceps: pull-ups, rows and curls."
+        }
+    }
+
+    /// The main moves, for list rows.
+    var moves: String {
+        switch self {
+        case .fullBodyA: "Squat · press · row · hinge"
+        case .fullBodyB: "Deadlift · overhead press · pull-up · lunge"
+        case .fullBodyC: "Lunge · press · pull-up · squat"
+        case .upper: "Press · row · overhead press · pull-up"
+        case .lower, .legs: "Squat · hinge · lunge · calves"
+        case .push: "Bench · overhead press · raises · triceps"
+        case .pull: "Pull-up · rows · curls · carry"
         }
     }
 }

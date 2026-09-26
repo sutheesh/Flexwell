@@ -17,6 +17,10 @@ struct PathView: View {
     @Query private var ingredientSwaps: [IngredientSwapRecord]
     @Environment(\.modelContext) private var modelContext
     @State private var mealDetail: MealSelection?
+    @State private var isLoggingWeight = false
+    @Environment(\.dismiss) private var dismiss
+    /// Pushed from Today's "Your path" tile: a back button replaces the avatar.
+    var isPushed = false
 
     var body: some View {
         if let record = profiles.first {
@@ -34,14 +38,65 @@ struct PathView: View {
 
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
-                HeaderButton(name: profile.name, kicker: "Your path",
-                             title: remaining.map { $0 == 0 ? "Goal week" : "\($0) weeks to goal" } ?? "Holding steady")
+                let title = remaining.map { $0 == 0 ? "Goal week" : "\($0) weeks to goal" } ?? "Holding steady"
+                if isPushed {
+                    HStack(spacing: Space.sm) {
+                        Button { dismiss() } label: {
+                            Image(systemName: "chevron.left")
+                                .font(TextStyle.headline.font)
+                                .foregroundStyle(Palette.ink)
+                                .frame(width: Size.avatar, height: Size.avatar)
+                                .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.sm))
+                                .cardShadow()
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel("Back")
+                        VStack(alignment: .leading, spacing: Space.xxs + 1) {
+                            Text("Your path").textStyle(.caption).foregroundStyle(Palette.inkMuted)
+                            Text(title).textStyle(.title2).foregroundStyle(Palette.ink).accessibilityAddTraits(.isHeader)
+                        }
+                        Spacer(minLength: 0)
+                    }
+                    .padding(.vertical, Space.xs)
+                } else {
+                    HeaderButton(name: profile.name, kicker: "Your path", title: title)
+                }
 
                 // The trend is computed from every weigh-in; the free tier only limits what's drawn.
                 GoalPanel(profile: profile, start: record.createdAt, entries: TargetsStore.weightEntries(weighIns),
                           visibleFrom: since, weeks: weeks, currentWeek: elapsed + 1,
                           sessions: sessions.count, plannedSessions: profile.trainingDays * (elapsed + 1),
                           adaptations: adaptationCount())
+
+                SectionHeader(title: "The road to \(Formatters.mass(profile.targetWeightKg, units: profile.displayUnits))")
+                RoadSection(profile: profile, targets: TargetsStore.current(weekly, profile: profile),
+                            weeks: weeks, currentWeek: elapsed + 1)
+
+                SectionHeader(title: "Day by day")
+                DayByDaySection(profile: profile, targets: TargetsStore.current(weekly, profile: profile),
+                                swaps: ingredientSwaps) { mealDetail = $0 }
+
+                SectionHeader(title: "How the plan adapted")
+                AdaptLog(items: adaptLog(since: since))
+
+                // Beyond the mock (PRD F8): the weekly weigh-in, Pro targets, notices and training stats.
+                SectionHeader(title: "Weigh-in and targets")
+                    .padding(.top, Space.xs)
+                WeighInRow(last: weighIns.last, units: profile.displayUnits) { isLoggingWeight = true }
+
+                if !entitlements.hasAdaptiveTargets {
+                    Button { router.paywall = .adaptiveTargets } label: {
+                        ActionRowContent(icon: "arrow.triangle.2.circlepath", title: "Make targets adaptive",
+                                         subtitle: "Pro recalculates calories and protein every week from your weight trend")
+                    }
+                    .buttonStyle(.plain)
+                    .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.md))
+                    .cardShadow()
+                }
+
+                TargetNotices(targets: TargetsStore.current(weekly, profile: profile),
+                              week: weekly.last { $0.weekOf <= .now },
+                              maintenanceDay: isLow(.now) && isLow(Calendar.current.date(byAdding: .day, value: -1, to: .now) ?? .now))
 
                 if since != nil {
                     Button { router.paywall = .history } label: {
@@ -53,22 +108,12 @@ struct PathView: View {
                     .cardShadow()
                 }
 
-                SectionHeader(title: "The road to \(Formatters.mass(profile.targetWeightKg, units: profile.displayUnits))")
-                RoadSection(profile: profile, targets: TargetsStore.current(weekly, profile: profile),
-                            weeks: weeks, currentWeek: elapsed + 1)
-
-                SectionHeader(title: "Day by day")
-                DayByDaySection(profile: profile, targets: TargetsStore.current(weekly, profile: profile),
-                                swaps: ingredientSwaps) { mealDetail = $0 }
-
                 SectionHeader(title: "Volume by muscle")
                 VolumeCard(volume: ProgressStats.volume(logged))
 
                 SectionHeader(title: "Personal records")
                 RecordsCard(records: ProgressStats.records(logged), units: profile.displayUnits)
 
-                SectionHeader(title: "How the plan adapted")
-                AdaptLog(items: adaptLog(since: since))
             }
             .padding(.horizontal, Space.lg)
             .padding(.top, Space.xs)
@@ -77,6 +122,13 @@ struct PathView: View {
         }
         .statusBarBackdrop()
         .pageBackground()
+        .sheet(isPresented: $isLoggingWeight) {
+            WeighInSheet(units: profile.displayUnits) { kg in
+                modelContext.insert(WeighIn(date: .now, kg: kg))
+                try? modelContext.save()
+                router.toast("Weigh-in saved.")
+            }
+        }
         .sheet(item: $mealDetail) { selection in
             MealDetailView(planned: selection.planned,
                            isEaten: logs.first { Calendar.current.isDate($0.day, inSameDayAs: selection.date) }?.eatenMeals.contains(selection.planned.index) == true,
@@ -99,6 +151,10 @@ struct PathView: View {
             if (0..<counts.count).contains(weeksAgo) { counts[weeksAgo] += 1 }
         }
         return counts
+    }
+
+    private func isLow(_ date: Date) -> Bool {
+        logs.first { Calendar.current.isDate($0.day, inSameDayAs: date) }?.energyValue == .low
     }
 
     private func adaptationCount() -> Int {
@@ -141,7 +197,9 @@ private struct GoalPanel: View {
         let fullTrend = WeightTrend.series(entries)
         let trend = fullTrend.filter { visibleFrom == nil || $0.date >= visibleFrom! }
         let windowStart = max(start, visibleFrom ?? start)
-        let windowEnd = Calendar.current.date(byAdding: .day, value: 28, to: .now) ?? .now
+        // Mock: the x-axis runs the whole plan, so the goal dot sits at the right edge on the goal date.
+        let windowEnd = weeks.flatMap { Calendar.current.date(byAdding: .weekOfYear, value: $0, to: start) }
+            ?? Calendar.current.date(byAdding: .day, value: 28, to: .now) ?? .now
         let now = fullTrend.last
         let lost = now.map { profile.weightKg - $0.kg } ?? 0
 
@@ -151,7 +209,7 @@ private struct GoalPanel: View {
                     Text(weeks.map { "Week \(min(currentWeek, $0)) of \($0)" } ?? "Week \(currentWeek)")
                         .textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
                     Text("\(number(profile.weightKg, units)) → \(Formatters.mass(profile.targetWeightKg, units: units))")
-                        .textStyle(.title2).foregroundStyle(Palette.onPanel)
+                        .textStyle(.goalValue).foregroundStyle(Palette.onPanel)
                 }
                 Spacer()
                 VStack(alignment: .trailing, spacing: Space.xs) {
@@ -203,7 +261,7 @@ private struct GoalPanel: View {
                 .accessibilityLabel("Weight trend against the planned line")
 
                 HStack {
-                    Text("Start · \(start.formatted(.dateTime.day().month(.abbreviated)))").foregroundStyle(Palette.onPanelMuted)
+                    Text("Start · \(DayMonth.text(start))").foregroundStyle(Palette.onPanelMuted)
                     Spacer()
                     Text("Now · \(now.map { Formatters.mass($0.kg, units: units) } ?? "—")").foregroundStyle(Palette.copper)
                     Spacer()
@@ -212,7 +270,7 @@ private struct GoalPanel: View {
                 .textStyle(.micro)
                 .padding(.top, Space.xs - 2)
             } else {
-                Text("Log two weigh-ins on the Eat tab to see your trend against the plan.")
+                Text("Log two weigh-ins below to see your trend against the plan.")
                     .textStyle(.caption)
                     .foregroundStyle(Palette.onPanelMuted)
                     .fixedSize(horizontal: false, vertical: true)
@@ -240,7 +298,7 @@ private struct GoalPanel: View {
 
     private var eta: String {
         guard let weeks, let date = Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: start) else { return "Ongoing" }
-        return date.formatted(.dateTime.day().month(.abbreviated))
+        return DayMonth.text(date)
     }
 
     private var divider: some View { Rectangle().fill(Palette.onPanelHairline).frame(width: 1) }
@@ -323,7 +381,7 @@ private struct RecordsCard: View {
                             Text(ExerciseLibrary.bundled[r.exerciseID]?.name ?? r.exerciseID)
                                 .textStyle(.rowTitle)
                                 .foregroundStyle(Palette.ink)
-                            Text(r.date.formatted(.dateTime.day().month(.abbreviated)))
+                            Text(DayMonth.text(r.date))
                                 .textStyle(.caption)
                                 .foregroundStyle(Palette.inkMuted)
                         }
@@ -367,11 +425,11 @@ private struct AdaptLog: View {
                             Rectangle().fill(Palette.track).frame(width: 2)
                         }
                         Text(item.date.formatted(.dateTime.weekday(.abbreviated)).uppercased())
-                            .textStyle(.micro)
+                            .textStyle(.label)
                             .foregroundStyle(Palette.inkMuted)
                             .frame(width: Size.control - 6, alignment: .leading)
                         Text(item.text)
-                            .textStyle(.caption)
+                            .textStyle(.chip)
                             .foregroundStyle(Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -410,5 +468,52 @@ extension Muscle {
         case .hips: "Hips"
         case .cardio: "Conditioning"
         }
+    }
+}
+
+/// Weekly weigh-in entry point (PRD F8): last reading and a "Log" button.
+private struct WeighInRow: View {
+    let last: WeighIn?
+    let units: DisplayUnits
+    let onLog: () -> Void
+
+    var body: some View {
+        Button(action: onLog) {
+            ActionRowContent(icon: "scalemass", title: "Weekly weigh-in",
+                             subtitle: last.map { "Last: \(Formatters.mass($0.kg, units: units)), \(DayMonth.text($0.date))" }
+                                 ?? "Same time of day, once a week. The trend is what counts.")
+        }
+        .buttonStyle(.plain)
+        .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.md))
+        .cardShadow()
+        .accessibilityHint("Logs your weight")
+    }
+}
+
+/// What the weekly target update decided, and the maintenance-day nudge.
+private struct TargetNotices: View {
+    let targets: DailyTargets
+    let week: WeeklyTargets?
+    let maintenanceDay: Bool
+
+    var body: some View {
+        if week?.rapidLossWarning == true {
+            InlineNote(text: "Your weight has dropped faster than 1.5% a week for two weeks, so your targets went up. It's worth a check-in with a doctor or dietitian.",
+                       systemImage: "exclamationmark.triangle")
+        }
+        if targets.floorApplied {
+            InlineNote(text: "Your target is held at a safe minimum. The scale may move a little slower than the pace you picked.")
+        }
+        if maintenanceDay {
+            InlineNote(text: "Second low-energy day in a row. Eating at maintenance today is fine: about \(Formatters.kcal(targets.expenditure)) kcal.",
+                       systemImage: "fork.knife")
+        }
+    }
+}
+
+/// "25 Sep": the mock's day-then-month dates, whatever the locale's order.
+enum DayMonth {
+    static func text(_ date: Date) -> String {
+        "\(date.formatted(.dateTime.day())) \(date.formatted(.dateTime.month(.abbreviated)))"
     }
 }

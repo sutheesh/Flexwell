@@ -25,6 +25,10 @@ enum DebugLaunch {
             try? context.delete(model: GroceryCheck.self)
             try? context.delete(model: PantryItem.self)
             try? context.delete(model: SavedMeal.self)
+            try? context.delete(model: FoodEntry.self)
+            try? context.delete(model: FavoriteExercise.self)
+            try? context.delete(model: ExerciseNote.self)
+            try? context.delete(model: BodyMeasurement.self)
         }
         if args.contains("-FFSeedProfile") {
             context.insert(ProfileRecord(profile: .demo))

@@ -13,6 +13,9 @@ configFiles:
 packages:
   FlexFitEngine:
     path: Packages/FlexFitEngine
+  MuscleMap:
+    url: https://github.com/melihcolpan/MuscleMap.git
+    exactVersion: 1.6.4
 
 targets:
   FlexFit:
@@ -23,6 +26,7 @@ targets:
       - path: Shared
     dependencies:
       - package: FlexFitEngine
+      - package: MuscleMap
       - target: FlexFitWidgets
       - target: FlexFitWatch
     settings:

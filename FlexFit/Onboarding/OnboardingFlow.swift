@@ -58,7 +58,7 @@ struct OnboardingFlow: View {
     private func save(_ profile: UserProfile) {
         modelContext.insert(ProfileRecord(profile: profile))
         try? modelContext.save()
-        Task { await Reminders.schedule(time: profile.reminder, tone: profile.tone) }
+        Task { await Reminders.schedule(time: profile.reminder, tone: profile.tone); await Reminders.scheduleWeekly(time: profile.reminder) }
     }
 }
 

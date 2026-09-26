@@ -1,6 +1,6 @@
 {
  "version": 1,
- "reviewStatus": "draft — 24 meals from the design mock + 96 authored to reach the PRD's ~120; macros are estimates and must be human-verified before launch",
+ "reviewStatus": "draft — macros computed from per-ingredient reference nutrition (nutrition.json); recipes and values must be human-verified before launch",
  "allergenNote": "Tags are the mock's plus allergens derived from ingredient names (conservative: oats count as gluten, coconut as a tree nut per FDA). Verify every recipe before launch.",
  "meals": [
   {
@@ -16,10 +16,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 520,
-   "proteinG": 38,
-   "carbsG": 44,
-   "fatG": 22,
+   "kcal": 594,
+   "proteinG": 28,
+   "carbsG": 57,
+   "fatG": 28,
    "cookMinutes": 12,
    "rating": 4.8,
    "ingredients": [
@@ -60,10 +60,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 430,
-   "proteinG": 26,
-   "carbsG": 48,
-   "fatG": 12,
+   "kcal": 398,
+   "proteinG": 30,
+   "carbsG": 59,
+   "fatG": 6,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -101,10 +101,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 480,
-   "proteinG": 34,
-   "carbsG": 58,
-   "fatG": 12,
+   "kcal": 517,
+   "proteinG": 29,
+   "carbsG": 66,
+   "fatG": 17,
    "cookMinutes": 5,
    "rating": 4.8,
    "ingredients": [
@@ -142,10 +142,10 @@
     "gluten",
     "soy"
    ],
-   "kcal": 450,
-   "proteinG": 30,
-   "carbsG": 40,
-   "fatG": 18,
+   "kcal": 558,
+   "proteinG": 42,
+   "carbsG": 43,
+   "fatG": 28,
    "cookMinutes": 10,
    "rating": 4.6,
    "ingredients": [
@@ -183,10 +183,10 @@
     "dairy",
     "eggs"
    ],
-   "kcal": 540,
-   "proteinG": 28,
-   "carbsG": 8,
-   "fatG": 44,
+   "kcal": 554,
+   "proteinG": 27,
+   "carbsG": 13,
+   "fatG": 46,
    "cookMinutes": 8,
    "rating": 4.7,
    "ingredients": [
@@ -224,10 +224,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 500,
-   "proteinG": 30,
-   "carbsG": 38,
-   "fatG": 24,
+   "kcal": 520,
+   "proteinG": 27,
+   "carbsG": 45,
+   "fatG": 26,
    "cookMinutes": 18,
    "rating": 4.8,
    "ingredients": [
@@ -264,10 +264,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 680,
-   "proteinG": 52,
-   "carbsG": 71,
-   "fatG": 18,
+   "kcal": 683,
+   "proteinG": 62,
+   "carbsG": 47,
+   "fatG": 26,
    "cookMinutes": 20,
    "rating": 4.9,
    "ingredients": [
@@ -302,10 +302,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 610,
-   "proteinG": 24,
-   "carbsG": 98,
-   "fatG": 12,
+   "kcal": 458,
+   "proteinG": 21,
+   "carbsG": 91,
+   "fatG": 2,
    "cookMinutes": 25,
    "rating": 4.8,
    "ingredients": [
@@ -340,10 +340,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 620,
-   "proteinG": 50,
-   "carbsG": 58,
-   "fatG": 18,
+   "kcal": 599,
+   "proteinG": 64,
+   "carbsG": 50,
+   "fatG": 15,
    "cookMinutes": 20,
    "rating": 4.9,
    "ingredients": [
@@ -381,10 +381,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 640,
-   "proteinG": 38,
+   "kcal": 661,
+   "proteinG": 35,
    "carbsG": 56,
-   "fatG": 28,
+   "fatG": 33,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -423,10 +423,10 @@
     "sesame",
     "soy"
    ],
-   "kcal": 650,
-   "proteinG": 42,
-   "carbsG": 64,
-   "fatG": 22,
+   "kcal": 612,
+   "proteinG": 41,
+   "carbsG": 53,
+   "fatG": 26,
    "cookMinutes": 15,
    "rating": 4.8,
    "ingredients": [
@@ -461,10 +461,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 660,
-   "proteinG": 48,
-   "carbsG": 70,
-   "fatG": 18,
+   "kcal": 586,
+   "proteinG": 65,
+   "carbsG": 61,
+   "fatG": 8,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -499,10 +499,10 @@
    "vegan": false,
    "keto": true,
    "allergens": [],
-   "kcal": 600,
-   "proteinG": 50,
-   "carbsG": 10,
-   "fatG": 40,
+   "kcal": 577,
+   "proteinG": 55,
+   "carbsG": 6,
+   "fatG": 37,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -539,10 +539,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 240,
-   "proteinG": 22,
-   "carbsG": 26,
-   "fatG": 5,
+   "kcal": 358,
+   "proteinG": 23,
+   "carbsG": 30,
+   "fatG": 18,
    "cookMinutes": 2,
    "rating": 4.7,
    "ingredients": [
@@ -573,10 +573,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 220,
-   "proteinG": 11,
-   "carbsG": 34,
-   "fatG": 5,
+   "kcal": 233,
+   "proteinG": 10,
+   "carbsG": 46,
+   "fatG": 2,
    "cookMinutes": 1,
    "rating": 4.5,
    "ingredients": [
@@ -605,10 +605,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 280,
-   "proteinG": 30,
-   "carbsG": 32,
-   "fatG": 4,
+   "kcal": 352,
+   "proteinG": 34,
+   "carbsG": 42,
+   "fatG": 7,
    "cookMinutes": 2,
    "rating": 4.6,
    "ingredients": [
@@ -637,10 +637,10 @@
    "allergens": [
     "eggs"
    ],
-   "kcal": 180,
-   "proteinG": 13,
-   "carbsG": 4,
-   "fatG": 11,
+   "kcal": 161,
+   "proteinG": 14,
+   "carbsG": 5,
+   "fatG": 10,
    "cookMinutes": 10,
    "rating": 4.5,
    "ingredients": [
@@ -669,10 +669,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 610,
-   "proteinG": 41,
-   "carbsG": 48,
-   "fatG": 26,
+   "kcal": 646,
+   "proteinG": 42,
+   "carbsG": 44,
+   "fatG": 35,
    "cookMinutes": 18,
    "rating": 4.8,
    "ingredients": [
@@ -709,10 +709,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 560,
-   "proteinG": 24,
-   "carbsG": 80,
-   "fatG": 14,
+   "kcal": 655,
+   "proteinG": 32,
+   "carbsG": 122,
+   "fatG": 6,
    "cookMinutes": 25,
    "rating": 4.9,
    "ingredients": [
@@ -749,10 +749,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 620,
-   "proteinG": 44,
-   "carbsG": 48,
-   "fatG": 26,
+   "kcal": 612,
+   "proteinG": 38,
+   "carbsG": 43,
+   "fatG": 31,
    "cookMinutes": 25,
    "rating": 4.9,
    "ingredients": [
@@ -789,10 +789,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 600,
-   "proteinG": 46,
-   "carbsG": 62,
-   "fatG": 16,
+   "kcal": 511,
+   "proteinG": 61,
+   "carbsG": 48,
+   "fatG": 7,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -827,10 +827,10 @@
    "vegan": false,
    "keto": true,
    "allergens": [],
-   "kcal": 540,
-   "proteinG": 50,
-   "carbsG": 22,
-   "fatG": 26,
+   "kcal": 575,
+   "proteinG": 54,
+   "carbsG": 10,
+   "fatG": 35,
    "cookMinutes": 30,
    "rating": 4.8,
    "ingredients": [
@@ -868,10 +868,10 @@
     "soy",
     "treeNuts"
    ],
-   "kcal": 580,
-   "proteinG": 26,
-   "carbsG": 62,
-   "fatG": 24,
+   "kcal": 605,
+   "proteinG": 37,
+   "carbsG": 49,
+   "fatG": 33,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -908,10 +908,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 590,
-   "proteinG": 46,
-   "carbsG": 44,
-   "fatG": 24,
+   "kcal": 604,
+   "proteinG": 61,
+   "carbsG": 49,
+   "fatG": 18,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -948,10 +948,10 @@
    "allergens": [
     "peanuts"
    ],
-   "kcal": 420,
-   "proteinG": 12,
-   "carbsG": 62,
-   "fatG": 14,
+   "kcal": 461,
+   "proteinG": 14,
+   "carbsG": 78,
+   "fatG": 11,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -988,10 +988,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 380,
-   "proteinG": 13,
-   "carbsG": 58,
-   "fatG": 10,
+   "kcal": 390,
+   "proteinG": 14,
+   "carbsG": 57,
+   "fatG": 13,
    "cookMinutes": 12,
    "rating": 4.5,
    "ingredients": [
@@ -1028,10 +1028,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 440,
-   "proteinG": 24,
-   "carbsG": 42,
-   "fatG": 18,
+   "kcal": 390,
+   "proteinG": 25,
+   "carbsG": 49,
+   "fatG": 10,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1068,10 +1068,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 410,
-   "proteinG": 11,
-   "carbsG": 64,
-   "fatG": 12,
+   "kcal": 403,
+   "proteinG": 12,
+   "carbsG": 67,
+   "fatG": 9,
    "cookMinutes": 15,
    "rating": 4.4,
    "ingredients": [
@@ -1109,10 +1109,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 520,
-   "proteinG": 32,
-   "carbsG": 38,
-   "fatG": 26,
+   "kcal": 623,
+   "proteinG": 29,
+   "carbsG": 46,
+   "fatG": 36,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1149,10 +1149,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 450,
-   "proteinG": 16,
-   "carbsG": 78,
-   "fatG": 8,
+   "kcal": 434,
+   "proteinG": 14,
+   "carbsG": 70,
+   "fatG": 11,
    "cookMinutes": 10,
    "rating": 4.6,
    "ingredients": [
@@ -1183,9 +1183,9 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 470,
+   "kcal": 488,
    "proteinG": 30,
-   "carbsG": 34,
+   "carbsG": 42,
    "fatG": 22,
    "cookMinutes": 10,
    "rating": 4.7,
@@ -1220,10 +1220,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 450,
-   "proteinG": 36,
-   "carbsG": 56,
-   "fatG": 9,
+   "kcal": 488,
+   "proteinG": 41,
+   "carbsG": 60,
+   "fatG": 10,
    "cookMinutes": 5,
    "rating": 4.8,
    "ingredients": [
@@ -1258,10 +1258,10 @@
     "gluten",
     "treeNuts"
    ],
-   "kcal": 410,
-   "proteinG": 30,
-   "carbsG": 48,
-   "fatG": 10,
+   "kcal": 416,
+   "proteinG": 27,
+   "carbsG": 40,
+   "fatG": 17,
    "cookMinutes": 3,
    "rating": 4.5,
    "ingredients": [
@@ -1292,10 +1292,10 @@
     "fish",
     "gluten"
    ],
-   "kcal": 540,
-   "proteinG": 38,
-   "carbsG": 48,
-   "fatG": 20,
+   "kcal": 450,
+   "proteinG": 33,
+   "carbsG": 46,
+   "fatG": 14,
    "cookMinutes": 8,
    "rating": 4.7,
    "ingredients": [
@@ -1329,10 +1329,10 @@
     "gluten",
     "peanuts"
    ],
-   "kcal": 460,
-   "proteinG": 16,
-   "carbsG": 56,
-   "fatG": 19,
+   "kcal": 485,
+   "proteinG": 18,
+   "carbsG": 68,
+   "fatG": 18,
    "cookMinutes": 4,
    "rating": 4.6,
    "ingredients": [
@@ -1363,10 +1363,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 480,
-   "proteinG": 34,
-   "carbsG": 58,
-   "fatG": 11,
+   "kcal": 483,
+   "proteinG": 42,
+   "carbsG": 47,
+   "fatG": 15,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1400,10 +1400,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 420,
-   "proteinG": 28,
-   "carbsG": 24,
-   "fatG": 24,
+   "kcal": 403,
+   "proteinG": 25,
+   "carbsG": 26,
+   "fatG": 22,
    "cookMinutes": 10,
    "rating": 4.6,
    "ingredients": [
@@ -1441,10 +1441,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 480,
-   "proteinG": 24,
-   "carbsG": 40,
-   "fatG": 24,
+   "kcal": 510,
+   "proteinG": 28,
+   "carbsG": 42,
+   "fatG": 26,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1483,10 +1483,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 420,
-   "proteinG": 20,
-   "carbsG": 36,
-   "fatG": 22,
+   "kcal": 520,
+   "proteinG": 18,
+   "carbsG": 44,
+   "fatG": 31,
    "cookMinutes": 5,
    "rating": 4.5,
    "ingredients": [
@@ -1523,10 +1523,10 @@
    "allergens": [
     "eggs"
    ],
-   "kcal": 460,
-   "proteinG": 26,
-   "carbsG": 48,
-   "fatG": 16,
+   "kcal": 366,
+   "proteinG": 22,
+   "carbsG": 39,
+   "fatG": 15,
    "cookMinutes": 10,
    "rating": 4.6,
    "ingredients": [
@@ -1564,10 +1564,10 @@
     "dairy",
     "treeNuts"
    ],
-   "kcal": 430,
-   "proteinG": 28,
-   "carbsG": 32,
-   "fatG": 22,
+   "kcal": 419,
+   "proteinG": 26,
+   "carbsG": 25,
+   "fatG": 26,
    "cookMinutes": 3,
    "rating": 4.7,
    "ingredients": [
@@ -1597,10 +1597,10 @@
     "dairy",
     "eggs"
    ],
-   "kcal": 380,
-   "proteinG": 28,
-   "carbsG": 8,
-   "fatG": 26,
+   "kcal": 343,
+   "proteinG": 27,
+   "carbsG": 7,
+   "fatG": 23,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -1633,16 +1633,16 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 380,
-   "proteinG": 20,
-   "carbsG": 54,
-   "fatG": 8,
+   "kcal": 399,
+   "proteinG": 27,
+   "carbsG": 52,
+   "fatG": 11,
    "cookMinutes": 20,
    "rating": 4.4,
    "ingredients": [
     {
      "name": "Jasmine rice",
-     "grams": 60
+     "grams": 160
     },
     {
      "name": "Firm tofu",
@@ -1674,10 +1674,10 @@
     "eggs",
     "soy"
    ],
-   "kcal": 450,
-   "proteinG": 22,
-   "carbsG": 58,
-   "fatG": 13,
+   "kcal": 346,
+   "proteinG": 18,
+   "carbsG": 45,
+   "fatG": 10,
    "cookMinutes": 10,
    "rating": 4.5,
    "ingredients": [
@@ -1711,10 +1711,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 520,
+   "kcal": 543,
    "proteinG": 28,
-   "carbsG": 48,
-   "fatG": 22,
+   "carbsG": 62,
+   "fatG": 21,
    "cookMinutes": 15,
    "rating": 4.8,
    "ingredients": [
@@ -1753,10 +1753,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 560,
-   "proteinG": 30,
+   "kcal": 556,
+   "proteinG": 31,
    "carbsG": 58,
-   "fatG": 20,
+   "fatG": 22,
    "cookMinutes": 12,
    "rating": 4.6,
    "ingredients": [
@@ -1793,16 +1793,16 @@
    "allergens": [
     "eggs"
    ],
-   "kcal": 400,
-   "proteinG": 20,
-   "carbsG": 52,
-   "fatG": 11,
+   "kcal": 314,
+   "proteinG": 13,
+   "carbsG": 50,
+   "fatG": 6,
    "cookMinutes": 15,
    "rating": 4.4,
    "ingredients": [
     {
      "name": "Jasmine rice",
-     "grams": 60
+     "grams": 160
     },
     {
      "name": "Eggs",
@@ -1833,10 +1833,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 390,
+   "kcal": 513,
    "proteinG": 9,
-   "carbsG": 40,
-   "fatG": 22,
+   "carbsG": 35,
+   "fatG": 41,
    "cookMinutes": 5,
    "rating": 4.5,
    "ingredients": [
@@ -1863,10 +1863,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 590,
-   "proteinG": 22,
-   "carbsG": 96,
-   "fatG": 12,
+   "kcal": 535,
+   "proteinG": 23,
+   "carbsG": 98,
+   "fatG": 7,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1900,10 +1900,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 610,
-   "proteinG": 32,
-   "carbsG": 46,
-   "fatG": 32,
+   "kcal": 659,
+   "proteinG": 38,
+   "carbsG": 55,
+   "fatG": 33,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -1936,10 +1936,10 @@
    "allergens": [
     "eggs"
    ],
-   "kcal": 600,
-   "proteinG": 28,
-   "carbsG": 72,
-   "fatG": 20,
+   "kcal": 448,
+   "proteinG": 25,
+   "carbsG": 52,
+   "fatG": 15,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -1972,10 +1972,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 620,
-   "proteinG": 44,
-   "carbsG": 54,
-   "fatG": 22,
+   "kcal": 565,
+   "proteinG": 59,
+   "carbsG": 56,
+   "fatG": 10,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2008,10 +2008,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 560,
-   "proteinG": 20,
+   "kcal": 512,
+   "proteinG": 22,
    "carbsG": 94,
-   "fatG": 10,
+   "fatG": 7,
    "cookMinutes": 20,
    "rating": 4.5,
    "ingredients": [
@@ -2045,10 +2045,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 560,
-   "proteinG": 40,
-   "carbsG": 52,
-   "fatG": 18,
+   "kcal": 466,
+   "proteinG": 46,
+   "carbsG": 45,
+   "fatG": 11,
    "cookMinutes": 5,
    "rating": 4.6,
    "ingredients": [
@@ -2086,10 +2086,10 @@
     "eggs",
     "fish"
    ],
-   "kcal": 520,
-   "proteinG": 42,
-   "carbsG": 24,
-   "fatG": 26,
+   "kcal": 478,
+   "proteinG": 50,
+   "carbsG": 23,
+   "fatG": 20,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2124,10 +2124,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 540,
-   "proteinG": 24,
-   "carbsG": 70,
-   "fatG": 16,
+   "kcal": 410,
+   "proteinG": 19,
+   "carbsG": 61,
+   "fatG": 11,
    "cookMinutes": 20,
    "rating": 4.5,
    "ingredients": [
@@ -2161,10 +2161,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 560,
-   "proteinG": 48,
-   "carbsG": 26,
-   "fatG": 28,
+   "kcal": 531,
+   "proteinG": 68,
+   "carbsG": 28,
+   "fatG": 15,
    "cookMinutes": 10,
    "rating": 4.7,
    "ingredients": [
@@ -2202,10 +2202,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 640,
-   "proteinG": 50,
-   "carbsG": 62,
-   "fatG": 20,
+   "kcal": 585,
+   "proteinG": 54,
+   "carbsG": 30,
+   "fatG": 28,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -2243,10 +2243,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 600,
-   "proteinG": 20,
-   "carbsG": 74,
-   "fatG": 24,
+   "kcal": 670,
+   "proteinG": 27,
+   "carbsG": 77,
+   "fatG": 31,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -2284,10 +2284,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 590,
-   "proteinG": 46,
-   "carbsG": 54,
-   "fatG": 18,
+   "kcal": 546,
+   "proteinG": 59,
+   "carbsG": 51,
+   "fatG": 10,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2324,10 +2324,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 580,
-   "proteinG": 28,
-   "carbsG": 48,
-   "fatG": 30,
+   "kcal": 523,
+   "proteinG": 25,
+   "carbsG": 32,
+   "fatG": 33,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -2364,10 +2364,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 520,
-   "proteinG": 44,
-   "carbsG": 40,
-   "fatG": 18,
+   "kcal": 460,
+   "proteinG": 52,
+   "carbsG": 33,
+   "fatG": 13,
    "cookMinutes": 5,
    "rating": 4.5,
    "ingredients": [
@@ -2404,10 +2404,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 640,
-   "proteinG": 46,
-   "carbsG": 76,
-   "fatG": 14,
+   "kcal": 600,
+   "proteinG": 52,
+   "carbsG": 53,
+   "fatG": 19,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -2442,10 +2442,10 @@
     "sesame",
     "soy"
    ],
-   "kcal": 560,
-   "proteinG": 26,
-   "carbsG": 70,
-   "fatG": 18,
+   "kcal": 631,
+   "proteinG": 45,
+   "carbsG": 80,
+   "fatG": 20,
    "cookMinutes": 15,
    "rating": 4.5,
    "ingredients": [
@@ -2482,10 +2482,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 620,
-   "proteinG": 44,
-   "carbsG": 58,
-   "fatG": 22,
+   "kcal": 559,
+   "proteinG": 50,
+   "carbsG": 48,
+   "fatG": 19,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2519,10 +2519,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 620,
-   "proteinG": 46,
-   "carbsG": 50,
-   "fatG": 24,
+   "kcal": 633,
+   "proteinG": 61,
+   "carbsG": 45,
+   "fatG": 22,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2553,10 +2553,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 580,
-   "proteinG": 22,
-   "carbsG": 86,
-   "fatG": 16,
+   "kcal": 528,
+   "proteinG": 23,
+   "carbsG": 95,
+   "fatG": 9,
    "cookMinutes": 15,
    "rating": 4.5,
    "ingredients": [
@@ -2595,10 +2595,10 @@
     "fish",
     "gluten"
    ],
-   "kcal": 560,
-   "proteinG": 38,
-   "carbsG": 54,
-   "fatG": 20,
+   "kcal": 395,
+   "proteinG": 36,
+   "carbsG": 42,
+   "fatG": 9,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2635,10 +2635,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 450,
-   "proteinG": 44,
-   "carbsG": 14,
-   "fatG": 24,
+   "kcal": 282,
+   "proteinG": 33,
+   "carbsG": 5,
+   "fatG": 15,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2675,10 +2675,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 620,
-   "proteinG": 44,
-   "carbsG": 68,
-   "fatG": 18,
+   "kcal": 449,
+   "proteinG": 33,
+   "carbsG": 47,
+   "fatG": 13,
    "cookMinutes": 15,
    "rating": 4.8,
    "ingredients": [
@@ -2717,10 +2717,10 @@
     "peanuts",
     "soy"
    ],
-   "kcal": 600,
-   "proteinG": 26,
-   "carbsG": 78,
-   "fatG": 20,
+   "kcal": 704,
+   "proteinG": 41,
+   "carbsG": 83,
+   "fatG": 25,
    "cookMinutes": 20,
    "rating": 4.5,
    "ingredients": [
@@ -2757,10 +2757,10 @@
    "allergens": [
     "shellfish"
    ],
-   "kcal": 480,
-   "proteinG": 34,
-   "carbsG": 56,
-   "fatG": 12,
+   "kcal": 343,
+   "proteinG": 37,
+   "carbsG": 49,
+   "fatG": 1,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -2770,7 +2770,7 @@
     },
     {
      "name": "Glass noodles",
-     "grams": 70
+     "grams": 210
     },
     {
      "name": "Cucumber",
@@ -2797,10 +2797,10 @@
    "allergens": [
     "peanuts"
    ],
-   "kcal": 260,
-   "proteinG": 8,
-   "carbsG": 28,
-   "fatG": 14,
+   "kcal": 225,
+   "proteinG": 7,
+   "carbsG": 26,
+   "fatG": 13,
    "cookMinutes": 2,
    "rating": 4.5,
    "ingredients": [
@@ -2825,10 +2825,10 @@
    "allergens": [
     "sesame"
    ],
-   "kcal": 220,
-   "proteinG": 8,
-   "carbsG": 22,
-   "fatG": 11,
+   "kcal": 144,
+   "proteinG": 6,
+   "carbsG": 19,
+   "fatG": 6,
    "cookMinutes": 5,
    "rating": 4.5,
    "ingredients": [
@@ -2857,10 +2857,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 220,
-   "proteinG": 24,
-   "carbsG": 22,
-   "fatG": 3,
+   "kcal": 236,
+   "proteinG": 22,
+   "carbsG": 17,
+   "fatG": 9,
    "cookMinutes": 2,
    "rating": 4.4,
    "ingredients": [
@@ -2886,7 +2886,7 @@
     "gluten",
     "soy"
    ],
-   "kcal": 220,
+   "kcal": 222,
    "proteinG": 20,
    "carbsG": 22,
    "fatG": 7,
@@ -2910,10 +2910,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 200,
+   "kcal": 182,
    "proteinG": 18,
-   "carbsG": 12,
-   "fatG": 9,
+   "carbsG": 14,
+   "fatG": 8,
    "cookMinutes": 5,
    "rating": 4.6,
    "ingredients": [
@@ -2939,8 +2939,8 @@
     "dairy"
    ],
    "kcal": 180,
-   "proteinG": 6,
-   "carbsG": 30,
+   "proteinG": 4,
+   "carbsG": 32,
    "fatG": 4,
    "cookMinutes": 5,
    "rating": 4.5,
@@ -2970,10 +2970,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 210,
-   "proteinG": 12,
-   "carbsG": 28,
-   "fatG": 5,
+   "kcal": 211,
+   "proteinG": 15,
+   "carbsG": 29,
+   "fatG": 4,
    "cookMinutes": 3,
    "rating": 4.4,
    "ingredients": [
@@ -2996,10 +2996,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 200,
-   "proteinG": 12,
-   "carbsG": 32,
-   "fatG": 2,
+   "kcal": 67,
+   "proteinG": 5,
+   "carbsG": 14,
+   "fatG": 0,
    "cookMinutes": 10,
    "rating": 4.5,
    "ingredients": [
@@ -3032,9 +3032,9 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 210,
+   "kcal": 212,
    "proteinG": 6,
-   "carbsG": 12,
+   "carbsG": 14,
    "fatG": 16,
    "cookMinutes": 1,
    "rating": 4.3,
@@ -3060,9 +3060,9 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 230,
-   "proteinG": 6,
-   "carbsG": 26,
+   "kcal": 274,
+   "proteinG": 7,
+   "carbsG": 38,
    "fatG": 12,
    "cookMinutes": 2,
    "rating": 4.3,
@@ -3093,10 +3093,10 @@
     "fish",
     "gluten"
    ],
-   "kcal": 230,
-   "proteinG": 22,
-   "carbsG": 20,
-   "fatG": 6,
+   "kcal": 241,
+   "proteinG": 25,
+   "carbsG": 22,
+   "fatG": 5,
    "cookMinutes": 3,
    "rating": 4.3,
    "ingredients": [
@@ -3126,10 +3126,10 @@
     "dairy",
     "treeNuts"
    ],
-   "kcal": 240,
+   "kcal": 263,
    "proteinG": 18,
-   "carbsG": 10,
-   "fatG": 15,
+   "carbsG": 9,
+   "fatG": 18,
    "cookMinutes": 2,
    "rating": 4.6,
    "ingredients": [
@@ -3154,10 +3154,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 200,
-   "proteinG": 8,
-   "carbsG": 6,
-   "fatG": 16,
+   "kcal": 166,
+   "proteinG": 7,
+   "carbsG": 7,
+   "fatG": 13,
    "cookMinutes": 3,
    "rating": 4.4,
    "ingredients": [
@@ -3186,10 +3186,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 230,
-   "proteinG": 5,
-   "carbsG": 32,
-   "fatG": 10,
+   "kcal": 214,
+   "proteinG": 4,
+   "carbsG": 37,
+   "fatG": 8,
    "cookMinutes": 1,
    "rating": 4.5,
    "ingredients": [
@@ -3215,10 +3215,10 @@
     "eggs",
     "sesame"
    ],
-   "kcal": 160,
+   "kcal": 149,
    "proteinG": 13,
-   "carbsG": 1,
-   "fatG": 11,
+   "carbsG": 2,
+   "fatG": 10,
    "cookMinutes": 10,
    "rating": 4.4,
    "ingredients": [
@@ -3243,10 +3243,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 180,
+   "kcal": 177,
    "proteinG": 9,
-   "carbsG": 14,
-   "fatG": 9,
+   "carbsG": 18,
+   "fatG": 7,
    "cookMinutes": 1,
    "rating": 4.1,
    "ingredients": [
@@ -3269,9 +3269,9 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 150,
+   "kcal": 120,
    "proteinG": 2,
-   "carbsG": 36,
+   "carbsG": 30,
    "fatG": 1,
    "cookMinutes": 3,
    "rating": 4.4,
@@ -3295,10 +3295,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 200,
+   "kcal": 176,
    "proteinG": 10,
-   "carbsG": 32,
-   "fatG": 3,
+   "carbsG": 35,
+   "fatG": 1,
    "cookMinutes": 5,
    "rating": 4.3,
    "ingredients": [
@@ -3327,10 +3327,10 @@
    "allergens": [
     "peanuts"
    ],
-   "kcal": 240,
-   "proteinG": 8,
-   "carbsG": 34,
-   "fatG": 8,
+   "kcal": 202,
+   "proteinG": 5,
+   "carbsG": 32,
+   "fatG": 6,
    "cookMinutes": 15,
    "rating": 4.4,
    "ingredients": [
@@ -3363,10 +3363,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 260,
-   "proteinG": 32,
-   "carbsG": 20,
-   "fatG": 6,
+   "kcal": 265,
+   "proteinG": 36,
+   "carbsG": 15,
+   "fatG": 7,
    "cookMinutes": 2,
    "rating": 4.6,
    "ingredients": [
@@ -3391,10 +3391,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 230,
-   "proteinG": 9,
+   "kcal": 192,
+   "proteinG": 7,
    "carbsG": 24,
-   "fatG": 11,
+   "fatG": 8,
    "cookMinutes": 1,
    "rating": 4.3,
    "ingredients": [
@@ -3419,9 +3419,9 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 190,
+   "kcal": 149,
    "proteinG": 20,
-   "carbsG": 22,
+   "carbsG": 16,
    "fatG": 1,
    "cookMinutes": 1,
    "rating": 4.6,
@@ -3447,10 +3447,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 230,
-   "proteinG": 9,
-   "carbsG": 40,
-   "fatG": 4,
+   "kcal": 242,
+   "proteinG": 10,
+   "carbsG": 43,
+   "fatG": 5,
    "cookMinutes": 1,
    "rating": 4.2,
    "ingredients": [
@@ -3473,10 +3473,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 210,
-   "proteinG": 9,
-   "carbsG": 26,
-   "fatG": 7,
+   "kcal": 247,
+   "proteinG": 11,
+   "carbsG": 33,
+   "fatG": 8,
    "cookMinutes": 20,
    "rating": 4.4,
    "ingredients": [
@@ -3505,10 +3505,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 640,
-   "proteinG": 46,
-   "carbsG": 70,
-   "fatG": 18,
+   "kcal": 553,
+   "proteinG": 62,
+   "carbsG": 52,
+   "fatG": 9,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3546,10 +3546,10 @@
     "fish",
     "treeNuts"
    ],
-   "kcal": 600,
-   "proteinG": 40,
-   "carbsG": 68,
-   "fatG": 16,
+   "kcal": 441,
+   "proteinG": 38,
+   "carbsG": 46,
+   "fatG": 11,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -3580,10 +3580,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 580,
-   "proteinG": 22,
-   "carbsG": 96,
-   "fatG": 10,
+   "kcal": 433,
+   "proteinG": 21,
+   "carbsG": 84,
+   "fatG": 2,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -3617,10 +3617,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 560,
-   "proteinG": 50,
-   "carbsG": 38,
-   "fatG": 20,
+   "kcal": 686,
+   "proteinG": 64,
+   "carbsG": 44,
+   "fatG": 27,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3653,10 +3653,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 540,
-   "proteinG": 20,
-   "carbsG": 86,
-   "fatG": 12,
+   "kcal": 697,
+   "proteinG": 35,
+   "carbsG": 124,
+   "fatG": 7,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -3666,7 +3666,7 @@
     },
     {
      "name": "Basmati rice",
-     "grams": 80
+     "grams": 215
     },
     {
      "name": "Mixed veg",
@@ -3690,9 +3690,9 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 640,
-   "proteinG": 46,
-   "carbsG": 70,
+   "kcal": 630,
+   "proteinG": 49,
+   "carbsG": 72,
    "fatG": 18,
    "cookMinutes": 20,
    "rating": 4.7,
@@ -3724,10 +3724,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 620,
-   "proteinG": 48,
-   "carbsG": 50,
-   "fatG": 24,
+   "kcal": 645,
+   "proteinG": 52,
+   "carbsG": 47,
+   "fatG": 28,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3758,10 +3758,10 @@
    "vegan": false,
    "keto": true,
    "allergens": [],
-   "kcal": 560,
-   "proteinG": 48,
-   "carbsG": 24,
-   "fatG": 28,
+   "kcal": 568,
+   "proteinG": 54,
+   "carbsG": 9,
+   "fatG": 34,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -3794,10 +3794,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 600,
-   "proteinG": 42,
-   "carbsG": 44,
-   "fatG": 26,
+   "kcal": 480,
+   "proteinG": 38,
+   "carbsG": 30,
+   "fatG": 22,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3830,10 +3830,10 @@
    "allergens": [
     "eggs"
    ],
-   "kcal": 540,
-   "proteinG": 28,
-   "carbsG": 50,
-   "fatG": 24,
+   "kcal": 466,
+   "proteinG": 33,
+   "carbsG": 45,
+   "fatG": 18,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -3867,10 +3867,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 640,
-   "proteinG": 40,
-   "carbsG": 56,
-   "fatG": 26,
+   "kcal": 572,
+   "proteinG": 32,
+   "carbsG": 27,
+   "fatG": 37,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -3903,10 +3903,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 560,
-   "proteinG": 48,
-   "carbsG": 18,
-   "fatG": 32,
+   "kcal": 491,
+   "proteinG": 61,
+   "carbsG": 7,
+   "fatG": 23,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3943,10 +3943,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 520,
-   "proteinG": 46,
-   "carbsG": 40,
-   "fatG": 16,
+   "kcal": 446,
+   "proteinG": 48,
+   "carbsG": 37,
+   "fatG": 13,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -3979,10 +3979,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 560,
-   "proteinG": 24,
-   "carbsG": 46,
-   "fatG": 30,
+   "kcal": 341,
+   "proteinG": 25,
+   "carbsG": 45,
+   "fatG": 8,
    "cookMinutes": 20,
    "rating": 4.5,
    "ingredients": [
@@ -4020,10 +4020,10 @@
     "fish",
     "soy"
    ],
-   "kcal": 640,
-   "proteinG": 40,
-   "carbsG": 64,
-   "fatG": 24,
+   "kcal": 518,
+   "proteinG": 37,
+   "carbsG": 43,
+   "fatG": 20,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -4060,10 +4060,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 640,
-   "proteinG": 46,
-   "carbsG": 70,
-   "fatG": 18,
+   "kcal": 601,
+   "proteinG": 61,
+   "carbsG": 67,
+   "fatG": 8,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -4096,10 +4096,10 @@
    "allergens": [
     "soy"
    ],
-   "kcal": 580,
-   "proteinG": 26,
-   "carbsG": 66,
-   "fatG": 22,
+   "kcal": 495,
+   "proteinG": 39,
+   "carbsG": 47,
+   "fatG": 19,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -4130,10 +4130,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 620,
-   "proteinG": 44,
-   "carbsG": 62,
-   "fatG": 20,
+   "kcal": 553,
+   "proteinG": 47,
+   "carbsG": 47,
+   "fatG": 19,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -4171,10 +4171,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 640,
-   "proteinG": 46,
-   "carbsG": 58,
-   "fatG": 22,
+   "kcal": 692,
+   "proteinG": 68,
+   "carbsG": 57,
+   "fatG": 20,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -4209,10 +4209,10 @@
    "vegan": true,
    "keto": false,
    "allergens": [],
-   "kcal": 580,
-   "proteinG": 24,
-   "carbsG": 94,
-   "fatG": 10,
+   "kcal": 472,
+   "proteinG": 26,
+   "carbsG": 90,
+   "fatG": 3,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -4245,10 +4245,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 620,
-   "proteinG": 42,
-   "carbsG": 66,
-   "fatG": 20,
+   "kcal": 599,
+   "proteinG": 45,
+   "carbsG": 48,
+   "fatG": 26,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -4286,10 +4286,10 @@
     "shellfish",
     "treeNuts"
    ],
-   "kcal": 600,
-   "proteinG": 34,
-   "carbsG": 68,
-   "fatG": 20,
+   "kcal": 515,
+   "proteinG": 44,
+   "carbsG": 46,
+   "fatG": 18,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -4322,10 +4322,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 610,
-   "proteinG": 46,
-   "carbsG": 56,
-   "fatG": 22,
+   "kcal": 593,
+   "proteinG": 63,
+   "carbsG": 49,
+   "fatG": 16,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -4360,10 +4360,10 @@
     "soy",
     "treeNuts"
    ],
-   "kcal": 600,
-   "proteinG": 24,
-   "carbsG": 70,
-   "fatG": 24,
+   "kcal": 679,
+   "proteinG": 40,
+   "carbsG": 62,
+   "fatG": 34,
    "cookMinutes": 20,
    "rating": 4.5,
    "ingredients": [

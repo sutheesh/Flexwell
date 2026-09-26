@@ -1,0 +1,1375 @@
+{
+ "version": 1,
+ "basis": "per 100 g as listed in recipes: grains/beans cooked or tinned; dals, oats, poha, semolina, pasta and dry noodles uncooked",
+ "reviewStatus": "draft — reference values, verify against USDA FoodData Central before launch",
+ "ingredients": {
+  "Almond butter": {
+   "kcal": 614,
+   "proteinG": 21,
+   "carbsG": 19,
+   "fatG": 56,
+   "emoji": "🥜",
+   "tone": "sand"
+  },
+  "Almonds": {
+   "kcal": 579,
+   "proteinG": 21,
+   "carbsG": 22,
+   "fatG": 50,
+   "emoji": "🌰",
+   "tone": "sand"
+  },
+  "Apple": {
+   "kcal": 52,
+   "proteinG": 0.3,
+   "carbsG": 14,
+   "fatG": 0.2,
+   "emoji": "🍎",
+   "tone": "peach"
+  },
+  "Asparagus": {
+   "kcal": 20,
+   "proteinG": 2.2,
+   "carbsG": 3.9,
+   "fatG": 0.1,
+   "emoji": "🥦",
+   "tone": "green"
+  },
+  "Aubergine": {
+   "kcal": 25,
+   "proteinG": 1,
+   "carbsG": 6,
+   "fatG": 0.2,
+   "emoji": "🍆",
+   "tone": "green"
+  },
+  "Avocado": {
+   "kcal": 160,
+   "proteinG": 2,
+   "carbsG": 8.5,
+   "fatG": 15,
+   "emoji": "🥑",
+   "tone": "green"
+  },
+  "Baby potatoes": {
+   "kcal": 77,
+   "proteinG": 2,
+   "carbsG": 17,
+   "fatG": 0.1,
+   "emoji": "🥔",
+   "tone": "sand"
+  },
+  "Bagel": {
+   "kcal": 257,
+   "proteinG": 10,
+   "carbsG": 50,
+   "fatG": 1.6,
+   "emoji": "🥯",
+   "tone": "sand"
+  },
+  "Banana": {
+   "kcal": 89,
+   "proteinG": 1.1,
+   "carbsG": 23,
+   "fatG": 0.3,
+   "emoji": "🍌",
+   "tone": "sand"
+  },
+  "Basmati rice": {
+   "kcal": 130,
+   "proteinG": 2.7,
+   "carbsG": 28,
+   "fatG": 0.3,
+   "emoji": "🍚",
+   "tone": "green"
+  },
+  "Bean sprouts": {
+   "kcal": 30,
+   "proteinG": 3,
+   "carbsG": 6,
+   "fatG": 0.2,
+   "emoji": "🌱",
+   "tone": "green"
+  },
+  "Beef mince": {
+   "kcal": 250,
+   "proteinG": 26,
+   "carbsG": 0,
+   "fatG": 17,
+   "emoji": "🥩",
+   "tone": "peach"
+  },
+  "Black beans": {
+   "kcal": 132,
+   "proteinG": 8.9,
+   "carbsG": 24,
+   "fatG": 0.5,
+   "emoji": "🫘",
+   "tone": "sand"
+  },
+  "Blueberries": {
+   "kcal": 57,
+   "proteinG": 0.7,
+   "carbsG": 14,
+   "fatG": 0.3,
+   "emoji": "🫐",
+   "tone": "blue"
+  },
+  "Broccoli": {
+   "kcal": 34,
+   "proteinG": 2.8,
+   "carbsG": 7,
+   "fatG": 0.4,
+   "emoji": "🥦",
+   "tone": "green"
+  },
+  "Brown rice": {
+   "kcal": 123,
+   "proteinG": 2.7,
+   "carbsG": 26,
+   "fatG": 1,
+   "emoji": "🍚",
+   "tone": "green"
+  },
+  "Bulgur": {
+   "kcal": 83,
+   "proteinG": 3.1,
+   "carbsG": 19,
+   "fatG": 0.2,
+   "emoji": "🌾",
+   "tone": "sand"
+  },
+  "Butter": {
+   "kcal": 717,
+   "proteinG": 0.9,
+   "carbsG": 0.1,
+   "fatG": 81,
+   "emoji": "🧈",
+   "tone": "sand"
+  },
+  "Buttermilk": {
+   "kcal": 40,
+   "proteinG": 3.3,
+   "carbsG": 4.8,
+   "fatG": 0.9,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Cabbage": {
+   "kcal": 25,
+   "proteinG": 1.3,
+   "carbsG": 6,
+   "fatG": 0.1,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Cannellini beans": {
+   "kcal": 114,
+   "proteinG": 7.8,
+   "carbsG": 20,
+   "fatG": 0.4,
+   "emoji": "🫘",
+   "tone": "sand"
+  },
+  "Carrot": {
+   "kcal": 41,
+   "proteinG": 0.9,
+   "carbsG": 10,
+   "fatG": 0.2,
+   "emoji": "🥕",
+   "tone": "peach"
+  },
+  "Cashews": {
+   "kcal": 553,
+   "proteinG": 18,
+   "carbsG": 30,
+   "fatG": 44,
+   "emoji": "🌰",
+   "tone": "sand"
+  },
+  "Celery": {
+   "kcal": 16,
+   "proteinG": 0.7,
+   "carbsG": 3,
+   "fatG": 0.2,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Chaat masala": {
+   "kcal": 250,
+   "proteinG": 10,
+   "carbsG": 50,
+   "fatG": 3,
+   "emoji": "🧂",
+   "tone": "sand"
+  },
+  "Cheddar": {
+   "kcal": 403,
+   "proteinG": 25,
+   "carbsG": 1.3,
+   "fatG": 33,
+   "emoji": "🧀",
+   "tone": "sand"
+  },
+  "Cherry tomato": {
+   "kcal": 18,
+   "proteinG": 0.9,
+   "carbsG": 3.9,
+   "fatG": 0.2,
+   "emoji": "🍅",
+   "tone": "peach"
+  },
+  "Chia seeds": {
+   "kcal": 486,
+   "proteinG": 17,
+   "carbsG": 42,
+   "fatG": 31,
+   "emoji": "🌱",
+   "tone": "sand"
+  },
+  "Chicken breast": {
+   "kcal": 165,
+   "proteinG": 31,
+   "carbsG": 0,
+   "fatG": 3.6,
+   "emoji": "🍗",
+   "tone": "peach"
+  },
+  "Chicken mince": {
+   "kcal": 143,
+   "proteinG": 17,
+   "carbsG": 0,
+   "fatG": 8,
+   "emoji": "🍗",
+   "tone": "peach"
+  },
+  "Chicken thigh": {
+   "kcal": 209,
+   "proteinG": 26,
+   "carbsG": 0,
+   "fatG": 11,
+   "emoji": "🍗",
+   "tone": "peach"
+  },
+  "Chickpea flour": {
+   "kcal": 387,
+   "proteinG": 22,
+   "carbsG": 58,
+   "fatG": 6.7,
+   "emoji": "🌾",
+   "tone": "sand"
+  },
+  "Chickpeas": {
+   "kcal": 164,
+   "proteinG": 8.9,
+   "carbsG": 27,
+   "fatG": 2.6,
+   "emoji": "🫘",
+   "tone": "sand"
+  },
+  "Chilli bean paste": {
+   "kcal": 180,
+   "proteinG": 8,
+   "carbsG": 20,
+   "fatG": 8,
+   "emoji": "🌶️",
+   "tone": "peach"
+  },
+  "Coconut": {
+   "kcal": 354,
+   "proteinG": 3.3,
+   "carbsG": 15,
+   "fatG": 33,
+   "emoji": "🥥",
+   "tone": "sand"
+  },
+  "Coconut chutney": {
+   "kcal": 200,
+   "proteinG": 3,
+   "carbsG": 8,
+   "fatG": 18,
+   "emoji": "🥥",
+   "tone": "sand"
+  },
+  "Coconut milk": {
+   "kcal": 197,
+   "proteinG": 2,
+   "carbsG": 3,
+   "fatG": 21,
+   "emoji": "🥥",
+   "tone": "blue"
+  },
+  "Cod": {
+   "kcal": 82,
+   "proteinG": 18,
+   "carbsG": 0,
+   "fatG": 0.7,
+   "emoji": "🐟",
+   "tone": "blue"
+  },
+  "Coriander": {
+   "kcal": 23,
+   "proteinG": 2.1,
+   "carbsG": 3.7,
+   "fatG": 0.5,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Corn": {
+   "kcal": 96,
+   "proteinG": 3.4,
+   "carbsG": 21,
+   "fatG": 1.5,
+   "emoji": "🌽",
+   "tone": "sand"
+  },
+  "Cos lettuce": {
+   "kcal": 17,
+   "proteinG": 1.2,
+   "carbsG": 3.3,
+   "fatG": 0.3,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Cottage cheese": {
+   "kcal": 98,
+   "proteinG": 11,
+   "carbsG": 3.4,
+   "fatG": 4.3,
+   "emoji": "🧀",
+   "tone": "blue"
+  },
+  "Courgette": {
+   "kcal": 17,
+   "proteinG": 1.2,
+   "carbsG": 3.1,
+   "fatG": 0.3,
+   "emoji": "🥒",
+   "tone": "green"
+  },
+  "Crackers": {
+   "kcal": 430,
+   "proteinG": 9,
+   "carbsG": 70,
+   "fatG": 12,
+   "emoji": "🍘",
+   "tone": "sand"
+  },
+  "Cucumber": {
+   "kcal": 15,
+   "proteinG": 0.7,
+   "carbsG": 3.6,
+   "fatG": 0.1,
+   "emoji": "🥒",
+   "tone": "green"
+  },
+  "Cumin": {
+   "kcal": 375,
+   "proteinG": 18,
+   "carbsG": 44,
+   "fatG": 22,
+   "emoji": "🧂",
+   "tone": "sand"
+  },
+  "Curry leaves": {
+   "kcal": 108,
+   "proteinG": 6,
+   "carbsG": 19,
+   "fatG": 1,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Dates": {
+   "kcal": 282,
+   "proteinG": 2.5,
+   "carbsG": 75,
+   "fatG": 0.4,
+   "emoji": "🌴",
+   "tone": "sand"
+  },
+  "Dosa": {
+   "kcal": 168,
+   "proteinG": 4,
+   "carbsG": 30,
+   "fatG": 3.7,
+   "emoji": "🫓",
+   "tone": "sand"
+  },
+  "Edamame": {
+   "kcal": 121,
+   "proteinG": 12,
+   "carbsG": 9,
+   "fatG": 5,
+   "emoji": "🫛",
+   "tone": "green"
+  },
+  "Eggs": {
+   "kcal": 143,
+   "proteinG": 13,
+   "carbsG": 0.7,
+   "fatG": 9.5,
+   "emoji": "🥚",
+   "tone": "sand"
+  },
+  "Falafel": {
+   "kcal": 333,
+   "proteinG": 13,
+   "carbsG": 32,
+   "fatG": 18,
+   "emoji": "🧆",
+   "tone": "sand"
+  },
+  "Fava beans": {
+   "kcal": 110,
+   "proteinG": 7.6,
+   "carbsG": 20,
+   "fatG": 0.4,
+   "emoji": "🫘",
+   "tone": "green"
+  },
+  "Feta": {
+   "kcal": 264,
+   "proteinG": 14,
+   "carbsG": 4,
+   "fatG": 21,
+   "emoji": "🧀",
+   "tone": "blue"
+  },
+  "Firm tofu": {
+   "kcal": 144,
+   "proteinG": 17,
+   "carbsG": 3,
+   "fatG": 8.7,
+   "emoji": "⬜",
+   "tone": "blue"
+  },
+  "Fish sauce": {
+   "kcal": 35,
+   "proteinG": 5,
+   "carbsG": 3.6,
+   "fatG": 0,
+   "emoji": "🐟",
+   "tone": "sand"
+  },
+  "Frozen berries": {
+   "kcal": 50,
+   "proteinG": 0.7,
+   "carbsG": 12,
+   "fatG": 0.3,
+   "emoji": "🫐",
+   "tone": "blue"
+  },
+  "Garlic": {
+   "kcal": 149,
+   "proteinG": 6.4,
+   "carbsG": 33,
+   "fatG": 0.5,
+   "emoji": "🧄",
+   "tone": "sand"
+  },
+  "Garlic powder": {
+   "kcal": 331,
+   "proteinG": 17,
+   "carbsG": 73,
+   "fatG": 0.7,
+   "emoji": "🧄",
+   "tone": "sand"
+  },
+  "Ghee": {
+   "kcal": 900,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 100,
+   "emoji": "🧈",
+   "tone": "sand"
+  },
+  "Ginger": {
+   "kcal": 80,
+   "proteinG": 1.8,
+   "carbsG": 18,
+   "fatG": 0.8,
+   "emoji": "🫚",
+   "tone": "sand"
+  },
+  "Glass noodles": {
+   "kcal": 84,
+   "proteinG": 0.1,
+   "carbsG": 21,
+   "fatG": 0,
+   "emoji": "🍜",
+   "tone": "sand"
+  },
+  "Granola": {
+   "kcal": 471,
+   "proteinG": 10,
+   "carbsG": 64,
+   "fatG": 20,
+   "emoji": "🥣",
+   "tone": "sand"
+  },
+  "Greek yoghurt": {
+   "kcal": 97,
+   "proteinG": 9,
+   "carbsG": 3.9,
+   "fatG": 5,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Green beans": {
+   "kcal": 31,
+   "proteinG": 1.8,
+   "carbsG": 7,
+   "fatG": 0.2,
+   "emoji": "🫛",
+   "tone": "green"
+  },
+  "Green lentils": {
+   "kcal": 116,
+   "proteinG": 9,
+   "carbsG": 20,
+   "fatG": 0.4,
+   "emoji": "🫘",
+   "tone": "green"
+  },
+  "Green peas": {
+   "kcal": 81,
+   "proteinG": 5.4,
+   "carbsG": 14,
+   "fatG": 0.4,
+   "emoji": "🫛",
+   "tone": "green"
+  },
+  "Green pepper": {
+   "kcal": 20,
+   "proteinG": 0.9,
+   "carbsG": 4.6,
+   "fatG": 0.2,
+   "emoji": "🫑",
+   "tone": "green"
+  },
+  "Greens": {
+   "kcal": 20,
+   "proteinG": 2,
+   "carbsG": 3,
+   "fatG": 0.3,
+   "emoji": "🥗",
+   "tone": "green"
+  },
+  "Guacamole": {
+   "kcal": 155,
+   "proteinG": 2,
+   "carbsG": 8.5,
+   "fatG": 14,
+   "emoji": "🥑",
+   "tone": "green"
+  },
+  "Halloumi": {
+   "kcal": 321,
+   "proteinG": 21,
+   "carbsG": 2,
+   "fatG": 25,
+   "emoji": "🧀",
+   "tone": "sand"
+  },
+  "Honey": {
+   "kcal": 304,
+   "proteinG": 0.3,
+   "carbsG": 82,
+   "fatG": 0,
+   "emoji": "🍯",
+   "tone": "sand"
+  },
+  "Hummus": {
+   "kcal": 166,
+   "proteinG": 7.9,
+   "carbsG": 14,
+   "fatG": 9.6,
+   "emoji": "🫘",
+   "tone": "sand"
+  },
+  "Hung curd": {
+   "kcal": 98,
+   "proteinG": 9,
+   "carbsG": 4,
+   "fatG": 5,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Idli": {
+   "kcal": 130,
+   "proteinG": 4,
+   "carbsG": 27,
+   "fatG": 0.4,
+   "emoji": "🍘",
+   "tone": "sand"
+  },
+  "Jasmine rice": {
+   "kcal": 129,
+   "proteinG": 2.7,
+   "carbsG": 28,
+   "fatG": 0.3,
+   "emoji": "🍚",
+   "tone": "green"
+  },
+  "Kale": {
+   "kcal": 49,
+   "proteinG": 4.3,
+   "carbsG": 9,
+   "fatG": 0.9,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Kidney beans": {
+   "kcal": 127,
+   "proteinG": 8.7,
+   "carbsG": 23,
+   "fatG": 0.5,
+   "emoji": "🫘",
+   "tone": "peach"
+  },
+  "Labneh": {
+   "kcal": 160,
+   "proteinG": 8,
+   "carbsG": 4,
+   "fatG": 13,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Lamb mince": {
+   "kcal": 282,
+   "proteinG": 17,
+   "carbsG": 0,
+   "fatG": 23,
+   "emoji": "🥩",
+   "tone": "peach"
+  },
+  "Lemon": {
+   "kcal": 29,
+   "proteinG": 1.1,
+   "carbsG": 9,
+   "fatG": 0.3,
+   "emoji": "🍋",
+   "tone": "sand"
+  },
+  "Lettuce": {
+   "kcal": 15,
+   "proteinG": 1.4,
+   "carbsG": 2.9,
+   "fatG": 0.2,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Lettuce cups": {
+   "kcal": 15,
+   "proteinG": 1.4,
+   "carbsG": 2.9,
+   "fatG": 0.2,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Lime": {
+   "kcal": 30,
+   "proteinG": 0.7,
+   "carbsG": 11,
+   "fatG": 0.2,
+   "emoji": "🍋‍🟩",
+   "tone": "green"
+  },
+  "Makhana": {
+   "kcal": 347,
+   "proteinG": 9.7,
+   "carbsG": 77,
+   "fatG": 0.1,
+   "emoji": "⚪",
+   "tone": "sand"
+  },
+  "Mango": {
+   "kcal": 60,
+   "proteinG": 0.8,
+   "carbsG": 15,
+   "fatG": 0.4,
+   "emoji": "🥭",
+   "tone": "peach"
+  },
+  "Maple syrup": {
+   "kcal": 260,
+   "proteinG": 0,
+   "carbsG": 67,
+   "fatG": 0.1,
+   "emoji": "🍁",
+   "tone": "sand"
+  },
+  "Milk": {
+   "kcal": 50,
+   "proteinG": 3.4,
+   "carbsG": 4.8,
+   "fatG": 2,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Mint": {
+   "kcal": 44,
+   "proteinG": 3.3,
+   "carbsG": 8,
+   "fatG": 0.7,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Mint chutney": {
+   "kcal": 60,
+   "proteinG": 2,
+   "carbsG": 8,
+   "fatG": 2,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Mixed nuts": {
+   "kcal": 607,
+   "proteinG": 20,
+   "carbsG": 21,
+   "fatG": 54,
+   "emoji": "🥜",
+   "tone": "sand"
+  },
+  "Mixed veg": {
+   "kcal": 65,
+   "proteinG": 2.6,
+   "carbsG": 13,
+   "fatG": 0.3,
+   "emoji": "🥕",
+   "tone": "green"
+  },
+  "Moong dal": {
+   "kcal": 347,
+   "proteinG": 24,
+   "carbsG": 63,
+   "fatG": 1.2,
+   "emoji": "🫘",
+   "tone": "green"
+  },
+  "Moong sprouts": {
+   "kcal": 30,
+   "proteinG": 3,
+   "carbsG": 6,
+   "fatG": 0.2,
+   "emoji": "🌱",
+   "tone": "green"
+  },
+  "Mushrooms": {
+   "kcal": 22,
+   "proteinG": 3.1,
+   "carbsG": 3.3,
+   "fatG": 0.3,
+   "emoji": "🍄",
+   "tone": "sand"
+  },
+  "Olive oil": {
+   "kcal": 884,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 100,
+   "emoji": "🫒",
+   "tone": "green"
+  },
+  "Olives": {
+   "kcal": 115,
+   "proteinG": 0.8,
+   "carbsG": 6,
+   "fatG": 11,
+   "emoji": "🫒",
+   "tone": "green"
+  },
+  "Onion": {
+   "kcal": 40,
+   "proteinG": 1.1,
+   "carbsG": 9,
+   "fatG": 0.1,
+   "emoji": "🧅",
+   "tone": "peach"
+  },
+  "Pak choi": {
+   "kcal": 13,
+   "proteinG": 1.5,
+   "carbsG": 2.2,
+   "fatG": 0.2,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Paneer": {
+   "kcal": 265,
+   "proteinG": 18,
+   "carbsG": 1.2,
+   "fatG": 21,
+   "emoji": "🧀",
+   "tone": "blue"
+  },
+  "Panko": {
+   "kcal": 395,
+   "proteinG": 13,
+   "carbsG": 72,
+   "fatG": 5.3,
+   "emoji": "🍞",
+   "tone": "sand"
+  },
+  "Paprika": {
+   "kcal": 282,
+   "proteinG": 14,
+   "carbsG": 54,
+   "fatG": 13,
+   "emoji": "🌶️",
+   "tone": "peach"
+  },
+  "Parmesan": {
+   "kcal": 431,
+   "proteinG": 38,
+   "carbsG": 4,
+   "fatG": 29,
+   "emoji": "🧀",
+   "tone": "sand"
+  },
+  "Parsley": {
+   "kcal": 36,
+   "proteinG": 3,
+   "carbsG": 6,
+   "fatG": 0.8,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Peanut butter": {
+   "kcal": 588,
+   "proteinG": 25,
+   "carbsG": 20,
+   "fatG": 50,
+   "emoji": "🥜",
+   "tone": "sand"
+  },
+  "Peanut sauce": {
+   "kcal": 400,
+   "proteinG": 12,
+   "carbsG": 20,
+   "fatG": 30,
+   "emoji": "🥜",
+   "tone": "sand"
+  },
+  "Peanuts": {
+   "kcal": 567,
+   "proteinG": 26,
+   "carbsG": 16,
+   "fatG": 49,
+   "emoji": "🥜",
+   "tone": "sand"
+  },
+  "Pear": {
+   "kcal": 57,
+   "proteinG": 0.4,
+   "carbsG": 15,
+   "fatG": 0.1,
+   "emoji": "🍐",
+   "tone": "green"
+  },
+  "Pineapple": {
+   "kcal": 50,
+   "proteinG": 0.5,
+   "carbsG": 13,
+   "fatG": 0.1,
+   "emoji": "🍍",
+   "tone": "sand"
+  },
+  "Pita": {
+   "kcal": 275,
+   "proteinG": 9,
+   "carbsG": 56,
+   "fatG": 1.2,
+   "emoji": "🫓",
+   "tone": "sand"
+  },
+  "Poha": {
+   "kcal": 350,
+   "proteinG": 6.6,
+   "carbsG": 77,
+   "fatG": 1.2,
+   "emoji": "🍚",
+   "tone": "sand"
+  },
+  "Potato": {
+   "kcal": 77,
+   "proteinG": 2,
+   "carbsG": 17,
+   "fatG": 0.1,
+   "emoji": "🥔",
+   "tone": "sand"
+  },
+  "Prawns": {
+   "kcal": 99,
+   "proteinG": 24,
+   "carbsG": 0.2,
+   "fatG": 0.3,
+   "emoji": "🦐",
+   "tone": "peach"
+  },
+  "Protein bar": {
+   "kcal": 370,
+   "proteinG": 33,
+   "carbsG": 37,
+   "fatG": 12,
+   "emoji": "🍫",
+   "tone": "sand"
+  },
+  "Pumpkin seeds": {
+   "kcal": 559,
+   "proteinG": 30,
+   "carbsG": 11,
+   "fatG": 49,
+   "emoji": "🌱",
+   "tone": "green"
+  },
+  "Quinoa": {
+   "kcal": 120,
+   "proteinG": 4.4,
+   "carbsG": 21,
+   "fatG": 1.9,
+   "emoji": "🌾",
+   "tone": "sand"
+  },
+  "Raisins": {
+   "kcal": 299,
+   "proteinG": 3.1,
+   "carbsG": 79,
+   "fatG": 0.5,
+   "emoji": "🍇",
+   "tone": "sand"
+  },
+  "Raspberries": {
+   "kcal": 52,
+   "proteinG": 1.2,
+   "carbsG": 12,
+   "fatG": 0.7,
+   "emoji": "🍓",
+   "tone": "peach"
+  },
+  "Red onion": {
+   "kcal": 40,
+   "proteinG": 1.1,
+   "carbsG": 9,
+   "fatG": 0.1,
+   "emoji": "🧅",
+   "tone": "peach"
+  },
+  "Red pepper": {
+   "kcal": 31,
+   "proteinG": 1,
+   "carbsG": 6,
+   "fatG": 0.3,
+   "emoji": "🫑",
+   "tone": "peach"
+  },
+  "Rice cakes": {
+   "kcal": 387,
+   "proteinG": 8,
+   "carbsG": 82,
+   "fatG": 2.8,
+   "emoji": "🍘",
+   "tone": "sand"
+  },
+  "Rice noodles": {
+   "kcal": 364,
+   "proteinG": 6,
+   "carbsG": 80,
+   "fatG": 0.6,
+   "emoji": "🍜",
+   "tone": "sand"
+  },
+  "Rice paper": {
+   "kcal": 333,
+   "proteinG": 6,
+   "carbsG": 77,
+   "fatG": 0.5,
+   "emoji": "🍜",
+   "tone": "sand"
+  },
+  "Roasted chana": {
+   "kcal": 369,
+   "proteinG": 22,
+   "carbsG": 58,
+   "fatG": 5,
+   "emoji": "🫘",
+   "tone": "sand"
+  },
+  "Rocket": {
+   "kcal": 25,
+   "proteinG": 2.6,
+   "carbsG": 3.7,
+   "fatG": 0.7,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Rolled oats": {
+   "kcal": 389,
+   "proteinG": 17,
+   "carbsG": 66,
+   "fatG": 6.9,
+   "emoji": "🥣",
+   "tone": "sand"
+  },
+  "Roti": {
+   "kcal": 297,
+   "proteinG": 9.6,
+   "carbsG": 56,
+   "fatG": 3.7,
+   "emoji": "🫓",
+   "tone": "sand"
+  },
+  "Rye bread": {
+   "kcal": 259,
+   "proteinG": 8.5,
+   "carbsG": 48,
+   "fatG": 3.3,
+   "emoji": "🍞",
+   "tone": "sand"
+  },
+  "Salmon": {
+   "kcal": 208,
+   "proteinG": 20,
+   "carbsG": 0,
+   "fatG": 13,
+   "emoji": "🍣",
+   "tone": "peach"
+  },
+  "Salsa": {
+   "kcal": 36,
+   "proteinG": 1.5,
+   "carbsG": 7,
+   "fatG": 0.2,
+   "emoji": "🍅",
+   "tone": "peach"
+  },
+  "Salt": {
+   "kcal": 0,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 0,
+   "emoji": "🧂",
+   "tone": "sand"
+  },
+  "Salt & pepper": {
+   "kcal": 0,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 0,
+   "emoji": "🧂",
+   "tone": "sand"
+  },
+  "Sambar": {
+   "kcal": 60,
+   "proteinG": 3,
+   "carbsG": 9,
+   "fatG": 1.5,
+   "emoji": "🍲",
+   "tone": "peach"
+  },
+  "Seaweed snacks": {
+   "kcal": 420,
+   "proteinG": 10,
+   "carbsG": 35,
+   "fatG": 28,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Semolina": {
+   "kcal": 360,
+   "proteinG": 13,
+   "carbsG": 73,
+   "fatG": 1,
+   "emoji": "🌾",
+   "tone": "sand"
+  },
+  "Sesame": {
+   "kcal": 573,
+   "proteinG": 18,
+   "carbsG": 23,
+   "fatG": 50,
+   "emoji": "🌱",
+   "tone": "sand"
+  },
+  "Sirloin": {
+   "kcal": 206,
+   "proteinG": 26,
+   "carbsG": 0,
+   "fatG": 11,
+   "emoji": "🥩",
+   "tone": "peach"
+  },
+  "Skyr": {
+   "kcal": 63,
+   "proteinG": 11,
+   "carbsG": 4,
+   "fatG": 0.2,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Smoked salmon": {
+   "kcal": 117,
+   "proteinG": 18,
+   "carbsG": 0,
+   "fatG": 4.3,
+   "emoji": "🍣",
+   "tone": "peach"
+  },
+  "Soba noodles": {
+   "kcal": 336,
+   "proteinG": 14,
+   "carbsG": 74,
+   "fatG": 0.7,
+   "emoji": "🍜",
+   "tone": "sand"
+  },
+  "Sourdough": {
+   "kcal": 289,
+   "proteinG": 12,
+   "carbsG": 56,
+   "fatG": 1.8,
+   "emoji": "🍞",
+   "tone": "sand"
+  },
+  "Soy milk": {
+   "kcal": 54,
+   "proteinG": 3.3,
+   "carbsG": 6,
+   "fatG": 1.8,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Soy sauce": {
+   "kcal": 53,
+   "proteinG": 8,
+   "carbsG": 4.9,
+   "fatG": 0.6,
+   "emoji": "🍶",
+   "tone": "sand"
+  },
+  "Spinach": {
+   "kcal": 23,
+   "proteinG": 2.9,
+   "carbsG": 3.6,
+   "fatG": 0.4,
+   "emoji": "🥬",
+   "tone": "green"
+  },
+  "Spring onion": {
+   "kcal": 32,
+   "proteinG": 1.8,
+   "carbsG": 7,
+   "fatG": 0.2,
+   "emoji": "🧅",
+   "tone": "green"
+  },
+  "Strawberries": {
+   "kcal": 32,
+   "proteinG": 0.7,
+   "carbsG": 7.7,
+   "fatG": 0.3,
+   "emoji": "🍓",
+   "tone": "peach"
+  },
+  "Sushi rice": {
+   "kcal": 130,
+   "proteinG": 2.4,
+   "carbsG": 29,
+   "fatG": 0.2,
+   "emoji": "🍚",
+   "tone": "green"
+  },
+  "Sweet potato": {
+   "kcal": 86,
+   "proteinG": 1.6,
+   "carbsG": 20,
+   "fatG": 0.1,
+   "emoji": "🍠",
+   "tone": "peach"
+  },
+  "Tahini": {
+   "kcal": 595,
+   "proteinG": 17,
+   "carbsG": 21,
+   "fatG": 54,
+   "emoji": "🥣",
+   "tone": "sand"
+  },
+  "Tajín": {
+   "kcal": 0,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 0,
+   "emoji": "🧂",
+   "tone": "peach"
+  },
+  "Teriyaki sauce": {
+   "kcal": 89,
+   "proteinG": 5.9,
+   "carbsG": 16,
+   "fatG": 0,
+   "emoji": "🍶",
+   "tone": "sand"
+  },
+  "Thai basil": {
+   "kcal": 23,
+   "proteinG": 3.2,
+   "carbsG": 2.7,
+   "fatG": 0.6,
+   "emoji": "🌿",
+   "tone": "green"
+  },
+  "Tinned tomato": {
+   "kcal": 32,
+   "proteinG": 1.6,
+   "carbsG": 7,
+   "fatG": 0.3,
+   "emoji": "🍅",
+   "tone": "peach"
+  },
+  "Tinned tuna": {
+   "kcal": 116,
+   "proteinG": 26,
+   "carbsG": 0,
+   "fatG": 1,
+   "emoji": "🐟",
+   "tone": "blue"
+  },
+  "Tomato": {
+   "kcal": 18,
+   "proteinG": 0.9,
+   "carbsG": 3.9,
+   "fatG": 0.2,
+   "emoji": "🍅",
+   "tone": "peach"
+  },
+  "Tomato sauce": {
+   "kcal": 29,
+   "proteinG": 1.3,
+   "carbsG": 6,
+   "fatG": 0.2,
+   "emoji": "🍅",
+   "tone": "peach"
+  },
+  "Toor dal": {
+   "kcal": 343,
+   "proteinG": 22,
+   "carbsG": 63,
+   "fatG": 1.5,
+   "emoji": "🫘",
+   "tone": "sand"
+  },
+  "Tortillas": {
+   "kcal": 304,
+   "proteinG": 8,
+   "carbsG": 50,
+   "fatG": 8,
+   "emoji": "🫓",
+   "tone": "sand"
+  },
+  "Tuna": {
+   "kcal": 132,
+   "proteinG": 28,
+   "carbsG": 0,
+   "fatG": 1.3,
+   "emoji": "🐟",
+   "tone": "blue"
+  },
+  "Turkey breast": {
+   "kcal": 135,
+   "proteinG": 30,
+   "carbsG": 0,
+   "fatG": 1,
+   "emoji": "🍗",
+   "tone": "peach"
+  },
+  "Turkey mince": {
+   "kcal": 149,
+   "proteinG": 20,
+   "carbsG": 0,
+   "fatG": 8,
+   "emoji": "🍗",
+   "tone": "peach"
+  },
+  "Tzatziki": {
+   "kcal": 90,
+   "proteinG": 4,
+   "carbsG": 4,
+   "fatG": 6.5,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Vegetable stock": {
+   "kcal": 5,
+   "proteinG": 0.2,
+   "carbsG": 1,
+   "fatG": 0,
+   "emoji": "🍲",
+   "tone": "sand"
+  },
+  "Walnuts": {
+   "kcal": 654,
+   "proteinG": 15,
+   "carbsG": 14,
+   "fatG": 65,
+   "emoji": "🌰",
+   "tone": "sand"
+  },
+  "Whey": {
+   "kcal": 400,
+   "proteinG": 80,
+   "carbsG": 8,
+   "fatG": 6,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "White fish": {
+   "kcal": 90,
+   "proteinG": 19,
+   "carbsG": 0,
+   "fatG": 1,
+   "emoji": "🐟",
+   "tone": "blue"
+  },
+  "Whole-grain bread": {
+   "kcal": 252,
+   "proteinG": 12,
+   "carbsG": 43,
+   "fatG": 3.5,
+   "emoji": "🍞",
+   "tone": "sand"
+  },
+  "Whole-wheat roti": {
+   "kcal": 297,
+   "proteinG": 9.6,
+   "carbsG": 56,
+   "fatG": 3.7,
+   "emoji": "🫓",
+   "tone": "sand"
+  },
+  "Wholewheat pasta": {
+   "kcal": 348,
+   "proteinG": 13,
+   "carbsG": 72,
+   "fatG": 2.5,
+   "emoji": "🍝",
+   "tone": "sand"
+  },
+  "Yoghurt dressing": {
+   "kcal": 80,
+   "proteinG": 4,
+   "carbsG": 5,
+   "fatG": 4.5,
+   "emoji": "🥛",
+   "tone": "blue"
+  },
+  "Za'atar": {
+   "kcal": 300,
+   "proteinG": 9,
+   "carbsG": 40,
+   "fatG": 14,
+   "emoji": "🌿",
+   "tone": "green"
+  }
+ }
+}

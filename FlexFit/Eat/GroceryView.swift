@@ -14,6 +14,7 @@ struct GroceryView: View {
     @Query private var checks: [GroceryCheck]
     @Query(sort: \PantryItem.name) private var pantry: [PantryItem]
     @Query private var logs: [DailyLog]
+    @Query private var foodEntries: [FoodEntry]
 
     var body: some View {
         if let record = profiles.first {
@@ -35,10 +36,7 @@ struct GroceryView: View {
         let needed = items.filter { !pantryNames.contains($0.name) }
         let checked = Set(checks.filter { $0.weekOf == monday }.map(\.name))
         let left = needed.filter { !checked.contains($0.name) }.count
-        let todayMeals = context.meals(on: .now)
-        let log = logs.first { Calendar.current.isDateInToday($0.day) }
-        let kcalLeft = context.calories(on: .now) - todayMeals.filter { log?.eatenMeals.contains($0.index) == true }.reduce(0) { $0 + $1.kcal }
-            - (log?.eatenOutKcal ?? 0)
+        let kcalLeft = DayIntake(context: context, date: .now, logs: logs, entries: foodEntries).kcalLeft
 
         Button {
             dismiss()
@@ -192,6 +190,7 @@ struct RestaurantSheet: View {
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @Query private var logs: [DailyLog]
     @Query private var swaps: [IngredientSwapRecord]
+    @Query private var foodEntries: [FoodEntry]
     @State private var cuisine = RestaurantGuide.cuisines.first ?? ""
 
     var body: some View {
@@ -228,22 +227,21 @@ struct RestaurantSheet: View {
     }
 
     private func remaining(_ profile: UserProfile) -> (kcal: Int, protein: Int) {
-        let targets = TargetsStore.current(weekly, profile: profile)
-        let context = MealPlanContext(profile: profile, targets: targets, swaps: swaps)
-        let meals = context.meals(on: .now)
-        let today = logs.first { Calendar.current.isDateInToday($0.day) }
-        let eaten = meals.filter { today?.eatenMeals.contains($0.index) == true }
-        let kcal = context.calories(on: .now) - eaten.reduce(0) { $0 + $1.kcal } - (today?.eatenOutKcal ?? 0)
-        let protein = targets.proteinG - eaten.reduce(0) { $0 + $1.proteinG } - (today?.eatenOutProteinG ?? 0)
-        return (kcal, protein)
+        let context = MealPlanContext(profile: profile, targets: TargetsStore.current(weekly, profile: profile), swaps: swaps)
+        let intake = DayIntake(context: context, date: .now, logs: logs, entries: foodEntries)
+        return (intake.kcalLeft, intake.proteinLeft)
     }
 
     private func log(_ pick: RestaurantPick) {
-        let today = DailyLog.forDay(.now, in: modelContext)
-        today.eatenOutName = pick.name
-        today.eatenOutKcal = pick.kcal
-        today.eatenOutProteinG = pick.proteinG
-        today.updatedAt = .now
+        // One restaurant dinner per day: a new pick replaces the previous one.
+        for old in foodEntries where old.replacesDinner && Calendar.current.isDateInToday(old.day) { modelContext.delete(old) }
+        let entry = FoodEntry(day: .now, name: pick.name)
+        entry.kcal = pick.kcal
+        entry.proteinG = Double(pick.proteinG)
+        entry.source = "restaurant"
+        entry.category = cuisine
+        entry.replacesDinner = true
+        modelContext.insert(entry)
         try? modelContext.save()
         dismiss()
         router.toast("Logged \(cuisine) — dinner adjusted.")

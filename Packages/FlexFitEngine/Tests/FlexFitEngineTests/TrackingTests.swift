@@ -24,24 +24,17 @@ let day: TimeInterval = 86_400
     let initial = TargetCalculator.initialTargets(for: alex)
     // Losing nothing at all: expenditure is lower than thought → target drops, but by ≤ 150.
     let flat = AdaptiveTargets.weeklyUpdate(profile: alex, previous: initial, trendChangeKg: 0,
-                                            trendWeightKg: 82, proteinNoDays: 0, fastLossWeeks: 0)
+                                            trendWeightKg: 82, fastLossWeeks: 0)
     #expect(initial.calories - flat.targets.calories <= 150)
     #expect(flat.targets.calories < initial.calories)
     #expect(Double(flat.targets.calories) >= TargetCalculator.bmr(alex))
-}
-
-@Test func proteinNoOnThreeDaysSkipsTheWeek() {
-    let initial = TargetCalculator.initialTargets(for: alex)
-    let u = AdaptiveTargets.weeklyUpdate(profile: alex, previous: initial, trendChangeKg: 0,
-                                         trendWeightKg: 82, proteinNoDays: 3, fastLossWeeks: 0)
-    #expect(u.skippedForIntake && u.targets == initial)
 }
 
 @Test func twoFastLossWeeksRaiseTargetsAndWarn() {
     let initial = TargetCalculator.initialTargets(for: alex)
     #expect(AdaptiveTargets.isFastLoss(trendChangeKg: -1.5, trendWeightKg: 82))
     let u = AdaptiveTargets.weeklyUpdate(profile: alex, previous: initial, trendChangeKg: -1.5,
-                                         trendWeightKg: 82, proteinNoDays: 0, fastLossWeeks: 2)
+                                         trendWeightKg: 82, fastLossWeeks: 2)
     #expect(u.rapidLossWarning && u.targets.calories == initial.calories + 150)
 }
 

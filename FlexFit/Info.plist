@@ -20,9 +20,11 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
-	<!-- Apple Health: asked only when the user turns on sync in Settings. -->
+	<key>NSCameraUsageDescription</key>
+	<string>FlexFit uses the camera to scan food, barcodes and nutrition labels when you log what you ate. Photos are analysed on your phone.</string>
+	<!-- Apple Health: asked only when the user turns on sync in Profile. -->
 	<key>NSHealthShareUsageDescription</key>
-	<string>FlexFit reads your body weight to track your weekly trend and adjust your calorie and protein targets.</string>
+	<string>FlexFit reads your body weight, body fat, lean mass and waist to track your progress and adjust your targets, and your steps and walking distance to show how far you have come.</string>
 	<key>NSHealthUpdateUsageDescription</key>
 	<string>FlexFit saves your finished sessions to Apple Health as strength workouts.</string>
 	<key>LSRequiresIPhoneOS</key>

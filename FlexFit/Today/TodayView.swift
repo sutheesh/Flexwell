@@ -3,7 +3,8 @@ import SwiftData
 import WidgetKit
 import FlexFitEngine
 
-/// Today: the day's targets and protein check, the energy check-in, and the session it shapes.
+/// Today: a glance and the next action — the energy check-in, the session to start, the next meal.
+/// The full plans live on Train and Eat; the calorie card lives on Eat.
 struct TodayView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppRouter.self) private var router
@@ -15,6 +16,13 @@ struct TodayView: View {
     @Query private var swaps: [ExerciseSwap]
     @Query private var painFlags: [PainFlag]
     @Query private var ingredientSwaps: [IngredientSwapRecord]
+    @Query private var foodEntries: [FoodEntry]
+    @Query(sort: \WeighIn.date) private var weighIns: [WeighIn]
+    @Query(sort: \BodyMeasurement.date) private var measurements: [BodyMeasurement]
+    @State private var walking: HealthService.Walking?
+    @State private var isLoggingProgress = false
+    /// "Later" on the weekly check-in hides it until this time (seconds since 1970).
+    @AppStorage("checkInSnoozedUntil") private var checkInSnoozedUntil: Double = 0
     @State private var mealDetail: MealSelection?
     @State private var intro: String?
 
@@ -33,21 +41,14 @@ struct TodayView: View {
         let pivot = resolver.pivot(on: now, plannedMinutes: plannedToday.minutes)
         let targets = TargetsStore.current(weekly, profile: profile, now: now)
         let week = TodayPlan.weekNumber(since: record.createdAt, now: now)
-        let totalWeeks = TargetCalculator.weeksToGoal(for: profile)
-        let streak = Streak.weeks(sessionsPerWeek: sessionsPerWeek(now: now), planned: profile.trainingDays)
+        let streak = TodayPlan.streak(sessions: sessions, planned: profile.trainingDays, now: now)
         let doneToday = sessions.contains { Calendar.current.isDate($0.day, inSameDayAs: now) }
         let mealContext = MealPlanContext(profile: profile, targets: targets, swaps: ingredientSwaps)
-        let meals = mealContext.meals(on: now)
-        let dayTarget = mealContext.calories(on: now)
-        let eatenIdx = Set(todayLog?.eatenMeals ?? [])
-        let eatenMeals = meals.filter { eatenIdx.contains($0.index) }
-        // An eating-out order counts toward today (logged from Restaurant mode in place of dinner).
-        let eaten = (kcal: eatenMeals.reduce(0) { $0 + $1.kcal } + (todayLog?.eatenOutKcal ?? 0),
-                     protein: eatenMeals.reduce(0) { $0 + $1.proteinG } + (todayLog?.eatenOutProteinG ?? 0),
-                     carbs: eatenMeals.reduce(0) { $0 + $1.carbsG }, fat: eatenMeals.reduce(0) { $0 + $1.fatG })
-        let groceryCount = GroceryList.build(from: (0..<7).compactMap {
-            Calendar.current.date(byAdding: .day, value: $0, to: Week.start(of: now)).map { mealContext.meals(on: $0) }
-        }).count
+        let intake = DayIntake(context: mealContext, date: now, logs: logs, entries: foodEntries)
+        let meals = intake.meals
+        let dayTarget = intake.target
+        let eatenIdx = intake.eatenMealIndices
+        let eaten = (kcal: intake.kcal, protein: intake.protein, carbs: intake.carbs, fat: intake.fat)
         let next = MealPlanContext.nextMeal(meals, eaten: eatenIdx, now: now)
         let snapshot = WidgetSnapshot(
             date: Calendar.current.startOfDay(for: now),
@@ -63,23 +64,33 @@ struct TodayView: View {
         return ScrollView {
             VStack(alignment: .leading, spacing: Space.md - 2) {
                 TabHeader(name: profile.name.isEmpty ? "Y" : profile.name,
-                          kicker: "\(now.formatted(.dateTime.weekday(.abbreviated).day().month(.abbreviated))) · week \(week)",
-                          title: profile.name.isEmpty ? "Hi there" : "Hi \(profile.name)")
+                          kicker: "\(now.formatted(.dateTime.weekday(.abbreviated))), \(DayMonth.text(now)) · " + (streak > 0 ? "🔥 \(streak)-week streak" : "week \(week)"),
+                          title: profile.name.isEmpty ? "Hi there" : "Hi \(profile.name)", showsCart: false)
 
                 if record.isSample {
                     SampleBanner { startOver() }
                 }
 
-                TargetsCard(
-                    targets: DailyTargets(calories: dayTarget, proteinG: targets.proteinG, carbsG: targets.carbsG,
-                                          fatG: targets.fatG, expenditure: targets.expenditure, floorApplied: targets.floorApplied),
-                    date: now,
-                    weekLabel: streak > 0 ? "🔥 \(streak)-week streak"
-                        : (totalWeeks.map { "Week \(min(week, $0)) of \($0)" } ?? "Week \(week)"),
-                    eaten: eaten,
-                    protein: todayLog?.proteinValue,
-                    onProtein: { answer in setProtein(answer, on: now) }
-                )
+                // First tile: growth since the start. Opens the full Progress page.
+                NavigationLink(value: TodayRoute.progress) {
+                    ProgressTile(snapshot: ProgressSnapshot.make(record: ProgressRecordInputs(
+                                     profile: profile, weighIns: weighIns, measurements: measurements, sessions: sessions,
+                                     logs: logs, foodEntries: foodEntries, weekly: weekly, swaps: ingredientSwaps),
+                                     since: record.createdAt),
+                                 walking: walking, healthOn: record.healthSyncEnabled)
+                }
+                .buttonStyle(.plain)
+
+                if checkInDue(now: now) {
+                    WeeklyCheckInCard(
+                        daysSinceWeighIn: weighIns.last.map { Calendar.current.dateComponents([.day], from: $0.date, to: now).day ?? 0 },
+                        onLog: { isLoggingProgress = true },
+                        onLater: {
+                            let tomorrow = Calendar.current.date(byAdding: .day, value: 1, to: Calendar.current.startOfDay(for: now)) ?? now
+                            withAnimation { checkInSnoozedUntil = tomorrow.timeIntervalSince1970 }
+                        }
+                    )
+                }
 
                 if plannedToday.kind == .training {
                     if todayLog?.energyValue == nil && profile.sleep.isShort {
@@ -97,54 +108,55 @@ struct TodayView: View {
                 SessionCard(day: plannedToday, pivot: pivot, plan: plan, travel: record.activeTravelKit(now: now),
                             isDone: doneToday, intro: intro,
                             onStart: { router.workoutDay = Calendar.current.startOfDay(for: now) },
-                            onAdapt: { router.isAdaptPresented = true })
+                            onOpen: { router.tab = .train })
 
-                if !meals.isEmpty {
-                    HStack(alignment: .firstTextBaseline) {
-                        SectionHeader(title: "Today's food")
-                        Spacer()
-                        Button("See all") { router.tab = .eat }
-                            .textStyle(.label)
-                            .foregroundStyle(Palette.copperText)
-                    }
-                    CardList {
-                        if let out = todayLog?.eatenOutName {
-                            EatingOutRow(name: out, kcal: todayLog?.eatenOutKcal ?? 0, protein: todayLog?.eatenOutProteinG ?? 0) {
-                                clearEatingOut(now)
-                            }
-                        }
-                        ForEach(meals.filter { todayLog?.eatenOutName == nil || $0.slot != .dinner }) { meal in
-                            Button { mealDetail = MealSelection(date: now, planned: meal) } label: {
-                                TodayMealRow(meal: meal, target: dayTarget,
-                                             status: eatenIdx.contains(meal.index) ? .eaten : (meal.id == next?.id ? .upNext : .planned))
-                            }
-                            .buttonStyle(.plain)
-                        }
+                CardList {
+                    ActionRow(icon: "bolt.fill", tint: .copper, title: "What changed?",
+                              subtitle: "Low energy, no gym, a missing ingredient or eating out. One tap adapts today.") {
+                        router.isAdaptPresented = true
                     }
                 }
 
-                SectionHeader(title: "Quick adjustments")
+                if !meals.isEmpty || !intake.entries.isEmpty {
+                    HStack(alignment: .firstTextBaseline) {
+                        SectionHeader(title: next == nil ? "Today's food" : "Next meal")
+                        Spacer()
+                        Button { router.isScannerPresented = true } label: {
+                            Label("Scan", systemImage: "viewfinder")
+                        }
+                        .textStyle(.label)
+                        .foregroundStyle(Palette.copperText)
+                    }
+                    CardList {
+                        ForEach(intake.entries) { entry in
+                            FoodEntryRow(entry: entry) { remove(entry) }
+                        }
+                        if let next {
+                            Button { mealDetail = MealSelection(date: now, planned: next) } label: {
+                                TodayMealRow(meal: next, target: dayTarget, status: .upNext)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        Button { router.tab = .eat } label: {
+                            FoodSummaryRow(eatenCount: intake.visibleMeals.filter { eatenIdx.contains($0.index) }.count,
+                                           mealCount: intake.visibleMeals.count,
+                                           kcalLeft: max(0, dayTarget - eaten.kcal))
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+
                 CardList {
-                    let noGymOn = record.activeTravelKit(now: now) == TravelKit.none
-                    ActionRow(icon: "house", tint: .navy, title: "Can’t make it to the gym",
-                              subtitle: noGymOn ? "On — today is a zero-equipment session" : "Converts today to zero equipment",
-                              badge: entitlements.canUseTravelMode ? nil : "Pro", toggle: noGymOn) {
-                        toggleNoGym(record, now: now)
+                    Button { isLoggingProgress = true } label: {
+                        ActionRowContent(icon: "square.and.pencil", title: "Log progress",
+                                         subtitle: "Weight, body fat, lean mass, waist")
                     }
-                    ActionRow(icon: "fork.knife", tint: .copper, title: "Eating out tonight",
-                              subtitle: "3 safe orders for \(Formatters.kcal(max(0, dayTarget - eaten.kcal))) kcal left") {
-                        router.isRestaurantPresented = true
+                    .buttonStyle(.plain)
+                    NavigationLink(value: TodayRoute.path) {
+                        ActionRowContent(icon: "point.topleft.down.to.point.bottomright.curvepath", title: "Your path",
+                                         subtitle: pathLine(week: week, profile: profile))
                     }
-                    ActionRow(icon: "checklist", tint: .blue, title: "Grocery list",
-                              subtitle: "\(groceryCount) items for this week’s meals") { router.isGroceryPresented = true }
-                    ActionRow(icon: "airplane", tint: .navy, title: "Travel mode",
-                              subtitle: record.activeTravelKit(now: now).map { "On · \($0.title.lowercased())" }
-                                  ?? "Same muscles with bodyweight or bands",
-                              badge: entitlements.canUseTravelMode ? nil : "Pro") {
-                        if entitlements.canUseTravelMode { router.isAdaptPresented = true } else { router.paywall = .travel }
-                    }
-                    ActionRow(icon: "scalemass", tint: .blue, title: "Weekly weigh-in",
-                              subtitle: "Keeps your targets honest") { router.tab = .eat }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(.horizontal, Space.lg)
@@ -154,6 +166,15 @@ struct TodayView: View {
         }
         .statusBarBackdrop()
         .pageBackground()
+        .sheet(isPresented: $isLoggingProgress) { LogProgressSheet(units: profile.displayUnits) }
+        .task(id: record.healthSyncEnabled) {
+            if record.healthSyncEnabled { walking = await HealthService.shared.walking(since: record.createdAt) }
+        }
+        .task {
+            // One-time move of the old single "eating out" field onto the food log.
+            for log in logs where log.eatenOutName != nil { log.migrateEatingOut(into: modelContext) }
+            try? modelContext.save()
+        }
         .task(id: snapshot) {
             // Keep the home-screen widget in step with Today.
             if WidgetSnapshot.load() != snapshot {
@@ -195,18 +216,17 @@ struct TodayView: View {
     }
 
     /// "Can't make it to the gym": Travel Mode with no equipment until the end of today (Pro).
-    private func toggleNoGym(_ record: ProfileRecord, now: Date) {
-        guard entitlements.canUseTravelMode else { router.paywall = .travel; return }
-        if record.activeTravelKit(now: now) == TravelKit.none {
-            record.travelKit = nil
-            record.travelUntil = nil
-            router.toast("Back to your normal session.")
-        } else {
-            record.travelKit = TravelKit.none.rawValue
-            record.travelUntil = Calendar.current.date(bySettingHour: 23, minute: 59, second: 0, of: now)
-            router.toast("No-gym mode on — zero-equipment session, same muscles.")
-        }
-        try? modelContext.save()
+    /// "Week 7 of 18 · 12 weeks to go" for the Path tile.
+    private func pathLine(week: Int, profile: UserProfile) -> String {
+        guard let total = TargetCalculator.weeksToGoal(for: profile) else { return "Week \(week) · the road, day by day, what adapted" }
+        let left = max(0, total - (week - 1))
+        return "Week \(min(week, total)) of \(total) · " + (left == 0 ? "goal week" : "\(left) weeks to go")
+    }
+
+    /// Weekly check-in: due (no weigh-in for 7 days or measurements for 14) and not put off with "Later".
+    private func checkInDue(now: Date) -> Bool {
+        now.timeIntervalSince1970 >= checkInSnoozedUntil
+            && ProgressReport.checkInDue(lastWeighIn: weighIns.last?.date, lastBodyMetric: measurements.last?.date, now: now)
     }
 
     // MARK: Logs
@@ -231,32 +251,20 @@ struct TodayView: View {
         router.toast(message)
     }
 
-    private func clearEatingOut(_ date: Date) {
-        let log = DailyLog.forDay(date, in: modelContext)
-        log.eatenOutName = nil
-        log.eatenOutKcal = 0
-        log.eatenOutProteinG = 0
+    private func remove(_ entry: FoodEntry) {
+        let wasDinner = entry.replacesDinner
+        modelContext.delete(entry)
         try? modelContext.save()
-        router.toast("Back to your planned dinner.")
+        router.toast(wasDinner ? "Back to your planned dinner." : "Removed from today.")
     }
 
     /// "Build my plan" from a sample: clear the sample so onboarding starts.
     private func startOver() {
         for model in [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self,
-                      PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self, SavedMeal.self] as [any PersistentModel.Type] {
+                      PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self, SavedMeal.self, FoodEntry.self, FavoriteExercise.self, ExerciseNote.self, BodyMeasurement.self] as [any PersistentModel.Type] {
             try? modelContext.delete(model: model)
         }
         try? modelContext.save()
-    }
-
-    private func sessionsPerWeek(now: Date) -> [Int] {
-        let thisWeek = Week.start(of: now)
-        var counts = Array(repeating: 0, count: 53)
-        for s in sessions {
-            let weeksAgo = (Calendar.current.dateComponents([.day], from: Week.start(of: s.day), to: thisWeek).day ?? 0) / 7
-            if (0..<counts.count).contains(weeksAgo) { counts[weeksAgo] += 1 }
-        }
-        return counts
     }
 
     private func setEnergy(_ energy: Energy?, on date: Date) {
@@ -265,16 +273,20 @@ struct TodayView: View {
         }
         try? modelContext.save()
     }
-
-    private func setProtein(_ answer: ProteinCheck?, on date: Date) {
-        withAnimation(.easeInOut(duration: 0.2)) {
-            DailyLog.forDay(date, in: modelContext).proteinValue = answer
-        }
-        try? modelContext.save()
-    }
 }
 
 enum TodayPlan {
+    /// Weeks in a row with the planned number of sessions (the streak pill).
+    static func streak(sessions: [SessionLog], planned: Int, now: Date = .now) -> Int {
+        let thisWeek = Week.start(of: now)
+        var counts = Array(repeating: 0, count: 53)
+        for s in sessions {
+            let weeksAgo = (Calendar.current.dateComponents([.day], from: Week.start(of: s.day), to: thisWeek).day ?? 0) / 7
+            if (0..<counts.count).contains(weeksAgo) { counts[weeksAgo] += 1 }
+        }
+        return Streak.weeks(sessionsPerWeek: counts, planned: planned)
+    }
+
     /// The planned day for `date` (the engine's week starts on Monday).
     static func plannedDay(for profile: UserProfile, on date: Date) -> PlannedDay {
         let weekday = (Calendar.current.component(.weekday, from: date) + 5) % 7
@@ -289,23 +301,21 @@ enum TodayPlan {
     }
 }
 
-// MARK: - Targets + protein check
+// MARK: - Targets
 
 /// Navy panel: dark in both appearances, so its content uses fixed tokens.
-/// The mock's calorie arc: 13 segments filling as meals are marked eaten.
-private struct TargetsCard: View {
+/// 1:1 with the mock: date + streak pill, the 13-segment calorie arc, then three macro columns.
+struct TargetsCard: View {
     let targets: DailyTargets
     let date: Date
     let weekLabel: String
     let eaten: (kcal: Int, protein: Int, carbs: Int, fat: Int)
-    let protein: ProteinCheck?
-    let onProtein: (ProteinCheck?) -> Void
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Text(date.formatted(.dateTime.weekday(.wide).day().month(.wide)))
-                    .textStyle(.micro)
+                Text("\(date.formatted(.dateTime.weekday(.wide))), \(date.formatted(.dateTime.day())) \(date.formatted(.dateTime.month(.wide)))")
+                    .textStyle(.caption)
                     .foregroundStyle(Palette.onPanelMuted)
                 Spacer()
                 Text(weekLabel)
@@ -317,65 +327,69 @@ private struct TargetsCard: View {
             }
 
             CalorieArc(fraction: Double(eaten.kcal) / Double(max(1, targets.calories)))
-                .overlay(alignment: .bottom) {
-                    VStack(spacing: Space.xs - 1) {
+                .overlay(alignment: .top) {
+                    VStack(spacing: 0) {
                         Image(systemName: "bolt.fill")
-                            .font(TextStyle.label.font)
+                            .font(TextStyle.rowTitle.font)
                             .foregroundStyle(Palette.copper)
                         Text("\(Formatters.kcal(eaten.kcal)) kcal")
-                            .textStyle(.metric)
+                            .textStyle(.arcValue)
                             .foregroundStyle(Palette.onPanel)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                            .padding(.top, Space.xs)
                         Text("Goal \(Formatters.kcal(targets.calories)) kcal")
-                            .textStyle(.micro)
+                            .textStyle(.caption)
                             .foregroundStyle(Palette.copper)
+                            .padding(.top, Space.xs - 1)
                     }
-                    .padding(.bottom, Space.xs)
+                    .frame(width: (Size.arcOuterRadius - Size.segment.height) * 2)
+                    .padding(.top, Size.arcTextTop)
                 }
+                .frame(maxWidth: .infinity)
+                .padding(.top, Space.xxs)
                 .accessibilityElement(children: .ignore)
                 .accessibilityLabel("\(eaten.kcal) of \(targets.calories) kilocalories eaten today")
-                .padding(.top, Space.xxs)
 
             HStack(spacing: 0) {
-                MacroStat(label: "Protein", eaten: eaten.protein, target: targets.proteinG, fill: Palette.ice)
+                MacroStat(label: "Protein", eaten: eaten.protein, target: targets.proteinG, fill: Palette.ice, first: true)
                 MacroStat(label: "Carbs", eaten: eaten.carbs, target: targets.carbsG, fill: Palette.copper)
                 MacroStat(label: "Fat", eaten: eaten.fat, target: targets.fatG, fill: Palette.sand)
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding(.top, Space.md - 1)
             .overlay(alignment: .top) { Rectangle().fill(Palette.onPanelHairline).frame(height: 1) }
-
-            ProteinCheckRow(grams: targets.proteinG, answer: protein, onAnswer: onProtein)
-                .padding(.top, Space.md)
+            .padding(.top, Space.xs - 2)
         }
         .padding(.horizontal, Space.lg)
-        .padding(.top, Space.md + 2)
+        .padding(.top, Space.lg - 2)
         .padding(.bottom, Space.lg)
         .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
         .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.panelEdge))
     }
 }
 
-/// 13 rounded segments on a 204° arc, as drawn in the mock.
+/// The mock's arc SVG, drawn 1:1: capsules pivot on (118, 122), spanning -102°…+102°.
 private struct CalorieArc: View {
     let fraction: Double
     private let segments = 13
 
     var body: some View {
         let filled = Int((min(1, max(0, fraction)) * Double(segments)).rounded())
-        ZStack {
+        // Distance from the pivot to each capsule's centre: outer end on radius 108.
+        let centreRadius = Size.arcOuterRadius - Size.segment.height / 2
+        ZStack(alignment: .topLeading) {
             ForEach(0..<segments, id: \.self) { i in
                 Capsule()
                     .fill(i < filled ? Palette.copper : Palette.onPanelHairline)
                     .frame(width: Size.segment.width, height: Size.segment.height)
-                    .offset(y: -Size.arcRadius)
+                    // Offset first (rendering only), then rotate about the layout centre = the pivot.
+                    .offset(y: -centreRadius)
                     .rotationEffect(.degrees(-102 + Double(i) * 204 / Double(segments - 1)))
+                    .position(Size.arcPivot)
             }
         }
-        .frame(width: Size.arcRadius * 2 + Size.segment.width, height: Size.arcRadius + Size.segment.height)
-        .offset(y: Size.arcRadius / 2 - Space.xs)
-        .frame(maxWidth: .infinity)
-        .frame(height: Size.arcRadius * 1.3)
-        .clipped()
+        .frame(width: Size.arcBox.width, height: Size.arcBox.height)
     }
 }
 
@@ -384,15 +398,20 @@ private struct MacroStat: View {
     let eaten: Int
     let target: Int
     let fill: Color
+    var first = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: Space.xs) {
+        VStack(alignment: .leading, spacing: 0) {
             Text(label)
                 .textStyle(.micro)
                 .foregroundStyle(Palette.onPanelMuted)
             Text("\(eaten) / \(target)g")
-                .textStyle(.label)
+                .textStyle(.rowTitle)
                 .foregroundStyle(Palette.onPanel)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .padding(.top, Space.xs)
+                .padding(.bottom, Space.xs + 1)
             Capsule()
                 .fill(Palette.onPanelHairline)
                 .frame(height: Size.progressBar)
@@ -403,56 +422,13 @@ private struct MacroStat: View {
                     }
                 }
         }
-        .padding(.trailing, Space.md)
+        .padding(.horizontal, first ? 0 : Space.sm - 2)
+        .padding(.trailing, first ? Space.sm - 2 : 0)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .overlay(alignment: .leading) {
+            if !first { Rectangle().fill(Palette.onPanelHairline).frame(width: 1) }
+        }
         .accessibilityElement(children: .combine)
-    }
-}
-
-private struct ProteinCheckRow: View {
-    let grams: Int
-    let answer: ProteinCheck?
-    let onAnswer: (ProteinCheck?) -> Void
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: Space.sm - 2) {
-            Text(answer == nil ? "Did you hit roughly \(grams) g of protein today?" : "Protein logged for today")
-                .textStyle(.caption)
-                .foregroundStyle(Palette.onPanel)
-                .fixedSize(horizontal: false, vertical: true)
-            HStack(spacing: Space.xs - 2) {
-                ForEach(ProteinCheck.allCases, id: \.self) { option in
-                    let selected = answer == option
-                    Button {
-                        onAnswer(selected ? nil : option)
-                    } label: {
-                        Text(option.title)
-                            .textStyle(.chip)
-                            .lineLimit(1)
-                            .foregroundStyle(selected ? Palette.navy : Palette.onPanel)
-                            .frame(maxWidth: .infinity, minHeight: Size.control - 4)
-                            .background(selected ? Palette.ice : Color.clear, in: Capsule())
-                            .overlay(Capsule().strokeBorder(selected ? Color.clear : Palette.onPanelOutline))
-                            .contentShape(Capsule())
-                    }
-                    .buttonStyle(.plain)
-                    .accessibilityLabel("Protein: \(option.title)")
-                    .accessibilityAddTraits(selected ? .isSelected : [])
-                }
-            }
-        }
-        .padding(Space.sm)
-        .background(Palette.onPanelHairline, in: RoundedRectangle(cornerRadius: Radius.md))
-    }
-}
-
-extension ProteinCheck {
-    var title: String {
-        switch self {
-        case .yes: "Yes"
-        case .close: "Close"
-        case .no: "No"
-        }
     }
 }
 
@@ -469,9 +445,9 @@ private struct EnergyCheckIn: View {
             HStack(spacing: Space.sm - 2) {
                 Image(systemName: "bolt.fill")
                     .font(TextStyle.chip.font)
-                    .foregroundStyle(Palette.onInkFill)
+                    .foregroundStyle(Palette.navy)
                     .frame(width: Size.checkRing + 8, height: Size.checkRing + 8)
-                    .background(Palette.inkFill, in: Circle())
+                    .background(Palette.ice, in: Circle())
                     .accessibilityHidden(true)
                 Text(EnergyCopy.summary(energy: energy, pivot: pivot))
                     .textStyle(.caption)
@@ -558,6 +534,7 @@ enum EnergyCopy {
 // MARK: - Session card
 
 /// Navy panel with the session illustration. Always dark, so fixed tokens throughout.
+/// Today's session at a glance: what it is, how long, and Start. The picture and the plan are on Train.
 private struct SessionCard: View {
     let day: PlannedDay
     let pivot: PivotResult?
@@ -567,99 +544,66 @@ private struct SessionCard: View {
     /// On-device (or template) intro for today's session.
     var intro: String?
     let onStart: () -> Void
-    let onAdapt: () -> Void
+    let onOpen: () -> Void
 
     private var isTraining: Bool { day.kind == .training }
     private var minutes: Int { plan?.minutes ?? pivot?.minutes ?? day.minutes }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Color.clear
-                .aspectRatio(2.05, contentMode: .fit)
-                .overlay {
-                    Image(isTraining ? "Illustration-lift" : "Illustration-walk")
-                        .resizable()
-                        .scaledToFill()
+        VStack(alignment: .leading, spacing: Space.sm) {
+            HStack(alignment: .center, spacing: Space.sm) {
+                Button(action: onOpen) {
+                    VStack(alignment: .leading, spacing: Space.xs - 2) {
+                        HStack(spacing: Space.xs - 2) {
+                            Circle().fill(Palette.ice).frame(width: Size.dot, height: Size.dot)
+                            Text(badge)
+                                .textStyle(.micro)
+                                .foregroundStyle(Palette.ice)
+                        }
+                        Text(title)
+                            .textStyle(.headline)
+                            .foregroundStyle(Palette.onPanel)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .accessibilityAddTraits(.isHeader)
+                        if isTraining, let focus = day.focus {
+                            Text(focus.moves)
+                                .textStyle(.micro)
+                                .foregroundStyle(Palette.ice)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        Text(meta)
+                            .textStyle(.micro)
+                            .foregroundStyle(Palette.onPanelMuted)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .contentShape(Rectangle())
                 }
-                .overlay {
-                    LinearGradient(
-                        stops: [
-                            // Stronger than the mock's fade: white titles cross the drawn art.
-                            .init(color: Palette.navy.opacity(0.96), location: 0),
-                            .init(color: Palette.navy.opacity(0.85), location: 0.55),
-                            .init(color: Palette.navy.opacity(0.25), location: 1),
-                        ],
-                        startPoint: .leading, endPoint: .trailing
-                    )
-                }
-                .overlay(alignment: .topLeading) { summary }
-                .background(Palette.panelRaised)
-                .clipped()
+                .buttonStyle(.plain)
+                .accessibilityHint("Opens the session on Train")
 
-            if isTraining {
-                HStack(spacing: Space.xs + 1) {
+                if isTraining {
                     Button(action: onStart) {
-                        Text(isDone ? "Log another" : "Start workout")
-                            .textStyle(.button)
+                        Text(isDone ? "Log another ›" : "Start ›")
+                            .textStyle(.label)
                             .foregroundStyle(Palette.navy)
-                            .frame(maxWidth: .infinity, minHeight: Size.button)
+                            .padding(.horizontal, Space.md)
+                            .frame(minHeight: Size.control)
                             .background(Palette.ice, in: Capsule())
                     }
                     .buttonStyle(PressableStyle())
-                    Button(action: onAdapt) {
-                        Text("Adapt")
-                            .textStyle(.chip)
-                            .foregroundStyle(Palette.onPanel)
-                            .padding(.horizontal, Space.md)
-                            .frame(minHeight: Size.button)
-                            .overlay(Capsule().strokeBorder(Palette.onPanelOutline))
-                    }
-                    .buttonStyle(PressableStyle())
+                    .accessibilityLabel(isDone ? "Log another workout" : "Start workout")
                 }
-                .padding(.horizontal, Space.md)
-                .padding(.top, Space.md - 2)
             }
 
             Text(intro ?? EnergyCopy.sessionNote(day: day, pivot: pivot))
                 .textStyle(.caption)
                 .foregroundStyle(Palette.onPanelMuted)
+                .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
-                .padding(.horizontal, Space.md)
-                .padding(.top, isTraining ? Space.sm : Space.md)
-                .padding(.bottom, Space.md - 2)
         }
+        .padding(Space.md)
         .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
-        .clipShape(RoundedRectangle(cornerRadius: Radius.lg))
         .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.panelEdge))
-    }
-
-    private var summary: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(spacing: Space.xs - 2) {
-                Circle().fill(Palette.ice).frame(width: Size.dot, height: Size.dot)
-                Text(badge)
-                    .textStyle(.micro)
-                    .foregroundStyle(Palette.ice)
-            }
-            .padding(.horizontal, Space.sm - 2)
-            .padding(.vertical, Space.xs - 2)
-            .background(Palette.ice.opacity(0.16), in: Capsule())
-
-            Text(title)
-                .textStyle(.title2)
-                .foregroundStyle(Palette.onPanel)
-                .fixedSize(horizontal: false, vertical: true)
-                .padding(.top, Space.sm)
-                .accessibilityAddTraits(.isHeader)
-
-            Text(meta)
-                .textStyle(.micro)
-                .foregroundStyle(Palette.onPanelMuted)
-                .padding(.top, Space.sm - 2)
-        }
-        .padding(Space.md + 2)
-        .frame(maxWidth: Size.panelTextWidth, alignment: .leading)
-        .accessibilityElement(children: .combine)
     }
 
     private var badge: String {
@@ -686,8 +630,8 @@ private struct SessionCard: View {
 
     private var meta: String {
         switch day.kind {
-        case .training: "🔥 \(Burn.kcal(minutes: minutes, training: true)) kcal · ⏱ \(minutes) min · RPE ≤ \(pivot?.rpeCap ?? 8)"
-        case .activeRecovery: "🔥 \(Burn.kcal(minutes: minutes, training: false)) kcal · ⏱ \(minutes) min"
+        case .training: "⏱ \(minutes) min    🔥 \(Burn.kcal(minutes: minutes, training: true)) kcal"
+        case .activeRecovery: "⏱ \(minutes) min    🔥 \(Burn.kcal(minutes: minutes, training: false)) kcal"
         case .rest: "Recover"
         }
     }
@@ -843,6 +787,30 @@ private struct TodayMealRow: View {
 }
 
 /// Rough session burn, as the mock estimates it: ~7.5 kcal/min lifting, ~4.5 kcal/min walking.
+/// "2 of 4 meals eaten · 865 kcal left  See all ›" — opens Eat.
+private struct FoodSummaryRow: View {
+    let eatenCount: Int
+    let mealCount: Int
+    let kcalLeft: Int
+
+    var body: some View {
+        HStack(spacing: Space.xs) {
+            Text("\(eatenCount) of \(mealCount) meals eaten · \(Formatters.kcal(kcalLeft)) kcal left")
+                .textStyle(.caption)
+                .foregroundStyle(Palette.inkMuted)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Text("See all ›")
+                .textStyle(.label)
+                .foregroundStyle(Palette.copperText)
+        }
+        .padding(.horizontal, Space.md)
+        .padding(.vertical, Space.sm + 1)
+        .contentShape(Rectangle())
+        .accessibilityElement(children: .combine)
+        .accessibilityHint("Opens Eat")
+    }
+}
+
 enum Burn {
     static func kcal(minutes: Int, training: Bool) -> Int {
         Int((Double(minutes) * (training ? 7.5 : 4.5)).rounded())
@@ -874,41 +842,5 @@ private struct SampleBanner: View {
         }
         .padding(Space.md)
         .background(Palette.copperTint, in: RoundedRectangle(cornerRadius: Radius.md))
-    }
-}
-
-/// Tonight's restaurant order, logged in place of dinner.
-private struct EatingOutRow: View {
-    let name: String
-    let kcal: Int
-    let protein: Int
-    let onUndo: () -> Void
-
-    var body: some View {
-        HStack(spacing: Space.sm + 1) {
-            Image(systemName: "fork.knife")
-                .font(TextStyle.rowTitle.font)
-                .foregroundStyle(Palette.copperText)
-                .frame(width: Size.avatar + 10, height: Size.avatar + 10)
-                .background(Palette.copperTint, in: Circle())
-                .accessibilityHidden(true)
-            VStack(alignment: .leading, spacing: Space.xxs + 2) {
-                HStack(spacing: Space.xs - 1) {
-                    Text("Dinner · eating out").textStyle(.micro).foregroundStyle(Palette.inkMuted)
-                    Text("Logged").textStyle(.micro).foregroundStyle(Palette.blueText)
-                        .padding(.horizontal, Space.xs - 1).padding(.vertical, Space.xxs)
-                        .background(Palette.blueTint, in: Capsule())
-                }
-                Text(name).textStyle(.rowTitle).foregroundStyle(Palette.ink).fixedSize(horizontal: false, vertical: true)
-                Text("\(protein)g protein").textStyle(.micro).foregroundStyle(Palette.inkMuted)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            VStack(alignment: .trailing, spacing: Space.xs - 2) {
-                Text("\(kcal)").textStyle(.statValue).foregroundStyle(Palette.ink)
-                Button("Undo", action: onUndo).textStyle(.micro).foregroundStyle(Palette.copperText)
-            }
-        }
-        .padding(.horizontal, Space.md)
-        .padding(.vertical, Space.sm + 1)
     }
 }

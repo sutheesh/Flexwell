@@ -77,7 +77,7 @@ struct PaywallView: View {
                 .frame(maxWidth: .infinity)
                 .padding(.top, Space.md)
 
-                Text("Subscriptions renew automatically until cancelled in Settings › Apple ID at least 24 hours before the period ends.")
+                Text("Subscriptions renew automatically until cancelled in Profile › Apple ID at least 24 hours before the period ends.")
                     .textStyle(.micro)
                     .foregroundStyle(Palette.onPanelMuted)
                     .multilineTextAlignment(.center)

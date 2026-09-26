@@ -31,7 +31,7 @@ struct SwapSheet: View {
                 .textStyle(.caption)
                 .foregroundStyle(Palette.inkMuted)
             if options.isEmpty {
-                InlineNote(text: "Nothing else with your equipment trains this movement safely. Keep it, or add equipment in Settings (tap your initial).")
+                InlineNote(text: "Nothing else with your equipment trains this movement safely. Keep it, or add equipment in Profile (tap your initial).")
             } else {
                 CardList {
                     ForEach(Array(options.enumerated()), id: \.element.exercise.id) { i, option in

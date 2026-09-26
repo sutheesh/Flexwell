@@ -2,32 +2,32 @@ import SwiftUI
 import SwiftData
 
 enum AppTab: Hashable {
-    case today, train, adapt, eat, path
+    case train, today, eat, profile
 }
 
-/// The app's tab structure. ⚡ Adapt is a tab in the bar but an action in behaviour:
-/// selecting it opens the adapt sheet and leaves the current tab selected.
+/// The app's tabs — Gym, ⚡ Today (the raised centre button), Eat, and Profile split off to the right —
+/// under the mock's floating bar. Path opens from a tile on Today; Adapt from Today's "What changed?".
 struct RootView: View {
     @Environment(AppRouter.self) private var router
 
     var body: some View {
         @Bindable var router = router
-        TabView(selection: tabSelection) {
-            Tab("Today", systemImage: "house", value: AppTab.today) {
-                TodayView()
+        // The system tab bar is hidden; the mock's bar floats over the content. The TabView stays so each
+        // tab keeps its scroll position and state.
+        TabView(selection: $router.tab) {
+            Tab(value: AppTab.train) { GymTab().mockTabBarSpace() }
+            Tab(value: AppTab.today) { TodayTab().mockTabBarSpace() }
+            Tab(value: AppTab.eat) { EatView().mockTabBarSpace() }
+            Tab(value: AppTab.profile) { SettingsView(isTab: true).mockTabBarSpace() }
+        }
+        .overlay {
+            // Mock: the bar's bottom edge sits 24 pt above the screen edge, not above the home indicator.
+            GeometryReader { geo in
+                MockTabBar()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                    .offset(y: geo.safeAreaInsets.bottom - Size.tabBarBottom)
             }
-            Tab("Train", systemImage: "dumbbell", value: AppTab.train) {
-                TrainView()
-            }
-            Tab("Adapt", systemImage: "bolt.fill", value: AppTab.adapt) {
-                Color.clear
-            }
-            Tab("Eat", systemImage: "fork.knife", value: AppTab.eat) {
-                EatView()
-            }
-            Tab("Path", systemImage: "point.topleft.down.to.point.bottomright.curvepath", value: AppTab.path) {
-                PathView()
-            }
+            .ignoresSafeArea(.keyboard)
         }
         .sheet(item: $router.sheet) { sheet in
             switch sheet {
@@ -40,27 +40,59 @@ struct RootView: View {
             case .ingredientSwap(let selection): RootIngredientSwap(selection: selection)
             }
         }
-        .fullScreenCover(item: Binding(
-            get: { router.workoutDay.map(WorkoutDay.init) },
-            set: { router.workoutDay = $0?.date }
-        )) { day in
-            WorkoutView(date: day.date)
+        // Full-screen covers hang off separate views: stacked presentation modifiers on one view are unreliable.
+        .background {
+            Color.clear.fullScreenCover(item: Binding(
+                get: { router.workoutDay.map(WorkoutDay.init) },
+                set: { router.workoutDay = $0?.date }
+            )) { day in
+                WorkoutView(date: day.date)
+            }
+        }
+        .background {
+            Color.clear.fullScreenCover(isPresented: $router.isScannerPresented) {
+                FoodScannerView()
+            }
         }
         .toastOverlay(router)
     }
+}
 
-    private var tabSelection: Binding<AppTab> {
-        Binding(
-            get: { router.tab },
-            set: { newValue in
-                if newValue == .adapt {
-                    router.isAdaptPresented = true
-                } else {
-                    router.tab = newValue
+/// Today, with Path pushed from its tile (the tab bar stays).
+private struct TodayTab: View {
+    var body: some View {
+        NavigationStack {
+            TodayView()
+                .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: TodayRoute.self) { route in
+                    switch route {
+                    case .path: PathView(isPushed: true).toolbar(.hidden, for: .navigationBar)
+                    case .progress: ProgressDetailView()
+                    }
                 }
-            }
-        )
+        }
     }
+}
+
+/// Gym (Train + the exercise library), with its muscle lists and exercise pages pushed on top. Always navy.
+private struct GymTab: View {
+    var body: some View {
+        NavigationStack {
+            TrainView()
+                .toolbar(.hidden, for: .navigationBar)
+                .navigationDestination(for: GymRoute.self) { route in
+                    switch route {
+                    case .group(let group): MuscleGroupView(group: group)
+                    case .exercise(let id): ExerciseDetailView(exerciseID: id)
+                    }
+                }
+        }
+        .environment(\.colorScheme, .dark)
+    }
+}
+
+enum TodayRoute: Hashable {
+    case path, progress
 }
 
 struct WorkoutDay: Identifiable {
@@ -84,5 +116,15 @@ private struct RootIngredientSwap: View {
                 router.toast("\(from) → \(to). Macros held close.")
             }
         }
+    }
+}
+
+private extension View {
+    /// Hides the system tab bar and keeps content clear of the floating one. Content margins are inherited by
+    /// every scroll view inside, including pages pushed on a tab's navigation stack (safe-area padding isn't).
+    func mockTabBarSpace() -> some View {
+        toolbar(.hidden, for: .tabBar)
+            .contentMargins(.bottom, Size.tabBar + Space.md, for: .scrollContent)
+            .contentMargins(.bottom, Size.tabBar, for: .scrollIndicators)
     }
 }

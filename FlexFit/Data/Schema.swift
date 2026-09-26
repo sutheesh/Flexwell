@@ -10,7 +10,7 @@ import FlexFitEngine
 
 enum SchemaV1: VersionedSchema {
     static let versionIdentifier = Schema.Version(1, 0, 0)
-    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self, SavedMeal.self] }
+    static var models: [any PersistentModel.Type] { [ProfileRecord.self, DailyLog.self, ExerciseSwap.self, SessionLog.self, WeighIn.self, WeeklyTargets.self, PainFlag.self, IngredientSwapRecord.self, GroceryCheck.self, PantryItem.self, SavedMeal.self, FoodEntry.self, FavoriteExercise.self, ExerciseNote.self, BodyMeasurement.self] }
 
     @Model
     final class ProfileRecord {
@@ -61,7 +61,7 @@ enum SchemaV1: VersionedSchema {
         init() {}
     }
 
-    /// One row per calendar day: the energy check-in and the protein check.
+    /// One row per calendar day: the energy check-in, the session and meals ticked off.
     /// Not unique-constrained (CloudKit can't be); look it up by `day`.
     @Model
     final class DailyLog {
@@ -69,12 +69,11 @@ enum SchemaV1: VersionedSchema {
         var day: Date = Date.now
         var energy: String?
         var soreAreas: [String] = []
-        var proteinCheck: String?
         /// Exercises ticked off in this day's session. Set logging (PRD F6) replaces this.
         var completedExercises: [String] = []
         /// Indices (into the day's planned meals) the user marked as eaten.
         var eatenMeals: [Int] = []
-        /// "I'm eating out": the order logged in place of dinner.
+        /// Legacy (pre food log): an eating-out order stored on the day. Read once and moved to `FoodEntry`.
         var eatenOutName: String?
         var eatenOutKcal: Int = 0
         var eatenOutProteinG: Int = 0
@@ -126,7 +125,6 @@ enum SchemaV1: VersionedSchema {
         var fatG: Int = 0
         var expenditure: Int = 0
         var trendKg: Double?
-        var skippedForIntake: Bool = false
         var rapidLossWarning: Bool = false
         var floorApplied: Bool = false
 
@@ -157,12 +155,74 @@ enum SchemaV1: VersionedSchema {
         init(weekOf: Date, name: String) { self.weekOf = weekOf; self.name = name }
     }
 
+    /// Food eaten outside the plan: scanned, barcode, nutrition label, library photo, restaurant pick or manual.
+    @Model
+    final class FoodEntry {
+        var day: Date = Date.now
+        var loggedAt: Date = Date.now
+        var name: String = ""
+        var category: String = ""
+        var grams: Int = 0
+        var kcal: Int = 0
+        var proteinG: Double = 0
+        var carbsG: Double = 0
+        var fatG: Double = 0
+        /// scan, barcode, label, library, restaurant, manual
+        var source: String = "manual"
+        /// True for a restaurant order logged in place of the planned dinner.
+        var replacesDinner: Bool = false
+        @Attribute(.externalStorage) var photo: Data?
+
+        init(day: Date, name: String) {
+            self.day = Calendar.current.startOfDay(for: day)
+            self.name = name
+        }
+    }
+
     /// A meal bookmarked from its detail screen.
     @Model
     final class SavedMeal {
         var mealID: Int = 0
         var savedAt: Date = Date.now
         init(mealID: Int) { self.mealID = mealID }
+    }
+
+    /// Body fat %, lean mass or waist, entered by hand or read from Apple Health. Weight lives in `WeighIn`.
+    @Model
+    final class BodyMeasurement {
+        var date: Date = Date.now
+        /// `ProgressReport.BodyMetric` raw value.
+        var kind: String = ProgressReport.BodyMetric.bodyFatPercent.rawValue
+        var value: Double = 0
+        /// "manual" or "health".
+        var source: String = "manual"
+
+        init(date: Date, kind: ProgressReport.BodyMetric, value: Double, source: String = "manual") {
+            self.date = date
+            self.kind = kind.rawValue
+            self.value = value
+            self.source = source
+        }
+    }
+
+    /// An exercise starred in the Gym library.
+    @Model
+    final class FavoriteExercise {
+        var exerciseID: String = ""
+        var addedAt: Date = Date.now
+        init(exerciseID: String) { self.exerciseID = exerciseID }
+    }
+
+    /// The user's own notes on an exercise (seat height, grip, what hurt).
+    @Model
+    final class ExerciseNote {
+        var exerciseID: String = ""
+        var text: String = ""
+        var updatedAt: Date = Date.now
+        init(exerciseID: String, text: String = "") {
+            self.exerciseID = exerciseID
+            self.text = text
+        }
     }
 
     /// Something the user keeps at home; left off grocery lists (PRD pantry).
@@ -211,6 +271,10 @@ typealias IngredientSwapRecord = SchemaV1.IngredientSwapRecord
 typealias GroceryCheck = SchemaV1.GroceryCheck
 typealias PantryItem = SchemaV1.PantryItem
 typealias SavedMeal = SchemaV1.SavedMeal
+typealias FoodEntry = SchemaV1.FoodEntry
+typealias FavoriteExercise = SchemaV1.FavoriteExercise
+typealias ExerciseNote = SchemaV1.ExerciseNote
+typealias BodyMeasurement = SchemaV1.BodyMeasurement
 
 struct LoggedExerciseRecord: Codable, Hashable {
     var exerciseID: String
@@ -267,11 +331,6 @@ extension DailyLog {
     var energyValue: Energy? {
         get { energy.flatMap(Energy.init(rawValue:)) }
         set { energy = newValue?.rawValue; updatedAt = .now }
-    }
-
-    var proteinValue: ProteinCheck? {
-        get { proteinCheck.flatMap(ProteinCheck.init(rawValue:)) }
-        set { proteinCheck = newValue?.rawValue; updatedAt = .now }
     }
 
     /// The log for `date`'s day, creating it if needed.

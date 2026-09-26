@@ -8,6 +8,50 @@ public struct Ingredient: Codable, Sendable, Hashable {
     public var name: String
     public var grams: Int
     public init(name: String, grams: Int) { self.name = name; self.grams = grams }
+
+    /// This ingredient's own macros at its weight, from the reference table. Nil if it isn't listed.
+    public var macros: Macros? { NutritionTable.bundled[name].map { $0.scaled(grams: grams) } }
+}
+
+public struct Macros: Sendable, Hashable {
+    public var kcal: Double
+    public var proteinG: Double
+    public var carbsG: Double
+    public var fatG: Double
+
+    public static let zero = Macros(kcal: 0, proteinG: 0, carbsG: 0, fatG: 0)
+    public static func + (a: Macros, b: Macros) -> Macros {
+        Macros(kcal: a.kcal + b.kcal, proteinG: a.proteinG + b.proteinG, carbsG: a.carbsG + b.carbsG, fatG: a.fatG + b.fatG)
+    }
+}
+
+/// Per-100 g reference nutrition for every ingredient (resources/nutrition.json), plus how to picture it.
+public struct NutritionEntry: Codable, Sendable, Hashable {
+    public var kcal: Double
+    public var proteinG: Double
+    public var carbsG: Double
+    public var fatG: Double
+    /// A food emoji for the ingredient tile.
+    public var emoji: String
+    /// Tile tint family: green, peach, blue, sand.
+    public var tone: String
+
+    public func scaled(grams: Int) -> Macros {
+        let f = Double(grams) / 100
+        return Macros(kcal: kcal * f, proteinG: proteinG * f, carbsG: carbsG * f, fatG: fatG * f)
+    }
+}
+
+public enum NutritionTable {
+    struct Document: Codable { var ingredients: [String: NutritionEntry] }
+
+    public static let bundled: [String: NutritionEntry] = {
+        guard let url = Bundle.module.url(forResource: "nutrition", withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let doc = try? JSONDecoder().decode(Document.self, from: data)
+        else { fatalError("nutrition.json is missing or invalid") }
+        return doc.ingredients
+    }()
 }
 
 /// A recipe from the library (per-portion values as authored).
@@ -161,12 +205,19 @@ public enum MealPlanner {
             let ingredients = meal.ingredients.map { ing in
                 Ingredient(name: swap?.from == ing.name ? swap!.to : ing.name, grams: Int((Double(ing.grams) * f).rounded()))
             }
+            // Totals come from the ingredients themselves, so a swap really changes them
+            // and the per-ingredient chips always add up to the dish.
+            let parts = ingredients.map(\.macros)
+            let totals: Macros = parts.allSatisfy({ $0 != nil })
+                ? parts.compactMap { $0 }.reduce(.zero, +)
+                : Macros(kcal: Double(meal.kcal) * f, proteinG: Double(meal.proteinG) * f,
+                         carbsG: Double(meal.carbsG) * f, fatG: Double(meal.fatG) * f)
             return PlannedMeal(
                 meal: meal, slot: slot, index: k,
-                kcal: Int((Double(meal.kcal) * f / 5).rounded()) * 5,
-                proteinG: Int((Double(meal.proteinG) * f).rounded()),
-                carbsG: Int((Double(meal.carbsG) * f).rounded()),
-                fatG: Int((Double(meal.fatG) * f).rounded()),
+                kcal: Int((totals.kcal / 5).rounded()) * 5,
+                proteinG: Int(totals.proteinG.rounded()),
+                carbsG: Int(totals.carbsG.rounded()),
+                fatG: Int(totals.fatG.rounded()),
                 ingredients: ingredients,
                 swapped: swap.map { ($0.from, $0.to) }
             )

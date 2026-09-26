@@ -112,3 +112,31 @@ let meals = MealLibrary.bundled
         #expect(meal.cookMinutes <= 30)
     }
 }
+
+@Test func everyIngredientHasNutrition() {
+    for meal in meals.meals { for ing in meal.ingredients { #expect(NutritionTable.bundled[ing.name] != nil, "\(ing.name)") } }
+    for sub in meals.substitutions.values { #expect(NutritionTable.bundled[sub] != nil, "\(sub)") }
+}
+
+@Test func ingredientMacrosAddUpToTheDish() {
+    for weekday in 0..<7 {
+        for m in MealPlanner.day(weekday: weekday, profile: alex, targetCalories: 2000) {
+            let sum = m.ingredients.compactMap(\.macros).reduce(Macros.zero, +)
+            #expect(abs(sum.proteinG - Double(m.proteinG)) <= 0.5 + 1e-9)
+            #expect(abs(sum.carbsG - Double(m.carbsG)) <= 0.5 + 1e-9)
+            #expect(abs(sum.kcal - Double(m.kcal)) <= 2.5 + 1e-9)
+        }
+    }
+}
+
+@Test func swappingAnIngredientChangesTheMacros() {
+    var p = alex
+    p.mealPattern = .three
+    let plain = MealPlanner.day(weekday: 0, profile: p, targetCalories: 2000)[0]
+    guard let target = plain.ingredients.first(where: { MealPlanner.substitute(for: $0.name) != nil }) else { return }
+    let to = MealPlanner.substitute(for: target.name)!
+    let swapped = MealPlanner.day(weekday: 0, profile: p, targetCalories: 2000,
+                                  swaps: [IngredientSwapChoice(mealIndex: 0, from: target.name, to: to)])[0]
+    let expected = swapped.ingredients.compactMap(\.macros).reduce(Macros.zero, +)
+    #expect(abs(expected.proteinG - Double(swapped.proteinG)) <= 0.5 + 1e-9)
+}

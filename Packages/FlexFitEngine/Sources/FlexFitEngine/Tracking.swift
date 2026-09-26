@@ -36,8 +36,6 @@ public enum WeightTrend {
 
 public struct TargetUpdate: Sendable, Equatable {
     public var targets: DailyTargets
-    /// The protein check said "No" on 3+ days, so this week's adjustment was skipped.
-    public var skippedForIntake: Bool
     /// Trend dropped > 1.5%/week for 2 weeks: targets raised; suggest a professional check-in.
     public var rapidLossWarning: Bool
 }
@@ -48,10 +46,9 @@ public enum AdaptiveTargets {
     /// - Parameters:
     ///   - previous: last week's targets (calories = intake target, expenditure = prior estimate).
     ///   - trendChangeKg: weekly trend change (negative = losing).
-    ///   - proteinNoDays: days this week the protein check said "No".
     ///   - fastLossWeeks: consecutive weeks (including this one) the trend fell faster than 1.5% of body weight.
     public static func weeklyUpdate(profile: UserProfile, previous: DailyTargets, trendChangeKg: Double,
-                                    trendWeightKg: Double, proteinNoDays: Int, fastLossWeeks: Int) -> TargetUpdate {
+                                    trendWeightKg: Double, fastLossWeeks: Int) -> TargetUpdate {
         let bmr = TargetCalculator.bmr(profile)
         let floor = Int(Safety.calorieFloor(sex: profile.sex, bmr: bmr).rounded(.up))
 
@@ -59,10 +56,7 @@ public enum AdaptiveTargets {
             var t = previous
             t.calories = max(floor, previous.calories + maxWeeklyChange)
             t.carbsG = macroCarbs(calories: t.calories, protein: t.proteinG, fat: t.fatG)
-            return TargetUpdate(targets: t, skippedForIntake: false, rapidLossWarning: true)
-        }
-        if proteinNoDays >= 3 {
-            return TargetUpdate(targets: previous, skippedForIntake: true, rapidLossWarning: false)
+            return TargetUpdate(targets: t, rapidLossWarning: true)
         }
 
         // Expenditure = intake − (weekly trend change × 7700 / 7), blended 50/50 with the prior estimate.
@@ -83,7 +77,7 @@ public enum AdaptiveTargets {
         t.expenditure = Int((expenditure / 10).rounded()) * 10
         t.floorApplied = calories == floor
         t.carbsG = macroCarbs(calories: calories, protein: t.proteinG, fat: t.fatG)
-        return TargetUpdate(targets: t, skippedForIntake: false, rapidLossWarning: false)
+        return TargetUpdate(targets: t, rapidLossWarning: false)
     }
 
     /// Whether this week's trend change counts as rapid loss (> 1.5% of body weight).

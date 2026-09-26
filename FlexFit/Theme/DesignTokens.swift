@@ -61,6 +61,28 @@ enum Palette {
     static let sand = Color(hex: 0xEBC9B2)
     /// Cool end of the meal petals and ingredient tiles.
     static let iceLight = Color(hex: 0xE6EEF8)
+    // MARK: Meal detail (reference design)
+
+    /// Warm light-grey canvas behind the meal flower.
+    static let canvas = Color(light: 0xEEECE8, dark: 0x0A1322)
+    /// Petal gradient, centre → rim. Petals are a fixed light surface: their labels use `navy`.
+    static let petalCore = Color(hex: 0xF7A35C)
+    static let petalWarm = Color(hex: 0xF6C77A)
+    static let petalGreen = Color(hex: 0xCFE8A3)
+    /// Pastel ingredient tiles (fixed light surfaces).
+    static let tileGreen = Color(hex: 0xE3F1C8)
+    static let tilePeach = Color(hex: 0xF8E1C8)
+    static let tileBlue = Color(hex: 0xDCE8F5)
+    static let tileSand = Color(hex: 0xF1E7D3)
+    /// Macro chip icons: carbs, fat, protein.
+    static let carbGreen = Color(hex: 0x6BAF3C)
+    static let fatOrange = Color(hex: 0xF29A2E)
+    static let proteinRed = Color(hex: 0xE0493E)
+    /// Chip background on the ingredient card.
+    static let chipFill = Color(light: 0x14233F, lightOpacity: 0.05, dark: 0xEEF3F9, darkOpacity: 0.08)
+    /// Filled bookmark.
+    static let amber = Color(hex: 0xF4B63F)
+
     /// "Picked for you" card: a fixed peach surface with fixed dark content.
     static let peach = Color(hex: 0xF4E3D6)
     static let peachDeep = Color(hex: 0xEFD2BF)
@@ -167,6 +189,24 @@ struct TextStyle {
 
     /// Intro hero line.
     static let display = TextStyle(.extraBold, 36, .largeTitle, tracking: -0.035)
+    /// Calories inside the Today arc (mock: 800 / 30).
+    static let arcValue = TextStyle(.extraBold, 30, .largeTitle, tracking: -0.03)
+    /// Path goal card "82 → 75 kg" (mock: 800 / 24).
+    static let goalValue = TextStyle(.extraBold, 24, .title2, tracking: -0.02)
+    /// Tab bar labels (mock: 700 / 9, +0.04em).
+    static let tabLabel = TextStyle(.bold, 9, .caption2, tracking: 0.04)
+    /// Small filled badge: "YOU ARE HERE" (mock: 700 / 9.5).
+    static let badge = TextStyle(.bold, 9.5, .caption2)
+    /// "Picked for you" meal name (mock: 800 / 19).
+    static let cardTitle = TextStyle(.extraBold, 19, .title3, tracking: -0.02)
+    /// Meal name and kcal on a meal card (mock: 800 / 15).
+    static let mealName = TextStyle(.extraBold, 15, .subheadline)
+    /// Macro grams on a meal card (mock: 800 / 13).
+    static let macroValue = TextStyle(.extraBold, 13, .footnote)
+    /// Small filled buttons: "View meal" (mock: 700 / 11.5).
+    static let pill = TextStyle(.bold, 11.5, .caption)
+    /// Macro captions under the numbers (mock: 500 / 9.5).
+    static let tiny = TextStyle(.medium, 9.5, .caption2)
     /// Big numbers: calorie target, today's intake.
     static let metric = TextStyle(.extraBold, 34, .largeTitle, tracking: -0.03)
     /// Screen titles: wizard step, path header.
@@ -175,6 +215,8 @@ struct TextStyle {
     static let title2 = TextStyle(.extraBold, 21, .title2, tracking: -0.02)
     /// Section headers ("The road", "Session plan").
     static let headline = TextStyle(.extraBold, 17, .headline, tracking: -0.01)
+    /// Ingredient names on the meal detail card.
+    static let ingredientName = TextStyle(.semibold, 19, .title3)
     /// Small stat values (macro grams, row numbers).
     static let statValue = TextStyle(.extraBold, 16, .callout)
     /// Primary button labels.
@@ -216,6 +258,10 @@ private struct TextStyleModifier: ViewModifier {
 // MARK: - Shape & space
 
 enum Radius {
+    /// Ingredient tiles and detail top-bar buttons.
+    static let tile: CGFloat = 22
+    /// The ingredient card's top corners.
+    static let sheet: CGFloat = 32
     /// Icon tiles, small swatches.
     static let xs: CGFloat = 8
     /// Inputs, day cells, back button.
@@ -240,11 +286,34 @@ enum Space {
 enum Size {
     /// Space the toast keeps above the tab bar.
     static let tabBarClearance: CGFloat = 96
+    /// The mock's floating tab bar (70 tall, 24 above the screen edge) and its raised ⚡ button.
+    /// Gym library: the tap-a-muscle body map, card and detail figures, the detail thumbnail.
+    static let bodyMap: CGFloat = 460
+    static let exerciseCardFigure: CGFloat = 120
+    static let detailFigure: CGFloat = 250
+    static let detailThumb = CGSize(width: 96, height: 96)
+    /// Today's progress tile: the weight sparkline and the small weekly bars.
+    static let sparkline = CGSize(width: 120, height: 44)
+    static let miniBars: CGFloat = 26
+    static let tabBar: CGFloat = 70
+    static let tabBarBottom: CGFloat = 24
+    static let tabIcon: CGFloat = 21
+    static let adaptButton: CGFloat = 60
+    /// How far the ⚡ button's centre sits above the bar's centre (mock: its top is 8 pt above the bar).
+    static let adaptLift: CGFloat = 13
     /// The mock's pill switch.
     static let switchSize = CGSize(width: 46, height: 28)
-    /// Calorie arc on Today (mock: 18×34 segments at radius 108).
-    static let arcRadius: CGFloat = 92
-    static let segment = CGSize(width: 16, height: 30)
+    /// Calorie arc on Today, 1:1 with the mock's SVG: a 236×146 box, 13 capsules of 18×34 whose outer
+    /// ends sit on radius 108 around a pivot at (118, 122); the text block starts 52 pt from the top.
+    static let arcBox = CGSize(width: 236, height: 146)
+    static let arcPivot = CGPoint(x: 118, y: 122)
+    static let arcOuterRadius: CGFloat = 108
+    static let segment = CGSize(width: 18, height: 34)
+    static let arcTextTop: CGFloat = 52
+    /// Meal detail: flower diameter cap, ingredient tile, big top-bar buttons.
+    static let flower: CGFloat = 370
+    static let ingredientTile: CGFloat = 88
+    static let detailButton: CGFloat = 52
     /// Meal photo in a meal card.
     static let mealThumb = CGSize(width: 88, height: 96)
     /// Round meal image on "Picked for you" and the detail flower.

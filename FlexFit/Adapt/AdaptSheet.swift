@@ -56,6 +56,9 @@ struct AdaptSheet: View {
             SheetRow(badge: "▣", title: "I’m eating out", subtitle: "Three safe orders for the cuisine you’re at.") {
                 handOff { router.isRestaurantPresented = true }
             }
+            SheetRow(badge: "◎", title: "I ate something else", subtitle: "Scan it, its barcode or its label to log it.") {
+                handOff { router.isScannerPresented = true }
+            }
             SheetRow(badge: "✦", title: "I feel strong", subtitle: "Full session, loads up where you earned them.") {
                 if record.activeTravelKit(now: today) == TravelKit.none, record.travelUntil.map({ Calendar.current.isDateInToday($0) }) == true {
                     record.travelKit = nil; record.travelUntil = nil

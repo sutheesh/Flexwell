@@ -1,0 +1,1806 @@
+{
+ "version": 1,
+ "reviewStatus": "draft: needs review by a qualified coach or physio before release",
+ "guides": {
+  "bb_bench_press": {
+   "steps": [
+    "Lie on the bench with eyes under the bar, feet flat.",
+    "Grip just wider than shoulders; squeeze shoulder blades together and down.",
+    "Unrack, lower the bar to mid-chest with elbows about 45° from your body.",
+    "Press up and slightly back until arms are straight."
+   ],
+   "cues": [
+    "Keep your glutes on the bench.",
+    "Use a spotter or safety arms near your limit."
+   ]
+  },
+  "bb_incline_bench": {
+   "steps": [
+    "Set the bench to 30–45° and lie back, eyes under the bar.",
+    "Grip just wider than shoulders, shoulder blades pinched.",
+    "Lower the bar to your upper chest under control.",
+    "Press up over your shoulders."
+   ],
+   "cues": [
+    "Don't let the bar drift toward your face.",
+    "Feet planted, back gently arched."
+   ]
+  },
+  "bb_close_grip_bench": {
+   "steps": [
+    "Lie on a flat bench and grip the bar about shoulder width.",
+    "Unrack with shoulder blades set.",
+    "Lower to your lower chest, elbows tucked close to your sides.",
+    "Press up by straightening the elbows."
+   ],
+   "cues": [
+    "Hands no narrower than shoulder width protects the wrists.",
+    "Elbows stay tucked the whole rep."
+   ]
+  },
+  "smith_bench_press": {
+   "steps": [
+    "Set a flat bench so the bar meets your mid-chest.",
+    "Grip just wider than shoulders and rotate the bar off the hooks.",
+    "Lower to mid-chest with elbows about 45° out.",
+    "Press back up and re-hook at the end of the set."
+   ],
+   "cues": [
+    "Set the safety stops just above chest height.",
+    "Keep shoulder blades pulled back."
+   ]
+  },
+  "db_flat_press": {
+   "steps": [
+    "Sit with dumbbells on your thighs, then lie back and bring them to chest height.",
+    "Palms forward or slightly turned in, shoulder blades pinched.",
+    "Press up until arms are straight, dumbbells over your chest.",
+    "Lower slowly until elbows are just below the bench."
+   ],
+   "cues": [
+    "Control the bottom; don't bounce.",
+    "Bring the weights back to your thighs to finish."
+   ]
+  },
+  "db_incline_press": {
+   "steps": [
+    "Set the bench to 30–45°, dumbbells on your thighs.",
+    "Lie back and bring the dumbbells to your upper chest.",
+    "Press up and slightly in over your shoulders.",
+    "Lower under control to the start."
+   ],
+   "cues": [
+    "Wrists stacked over elbows.",
+    "Keep your back flat on the pad."
+   ]
+  },
+  "db_floor_press": {
+   "steps": [
+    "Lie on the floor, knees bent, a dumbbell in each hand at chest height.",
+    "Upper arms on the floor at about 45° from your body.",
+    "Press up until arms are straight.",
+    "Lower until your upper arms touch the floor, pause, repeat."
+   ],
+   "cues": [
+    "The floor limits range, which is kind to the shoulders.",
+    "Don't bounce the elbows off the floor."
+   ]
+  },
+  "kb_floor_press": {
+   "steps": [
+    "Lie on the floor, knees bent, kettlebell held at chest height, handle in your palm.",
+    "Upper arm on the floor about 45° from your body.",
+    "Press straight up, keeping the wrist straight.",
+    "Lower slowly until the upper arm touches the floor."
+   ],
+   "cues": [
+    "Work one side at a time if you only have one bell.",
+    "Keep the bell resting on your forearm."
+   ]
+  },
+  "cable_chest_press": {
+   "steps": [
+    "Set both handles at chest height and stand in the middle, one foot forward.",
+    "Hold the handles at your chest, elbows back.",
+    "Press forward until arms are straight and hands meet.",
+    "Return slowly until hands are beside your chest."
+   ],
+   "cues": [
+    "Lean slightly forward from the ankles.",
+    "Don't let the cables pull your shoulders forward."
+   ]
+  },
+  "cable_fly": {
+   "steps": [
+    "Set the pulleys at shoulder height and step forward, arms out wide.",
+    "Soft bend in the elbows, chest up.",
+    "Bring the handles together in a wide arc in front of your chest.",
+    "Open back out slowly until you feel a stretch."
+   ],
+   "cues": [
+    "Keep the elbow bend fixed; it's a hug, not a press.",
+    "Stop the stretch before the shoulders strain."
+   ]
+  },
+  "db_fly": {
+   "steps": [
+    "Lie on a flat bench with dumbbells pressed over your chest, palms facing.",
+    "Soften the elbows slightly.",
+    "Lower the dumbbells out to the sides in a wide arc.",
+    "Bring them back together over your chest."
+   ],
+   "cues": [
+    "Go only as low as feels comfortable in the shoulders.",
+    "Use lighter weights than for pressing."
+   ]
+  },
+  "band_chest_press": {
+   "steps": [
+    "Anchor the band at chest height behind you or wrap it around your back.",
+    "Hold the ends at your chest, elbows back.",
+    "Press forward until arms are straight.",
+    "Return slowly to your chest."
+   ],
+   "cues": [
+    "Stagger your feet for balance.",
+    "Keep ribs down; don't arch."
+   ]
+  },
+  "push_up": {
+   "steps": [
+    "Hands slightly wider than shoulders, body straight from head to heels.",
+    "Brace your core and squeeze your glutes.",
+    "Lower until your chest nearly touches the floor, elbows about 45° out.",
+    "Push the floor away to straighten your arms."
+   ],
+   "cues": [
+    "Hips move with the chest, not before it.",
+    "Too hard? Use the incline version."
+   ]
+  },
+  "incline_push_up": {
+   "steps": [
+    "Put your hands on a bench, box or counter, slightly wider than shoulders.",
+    "Walk your feet back until your body is straight.",
+    "Lower your chest to the edge.",
+    "Push back up to straight arms."
+   ],
+   "cues": [
+    "The higher the surface, the easier it gets.",
+    "Keep a straight line from head to heels."
+   ]
+  },
+  "decline_push_up": {
+   "steps": [
+    "Feet on a bench or step, hands on the floor slightly wider than shoulders.",
+    "Body straight, core braced.",
+    "Lower your chest toward the floor.",
+    "Push back up to straight arms."
+   ],
+   "cues": [
+    "Shifts work toward the upper chest and shoulders.",
+    "Don't let the hips sag."
+   ]
+  },
+  "bb_overhead_press": {
+   "steps": [
+    "Unrack the bar at collarbone height, grip just wider than shoulders.",
+    "Brace your core and squeeze your glutes.",
+    "Press the bar straight up, moving your head back slightly to let it pass.",
+    "Lock out over your mid-foot, then lower to your collarbones."
+   ],
+   "cues": [
+    "Don't lean back to finish the rep.",
+    "Elbows slightly in front of the bar at the start."
+   ]
+  },
+  "bb_push_press": {
+   "steps": [
+    "Hold the bar at your collarbones, feet hip-width.",
+    "Dip a few inches by bending the knees, torso upright.",
+    "Drive up through the legs and press the bar overhead in one move.",
+    "Lower the bar back to your shoulders with control."
+   ],
+   "cues": [
+    "The legs start it, the arms finish it.",
+    "Keep the dip short and straight down."
+   ]
+  },
+  "smith_overhead_press": {
+   "steps": [
+    "Set a bench upright under the Smith bar.",
+    "Grip just wider than shoulders at collarbone height.",
+    "Press up until your arms are straight.",
+    "Lower back to your collarbones."
+   ],
+   "cues": [
+    "Set safeties just above shoulder height.",
+    "Back flat against the pad."
+   ]
+  },
+  "db_seated_press": {
+   "steps": [
+    "Sit on an upright bench, dumbbells at shoulder height, palms forward.",
+    "Back against the pad, core braced.",
+    "Press up until arms are straight, dumbbells over your head.",
+    "Lower slowly back to shoulder height."
+   ],
+   "cues": [
+    "Don't clang the weights together at the top.",
+    "Keep your ribs down."
+   ]
+  },
+  "db_standing_press": {
+   "steps": [
+    "Stand tall, dumbbells at shoulder height, feet hip-width.",
+    "Brace your core and squeeze your glutes.",
+    "Press both dumbbells straight up.",
+    "Lower under control to your shoulders."
+   ],
+   "cues": [
+    "No leaning back.",
+    "Soft knees, strong trunk."
+   ]
+  },
+  "db_arnold_press": {
+   "steps": [
+    "Sit tall with dumbbells in front of your shoulders, palms facing you.",
+    "As you press up, rotate your palms to face forward.",
+    "Finish with arms straight overhead.",
+    "Reverse the rotation on the way down."
+   ],
+   "cues": [
+    "Move smoothly; don't rush the turn.",
+    "Use lighter weight than a normal press."
+   ]
+  },
+  "db_half_kneeling_press": {
+   "steps": [
+    "Kneel on one knee, the other foot in front, dumbbell at the shoulder on the kneeling side.",
+    "Squeeze the glute of the down leg and brace.",
+    "Press the dumbbell straight up.",
+    "Lower under control, finish the set, then switch sides."
+   ],
+   "cues": [
+    "Keep your hips square and still.",
+    "Great for training one side at a time."
+   ]
+  },
+  "kb_overhead_press": {
+   "steps": [
+    "Hold the kettlebell in the rack position: handle in your palm, bell on your forearm.",
+    "Brace your core and squeeze your glutes.",
+    "Press straight up until your arm is straight, bicep by your ear.",
+    "Lower back to the rack position."
+   ],
+   "cues": [
+    "Keep the wrist straight.",
+    "Don't lean away from the bell."
+   ]
+  },
+  "band_overhead_press": {
+   "steps": [
+    "Stand on the band with feet hip-width, ends at shoulder height.",
+    "Brace your core.",
+    "Press up until arms are straight.",
+    "Lower slowly to your shoulders."
+   ],
+   "cues": [
+    "Widen your stance for more tension.",
+    "Keep ribs down."
+   ]
+  },
+  "pike_push_up": {
+   "steps": [
+    "Start in a push-up position and walk your feet in, hips high like an upside-down V.",
+    "Hands shoulder-width, head between your arms.",
+    "Bend your elbows to lower the top of your head toward the floor.",
+    "Push back up."
+   ],
+   "cues": [
+    "Your head goes in front of your hands, making a triangle.",
+    "Hips stay high the whole time."
+   ]
+  },
+  "elevated_pike_push_up": {
+   "steps": [
+    "Feet on a bench or step, hands on the floor, hips high.",
+    "Head between your arms.",
+    "Lower the top of your head toward the floor.",
+    "Press back up."
+   ],
+   "cues": [
+    "Harder than the floor pike; build up to it.",
+    "Keep the movement slow and controlled."
+   ]
+  },
+  "bb_bent_over_row": {
+   "steps": [
+    "Hold the bar with an overhand grip just wider than shoulders.",
+    "Hinge at the hips until your torso is about 45°, back flat, knees soft.",
+    "Pull the bar to your lower ribs, elbows back.",
+    "Lower until your arms are straight."
+   ],
+   "cues": [
+    "Keep your torso angle fixed; don't stand up.",
+    "Squeeze your shoulder blades at the top."
+   ]
+  },
+  "bb_pendlay_row": {
+   "steps": [
+    "Bar on the floor, hinge until your back is nearly parallel to the floor.",
+    "Grip just wider than shoulders, back flat.",
+    "Pull the bar explosively to your lower chest.",
+    "Return it to the floor and reset each rep."
+   ],
+   "cues": [
+    "Each rep starts from a dead stop.",
+    "Keep your back flat throughout."
+   ]
+  },
+  "db_one_arm_row": {
+   "steps": [
+    "Put one knee and hand on a bench, other foot on the floor.",
+    "Hold a dumbbell with your free arm hanging straight down.",
+    "Pull the dumbbell to your hip, elbow close to your side.",
+    "Lower slowly until your arm is straight."
+   ],
+   "cues": [
+    "Think elbow to back pocket.",
+    "Don't twist your torso to lift."
+   ]
+  },
+  "db_chest_supported_row": {
+   "steps": [
+    "Set a bench to about 30° and lie chest-down on it.",
+    "Let the dumbbells hang straight below your shoulders.",
+    "Row them up until your elbows pass your torso.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "The bench takes your lower back out of it.",
+    "Squeeze your shoulder blades together at the top."
+   ]
+  },
+  "kb_row": {
+   "steps": [
+    "Hinge forward with a flat back, one hand on a bench or your knee.",
+    "Hold the kettlebell with the other arm hanging straight.",
+    "Row it to your hip.",
+    "Lower with control; switch sides after the set."
+   ],
+   "cues": [
+    "Keep your shoulders level.",
+    "Pull with the back, not the biceps."
+   ]
+  },
+  "cable_seated_row": {
+   "steps": [
+    "Sit with feet on the platform, knees soft, holding the handle with straight arms.",
+    "Sit tall with your chest up.",
+    "Pull the handle to your belly, elbows close to your sides.",
+    "Let your arms straighten slowly."
+   ],
+   "cues": [
+    "Don't rock back and forth.",
+    "Shoulders down, away from your ears."
+   ]
+  },
+  "inverted_row": {
+   "steps": [
+    "Lie under a bar or sturdy table edge set about waist height.",
+    "Grip it and hang with your body straight, heels on the floor.",
+    "Pull your chest up to the bar.",
+    "Lower until your arms are straight."
+   ],
+   "cues": [
+    "Bend your knees to make it easier.",
+    "Keep your hips up in line with your body."
+   ]
+  },
+  "band_seated_row": {
+   "steps": [
+    "Sit with legs straight and loop the band around your feet.",
+    "Hold the ends with straight arms, chest up.",
+    "Pull your hands to your belly, elbows back.",
+    "Return slowly."
+   ],
+   "cues": [
+    "Sit tall; don't slump.",
+    "Pause and squeeze at the end."
+   ]
+  },
+  "towel_door_row": {
+   "steps": [
+    "Loop a towel around the handles of a closed, locked door, or around a sturdy post.",
+    "Hold the ends and lean back with straight arms, feet close to the door.",
+    "Pull your chest toward your hands.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Check the door is shut and locked toward you.",
+    "Walk your feet closer to make it harder."
+   ]
+  },
+  "cable_face_pull": {
+   "steps": [
+    "Set a rope at upper-chest height and hold it with palms facing down.",
+    "Step back until your arms are straight.",
+    "Pull the rope toward your face, hands splitting apart past your ears.",
+    "Return slowly."
+   ],
+   "cues": [
+    "Elbows high, level with your hands.",
+    "Light weight, strict form."
+   ]
+  },
+  "band_face_pull": {
+   "steps": [
+    "Anchor a band at head height and hold the ends.",
+    "Step back until there's tension.",
+    "Pull toward your face, hands going wide past your ears.",
+    "Return with control."
+   ],
+   "cues": [
+    "Finish like a double-biceps pose.",
+    "Great for shoulder health."
+   ]
+  },
+  "band_pull_apart": {
+   "steps": [
+    "Hold a band in front of you at shoulder height, hands shoulder-width.",
+    "Arms straight, shoulders down.",
+    "Pull the band apart until it touches your chest.",
+    "Return slowly."
+   ],
+   "cues": [
+    "Squeeze your shoulder blades together.",
+    "Don't shrug."
+   ]
+  },
+  "db_rear_delt_fly": {
+   "steps": [
+    "Hinge forward with a flat back, dumbbells hanging below your chest.",
+    "Soft bend in your elbows.",
+    "Raise the dumbbells out to the sides.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Lead with your elbows, not your hands.",
+    "Light weights work best here."
+   ]
+  },
+  "prone_y_raise": {
+   "steps": [
+    "Lie face down on a mat or incline bench, arms overhead in a Y.",
+    "Thumbs up.",
+    "Lift your arms a few inches off the floor or pad.",
+    "Hold briefly, then lower."
+   ],
+   "cues": [
+    "Keep your neck long and chin tucked.",
+    "Small movement; feel the upper back."
+   ]
+  },
+  "pull_up": {
+   "steps": [
+    "Hang from a bar with an overhand grip just wider than shoulders.",
+    "Pull your shoulders down and brace your core.",
+    "Pull until your chin is over the bar.",
+    "Lower all the way to straight arms."
+   ],
+   "cues": [
+    "Avoid swinging or kicking.",
+    "Use a band if you can't yet do full reps."
+   ]
+  },
+  "chin_up": {
+   "steps": [
+    "Hang from the bar with palms facing you, hands shoulder-width.",
+    "Set your shoulders down.",
+    "Pull your chin over the bar.",
+    "Lower under control to a full hang."
+   ],
+   "cues": [
+    "Usually easier than a pull-up.",
+    "Keep your legs still."
+   ]
+  },
+  "neutral_grip_pull_up": {
+   "steps": [
+    "Hang from parallel handles, palms facing each other.",
+    "Set your shoulders down.",
+    "Pull until your chin is above the handles.",
+    "Lower slowly to straight arms."
+   ],
+   "cues": [
+    "Often the kindest grip for the shoulders.",
+    "Full range every rep."
+   ]
+  },
+  "band_assisted_pull_up": {
+   "steps": [
+    "Loop a band over the bar and place a knee or foot in it.",
+    "Grip the bar just wider than shoulders.",
+    "Pull your chin over the bar.",
+    "Lower slowly to a full hang."
+   ],
+   "cues": [
+    "Use a lighter band as you get stronger.",
+    "Step out of the band carefully."
+   ]
+  },
+  "negative_pull_up": {
+   "steps": [
+    "Use a step or jump so your chin starts above the bar.",
+    "Hold the top with shoulders down.",
+    "Lower yourself as slowly as you can, 3–5 seconds.",
+    "Step back up and repeat."
+   ],
+   "cues": [
+    "Builds strength toward your first pull-up.",
+    "Stop when you can't control the descent."
+   ]
+  },
+  "lat_pulldown": {
+   "steps": [
+    "Sit with thighs under the pad, grip the bar just wider than shoulders.",
+    "Lean back slightly, chest up.",
+    "Pull the bar to your upper chest, elbows down and back.",
+    "Let it rise slowly until arms are straight."
+   ],
+   "cues": [
+    "Don't pull behind your neck.",
+    "Think of pulling your elbows into your pockets."
+   ]
+  },
+  "close_grip_pulldown": {
+   "steps": [
+    "Attach a close-grip handle and sit with thighs secured.",
+    "Chest up, slight lean back.",
+    "Pull the handle to your upper chest.",
+    "Return slowly to straight arms."
+   ],
+   "cues": [
+    "Elbows stay close to your body.",
+    "Control the way up."
+   ]
+  },
+  "straight_arm_pulldown": {
+   "steps": [
+    "Stand facing a high cable with a bar or rope, arms straight.",
+    "Hinge slightly forward, core braced.",
+    "Sweep the bar down to your thighs, keeping arms straight.",
+    "Return slowly to eye level."
+   ],
+   "cues": [
+    "It's all lats; elbows stay nearly locked.",
+    "Don't bend over further to finish."
+   ]
+  },
+  "band_lat_pulldown": {
+   "steps": [
+    "Anchor a band high and kneel or sit facing it.",
+    "Hold the ends with arms up.",
+    "Pull your elbows down to your sides.",
+    "Return with control."
+   ],
+   "cues": [
+    "Chest up, shoulders down.",
+    "Squeeze at the bottom."
+   ]
+  },
+  "db_pullover": {
+   "steps": [
+    "Lie across or along a bench holding one dumbbell over your chest with both hands.",
+    "Soft bend in the elbows.",
+    "Lower the dumbbell back over your head in an arc.",
+    "Pull it back over your chest."
+   ],
+   "cues": [
+    "Only go as far back as feels comfortable.",
+    "Keep your ribs down."
+   ]
+  },
+  "bb_back_squat": {
+   "steps": [
+    "Set the bar on your upper back, not your neck, and step back from the rack.",
+    "Feet shoulder-width, toes slightly out, brace your core.",
+    "Sit down and back until your thighs are at least parallel.",
+    "Drive up through your whole foot to stand."
+   ],
+   "cues": [
+    "Knees track over your toes.",
+    "Use safety arms set just below your bottom position."
+   ]
+  },
+  "bb_front_squat": {
+   "steps": [
+    "Rest the bar on the front of your shoulders, elbows high.",
+    "Feet shoulder-width, core braced.",
+    "Squat down keeping your torso upright.",
+    "Stand up, leading with your elbows."
+   ],
+   "cues": [
+    "If you drop the elbows, the bar rolls forward.",
+    "Cross-arm grip is fine if wrists are tight."
+   ]
+  },
+  "bb_box_squat": {
+   "steps": [
+    "Set a box or bench so your thighs are about parallel when seated.",
+    "Bar on your upper back, feet a little wider than shoulders.",
+    "Sit back onto the box under control, pause briefly.",
+    "Drive up to standing."
+   ],
+   "cues": [
+    "Touch the box, don't crash onto it.",
+    "Stay tight while seated."
+   ]
+  },
+  "smith_squat": {
+   "steps": [
+    "Set the bar on your upper back with feet slightly in front of it.",
+    "Unrack by rotating the bar off the hooks.",
+    "Squat down until thighs are about parallel.",
+    "Stand back up."
+   ],
+   "cues": [
+    "Set the safety stops first.",
+    "Feet forward lets you sit back."
+   ]
+  },
+  "leg_press": {
+   "steps": [
+    "Sit with your back flat on the pad, feet shoulder-width on the platform.",
+    "Release the safety handles.",
+    "Lower the platform until knees are about 90°.",
+    "Press back up without locking your knees hard."
+   ],
+   "cues": [
+    "Keep your lower back on the pad.",
+    "Re-engage the safeties at the end."
+   ]
+  },
+  "db_goblet_squat": {
+   "steps": [
+    "Hold a dumbbell vertically against your chest.",
+    "Feet shoulder-width, toes slightly out.",
+    "Squat down between your knees, chest up.",
+    "Stand up through your whole foot."
+   ],
+   "cues": [
+    "Elbows inside your knees at the bottom.",
+    "A great first squat to learn."
+   ]
+  },
+  "kb_goblet_squat": {
+   "steps": [
+    "Hold the kettlebell by the horns against your chest.",
+    "Feet shoulder-width, toes out a little.",
+    "Squat down, keeping your chest tall.",
+    "Stand back up."
+   ],
+   "cues": [
+    "Push your knees out at the bottom.",
+    "Keep your heels down."
+   ]
+  },
+  "heels_elevated_goblet_squat": {
+   "steps": [
+    "Put your heels on a small plate or wedge.",
+    "Hold a weight at your chest.",
+    "Squat down deep with your torso upright.",
+    "Stand up."
+   ],
+   "cues": [
+    "Puts more work on the quads.",
+    "Helps if your ankles are stiff."
+   ]
+  },
+  "bodyweight_squat": {
+   "steps": [
+    "Stand with feet shoulder-width, arms forward for balance.",
+    "Sit down and back.",
+    "Go as low as you can with a flat back.",
+    "Stand back up."
+   ],
+   "cues": [
+    "Knees follow your toes.",
+    "Keep your weight across the whole foot."
+   ]
+  },
+  "tempo_squat": {
+   "steps": [
+    "Set up as for a normal squat, with or without weight.",
+    "Lower for a slow count of 3–4.",
+    "Pause briefly at the bottom.",
+    "Stand up at normal speed."
+   ],
+   "cues": [
+    "Slow lowering makes light weights hard.",
+    "Stay tight during the pause."
+   ]
+  },
+  "chair_squat": {
+   "steps": [
+    "Stand in front of a sturdy chair, feet shoulder-width.",
+    "Sit back until you lightly touch the seat.",
+    "Stand straight back up without rocking.",
+    "Repeat."
+   ],
+   "cues": [
+    "Great for learning depth safely.",
+    "Arms forward help with balance."
+   ]
+  },
+  "wall_sit": {
+   "steps": [
+    "Lean your back against a wall.",
+    "Slide down until your knees are about 90°.",
+    "Hold with your back flat on the wall.",
+    "Stand up to finish."
+   ],
+   "cues": [
+    "Keep your knees over your ankles.",
+    "Breathe steadily."
+   ]
+  },
+  "cossack_squat": {
+   "steps": [
+    "Take a wide stance, toes slightly out.",
+    "Shift your weight to one side and squat down on that leg.",
+    "Keep the other leg straight, toes up.",
+    "Push back to the middle and switch sides."
+   ],
+   "cues": [
+    "Go only as deep as feels good.",
+    "Hold a doorframe if balance is tricky."
+   ]
+  },
+  "bb_deadlift": {
+   "steps": [
+    "Stand with the bar over your mid-foot, feet hip-width.",
+    "Hinge down and grip just outside your legs; back flat, chest up.",
+    "Push the floor away and stand up, keeping the bar close.",
+    "Lower by pushing your hips back, then bend the knees."
+   ],
+   "cues": [
+    "Never round your lower back.",
+    "The bar stays in contact with your legs."
+   ]
+  },
+  "bb_romanian_deadlift": {
+   "steps": [
+    "Hold the bar at your hips, feet hip-width, knees soft.",
+    "Push your hips back and slide the bar down your thighs.",
+    "Stop when you feel a strong hamstring stretch, back flat.",
+    "Drive your hips forward to stand."
+   ],
+   "cues": [
+    "It's a hip movement, not a squat.",
+    "The bar stays close to your legs."
+   ]
+  },
+  "bb_hip_thrust": {
+   "steps": [
+    "Sit with your upper back against a bench, bar over your hips on a pad.",
+    "Feet flat, about hip-width.",
+    "Drive through your heels to lift your hips until your body is level.",
+    "Lower with control."
+   ],
+   "cues": [
+    "Chin tucked, ribs down at the top.",
+    "Squeeze your glutes hard at the top."
+   ]
+  },
+  "bb_good_morning": {
+   "steps": [
+    "Set a light bar on your upper back.",
+    "Soft knees, feet hip-width.",
+    "Push your hips back and lower your chest toward the floor, back flat.",
+    "Stand back up by driving the hips forward."
+   ],
+   "cues": [
+    "Start very light.",
+    "Stop before your back starts to round."
+   ]
+  },
+  "db_romanian_deadlift": {
+   "steps": [
+    "Hold dumbbells in front of your thighs.",
+    "Soft knees; push your hips back.",
+    "Lower the weights down your legs until you feel the hamstrings.",
+    "Squeeze your glutes to stand."
+   ],
+   "cues": [
+    "Keep the dumbbells close to your legs.",
+    "Neutral neck; look at the floor ahead."
+   ]
+  },
+  "db_single_leg_rdl": {
+   "steps": [
+    "Hold a dumbbell in the opposite hand to your standing leg.",
+    "Hinge forward, letting your free leg rise behind you.",
+    "Lower until your body is nearly parallel, hips square.",
+    "Return to standing."
+   ],
+   "cues": [
+    "Hold a wall for balance at first.",
+    "Keep your standing knee soft."
+   ]
+  },
+  "db_hip_thrust": {
+   "steps": [
+    "Upper back on a bench, a dumbbell across your hips.",
+    "Feet flat, hip-width.",
+    "Lift your hips until your body is level.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Push through your heels.",
+    "Pause at the top."
+   ]
+  },
+  "kb_deadlift": {
+   "steps": [
+    "Stand over the kettlebell, feet hip-width.",
+    "Hinge down and grab the handle, back flat.",
+    "Stand up tall, driving your hips forward.",
+    "Lower it back down by hinging."
+   ],
+   "cues": [
+    "The best way to learn the hinge.",
+    "Shoulders stay over the bell at the start."
+   ]
+  },
+  "kb_swing": {
+   "steps": [
+    "Stand with the bell a foot in front of you, feet a little wider than hips.",
+    "Hike it back between your legs.",
+    "Snap your hips forward to swing it to chest height.",
+    "Let it fall back and hinge to absorb it."
+   ],
+   "cues": [
+    "The hips move the bell; the arms just hold on.",
+    "Learn the kettlebell deadlift first."
+   ]
+  },
+  "cable_pull_through": {
+   "steps": [
+    "Face away from a low cable with a rope between your legs.",
+    "Walk forward, feet hip-width, and hinge.",
+    "Drive your hips forward to stand tall.",
+    "Hinge back slowly."
+   ],
+   "cues": [
+    "Arms stay straight; they're just hooks.",
+    "Squeeze your glutes at the top."
+   ]
+  },
+  "band_pull_through": {
+   "steps": [
+    "Anchor a band low behind you and hold it between your legs.",
+    "Step forward until there's tension.",
+    "Hinge back, then drive your hips forward to stand.",
+    "Repeat with control."
+   ],
+   "cues": [
+    "Same pattern as the cable version.",
+    "Keep your back flat."
+   ]
+  },
+  "bodyweight_single_leg_rdl": {
+   "steps": [
+    "Stand on one leg, knee soft.",
+    "Hinge forward, reaching your hands toward the floor as the other leg goes back.",
+    "Keep your hips level.",
+    "Return to standing."
+   ],
+   "cues": [
+    "Hold a wall if you wobble.",
+    "Move slowly."
+   ]
+  },
+  "glute_bridge": {
+   "steps": [
+    "Lie on your back, knees bent, feet flat, hip-width.",
+    "Brace your core.",
+    "Lift your hips until your body is straight from knees to shoulders.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Push through your heels.",
+    "Squeeze your glutes at the top."
+   ]
+  },
+  "single_leg_glute_bridge": {
+   "steps": [
+    "Lie on your back, one foot flat, the other leg straight or knee hugged.",
+    "Push through the planted heel to lift your hips.",
+    "Keep your hips level.",
+    "Lower and repeat; then switch."
+   ],
+   "cues": [
+    "Don't let the hips drop on one side.",
+    "Pause at the top."
+   ]
+  },
+  "bb_reverse_lunge": {
+   "steps": [
+    "Set the bar on your upper back and stand tall.",
+    "Step one foot back and lower until both knees are about 90°.",
+    "Push through the front foot to return.",
+    "Alternate legs or finish one side first."
+   ],
+   "cues": [
+    "Keep your torso upright.",
+    "Use a lighter weight than your squat."
+   ]
+  },
+  "smith_split_squat": {
+   "steps": [
+    "Set the bar on your upper back in a split stance.",
+    "Lower straight down until your back knee nearly touches the floor.",
+    "Push up through the front foot.",
+    "Finish the set, then switch legs."
+   ],
+   "cues": [
+    "Front knee tracks over the toes.",
+    "Set the safeties first."
+   ]
+  },
+  "db_reverse_lunge": {
+   "steps": [
+    "Hold dumbbells at your sides.",
+    "Step one foot back and lower your back knee toward the floor.",
+    "Drive through the front heel to stand.",
+    "Alternate legs."
+   ],
+   "cues": [
+    "Easier on the knees than forward lunges.",
+    "Keep your chest up."
+   ]
+  },
+  "db_walking_lunge": {
+   "steps": [
+    "Hold dumbbells at your sides.",
+    "Step forward and lower until both knees are about 90°.",
+    "Push up and bring the back foot forward into the next step.",
+    "Keep walking for the set."
+   ],
+   "cues": [
+    "Take long enough steps that the front knee stays over the ankle.",
+    "Need a clear path of a few metres."
+   ]
+  },
+  "db_bulgarian_split_squat": {
+   "steps": [
+    "Stand in front of a bench, rest the top of one foot on it behind you.",
+    "Hold dumbbells at your sides.",
+    "Lower until your back knee nearly touches the floor.",
+    "Push up through the front foot."
+   ],
+   "cues": [
+    "Find a stance where the front heel stays down.",
+    "Hard; start with bodyweight."
+   ]
+  },
+  "db_step_up": {
+   "steps": [
+    "Stand facing a sturdy box or bench, dumbbells at your sides.",
+    "Place one foot fully on the box.",
+    "Push through that foot to step up and stand tall.",
+    "Step down slowly and repeat."
+   ],
+   "cues": [
+    "Don't push off the bottom foot.",
+    "Start with a knee-height box or lower."
+   ]
+  },
+  "kb_goblet_lateral_lunge": {
+   "steps": [
+    "Hold a kettlebell at your chest, feet wide.",
+    "Sit into one hip, bending that knee, other leg straight.",
+    "Push back to the middle.",
+    "Alternate sides."
+   ],
+   "cues": [
+    "Keep the bent knee over the toes.",
+    "Chest up throughout."
+   ]
+  },
+  "reverse_lunge": {
+   "steps": [
+    "Stand tall with hands on hips.",
+    "Step one foot back and lower the back knee toward the floor.",
+    "Drive through the front foot to stand.",
+    "Alternate legs."
+   ],
+   "cues": [
+    "Keep your torso upright.",
+    "Gentle on the knees."
+   ]
+  },
+  "split_squat": {
+   "steps": [
+    "Take a long split stance, back heel raised.",
+    "Lower straight down until the back knee nearly touches the floor.",
+    "Push up through the front foot.",
+    "Finish the set, then switch."
+   ],
+   "cues": [
+    "Your feet stay put the whole set.",
+    "Hold a wall for balance if needed."
+   ]
+  },
+  "bulgarian_split_squat": {
+   "steps": [
+    "Rest the top of your back foot on a bench or chair.",
+    "Lower until the back knee nearly touches the floor.",
+    "Push up through the front foot.",
+    "Switch legs after the set."
+   ],
+   "cues": [
+    "Front heel stays down.",
+    "Go slow on the way down."
+   ]
+  },
+  "step_up": {
+   "steps": [
+    "Face a sturdy step, box or stair.",
+    "Place one foot fully on it.",
+    "Push through that foot to stand up tall.",
+    "Step down with control."
+   ],
+   "cues": [
+    "Lead with the same leg for the whole set.",
+    "A lower step is easier."
+   ]
+  },
+  "lateral_lunge": {
+   "steps": [
+    "Stand with feet wide.",
+    "Shift into one hip, bending that knee, other leg straight.",
+    "Push back to the middle.",
+    "Alternate sides."
+   ],
+   "cues": [
+    "Sit back into the hip.",
+    "Keep both feet flat."
+   ]
+  },
+  "db_farmer_carry": {
+   "steps": [
+    "Pick up heavy dumbbells, one in each hand.",
+    "Stand tall, shoulders back and down.",
+    "Walk with short, steady steps for the set distance or time.",
+    "Set them down by hinging, not rounding."
+   ],
+   "cues": [
+    "Don't let the weights swing.",
+    "Grip tight, breathe steadily."
+   ]
+  },
+  "kb_farmer_carry": {
+   "steps": [
+    "Pick up a kettlebell in each hand.",
+    "Stand tall with shoulders down.",
+    "Walk steadily for the set time or distance.",
+    "Put them down with a flat back."
+   ],
+   "cues": [
+    "Keep your core braced.",
+    "Heavy but controlled."
+   ]
+  },
+  "db_suitcase_carry": {
+   "steps": [
+    "Hold one dumbbell in one hand, like a suitcase.",
+    "Stand tall without leaning.",
+    "Walk for the set distance.",
+    "Switch hands and repeat."
+   ],
+   "cues": [
+    "Trains the side core.",
+    "Shoulders level the whole time."
+   ]
+  },
+  "kb_rack_carry": {
+   "steps": [
+    "Hold a kettlebell in the rack position at your shoulder.",
+    "Stand tall and brace.",
+    "Walk steadily.",
+    "Switch sides after each round."
+   ],
+   "cues": [
+    "Keep the wrist straight.",
+    "Don't lean away from the bell."
+   ]
+  },
+  "db_overhead_carry": {
+   "steps": [
+    "Press a dumbbell overhead and lock your arm.",
+    "Brace your core, ribs down.",
+    "Walk slowly with the arm straight up.",
+    "Lower carefully and switch sides."
+   ],
+   "cues": [
+    "Start light.",
+    "Stop if your shoulder feels unstable."
+   ]
+  },
+  "plank": {
+   "steps": [
+    "Forearms on the floor, elbows under your shoulders.",
+    "Step your feet back so your body is straight.",
+    "Brace your core and squeeze your glutes.",
+    "Hold for the set time."
+   ],
+   "cues": [
+    "Don't let your hips sag or pike up.",
+    "Breathe normally."
+   ]
+  },
+  "side_plank": {
+   "steps": [
+    "Lie on your side with your elbow under your shoulder.",
+    "Stack your feet or stagger them.",
+    "Lift your hips so your body is straight.",
+    "Hold, then switch sides."
+   ],
+   "cues": [
+    "Knees bent makes it easier.",
+    "Keep your hips pushed forward."
+   ]
+  },
+  "dead_bug": {
+   "steps": [
+    "Lie on your back, arms up, knees bent at 90° over your hips.",
+    "Press your lower back into the floor.",
+    "Slowly lower one arm and the opposite leg toward the floor.",
+    "Return and switch sides."
+   ],
+   "cues": [
+    "The lower back stays flat throughout.",
+    "Go slow; breathe out as you extend."
+   ]
+  },
+  "bird_dog": {
+   "steps": [
+    "On hands and knees, hands under shoulders, knees under hips.",
+    "Brace your core.",
+    "Reach one arm forward and the opposite leg back.",
+    "Return and switch sides."
+   ],
+   "cues": [
+    "Keep your hips level, as if balancing a glass on your back.",
+    "Move slowly."
+   ]
+  },
+  "hollow_hold": {
+   "steps": [
+    "Lie on your back and press your lower back into the floor.",
+    "Lift your shoulders and legs off the floor, arms by your ears.",
+    "Hold the banana shape.",
+    "Rest, then repeat."
+   ],
+   "cues": [
+    "Bend your knees to make it easier.",
+    "Lower back never lifts."
+   ]
+  },
+  "reverse_crunch": {
+   "steps": [
+    "Lie on your back, knees bent, hands by your sides.",
+    "Curl your hips off the floor, bringing your knees toward your chest.",
+    "Lower slowly.",
+    "Repeat without swinging."
+   ],
+   "cues": [
+    "Small, controlled movement.",
+    "Breathe out as you curl."
+   ]
+  },
+  "bicycle_crunch": {
+   "steps": [
+    "Lie on your back, hands lightly behind your head.",
+    "Lift your shoulders and bring one knee in as you rotate toward it.",
+    "Switch sides in a pedalling motion.",
+    "Keep it slow."
+   ],
+   "cues": [
+    "Don't pull on your neck.",
+    "Rotate from the ribs, not the elbows."
+   ]
+  },
+  "hanging_knee_raise": {
+   "steps": [
+    "Hang from a bar with straight arms.",
+    "Brace your core.",
+    "Raise your knees toward your chest.",
+    "Lower slowly without swinging."
+   ],
+   "cues": [
+    "Tilt your pelvis up at the top.",
+    "Use straps if your grip gives out first."
+   ]
+  },
+  "hanging_leg_raise": {
+   "steps": [
+    "Hang from a bar with straight arms.",
+    "Keep your legs straight and together.",
+    "Raise them to hip height or higher.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Harder than knee raises; build up.",
+    "No swinging."
+   ]
+  },
+  "cable_crunch": {
+   "steps": [
+    "Kneel facing a high cable with a rope by your head.",
+    "Hips stay still.",
+    "Crunch down, bringing your elbows toward your knees.",
+    "Return slowly."
+   ],
+   "cues": [
+    "Round through the spine, not the hips.",
+    "Moderate weight, full control."
+   ]
+  },
+  "cable_pallof_press": {
+   "steps": [
+    "Stand side-on to a cable at chest height, holding the handle at your chest.",
+    "Step out until there's tension, feet hip-width.",
+    "Press the handle straight out and hold.",
+    "Bring it back in; switch sides after the set."
+   ],
+   "cues": [
+    "Resist the pull to twist.",
+    "Squeeze your glutes."
+   ]
+  },
+  "band_pallof_press": {
+   "steps": [
+    "Anchor a band at chest height and stand side-on to it.",
+    "Hold the band at your chest with both hands.",
+    "Press straight out and hold for a breath.",
+    "Return; switch sides after the set."
+   ],
+   "cues": [
+    "Don't let the band rotate you.",
+    "Stand tall."
+   ]
+  },
+  "kb_russian_twist": {
+   "steps": [
+    "Sit with knees bent, holding a kettlebell at your chest.",
+    "Lean back slightly with a straight back.",
+    "Rotate the bell to one side, then the other.",
+    "Keep the movement controlled."
+   ],
+   "cues": [
+    "Feet on the floor makes it easier.",
+    "Turn your ribs, not just your arms."
+   ]
+  },
+  "bear_plank_hold": {
+   "steps": [
+    "On hands and knees, hands under shoulders.",
+    "Lift your knees an inch off the floor.",
+    "Hold with a flat back.",
+    "Lower to rest."
+   ],
+   "cues": [
+    "Keep your back flat like a table.",
+    "Breathe steadily."
+   ]
+  },
+  "bb_curl": {
+   "steps": [
+    "Stand holding a barbell with palms up, hands shoulder-width.",
+    "Elbows by your sides.",
+    "Curl the bar up toward your shoulders.",
+    "Lower slowly to straight arms."
+   ],
+   "cues": [
+    "No swinging from the hips.",
+    "Squeeze at the top."
+   ]
+  },
+  "db_curl": {
+   "steps": [
+    "Stand holding dumbbells at your sides, palms forward.",
+    "Keep your elbows by your sides.",
+    "Curl the weights up toward your shoulders.",
+    "Lower under control."
+   ],
+   "cues": [
+    "Alternate arms or curl both.",
+    "Full range: straight arm at the bottom."
+   ]
+  },
+  "db_hammer_curl": {
+   "steps": [
+    "Hold dumbbells at your sides, palms facing in.",
+    "Elbows fixed by your sides.",
+    "Curl up, keeping palms facing each other.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Works the forearms too.",
+    "Keep your wrists straight."
+   ]
+  },
+  "db_incline_curl": {
+   "steps": [
+    "Sit back on a bench set to about 45°, arms hanging straight.",
+    "Palms forward.",
+    "Curl the dumbbells up without moving your upper arms.",
+    "Lower all the way down."
+   ],
+   "cues": [
+    "Gives the biceps a long stretch.",
+    "Use lighter weights than standing."
+   ]
+  },
+  "cable_curl": {
+   "steps": [
+    "Stand facing a low cable with a straight bar or rope.",
+    "Elbows by your sides.",
+    "Curl the handle up to your shoulders.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Constant tension through the whole rep.",
+    "Stand tall."
+   ]
+  },
+  "band_curl": {
+   "steps": [
+    "Stand on the band with feet hip-width, holding the ends.",
+    "Elbows by your sides.",
+    "Curl your hands up to your shoulders.",
+    "Lower with control."
+   ],
+   "cues": [
+    "Widen your stance for more tension.",
+    "Squeeze at the top."
+   ]
+  },
+  "cable_pushdown": {
+   "steps": [
+    "Face a high cable with a bar or rope, elbows by your sides.",
+    "Push the handle down until your arms are straight.",
+    "Pause briefly.",
+    "Let it rise until your forearms are just above parallel."
+   ],
+   "cues": [
+    "Elbows stay pinned.",
+    "Stand tall, slight forward lean."
+   ]
+  },
+  "db_overhead_extension": {
+   "steps": [
+    "Hold one dumbbell overhead with both hands.",
+    "Keep your elbows pointing up.",
+    "Lower the weight behind your head.",
+    "Straighten your arms to lift it back."
+   ],
+   "cues": [
+    "Ribs down; don't arch your back.",
+    "Go lighter if your shoulders feel pinched."
+   ]
+  },
+  "db_skull_crusher": {
+   "steps": [
+    "Lie on a bench, dumbbells held straight up, palms facing.",
+    "Keep your upper arms still.",
+    "Bend your elbows to lower the weights beside your head.",
+    "Straighten your arms to lift."
+   ],
+   "cues": [
+    "Move only at the elbows.",
+    "Control the lowering."
+   ]
+  },
+  "band_pushdown": {
+   "steps": [
+    "Anchor a band high and hold the ends.",
+    "Elbows by your sides.",
+    "Push down until your arms are straight.",
+    "Return slowly."
+   ],
+   "cues": [
+    "Keep your upper arms still.",
+    "Squeeze at the bottom."
+   ]
+  },
+  "bench_dip": {
+   "steps": [
+    "Sit on the edge of a bench, hands beside your hips.",
+    "Slide off, legs bent or straight.",
+    "Lower by bending your elbows to about 90°.",
+    "Press back up."
+   ],
+   "cues": [
+    "Keep your back close to the bench.",
+    "Stop if the front of your shoulder hurts."
+   ]
+  },
+  "diamond_push_up": {
+   "steps": [
+    "Get into a push-up position with hands close together under your chest.",
+    "Body straight.",
+    "Lower your chest to your hands, elbows close to your sides.",
+    "Push back up."
+   ],
+   "cues": [
+    "Do it from your knees to make it easier.",
+    "Hands can be a little wider if wrists complain."
+   ]
+  },
+  "db_lateral_raise": {
+   "steps": [
+    "Stand holding light dumbbells at your sides.",
+    "Slight bend in the elbows.",
+    "Raise your arms out to the sides to shoulder height.",
+    "Lower slowly."
+   ],
+   "cues": [
+    "Lead with your elbows.",
+    "Light weight, no swinging."
+   ]
+  },
+  "cable_lateral_raise": {
+   "steps": [
+    "Stand side-on to a low cable, holding the handle with the far hand.",
+    "Raise your arm out to the side to shoulder height.",
+    "Lower slowly.",
+    "Switch sides after the set."
+   ],
+   "cues": [
+    "Keeps tension at the bottom of the rep.",
+    "Don't shrug."
+   ]
+  },
+  "band_lateral_raise": {
+   "steps": [
+    "Stand on the band, holding the ends at your sides.",
+    "Raise your arms out to shoulder height.",
+    "Lower slowly.",
+    "Repeat."
+   ],
+   "cues": [
+    "Use a light band.",
+    "Shoulders stay down."
+   ]
+  },
+  "db_front_raise": {
+   "steps": [
+    "Hold dumbbells in front of your thighs.",
+    "Raise one or both arms in front to shoulder height.",
+    "Lower slowly.",
+    "Repeat."
+   ],
+   "cues": [
+    "Light weight; no leaning back.",
+    "Stop at shoulder height."
+   ]
+  },
+  "fist_push_up": {
+   "steps": [
+    "Make fists and place them on a mat, knuckles down, slightly wider than shoulders.",
+    "Body straight from head to heels.",
+    "Lower until your chest nears the floor.",
+    "Push back up."
+   ],
+   "cues": [
+    "Keeps the wrists straight if bent wrists hurt.",
+    "Use a soft surface under your knuckles."
+   ]
+  },
+  "standing_calf_raise": {
+   "steps": [
+    "Stand with the balls of your feet on a step, heels hanging off.",
+    "Hold something for balance.",
+    "Rise up as high as you can onto your toes.",
+    "Lower your heels below the step."
+   ],
+   "cues": [
+    "Pause at the top and bottom.",
+    "Slow and full range."
+   ]
+  },
+  "single_leg_calf_raise": {
+   "steps": [
+    "Stand on one foot on a step, heel hanging off.",
+    "Hold a wall for balance.",
+    "Rise up onto your toes.",
+    "Lower slowly; switch legs after the set."
+   ],
+   "cues": [
+    "Harder than two feet.",
+    "Full range every rep."
+   ]
+  },
+  "db_calf_raise": {
+   "steps": [
+    "Hold a dumbbell in one or both hands, balls of your feet on a step.",
+    "Rise onto your toes.",
+    "Lower your heels below the step.",
+    "Repeat."
+   ],
+   "cues": [
+    "Hold a support with a free hand.",
+    "Pause at the top."
+   ]
+  },
+  "smith_calf_raise": {
+   "steps": [
+    "Stand under the Smith bar with the balls of your feet on a plate or step.",
+    "Unrack the bar on your upper back.",
+    "Rise onto your toes, then lower your heels.",
+    "Re-rack at the end."
+   ],
+   "cues": [
+    "Set the safeties.",
+    "Slow lowering."
+   ]
+  },
+  "leg_press_calf_raise": {
+   "steps": [
+    "Sit in the leg press with the balls of your feet on the bottom edge of the platform.",
+    "Legs straight but not locked hard.",
+    "Press the platform away by pointing your toes.",
+    "Let your heels come back slowly."
+   ],
+   "cues": [
+    "Keep the safety handles engaged.",
+    "Don't bend your knees."
+   ]
+  },
+  "cat_cow": {
+   "steps": [
+    "On hands and knees, hands under shoulders.",
+    "Breathe in and let your belly drop, chest forward (cow).",
+    "Breathe out and round your back up, chin to chest (cat).",
+    "Flow slowly between the two."
+   ],
+   "cues": [
+    "Move with your breath.",
+    "Stay in a pain-free range."
+   ]
+  },
+  "hip_90_90": {
+   "steps": [
+    "Sit with one leg in front bent at 90° and the other to the side bent at 90°.",
+    "Sit tall.",
+    "Lean gently over the front leg.",
+    "Rotate your knees to switch sides."
+   ],
+   "cues": [
+    "Use your hands behind you for support.",
+    "Easy, no forcing."
+   ]
+  },
+  "worlds_greatest_stretch": {
+   "steps": [
+    "Step into a long lunge, hands on the floor inside your front foot.",
+    "Drop your front elbow toward the floor.",
+    "Rotate and reach that arm up to the ceiling.",
+    "Step back and switch sides."
+   ],
+   "cues": [
+    "Keep your back leg straight.",
+    "Slow and controlled."
+   ]
+  },
+  "thoracic_rotation": {
+   "steps": [
+    "Lie on your side with knees bent, arms straight out in front.",
+    "Open your top arm up and over to the other side.",
+    "Follow your hand with your eyes.",
+    "Return and repeat; then switch sides."
+   ],
+   "cues": [
+    "Keep your knees together.",
+    "Breathe out as you open."
+   ]
+  },
+  "hip_flexor_stretch": {
+   "steps": [
+    "Kneel on one knee, the other foot in front.",
+    "Squeeze the glute of the kneeling leg.",
+    "Shift your hips gently forward until you feel a stretch.",
+    "Hold, then switch."
+   ],
+   "cues": [
+    "Tuck your pelvis; don't arch.",
+    "Pad under the knee."
+   ]
+  },
+  "deep_squat_hold": {
+   "steps": [
+    "Stand with feet a little wider than shoulders.",
+    "Squat down as low as is comfortable.",
+    "Hold, with elbows gently pushing your knees out.",
+    "Stand up slowly."
+   ],
+   "cues": [
+    "Hold a doorframe if needed.",
+    "Heels on a plate help if ankles are stiff."
+   ]
+  },
+  "band_shoulder_dislocate": {
+   "steps": [
+    "Hold a light band wide in front of your hips.",
+    "Keeping arms straight, raise it over your head.",
+    "Continue behind you as far as is comfortable.",
+    "Bring it back over to the front."
+   ],
+   "cues": [
+    "Widen your grip if it's tight.",
+    "Never force the shoulder."
+   ]
+  },
+  "childs_pose": {
+   "steps": [
+    "Kneel and sit your hips back toward your heels.",
+    "Reach your arms forward on the floor.",
+    "Rest your forehead down.",
+    "Breathe slowly and hold."
+   ],
+   "cues": [
+    "Knees wide gives more room.",
+    "Relax your shoulders."
+   ]
+  },
+  "hamstring_floss": {
+   "steps": [
+    "Sit on a bench or lie on your back with one leg up.",
+    "Straighten the knee while pointing your toes up.",
+    "Bend it again while pointing your toes away.",
+    "Repeat smoothly; switch legs."
+   ],
+   "cues": [
+    "A gentle nerve glide, not a stretch.",
+    "Keep it pain-free."
+   ]
+  },
+  "ankle_rocks": {
+   "steps": [
+    "Kneel facing a wall, front foot a few inches from it.",
+    "Keep your heel down.",
+    "Rock your knee forward toward the wall.",
+    "Return and repeat; switch sides."
+   ],
+   "cues": [
+    "Knee tracks over the middle toes.",
+    "Move the foot back as you loosen up."
+   ]
+  },
+  "rower_intervals": {
+   "steps": [
+    "Strap your feet in, grab the handle.",
+    "Push with the legs, then lean back, then pull the handle to your ribs.",
+    "Return: arms, then body, then knees.",
+    "Work hard for the interval, easy for the rest."
+   ],
+   "cues": [
+    "Legs, body, arms; then reverse.",
+    "Damper around 4–6."
+   ]
+  },
+  "bike_intervals": {
+   "steps": [
+    "Set the seat so your knee is slightly bent at the bottom.",
+    "Warm up easy for a few minutes.",
+    "Ride hard for the work interval.",
+    "Pedal easy for the rest; repeat."
+   ],
+   "cues": [
+    "Stay seated unless the plan says otherwise.",
+    "Hard should feel like 8 out of 10."
+   ]
+  },
+  "incline_walk": {
+   "steps": [
+    "Set the treadmill to a comfortable incline and pace.",
+    "Walk tall, arms swinging.",
+    "Keep a steady pace for the set time.",
+    "Lower the incline to cool down."
+   ],
+   "cues": [
+    "Don't hold the rails.",
+    "You should be able to talk in short sentences."
+   ]
+  },
+  "brisk_walk": {
+   "steps": [
+    "Walk at a pace where you breathe faster but can still talk.",
+    "Stand tall, arms swinging.",
+    "Keep going for the set time.",
+    "Slow down for the last few minutes."
+   ],
+   "cues": [
+    "Comfortable shoes.",
+    "Outside or on a treadmill."
+   ]
+  },
+  "jump_rope": {
+   "steps": [
+    "Hold the handles at hip height, rope behind you.",
+    "Turn the rope with your wrists.",
+    "Hop lightly on the balls of your feet.",
+    "Work for the set time, rest, repeat."
+   ],
+   "cues": [
+    "Small jumps, soft landings.",
+    "Low impact option: step over the rope."
+   ]
+  },
+  "burpee": {
+   "steps": [
+    "Stand, then squat and put your hands on the floor.",
+    "Jump or step your feet back into a plank.",
+    "Jump or step your feet back in.",
+    "Stand up or jump."
+   ],
+   "cues": [
+    "Step instead of jump to make it easier.",
+    "Keep your back flat in the plank."
+   ]
+  },
+  "jumping_jacks": {
+   "steps": [
+    "Stand with feet together, arms by your sides.",
+    "Jump your feet out as your arms go overhead.",
+    "Jump back to the start.",
+    "Keep a steady rhythm."
+   ],
+   "cues": [
+    "Step side to side for a low-impact version.",
+    "Land softly."
+   ]
+  },
+  "mountain_climber": {
+   "steps": [
+    "Start in a plank with hands under shoulders.",
+    "Drive one knee toward your chest.",
+    "Switch legs quickly.",
+    "Keep going for the set time."
+   ],
+   "cues": [
+    "Hips stay level.",
+    "Slow it down to make it easier."
+   ]
+  },
+  "jump_squat": {
+   "steps": [
+    "Stand with feet shoulder-width.",
+    "Squat down a little.",
+    "Jump up explosively.",
+    "Land softly and go straight into the next rep."
+   ],
+   "cues": [
+    "Land on the balls of your feet and sink in.",
+    "Skip if your knees are sore."
+   ]
+  },
+  "bear_crawl": {
+   "steps": [
+    "On hands and knees, lift your knees an inch off the floor.",
+    "Move your opposite hand and foot forward together.",
+    "Crawl forward for the set distance.",
+    "Crawl back or rest."
+   ],
+   "cues": [
+    "Keep your back flat and hips low.",
+    "Small steps."
+   ]
+  }
+ }
+}

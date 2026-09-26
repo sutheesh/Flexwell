@@ -229,7 +229,7 @@ private struct WeekRow: View {
 
     private var meta: String {
         switch day.kind {
-        case .training: "\(day.minutes) min · strength"
+        case .training: "\(day.minutes) min · " + (day.focus?.moves.lowercased() ?? "strength")
         case .activeRecovery: "\(day.minutes) min · easy, keeps legs fresh"
         case .rest: "Recover"
         }

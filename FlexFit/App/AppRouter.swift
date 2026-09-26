@@ -28,10 +28,12 @@ final class AppRouter {
         }
     }
 
-    var tab: AppTab = .today
+    var tab: AppTab = AppRouter.launchTab
     var sheet: Sheet?
     /// Non-nil while a workout is running for that day.
     var workoutDay: Date?
+    /// The full-screen food scanner.
+    var isScannerPresented = false
 
     // Convenience flags used across screens; each maps onto `sheet`.
     var isAdaptPresented: Bool { get { isShowing(.adapt) } set { show(.adapt, newValue) } }
@@ -65,5 +67,23 @@ final class AppRouter {
             try? await Task.sleep(for: .seconds(2.6))
             if !Task.isCancelled { self.toastMessage = nil }
         }
+    }
+}
+
+extension AppRouter {
+    /// `-FFTab train|eat|profile` opens on that tab (DEBUG only; screenshots and UI tests).
+    static var launchTab: AppTab {
+        #if DEBUG
+        let args = ProcessInfo.processInfo.arguments
+        if let i = args.firstIndex(of: "-FFTab"), i + 1 < args.count {
+            switch args[i + 1] {
+            case "train": return .train
+            case "eat": return .eat
+            case "profile": return .profile
+            default: break
+            }
+        }
+        #endif
+        return .today
     }
 }

@@ -16,6 +16,9 @@ struct TrainView: View {
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @State private var selectedWeekday = TrainView.todayWeekday
     @State private var swapTarget: SwapTarget?
+    @State private var mode: Mode = .plan
+
+    enum Mode: String, CaseIterable { case plan = "My plan", exercises = "Exercises" }
 
     struct SwapTarget: Identifiable {
         let exercise: Exercise
@@ -45,7 +48,8 @@ struct TrainView: View {
 
         return ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                HeaderButton(name: profile.name, kicker: "Workout plan · week \(weekNumber)", title: "Schedule")
+                HeaderButton(name: profile.name, kicker: "Workout plan · week \(weekNumber)",
+                             title: mode == .plan ? "Schedule" : "Exercises", showsCart: false)
 
                 WeekStrip(week: resolver.week, dates: dates, selected: $selectedWeekday)
                     .padding(.top, Space.sm)
@@ -55,18 +59,31 @@ struct TrainView: View {
                              onAdapt: { router.isAdaptPresented = true })
                     .padding(.top, Space.md - 2)
 
+                // Below today's session: the plan for the chosen day, or the exercise library.
+                GymSegmented(selection: $mode, options: Mode.allCases, title: \.rawValue)
+                    .padding(.top, Space.md)
+
+                if mode == .exercises {
+                    ExerciseLibraryView()
+                        .padding(.top, Space.md)
+                } else {
+
                 if let plan, !plan.exercises.isEmpty {
                     HStack(alignment: .firstTextBaseline) {
-                        SectionHeader(title: "Session plan")
+                        Text("Session plan")
+                            .textStyle(.headline)
+                            .foregroundStyle(Palette.onPanel)
+                            .accessibilityAddTraits(.isHeader)
                         Spacer()
-                        Text("\(plan.exercises.filter { done.contains($0.exerciseID) }.count) done")
+                        Text("\(plan.exercises.filter { done.contains($0.exerciseID) }.count)/\(plan.exercises.count) done")
                             .textStyle(.micro)
-                            .foregroundStyle(Palette.inkMuted)
+                            .foregroundStyle(Palette.onPanelMuted)
                     }
+                    .padding(.horizontal, Space.xxs / 2)
                     .padding(.top, Space.xl - 2)
                     .padding(.bottom, Space.sm - 1)
 
-                    CardList {
+                    VStack(spacing: 0) {
                         ForEach(Array(plan.exercises.enumerated()), id: \.element.exerciseID) { index, planned in
                             if let exercise = ExerciseLibrary.bundled[planned.exerciseID] {
                                 ExerciseRow(
@@ -82,10 +99,11 @@ struct TrainView: View {
                             }
                         }
                     }
+                    .background(Palette.navy, in: RoundedRectangle(cornerRadius: Radius.md))
                 } else {
                     Text(restNote(for: day, kcal: MealPlanContext.calories(base: TargetsStore.current(weekly, profile: profile).calories, kind: day.kind)))
                         .textStyle(.body)
-                        .foregroundStyle(Palette.inkMuted)
+                        .foregroundStyle(Palette.onPanelMuted)
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.top, Space.xl - 2)
                 }
@@ -93,14 +111,17 @@ struct TrainView: View {
                 WeekProgress(week: resolver.week, today: Self.todayWeekday,
                              completed: Set((0..<7).filter { resolver.log(for: dates[$0])?.completedExercises.isEmpty == false }))
                     .padding(.top, Space.md - 2)
+                }
             }
             .padding(.horizontal, Space.lg)
             .padding(.top, Space.xs)
             .padding(.bottom, Space.xl)
             .readableColumn()
         }
-        .statusBarBackdrop()
-        .pageBackground()
+        .overlay(alignment: .top) {
+            Color.clear.frame(height: 0).background(Palette.navy.ignoresSafeArea(edges: .top))
+        }
+        .background(Palette.navy.ignoresSafeArea())
         .sheet(item: $swapTarget) { target in
             SwapSheet(
                 exercise: target.exercise,
@@ -196,16 +217,18 @@ struct TabHeader: View {
     let name: String
     let kicker: String
     let title: String
+    /// Groceries live with food: Eat and Profile show the cart, Gym and Today don't.
+    var showsCart = true
     @Environment(AppRouter.self) private var router
 
     var body: some View {
         HStack(spacing: Space.sm) {
-            Button { router.isSettingsPresented = true } label: {
+            Button { router.tab = .profile } label: {
                 ScreenHeader(initial: name, kicker: kicker, title: title)
             }
             .buttonStyle(.plain)
-            .accessibilityHint("Opens settings")
-            CartButton()
+            .accessibilityHint("Opens your profile")
+            if showsCart { CartButton() }
         }
     }
 }
@@ -232,9 +255,10 @@ private struct WeekStrip: View {
                             .fill(dotColor(week[i], selected: isSelected))
                             .frame(width: Size.dot - 1, height: Size.dot - 1)
                     }
-                    .foregroundStyle(isSelected ? Palette.onInkFill : Palette.ink)
+                    .foregroundStyle(isSelected ? Palette.navy : Palette.onPanel)
                     .frame(maxWidth: .infinity, minHeight: Size.row + 12)
-                    .background(isSelected ? Palette.inkFill : Palette.card, in: RoundedRectangle(cornerRadius: Radius.sm))
+                    .background(isSelected ? Palette.ice : Palette.navy, in: RoundedRectangle(cornerRadius: Radius.sm))
+                    .contentShape(RoundedRectangle(cornerRadius: Radius.sm))
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("\(dates[i].formatted(.dateTime.weekday(.wide).day())), \(label(week[i]))")
@@ -245,8 +269,8 @@ private struct WeekStrip: View {
 
     private func dotColor(_ day: PlannedDay, selected: Bool) -> Color {
         switch day.kind {
-        case .training: selected ? Palette.onInkFill : Palette.copper
-        case .activeRecovery: selected ? Palette.onInkFill.opacity(0.5) : Palette.track
+        case .training: selected ? Palette.navy : Palette.copper
+        case .activeRecovery: selected ? Palette.navy.opacity(0.3) : Palette.onPanel.opacity(0.3)
         case .rest: .clear
         }
     }
@@ -286,14 +310,23 @@ private struct SessionPanel: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.top, Space.sm - 2)
                     .accessibilityAddTraits(.isHeader)
-                Text(meta)
-                    .textStyle(.micro)
-                    .foregroundStyle(Palette.onPanelMuted)
-                    .padding(.top, Space.sm - 2)
+                if day.kind == .training, let focus = day.focus {
+                    Text(focus.summary)
+                        .textStyle(.caption)
+                        .foregroundStyle(Palette.onPanelMuted)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, Space.xs - 2)
+                }
+                HStack(spacing: Space.sm) {
+                    ForEach(meta, id: \.self) { Text($0) }
+                }
+                .textStyle(.micro)
+                .foregroundStyle(Palette.onPanelMuted)
+                .padding(.top, Space.sm - 2)
                 if isToday, day.kind == .training {
                     Button(action: onAdapt) {
                         Text("Adapt session ›")
-                            .textStyle(.chip)
+                            .textStyle(.label)
                             .foregroundStyle(Palette.navy)
                             .padding(.horizontal, Space.md - 1)
                             .padding(.vertical, Space.sm - 1)
@@ -304,25 +337,30 @@ private struct SessionPanel: View {
                 }
             }
             .padding(Space.md + 2)
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            Color.clear
-                .frame(maxWidth: Size.panelTextWidth / 2)
-                .overlay {
-                    Image(day.kind == .training ? "Illustration-lift" : "Illustration-walk")
-                        .resizable()
-                        .scaledToFill()
-                }
-                .overlay {
-                    LinearGradient(colors: [Palette.panel, Palette.panel.opacity(0)], startPoint: .leading, endPoint: .init(x: 0.6, y: 0.5))
-                }
-                .clipped()
-                .accessibilityHidden(true)
+            // Text stays clear of the picture on the right 46% (the mock's image slot).
+            .containerRelativeFrame(.horizontal, alignment: .leading) { width, _ in (width - Space.lg * 2) * 0.58 }
+            Spacer(minLength: 0)
+        }
+        // The mock's image slot: the right 46% of the card, faded into navy from the left.
+        .background(alignment: .trailing) {
+            GeometryReader { geo in
+                Image(day.kind == .training ? "Illustration-lift" : "Illustration-walk")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width * 0.46, height: geo.size.height)
+                    .clipped()
+                    .overlay {
+                        LinearGradient(colors: [Palette.navy, Palette.navy.opacity(0)], startPoint: .leading, endPoint: .init(x: 0.6, y: 0.5))
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .accessibilityHidden(true)
         }
         .fixedSize(horizontal: false, vertical: true)
-        .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
+        .background(Palette.navy, in: RoundedRectangle(cornerRadius: Radius.lg))
         .clipShape(RoundedRectangle(cornerRadius: Radius.lg))
-        .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.panelEdge))
+        // A hairline just lighter than the navy page, so the card reads as a card.
+        .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.onPanel.opacity(0.08)))
         .accessibilityElement(children: .contain)
     }
 
@@ -344,11 +382,14 @@ private struct SessionPanel: View {
         }
     }
 
-    private var meta: String {
+    /// "🔥 338 kcal", "⏱ 45 min" — the mock's two spans.
+    private var meta: [String] {
         if let plan {
-            return "🔥 \(Burn.kcal(minutes: plan.minutes, training: true)) kcal · ⏱ \(plan.minutes) min"
+            return ["🔥 \(Burn.kcal(minutes: plan.minutes, training: true)) kcal", "⏱ \(plan.minutes) min"]
         }
-        return day.minutes > 0 ? "🔥 \(Burn.kcal(minutes: day.minutes, training: false)) kcal · ⏱ \(day.minutes) min" : "Recover"
+        return day.minutes > 0
+            ? ["🔥 \(Burn.kcal(minutes: day.minutes, training: false)) kcal", "⏱ \(day.minutes) min"]
+            : ["🔥 0 kcal", "⏱ Steps only"]
     }
 }
 
@@ -367,64 +408,67 @@ private struct ExerciseRow: View {
     var body: some View {
         HStack(spacing: Space.sm) {
             Button(action: onToggleDone) {
-                ZStack {
-                    Circle().fill(isDone ? Palette.inkFill : Palette.track)
-                    if isDone {
-                        Image(systemName: "checkmark")
-                            .font(TextStyle.micro.font.weight(.heavy))
-                            .foregroundStyle(Palette.onInkFill)
-                    } else {
-                        Text("\(index)")
-                            .textStyle(.label)
-                            .foregroundStyle(Palette.ink)
-                    }
-                }
-                .frame(width: Size.checkRing + 8, height: Size.checkRing + 8)
+                Text(isDone ? "✓" : "\(index)")
+                    .textStyle(.label)
+                    .foregroundStyle(isDone ? Palette.navy : Palette.ice)
+                    .frame(width: Size.checkRing + 8, height: Size.checkRing + 8)
+                    .background(isDone ? Palette.ice : Palette.ice.opacity(0.14), in: Circle())
+                    .contentShape(Circle())
             }
             .buttonStyle(.plain)
             .accessibilityLabel(isDone ? "Mark \(exercise.name) not done" : "Mark \(exercise.name) done")
 
-            VStack(alignment: .leading, spacing: Space.xxs + 1) {
+            NavigationLink(value: GymRoute.exercise(exercise.id)) {
+            VStack(alignment: .leading, spacing: 0) {
                 Text(exercise.name)
                     .textStyle(.rowTitle)
-                    .foregroundStyle(isDone ? Palette.inkMuted : Palette.ink)
-                    .strikethrough(isDone, color: Palette.inkMuted)
-                Text(ExerciseCopy.prescription(planned) + " · " + ExerciseCopy.equipment(exercise, owned: owned))
+                    .foregroundStyle(isDone ? Palette.onPanelMuted : Palette.onPanel)
+                    .strikethrough(isDone, color: Palette.onPanelMuted)
+                Text(ExerciseCopy.prescription(planned, includeRPE: false) + " · " + ExerciseCopy.equipment(exercise, owned: owned))
                     .textStyle(.caption)
-                    .foregroundStyle(Palette.inkMuted)
+                    .foregroundStyle(Palette.onPanelMuted)
                     .fixedSize(horizontal: false, vertical: true)
+                    .padding(.top, Space.xxs + 1)
                 if wasSwapped {
-                    Label("Swapped · same movement", systemImage: "arrow.triangle.2.circlepath")
+                    Text("↺ Swapped · same muscle group")
                         .textStyle(.micro)
                         .foregroundStyle(Palette.ice)
-                        .padding(.top, 2)
+                        .padding(.top, Space.xs - 1)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("Opens how to do it and your history")
 
             Button(action: onSwap) {
                 Text("Swap")
-                    .textStyle(.chip)
-                    .foregroundStyle(Palette.ink)
+                    .textStyle(.micro)
+                    .foregroundStyle(Palette.onPanel)
                     .padding(.horizontal, Space.sm)
                     .padding(.vertical, Space.xs + 1)
-                    .overlay(Capsule().strokeBorder(Palette.track))
+                    .overlay(Capsule().strokeBorder(Palette.onPanelOutline))
+                    .contentShape(Capsule())
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Swap \(exercise.name)")
         }
         .padding(.horizontal, Space.md - 2)
         .padding(.vertical, Space.sm + 1)
+        .overlay(alignment: .bottom) {
+            Rectangle().fill(Palette.onPanelHairline.opacity(0.6)).frame(height: 1)
+        }
     }
 }
 
 enum ExerciseCopy {
-    static func prescription(_ p: PlannedExercise) -> String {
+    static func prescription(_ p: PlannedExercise, includeRPE: Bool = true) -> String {
         let target = p.targetLow == p.targetHigh ? "\(p.targetLow)" : "\(p.targetLow)–\(p.targetHigh)"
         let unit = p.measure == .seconds ? " s" : ""
         var text = "\(p.sets) × \(target)\(unit)"
         if let tempo = p.tempoNote { text += ", \(tempo)" }
-        return text + " · RPE \(p.rpeCap)"
+        return includeRPE ? text + " · RPE \(p.rpeCap)" : text
     }
 
     /// The implements this user will actually use for it: "Dumbbells + Flat bench", or "Bodyweight".
@@ -449,11 +493,11 @@ private struct WeekProgress: View {
             HStack(alignment: .firstTextBaseline) {
                 Text("This week")
                     .textStyle(.label)
-                    .foregroundStyle(Palette.ink)
+                    .foregroundStyle(Palette.onPanel)
                 Spacer()
                 Text("\(done) of \(sessions) sessions")
                     .textStyle(.micro)
-                    .foregroundStyle(Palette.inkMuted)
+                    .foregroundStyle(Palette.ice)
             }
             HStack(spacing: Space.xxs) {
                 ForEach(0..<7, id: \.self) { i in
@@ -466,13 +510,14 @@ private struct WeekProgress: View {
         }
         .padding(.horizontal, Space.md + 2)
         .padding(.vertical, Space.md)
-        .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.md))
+        .background(Palette.navy, in: RoundedRectangle(cornerRadius: Radius.md))
     }
 
+    /// Mock: done sessions ice, today ice at 45%, other sessions white 14%, non-session days white 5%.
     private func fill(for i: Int) -> Color {
         let isSession = week[i].kind == .training
-        if isSession && completed.contains(i) { return Palette.inkFill }
-        if i == today && isSession { return Palette.inkFill.opacity(0.4) }
-        return isSession ? Palette.track : Palette.hairline
+        if isSession && completed.contains(i) { return Palette.ice }
+        if i == today { return Palette.ice.opacity(0.45) }
+        return isSession ? Palette.onPanelTrack : Palette.onPanelHairline.opacity(0.5)
     }
 }

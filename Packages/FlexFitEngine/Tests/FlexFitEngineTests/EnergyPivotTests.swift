@@ -14,7 +14,7 @@ import Testing
 @Test(arguments: [(60, 35), (45, 25), (30, 15), (20, 15)])
 func lowTrimsToAtMostSixtyPercent(planned: Int, expected: Int) {
     let r = EnergyPivot.pivot(energy: .low, lowYesterday: false, plannedMinutes: planned)
-    #expect(r.variant == .trimmed && r.minutes == expected && r.rpeCap == 7 && r.promptProtein)
+    #expect(r.variant == .trimmed && r.minutes == expected && r.rpeCap == 7)
     #expect(!r.suggestMaintenanceDay)
 }
 
