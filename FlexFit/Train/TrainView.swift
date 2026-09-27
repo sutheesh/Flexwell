@@ -15,15 +15,11 @@ struct TrainView: View {
     @Query private var painFlags: [PainFlag]
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @State private var selectedWeekday = TrainView.todayWeekday
-    @State private var swapTarget: SwapTarget?
     @State private var mode: Mode = .plan
+    /// The header ★ on the Exercises view: favourites instead of the body map.
+    @State private var showsFavorites = false
 
     enum Mode: String, CaseIterable { case plan = "My plan", exercises = "Exercises" }
-
-    struct SwapTarget: Identifiable {
-        let exercise: Exercise
-        var id: String { exercise.id }
-    }
 
     static var todayWeekday: Int { (Calendar.current.component(.weekday, from: .now) + 5) % 7 }
 
@@ -48,8 +44,23 @@ struct TrainView: View {
 
         return ScrollView {
             VStack(alignment: .leading, spacing: 0) {
-                HeaderButton(name: profile.name, kicker: "Workout plan · week \(weekNumber)",
-                             title: mode == .plan ? "Schedule" : "Exercises", showsCart: false)
+                HStack(spacing: Space.sm) {
+                    HeaderButton(name: profile.name, kicker: "Workout plan · week \(weekNumber)",
+                                 title: mode == .plan ? "Schedule" : (showsFavorites ? "Favourites" : "Exercises"),
+                                 showsCart: false)
+                    if mode == .exercises {
+                        Button { withAnimation(.easeInOut(duration: 0.2)) { showsFavorites.toggle() } } label: {
+                            Image(systemName: showsFavorites ? "star.fill" : "star")
+                                .font(TextStyle.headline.font)
+                                .foregroundStyle(Palette.copper)
+                                .frame(width: Size.avatar, height: Size.avatar)
+                                .background(Palette.navyRaised, in: RoundedRectangle(cornerRadius: Radius.sm))
+                        }
+                        .buttonStyle(.plain)
+                        .accessibilityLabel(showsFavorites ? "Show the body map" : "Show favourites")
+                        .accessibilityAddTraits(showsFavorites ? .isSelected : [])
+                    }
+                }
 
                 WeekStrip(week: resolver.week, dates: dates, selected: $selectedWeekday)
                     .padding(.top, Space.sm)
@@ -64,7 +75,7 @@ struct TrainView: View {
                     .padding(.top, Space.md)
 
                 if mode == .exercises {
-                    ExerciseLibraryView()
+                    ExerciseLibraryView(showsFavorites: $showsFavorites)
                         .padding(.top, Space.md)
                 } else {
 
@@ -94,7 +105,7 @@ struct TrainView: View {
                                     isDone: done.contains(planned.exerciseID),
                                     wasSwapped: isSwapped(planned.exerciseID, on: selectedDate),
                                     onToggleDone: { toggleDone(planned.exerciseID, on: selectedDate) },
-                                    onSwap: { swapTarget = SwapTarget(exercise: exercise) }
+                                    onSwap: { router.sheet = .exerciseSwap(SwapRequest(originalID: exercise.id, day: selectedDate)) }
                                 )
                             }
                         }
@@ -122,18 +133,6 @@ struct TrainView: View {
             Color.clear.frame(height: 0).background(Palette.navy.ignoresSafeArea(edges: .top))
         }
         .background(Palette.navy.ignoresSafeArea())
-        .sheet(item: $swapTarget) { target in
-            SwapSheet(
-                exercise: target.exercise,
-                profile: profile,
-                equipment: resolver.equipment(on: selectedDate),
-                history: resolver.history,
-                usedThisWeek: resolver.usedThisWeek(on: selectedDate),
-                onChoose: { replacement, scope in
-                    saveSwap(original: target.exercise.id, replacement: replacement.id, scope: scope, on: selectedDate)
-                }
-            )
-        }
     }
 
     // MARK: Actions
@@ -147,17 +146,6 @@ struct TrainView: View {
         }
         log.updatedAt = .now
         try? modelContext.save()
-    }
-
-    private func saveSwap(original: String, replacement: String, scope: SwapScope, on date: Date) {
-        modelContext.insert(ExerciseSwap(
-            day: scope == .today ? Calendar.current.startOfDay(for: date) : nil,
-            originalID: original,
-            replacementID: replacement
-        ))
-        try? modelContext.save()
-        swapTarget = nil
-        router.toast("Swapped in \(ExerciseLibrary.bundled[replacement]?.name ?? "the alternative").")
     }
 
     // MARK: Helpers

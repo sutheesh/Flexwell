@@ -555,25 +555,25 @@ private struct SessionCard: View {
                 Button(action: onOpen) {
                     VStack(alignment: .leading, spacing: Space.xs - 2) {
                         HStack(spacing: Space.xs - 2) {
-                            Circle().fill(Palette.ice).frame(width: Size.dot, height: Size.dot)
+                            Circle().fill(Palette.blueText).frame(width: Size.dot, height: Size.dot)
                             Text(badge)
                                 .textStyle(.micro)
-                                .foregroundStyle(Palette.ice)
+                                .foregroundStyle(Palette.blueText)
                         }
                         Text(title)
                             .textStyle(.headline)
-                            .foregroundStyle(Palette.onPanel)
+                            .foregroundStyle(Palette.ink)
                             .fixedSize(horizontal: false, vertical: true)
                             .accessibilityAddTraits(.isHeader)
                         if isTraining, let focus = day.focus {
                             Text(focus.moves)
                                 .textStyle(.micro)
-                                .foregroundStyle(Palette.ice)
+                                .foregroundStyle(Palette.blueText)
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                         Text(meta)
                             .textStyle(.micro)
-                            .foregroundStyle(Palette.onPanelMuted)
+                            .foregroundStyle(Palette.inkMuted)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .contentShape(Rectangle())
@@ -585,10 +585,10 @@ private struct SessionCard: View {
                     Button(action: onStart) {
                         Text(isDone ? "Log another ›" : "Start ›")
                             .textStyle(.label)
-                            .foregroundStyle(Palette.navy)
+                            .foregroundStyle(Palette.onInkFill)
                             .padding(.horizontal, Space.md)
                             .frame(minHeight: Size.control)
-                            .background(Palette.ice, in: Capsule())
+                            .background(Palette.inkFill, in: Capsule())
                     }
                     .buttonStyle(PressableStyle())
                     .accessibilityLabel(isDone ? "Log another workout" : "Start workout")
@@ -597,13 +597,13 @@ private struct SessionCard: View {
 
             Text(intro ?? EnergyCopy.sessionNote(day: day, pivot: pivot))
                 .textStyle(.caption)
-                .foregroundStyle(Palette.onPanelMuted)
+                .foregroundStyle(Palette.inkMuted)
                 .lineLimit(2)
                 .fixedSize(horizontal: false, vertical: true)
         }
         .padding(Space.md)
-        .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
-        .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.panelEdge))
+        .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.lg))
+        .cardShadow()
     }
 
     private var badge: String {

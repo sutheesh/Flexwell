@@ -38,6 +38,7 @@ struct RootView: View {
             case .restaurant: RestaurantSheet()
             case .paywall(let reason): PaywallView(reason: reason)
             case .ingredientSwap(let selection): RootIngredientSwap(selection: selection)
+            case .exerciseSwap(let request): SwapSheet(request: request)
             }
         }
         // Full-screen covers hang off separate views: stacked presentation modifiers on one view are unreliable.
@@ -74,16 +75,21 @@ private struct TodayTab: View {
     }
 }
 
-/// Gym (Train + the exercise library), with its muscle lists and exercise pages pushed on top. Always navy.
+/// Gym (Train + the exercise library), with its muscle lists, swap lists and exercise pages pushed on top.
+/// Always navy.
 private struct GymTab: View {
+    @Environment(AppRouter.self) private var router
+
     var body: some View {
-        NavigationStack {
+        @Bindable var router = router
+        NavigationStack(path: $router.gymPath) {
             TrainView()
                 .toolbar(.hidden, for: .navigationBar)
                 .navigationDestination(for: GymRoute.self) { route in
                     switch route {
                     case .group(let group): MuscleGroupView(group: group)
                     case .exercise(let id): ExerciseDetailView(exerciseID: id)
+                    case .swapDetail(let choice): ExerciseDetailView(exerciseID: choice.candidateID, swap: choice)
                     }
                 }
         }

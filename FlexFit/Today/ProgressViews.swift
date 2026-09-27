@@ -93,32 +93,32 @@ struct ProgressTile: View {
         let units = snapshot.units
         VStack(alignment: .leading, spacing: Space.md) {
             HStack(alignment: .firstTextBaseline) {
-                Text("Your progress").textStyle(.headline).foregroundStyle(Palette.onPanel)
+                Text("Your progress").textStyle(.headline).foregroundStyle(Palette.ink)
                 Spacer()
-                Text("since \(DayMonth.text(snapshot.since)) ›").textStyle(.micro).foregroundStyle(Palette.ice)
+                Text("since \(DayMonth.text(snapshot.since)) ›").textStyle(.micro).foregroundStyle(Palette.blueText)
             }
 
             HStack(alignment: .bottom, spacing: Space.md) {
                 VStack(alignment: .leading, spacing: Space.xxs + 1) {
                     if let w = snapshot.weight {
                         Text(signed(Mass.display(kilograms: w.delta, in: units), unit: units == .metric ? "kg" : "lb"))
-                            .textStyle(.goalValue).foregroundStyle(Palette.onPanel)
+                            .textStyle(.goalValue).foregroundStyle(Palette.ink)
                         Text("\(Formatters.mass(w.first, units: units)) → \(Formatters.mass(w.latest, units: units))")
-                            .textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
+                            .textStyle(.micro).foregroundStyle(Palette.inkMuted)
                     } else {
-                        Text("—").textStyle(.goalValue).foregroundStyle(Palette.onPanel)
-                        Text("Log a weigh-in to start the line").textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
+                        Text("—").textStyle(.goalValue).foregroundStyle(Palette.ink)
+                        Text("Log a weigh-in to start the line").textStyle(.micro).foregroundStyle(Palette.inkMuted)
                     }
-                    Text("weight").textStyle(.micro).foregroundStyle(Palette.copper)
+                    Text("weight").textStyle(.micro).foregroundStyle(Palette.copperText)
                 }
                 Spacer(minLength: 0)
                 if snapshot.weightTrend.count >= 2 {
-                    Sparkline(values: snapshot.weightTrend.map(\.kg), color: Palette.copper)
+                    Sparkline(values: snapshot.weightTrend.map(\.kg), color: Palette.copperText)
                         .frame(width: Size.sparkline.width, height: Size.sparkline.height)
                 }
             }
 
-            Rectangle().fill(Palette.onPanelHairline).frame(height: 1)
+            Rectangle().fill(Palette.hairline).frame(height: 1)
 
             LazyVGrid(columns: [GridItem(.flexible(), spacing: Space.md), GridItem(.flexible())], alignment: .leading, spacing: Space.md) {
                 muscleCell(units)
@@ -128,8 +128,8 @@ struct ProgressTile: View {
             }
         }
         .padding(Space.md + 2)
-        .background(Palette.panel, in: RoundedRectangle(cornerRadius: Radius.lg))
-        .overlay(RoundedRectangle(cornerRadius: Radius.lg).strokeBorder(Palette.panelEdge))
+        .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.lg))
+        .cardShadow()
         .contentShape(RoundedRectangle(cornerRadius: Radius.lg))
         .accessibilityElement(children: .combine)
         .accessibilityHint("Opens your progress")
@@ -214,12 +214,12 @@ private struct ProgressCell<Mini: View>: View {
         VStack(alignment: .leading, spacing: Space.xxs) {
             Text(value)
                 .textStyle(.statValue)
-                .foregroundStyle(isPrompt ? Palette.ice : Palette.onPanel)
+                .foregroundStyle(isPrompt ? Palette.blueText : Palette.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
-            Text(label).textStyle(.micro).foregroundStyle(Palette.copper)
+            Text(label).textStyle(.micro).foregroundStyle(Palette.copperText)
             if let detail {
-                Text(detail).textStyle(.micro).foregroundStyle(Palette.onPanelMuted).lineLimit(2)
+                Text(detail).textStyle(.micro).foregroundStyle(Palette.inkMuted).lineLimit(2)
             }
             mini().frame(height: Size.miniBars).padding(.top, Space.xxs)
         }
@@ -259,9 +259,9 @@ private struct MiniBars: View {
         Chart {
             ForEach(Array(values.enumerated()), id: \.offset) { i, v in
                 BarMark(x: .value("week", i), y: .value("kcal", v))
-                    .foregroundStyle(abs(v - target) <= target * 0.1 ? Palette.ice : Palette.copper)
+                    .foregroundStyle(abs(v - target) <= target * 0.1 ? Palette.blueText : Palette.copperText)
             }
-            RuleMark(y: .value("target", target)).foregroundStyle(Palette.onPanel.opacity(0.4)).lineStyle(StrokeStyle(lineWidth: 1, dash: [2, 2]))
+            RuleMark(y: .value("target", target)).foregroundStyle(Palette.track).lineStyle(StrokeStyle(lineWidth: 1, dash: [2, 2]))
         }
         .chartXAxis(.hidden)
         .chartYAxis(.hidden)

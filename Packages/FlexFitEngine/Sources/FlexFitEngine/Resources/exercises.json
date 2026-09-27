@@ -373,30 +373,30 @@
    }
   },
   {
-   "id": "band_chest_press",
-   "name": "Band Chest Press",
+   "id": "wide_grip_push_up",
+   "name": "Wide-grip Push-Up",
    "pattern": "horizontalPush",
    "primaryMuscles": [
     "chest"
    ],
    "secondaryMuscles": [
+    "frontDelts",
     "triceps"
    ],
-   "equipment": [
-    [
-     "bands"
-    ]
+   "equipment": [],
+   "difficulty": 2,
+   "contraindications": [
+    "wrists",
+    "shoulders"
    ],
-   "difficulty": 1,
-   "contraindications": [],
    "compound": true,
    "measure": "reps",
-   "targetLow": 12,
-   "targetHigh": 20,
+   "targetLow": 8,
+   "targetHigh": 15,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/band_chest_press.mp4",
+    "clip": "r2://clips/wide_grip_push_up.mp4",
     "bundled": true
    }
   },
@@ -704,14 +704,15 @@
    }
   },
   {
-   "id": "db_half_kneeling_press",
-   "name": "Half-kneeling Single-arm Press",
+   "id": "db_single_arm_push_press",
+   "name": "Single-arm Dumbbell Push Press",
    "pattern": "verticalPush",
    "primaryMuscles": [
     "frontDelts"
    ],
    "secondaryMuscles": [
     "triceps",
+    "quads",
     "core"
    ],
    "equipment": [
@@ -721,15 +722,17 @@
     ]
    ],
    "difficulty": 2,
-   "contraindications": [],
+   "contraindications": [
+    "shoulders"
+   ],
    "compound": true,
    "measure": "reps",
-   "targetLow": 8,
-   "targetHigh": 12,
+   "targetLow": 6,
+   "targetHigh": 10,
    "loadGroup": "press_vertical",
-   "loadFactor": 0.4,
+   "loadFactor": 0.45,
    "media": {
-    "clip": "r2://clips/db_half_kneeling_press.mp4",
+    "clip": "r2://clips/db_single_arm_push_press.mp4",
     "bundled": false
    }
   },
@@ -766,32 +769,34 @@
    }
   },
   {
-   "id": "band_overhead_press",
-   "name": "Band Overhead Press",
+   "id": "kb_double_overhead_press",
+   "name": "Double Kettlebell Overhead Press",
    "pattern": "verticalPush",
    "primaryMuscles": [
     "frontDelts"
    ],
    "secondaryMuscles": [
-    "triceps"
+    "sideDelts",
+    "triceps",
+    "core"
    ],
    "equipment": [
     [
-     "bands"
+     "kettlebell"
     ]
    ],
-   "difficulty": 1,
+   "difficulty": 2,
    "contraindications": [
     "shoulders"
    ],
    "compound": true,
    "measure": "reps",
-   "targetLow": 12,
-   "targetHigh": 20,
-   "loadGroup": null,
-   "loadFactor": null,
+   "targetLow": 6,
+   "targetHigh": 10,
+   "loadGroup": "press_vertical",
+   "loadFactor": 0.35,
    "media": {
-    "clip": "r2://clips/band_overhead_press.mp4",
+    "clip": "r2://clips/kb_double_overhead_press.mp4",
     "bundled": true
    }
   },
@@ -1078,56 +1083,65 @@
    }
   },
   {
-   "id": "band_seated_row",
-   "name": "Band Seated Row",
+   "id": "db_bent_over_row",
+   "name": "Bent-over Dumbbell Row",
    "pattern": "horizontalPull",
    "primaryMuscles": [
-    "upperBack"
+    "upperBack",
+    "lats"
    ],
    "secondaryMuscles": [
-    "lats",
-    "biceps"
+    "biceps",
+    "rearDelts"
    ],
    "equipment": [
     [
-     "bands"
+     "dumbbells",
+     "adjustableDumbbells"
     ]
    ],
-   "difficulty": 1,
-   "contraindications": [],
+   "difficulty": 2,
+   "contraindications": [
+    "lowerBack"
+   ],
    "compound": true,
    "measure": "reps",
-   "targetLow": 12,
-   "targetHigh": 20,
-   "loadGroup": null,
-   "loadFactor": null,
+   "targetLow": 8,
+   "targetHigh": 12,
+   "loadGroup": "row",
+   "loadFactor": 0.45,
    "media": {
-    "clip": "r2://clips/band_seated_row.mp4",
+    "clip": "r2://clips/db_bent_over_row.mp4",
     "bundled": true
    }
   },
   {
-   "id": "towel_door_row",
-   "name": "Towel Door Row",
+   "id": "reverse_plank",
+   "name": "Reverse Plank",
    "pattern": "horizontalPull",
    "primaryMuscles": [
-    "upperBack"
+    "lowerBack",
+    "glutes"
    ],
    "secondaryMuscles": [
-    "biceps",
-    "lats"
+    "upperBack",
+    "rearDelts",
+    "triceps"
    ],
    "equipment": [],
-   "difficulty": 1,
-   "contraindications": [],
-   "compound": true,
-   "measure": "reps",
-   "targetLow": 10,
-   "targetHigh": 15,
+   "difficulty": 2,
+   "contraindications": [
+    "wrists",
+    "shoulders"
+   ],
+   "compound": false,
+   "measure": "seconds",
+   "targetLow": 20,
+   "targetHigh": 40,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/towel_door_row.mp4",
+    "clip": "r2://clips/reverse_plank.mp4",
     "bundled": true
    }
   },
@@ -1161,30 +1175,32 @@
    }
   },
   {
-   "id": "band_face_pull",
-   "name": "Band Face Pull",
+   "id": "db_face_pull",
+   "name": "Dumbbell Face Pull",
    "pattern": "horizontalPull",
    "primaryMuscles": [
     "rearDelts"
    ],
    "secondaryMuscles": [
-    "upperBack"
+    "upperBack",
+    "traps"
    ],
    "equipment": [
     [
-     "bands"
+     "dumbbells",
+     "adjustableDumbbells"
     ]
    ],
    "difficulty": 1,
    "contraindications": [],
    "compound": false,
    "measure": "reps",
-   "targetLow": 15,
-   "targetHigh": 20,
+   "targetLow": 12,
+   "targetHigh": 15,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/band_face_pull.mp4",
+    "clip": "r2://clips/db_face_pull.mp4",
     "bundled": true
    }
   },
@@ -1246,27 +1262,29 @@
    }
   },
   {
-   "id": "prone_y_raise",
-   "name": "Prone Y-Raise",
+   "id": "superman",
+   "name": "Superman",
    "pattern": "horizontalPull",
    "primaryMuscles": [
-    "rearDelts",
-    "upperBack"
+    "lowerBack"
    ],
    "secondaryMuscles": [
-    "traps"
+    "glutes",
+    "upperBack"
    ],
    "equipment": [],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "lowerBack"
+   ],
    "compound": false,
    "measure": "reps",
-   "targetLow": 10,
-   "targetHigh": 15,
+   "targetLow": 8,
+   "targetHigh": 12,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/prone_y_raise.mp4",
+    "clip": "r2://clips/superman.mp4",
     "bundled": false
    }
   },
@@ -1511,30 +1529,32 @@
    }
   },
   {
-   "id": "band_lat_pulldown",
-   "name": "Band Lat Pulldown",
+   "id": "single_arm_lat_pulldown",
+   "name": "Single-arm Lat Pulldown",
    "pattern": "verticalPull",
    "primaryMuscles": [
     "lats"
    ],
    "secondaryMuscles": [
-    "biceps"
+    "biceps",
+    "rearDelts"
    ],
    "equipment": [
     [
-     "bands"
+     "cableMachine",
+     "latPulldown"
     ]
    ],
-   "difficulty": 1,
+   "difficulty": 2,
    "contraindications": [],
    "compound": true,
    "measure": "reps",
-   "targetLow": 12,
-   "targetHigh": 20,
+   "targetLow": 10,
+   "targetHigh": 15,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/band_lat_pulldown.mp4",
+    "clip": "r2://clips/single_arm_lat_pulldown.mp4",
     "bundled": true
    }
   },
@@ -1897,23 +1917,25 @@
    }
   },
   {
-   "id": "chair_squat",
-   "name": "Sit-to-Stand Squat",
+   "id": "banded_squat",
+   "name": "Banded Squat",
    "pattern": "squat",
    "primaryMuscles": [
     "quads",
     "glutes"
    ],
-   "secondaryMuscles": [],
+   "secondaryMuscles": [
+    "adductors"
+   ],
    "equipment": [
     [
-     "chair",
-     "benchFlat",
-     "benchAdjustable"
+     "bands"
     ]
    ],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "knees"
+   ],
    "compound": true,
    "measure": "reps",
    "targetLow": 12,
@@ -1921,7 +1943,7 @@
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/chair_squat.mp4",
+    "clip": "r2://clips/banded_squat.mp4",
     "bundled": false
    }
   },
@@ -2273,56 +2295,67 @@
    }
   },
   {
-   "id": "cable_pull_through",
-   "name": "Cable Pull-Through",
+   "id": "db_deadlift",
+   "name": "Dumbbell Deadlift",
    "pattern": "hinge",
    "primaryMuscles": [
     "glutes",
     "hamstrings"
    ],
-   "secondaryMuscles": [],
+   "secondaryMuscles": [
+    "lowerBack",
+    "quads",
+    "forearms"
+   ],
    "equipment": [
     [
-     "cableMachine"
+     "dumbbells",
+     "adjustableDumbbells"
     ]
    ],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "lowerBack"
+   ],
    "compound": true,
    "measure": "reps",
-   "targetLow": 12,
-   "targetHigh": 15,
+   "targetLow": 8,
+   "targetHigh": 12,
    "loadGroup": "hinge",
-   "loadFactor": 0.3,
+   "loadFactor": 0.35,
    "media": {
-    "clip": "r2://clips/cable_pull_through.mp4",
+    "clip": "r2://clips/db_deadlift.mp4",
     "bundled": false
    }
   },
   {
-   "id": "band_pull_through",
-   "name": "Band Pull-Through",
+   "id": "banded_rdl",
+   "name": "Banded Romanian Deadlift",
    "pattern": "hinge",
    "primaryMuscles": [
-    "glutes",
-    "hamstrings"
+    "hamstrings",
+    "glutes"
    ],
-   "secondaryMuscles": [],
+   "secondaryMuscles": [
+    "lowerBack"
+   ],
    "equipment": [
     [
      "bands"
     ]
    ],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "lowerBack"
+   ],
    "compound": true,
    "measure": "reps",
-   "targetLow": 15,
+   "targetLow": 12,
    "targetHigh": 20,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/band_pull_through.mp4",
+    "clip": "r2://clips/banded_rdl.mp4",
     "bundled": false
    }
   },
@@ -2859,15 +2892,16 @@
    }
   },
   {
-   "id": "kb_rack_carry",
-   "name": "Kettlebell Front-rack Carry",
+   "id": "kb_overhead_carry",
+   "name": "Kettlebell Overhead Carry",
    "pattern": "carry",
    "primaryMuscles": [
     "core",
-    "upperBack"
+    "frontDelts"
    ],
    "secondaryMuscles": [
-    "forearms"
+    "traps",
+    "upperBack"
    ],
    "equipment": [
     [
@@ -2876,16 +2910,16 @@
    ],
    "difficulty": 2,
    "contraindications": [
-    "wrists"
+    "shoulders"
    ],
    "compound": true,
    "measure": "seconds",
    "targetLow": 30,
    "targetHigh": 45,
-   "loadGroup": "carry",
-   "loadFactor": 0.8,
+   "loadGroup": null,
+   "loadFactor": null,
    "media": {
-    "clip": "r2://clips/kb_rack_carry.mp4",
+    "clip": "r2://clips/kb_overhead_carry.mp4",
     "bundled": false
    }
   },
@@ -3268,15 +3302,15 @@
    }
   },
   {
-   "id": "bear_plank_hold",
-   "name": "Bear Plank Hold",
+   "id": "high_plank",
+   "name": "High Plank",
    "pattern": "core",
    "primaryMuscles": [
     "core"
    ],
    "secondaryMuscles": [
     "frontDelts",
-    "quads"
+    "triceps"
    ],
    "equipment": [],
    "difficulty": 1,
@@ -3285,12 +3319,12 @@
    ],
    "compound": false,
    "measure": "seconds",
-   "targetLow": 20,
-   "targetHigh": 40,
+   "targetLow": 30,
+   "targetHigh": 60,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/bear_plank_hold.mp4",
+    "clip": "r2://clips/high_plank.mp4",
     "bundled": false
    }
   },
@@ -3556,28 +3590,30 @@
    }
   },
   {
-   "id": "band_pushdown",
-   "name": "Band Triceps Pushdown",
+   "id": "crab_dip",
+   "name": "Crab Dip",
    "pattern": "elbowExtension",
    "primaryMuscles": [
     "triceps"
    ],
-   "secondaryMuscles": [],
-   "equipment": [
-    [
-     "bands"
-    ]
+   "secondaryMuscles": [
+    "frontDelts",
+    "glutes"
    ],
+   "equipment": [],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "wrists",
+    "shoulders"
+   ],
    "compound": false,
    "measure": "reps",
-   "targetLow": 15,
-   "targetHigh": 20,
+   "targetLow": 10,
+   "targetHigh": 15,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/band_pushdown.mp4",
+    "clip": "r2://clips/crab_dip.mp4",
     "bundled": false
    }
   },
@@ -3698,28 +3734,26 @@
    }
   },
   {
-   "id": "band_lateral_raise",
-   "name": "Band Lateral Raise",
+   "id": "bodyweight_lateral_raise",
+   "name": "Bodyweight Lateral Raise",
    "pattern": "shoulderRaise",
    "primaryMuscles": [
     "sideDelts"
    ],
-   "secondaryMuscles": [],
-   "equipment": [
-    [
-     "bands"
-    ]
+   "secondaryMuscles": [
+    "traps"
    ],
+   "equipment": [],
    "difficulty": 1,
    "contraindications": [],
    "compound": false,
    "measure": "reps",
    "targetLow": 15,
-   "targetHigh": 20,
+   "targetHigh": 25,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/band_lateral_raise.mp4",
+    "clip": "r2://clips/bodyweight_lateral_raise.mp4",
     "bundled": false
    }
   },
@@ -3880,28 +3914,24 @@
    }
   },
   {
-   "id": "leg_press_calf_raise",
-   "name": "Leg Press Calf Raise",
+   "id": "donkey_calf_raise",
+   "name": "Donkey Calf Raise",
    "pattern": "calf",
    "primaryMuscles": [
     "calves"
    ],
    "secondaryMuscles": [],
-   "equipment": [
-    [
-     "legPress"
-    ]
-   ],
+   "equipment": [],
    "difficulty": 1,
    "contraindications": [],
    "compound": false,
    "measure": "reps",
-   "targetLow": 12,
+   "targetLow": 15,
    "targetHigh": 20,
-   "loadGroup": "calf",
-   "loadFactor": 1.4,
+   "loadGroup": null,
+   "loadFactor": null,
    "media": {
-    "clip": "r2://clips/leg_press_calf_raise.mp4",
+    "clip": "r2://clips/donkey_calf_raise.mp4",
     "bundled": false
    }
   },
@@ -3929,36 +3959,39 @@
    }
   },
   {
-   "id": "hip_90_90",
-   "name": "90/90 Hip Switch",
+   "id": "pigeon_stretch",
+   "name": "Pigeon Stretch",
    "pattern": "mobility",
    "primaryMuscles": [
+    "glutes",
     "hips"
    ],
    "secondaryMuscles": [
-    "glutes"
+    "hipFlexors"
    ],
    "equipment": [],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "knees"
+   ],
    "compound": false,
-   "measure": "reps",
-   "targetLow": 8,
-   "targetHigh": 10,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/hip_90_90.mp4",
+    "clip": "r2://clips/pigeon_stretch.mp4",
     "bundled": true
    }
   },
   {
-   "id": "worlds_greatest_stretch",
-   "name": "World's Greatest Stretch",
+   "id": "lizard_stretch",
+   "name": "Lizard Stretch",
    "pattern": "mobility",
    "primaryMuscles": [
-    "hips",
-    "upperBack"
+    "hipFlexors",
+    "adductors"
    ],
    "secondaryMuscles": [
     "hamstrings"
@@ -3967,35 +4000,38 @@
    "difficulty": 1,
    "contraindications": [],
    "compound": false,
-   "measure": "reps",
-   "targetLow": 5,
-   "targetHigh": 6,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/worlds_greatest_stretch.mp4",
+    "clip": "r2://clips/lizard_stretch.mp4",
     "bundled": false
    }
   },
   {
-   "id": "thoracic_rotation",
-   "name": "Thoracic Rotation",
+   "id": "thread_the_needle",
+   "name": "Thread the Needle",
    "pattern": "mobility",
    "primaryMuscles": [
     "upperBack"
    ],
-   "secondaryMuscles": [],
+   "secondaryMuscles": [
+    "rearDelts",
+    "traps"
+   ],
    "equipment": [],
    "difficulty": 1,
    "contraindications": [],
    "compound": false,
    "measure": "reps",
-   "targetLow": 8,
-   "targetHigh": 10,
+   "targetLow": 6,
+   "targetHigh": 8,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/thoracic_rotation.mp4",
+    "clip": "r2://clips/thread_the_needle.mp4",
     "bundled": false
    }
   },
@@ -4024,8 +4060,8 @@
    }
   },
   {
-   "id": "deep_squat_hold",
-   "name": "Deep Squat Hold",
+   "id": "garland_pose",
+   "name": "Garland Pose (Deep Squat Hold)",
    "pattern": "mobility",
    "primaryMuscles": [
     "hips",
@@ -4037,8 +4073,7 @@
    "equipment": [],
    "difficulty": 1,
    "contraindications": [
-    "knees",
-    "hips"
+    "knees"
    ],
    "compound": false,
    "measure": "seconds",
@@ -4047,7 +4082,7 @@
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/deep_squat_hold.mp4",
+    "clip": "r2://clips/garland_pose.mp4",
     "bundled": false
    }
   },
@@ -4104,30 +4139,35 @@
    }
   },
   {
-   "id": "hamstring_floss",
-   "name": "Hamstring Floss",
+   "id": "standing_forward_fold",
+   "name": "Standing Forward Fold",
    "pattern": "mobility",
    "primaryMuscles": [
     "hamstrings"
    ],
-   "secondaryMuscles": [],
+   "secondaryMuscles": [
+    "lowerBack",
+    "calves"
+   ],
    "equipment": [],
    "difficulty": 1,
-   "contraindications": [],
+   "contraindications": [
+    "lowerBack"
+   ],
    "compound": false,
-   "measure": "reps",
-   "targetLow": 10,
-   "targetHigh": 12,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/hamstring_floss.mp4",
+    "clip": "r2://clips/standing_forward_fold.mp4",
     "bundled": false
    }
   },
   {
-   "id": "ankle_rocks",
-   "name": "Ankle Rocks",
+   "id": "standing_calf_stretch",
+   "name": "Standing Calf Stretch",
    "pattern": "mobility",
    "primaryMuscles": [
     "calves"
@@ -4137,13 +4177,13 @@
    "difficulty": 1,
    "contraindications": [],
    "compound": false,
-   "measure": "reps",
-   "targetLow": 10,
-   "targetHigh": 12,
+   "measure": "seconds",
+   "targetLow": 30,
+   "targetHigh": 45,
    "loadGroup": null,
    "loadFactor": null,
    "media": {
-    "clip": "r2://clips/ankle_rocks.mp4",
+    "clip": "r2://clips/standing_calf_stretch.mp4",
     "bundled": false
    }
   },

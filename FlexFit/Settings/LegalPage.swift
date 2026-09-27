@@ -78,6 +78,8 @@ private struct WebContent: UIViewRepresentable {
 /// Licences for the open-source code FlexFit ships.
 enum Acknowledgements {
     static let text = """
+    Exercise data by RepDB (repdb.co). Exercise illustrations in Gym come from the RepDB free-tier dataset, used under the RepDB Free Tier License: in-app use with attribution.
+
     MuscleMap (github.com/melihcolpan/MuscleMap), used for the body diagrams in Gym.
 
     MIT License

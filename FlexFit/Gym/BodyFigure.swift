@@ -162,8 +162,9 @@ extension MuscleGroup {
     }
 }
 
-/// Where each group's dot sits on the body map and the row its label takes, as fractions of the figure
-/// (x of its width, y of its height). Centres come from the model's paths; label rows are spaced apart.
+/// Where each group's dot sits on the body-map photo and the row its label takes, as fractions of the photo
+/// (x of its width, y of its height), placed by eye on `BodyMapFront` / `BodyMapBack` (784 × 1376).
+/// Label rows are spaced apart; the leader line bends from the label to the dot.
 enum BodyGeometry {
     struct Anchor {
         let group: MuscleGroup
@@ -179,23 +180,36 @@ enum BodyGeometry {
         switch side {
         case .front:
             return [
-                a(.shoulders, 0.326, 0.202, label: 0.13, left: true), a(.chest, 0.425, 0.219, label: 0.22, left: true),
-                a(.obliques, 0.389, 0.346, label: 0.32, left: true), a(.forearms, 0.235, 0.389, label: 0.41, left: true),
-                a(.hips, 0.428, 0.461, label: 0.50, left: true), a(.quads, 0.391, 0.556, label: 0.59, left: true),
-                a(.cardio, 0.66, 0.05, label: 0.02, left: false),
-                a(.traps, 0.582, 0.157, label: 0.11, left: false), a(.biceps, 0.724, 0.275, label: 0.22, left: false),
-                a(.abs, 0.543, 0.373, label: 0.34, left: false), a(.adductors, 0.571, 0.530, label: 0.52, left: false),
-                a(.calves, 0.606, 0.801, label: 0.78, left: false),
+                a(.shoulders, 0.319, 0.247, label: 0.19, left: true), a(.chest, 0.420, 0.290, label: 0.27, left: true),
+                a(.obliques, 0.389, 0.378, label: 0.35, left: true), a(.forearms, 0.268, 0.443, label: 0.43, left: true),
+                a(.hips, 0.400, 0.465, label: 0.51, left: true), a(.quads, 0.389, 0.567, label: 0.59, left: true),
+                a(.cardio, 0.640, 0.070, label: 0.04, left: false), a(.traps, 0.590, 0.205, label: 0.12, left: false),
+                a(.biceps, 0.695, 0.320, label: 0.26, left: false), a(.abs, 0.523, 0.349, label: 0.345, left: false),
+                a(.adductors, 0.548, 0.618, label: 0.60, left: false), a(.calves, 0.600, 0.780, label: 0.76, left: false),
             ]
         case .back:
             return [
-                a(.traps, 0.444, 0.227, label: 0.13, left: true), a(.shoulders, 0.316, 0.202, label: 0.22, left: true),
-                a(.triceps, 0.290, 0.284, label: 0.31, left: true), a(.lowerBack, 0.430, 0.366, label: 0.40, left: true),
-                a(.glutes, 0.427, 0.472, label: 0.49, left: true), a(.back, 0.604, 0.281, label: 0.24, left: false),
-                a(.forearms, 0.778, 0.397, label: 0.36, left: false), a(.hamstrings, 0.607, 0.608, label: 0.60, left: false),
-                a(.calves, 0.607, 0.809, label: 0.78, left: false),
+                a(.traps, 0.470, 0.215, label: 0.16, left: true), a(.shoulders, 0.335, 0.235, label: 0.235, left: true),
+                a(.triceps, 0.280, 0.305, label: 0.31, left: true), a(.lowerBack, 0.470, 0.400, label: 0.39, left: true),
+                a(.glutes, 0.420, 0.494, label: 0.48, left: true), a(.back, 0.631, 0.320, label: 0.30, left: false),
+                a(.forearms, 0.733, 0.443, label: 0.42, left: false), a(.hamstrings, 0.585, 0.610, label: 0.60, left: false),
+                a(.calves, 0.600, 0.790, label: 0.76, left: false),
             ]
         }
+    }
+}
+
+/// The body-map photo (front or back), cut out onto transparency so the navy page shows through.
+struct BodyPhoto: View {
+    let side: BodyFigure.Side
+    /// The photos are 784 × 1376.
+    static let aspect: CGFloat = 784.0 / 1376.0
+
+    var body: some View {
+        Image(side == .front ? "BodyMapFront" : "BodyMapBack")
+            .resizable()
+            .aspectRatio(Self.aspect, contentMode: .fit)
+            .accessibilityHidden(true)
     }
 }
 

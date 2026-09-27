@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import Observation
 
 /// App-wide presentation state, so any screen can open Adapt, the paywall, Settings or a workout.
@@ -14,6 +15,8 @@ final class AppRouter {
         case adapt, energy, settings, grocery, restaurant
         case paywall(PaywallReason)
         case ingredientSwap(MealSelection)
+        /// Alternatives for one exercise in the Gym plan, as a bottom sheet.
+        case exerciseSwap(SwapRequest)
 
         var id: String {
             switch self {
@@ -24,11 +27,14 @@ final class AppRouter {
             case .restaurant: "restaurant"
             case .paywall(let r): "paywall-\(r.rawValue)"
             case .ingredientSwap(let s): "swap-\(s.id)"
+            case .exerciseSwap(let r): "exercise-swap-\(r.originalID)"
             }
         }
     }
 
     var tab: AppTab = AppRouter.launchTab
+    /// The Gym tab's navigation stack, so a swap can return straight to the plan.
+    var gymPath = NavigationPath()
     var sheet: Sheet?
     /// Non-nil while a workout is running for that day.
     var workoutDay: Date?

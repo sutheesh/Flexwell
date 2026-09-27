@@ -78,6 +78,10 @@ enum Palette {
     static let carbGreen = Color(hex: 0x6BAF3C)
     static let fatOrange = Color(hex: 0xF29A2E)
     static let proteinRed = Color(hex: 0xE0493E)
+    /// Body-map dots: red so they stand out from skin on the photos.
+    static let mapDot = Color(hex: 0xE5484D)
+    /// RepDB's illustration backdrop, so its images sit in a panel of the same colour.
+    static let repdbSky = Color(hex: 0xDAF1FD)
     /// Chip background on the ingredient card.
     static let chipFill = Color(light: 0x14233F, lightOpacity: 0.05, dark: 0xEEF3F9, darkOpacity: 0.08)
     /// Filled bookmark.

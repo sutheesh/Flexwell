@@ -7,16 +7,47 @@ import FlexFitEngine
 enum GymRoute: Hashable {
     case group(MuscleGroup)
     case exercise(String)
+    /// An alternative's detail page, with "Swap in" for the exercise it would replace.
+    case swapDetail(SwapChoice)
+}
+
+struct SwapRequest: Hashable {
+    let originalID: String
+    let day: Date
+}
+
+struct SwapChoice: Hashable {
+    let request: SwapRequest
+    let candidateID: String
+    let scope: SwapScope
+}
+
+/// Saves a swap: for that day only, or for good.
+enum SwapStore {
+    @MainActor
+    static func save(_ choice: SwapChoice, context: ModelContext, router: AppRouter) {
+        context.insert(ExerciseSwap(
+            day: choice.scope == .today ? Calendar.current.startOfDay(for: choice.request.day) : nil,
+            originalID: choice.request.originalID,
+            replacementID: choice.candidateID
+        ))
+        try? context.save()
+        let name = ExerciseLibrary.bundled[choice.candidateID]?.name ?? "the alternative"
+        router.sheet = nil
+        router.toast(choice.scope == .today ? "Swapped in \(name) for this session." : "Swapped in \(name) from now on.")
+    }
 }
 
 // MARK: - Library (the "Exercises" half of Gym)
 
-/// The tap-a-muscle body map, with favourites, the front/back flip and the rest timer. Navy, like the rest of Gym.
+/// The tap-a-muscle body map (swipe or tap the centre button to turn it around), or your favourites when the
+/// header's ★ is on. Navy, like the rest of Gym.
 struct ExerciseLibraryView: View {
+    @Binding var showsFavorites: Bool
     @Query private var favorites: [FavoriteExercise]
     @State private var side: BodyFigure.Side = .front
-    @State private var showsFavorites = false
-    @State private var isTimerOpen = false
+    /// Y-axis turn of the figure during a flip, in degrees.
+    @State private var turn: Double = 0
 
     var body: some View {
         VStack(alignment: .leading, spacing: Space.md) {
@@ -25,23 +56,53 @@ struct ExerciseLibraryView: View {
                              empty: "Tap ☆ on any exercise to keep it here.")
             } else {
                 BodyMap(side: side)
-            }
-            // Flip, favourites and timer along the bottom, as in the reference.
-            HStack {
-                RoundIconButton(icon: "arrow.triangle.2.circlepath", label: side == .front ? "Show back" : "Show front") {
-                    withAnimation(.easeInOut(duration: 0.25)) { showsFavorites = false; side = side == .front ? .back : .front }
-                }
-                Spacer()
-                RoundIconButton(icon: showsFavorites ? "star.fill" : "star",
-                                label: showsFavorites ? "Show the body map" : "Show favourites",
-                                tint: Palette.copper) {
-                    withAnimation(.easeInOut(duration: 0.2)) { showsFavorites.toggle() }
-                }
-                Spacer()
-                RoundIconButton(icon: "timer", label: "Rest timer") { isTimerOpen = true }
+                    .rotation3DEffect(.degrees(turn), axis: (x: 0, y: 1, z: 0), perspective: 0.4)
+                    // A sideways swipe anywhere on the map turns the body; vertical scrolling is untouched.
+                    .simultaneousGesture(
+                        DragGesture(minimumDistance: Space.lg)
+                            .onEnded { drag in
+                                let dx = drag.translation.width, dy = drag.translation.height
+                                if abs(dx) > Space.xxl * 2, abs(dx) > abs(dy) * 1.5 { flip(toward: dx > 0 ? 1 : -1) }
+                            }
+                    )
+                FlipButton(showing: side) { flip(toward: 1) }
+                    .frame(maxWidth: .infinity)
             }
         }
-        .sheet(isPresented: $isTimerOpen) { RestTimerSheet() }
+    }
+
+    /// Turns the figure a quarter, swaps front/back while it's edge-on, then turns it the rest of the way.
+    private func flip(toward direction: Double) {
+        withAnimation(.easeIn(duration: 0.14)) { turn = 90 * direction } completion: {
+            side = side == .front ? .back : .front
+            turn = -90 * direction
+            withAnimation(.easeOut(duration: 0.16)) { turn = 0 }
+        }
+    }
+}
+
+/// The centre button under the body map: turn it around. The label names the side you'll see next.
+private struct FlipButton: View {
+    let showing: BodyFigure.Side
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            VStack(spacing: Space.xxs) {
+                Image(systemName: "rotate.3d")
+                    .font(TextStyle.headline.font)
+                    .foregroundStyle(Palette.ice)
+                    .frame(width: Size.buttonTall, height: Size.buttonTall)
+                    .background(Palette.navyRaised, in: Circle())
+                Text(showing == .front ? "Back" : "Front")
+                    .textStyle(.micro)
+                    .foregroundStyle(Palette.onPanelMuted)
+            }
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel(showing == .front ? "Show back" : "Show front")
+        .accessibilityHint("Or swipe sideways on the body")
     }
 }
 
@@ -53,11 +114,22 @@ private struct BodyMap: View {
     var body: some View {
         GeometryReader { geo in
             let height = geo.size.height
-            let figureWidth = height * BodyFigure.aspect
+            let figureWidth = height * BodyPhoto.aspect
             let originX = (geo.size.width - figureWidth) / 2
             ZStack(alignment: .topLeading) {
-                BodyFigure(side: side, onTap: { tapped = $0 })
+                // Tapping the body opens the muscle whose dot is nearest the tap.
+                BodyPhoto(side: side)
                     .frame(width: figureWidth, height: height)
+                    .contentShape(Rectangle())
+                    .onTapGesture { location in
+                        let nearest = BodyGeometry.anchors(side).min { a, b in
+                            hypot(a.point.x * figureWidth - location.x, a.point.y * height - location.y)
+                                < hypot(b.point.x * figureWidth - location.x, b.point.y * height - location.y)
+                        }
+                        if let nearest, hypot(nearest.point.x * figureWidth - location.x, nearest.point.y * height - location.y) < Space.xxl * 2 {
+                            tapped = nearest.group
+                        }
+                    }
                     .offset(x: originX)
                 let column = originX + figureWidth * 0.2
                 ForEach(BodyGeometry.anchors(side), id: \.group) { anchor in
@@ -85,9 +157,11 @@ private struct BodyMap: View {
                     NavigationLink(value: GymRoute.group(anchor.group)) {
                         Group {
                             if anchor.group == .cardio {
-                                Image(systemName: "heart.fill").font(TextStyle.headline.font).foregroundStyle(Palette.copper)
+                                Image(systemName: "heart.fill").font(TextStyle.headline.font).foregroundStyle(Palette.mapDot)
                             } else {
-                                Circle().fill(Palette.copper).frame(width: Space.sm, height: Space.sm)
+                                Circle().fill(Palette.mapDot)
+                                    .frame(width: Space.sm, height: Space.sm)
+                                    .overlay(Circle().strokeBorder(Palette.white, lineWidth: 1.5))
                             }
                         }
                             .padding(Space.sm)
@@ -101,8 +175,6 @@ private struct BodyMap: View {
         }
         .frame(height: Size.bodyMap)
         .navigationDestination(item: $tapped) { MuscleGroupView(group: $0) }
-        .id(side)
-        .transition(.opacity)
     }
 }
 
@@ -158,19 +230,29 @@ struct ExerciseGrid: View {
 }
 
 /// A figure with the exercise's muscles lit, the name, the kit, and a favourite star.
-private struct ExerciseCard: View {
+struct ExerciseCard: View {
     let exercise: Exercise
     var highlight: MuscleGroup?
+    /// A small tag over the figure, e.g. "Best match".
+    var badge: String?
+    /// Leaves room at the bottom for a button laid over the card (the swap list's Swap).
+    var reservesButtonRow = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            BodyFigure(side: highlight?.side ?? exercise.bestSide, primary: exercise.primaryGroups,
-                       secondary: exercise.secondaryGroups, outlined: false)
-                .frame(maxWidth: .infinity)
-                .frame(height: Size.exerciseCardFigure)
-                .padding(.vertical, Space.sm)
-                .background(Palette.navyRaised.opacity(0.6))
+            ExerciseArt(exercise: exercise, pose: .peak, highlight: highlight)
                 .overlay(alignment: .topTrailing) { FavoriteStar(exerciseID: exercise.id).padding(Space.xs) }
+                .overlay(alignment: .topLeading) {
+                    if let badge {
+                        Text(badge)
+                            .textStyle(.badge)
+                            .foregroundStyle(Palette.navy)
+                            .padding(.horizontal, Space.xs)
+                            .padding(.vertical, Space.xxs)
+                            .background(Palette.copper, in: Capsule())
+                            .padding(Space.sm)
+                    }
+                }
             VStack(alignment: .leading, spacing: Space.xxs + 1) {
                 Text(exercise.name)
                     .textStyle(.label)
@@ -184,11 +266,155 @@ private struct ExerciseCard: View {
             }
             .frame(maxWidth: .infinity, minHeight: Size.control + 8, alignment: .topLeading)
             .padding(Space.sm)
+            .padding(.bottom, reservesButtonRow ? Size.checkRing + Space.md : 0)
         }
         .background(Palette.navyRaised, in: RoundedRectangle(cornerRadius: Radius.lg))
         .clipShape(RoundedRectangle(cornerRadius: Radius.lg))
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(exercise.name), \(exercise.primaryGroups.map(\.title).sorted().joined(separator: ", "))")
+        .accessibilityLabel((badge.map { "\($0): " } ?? "") + "\(exercise.name), \(exercise.primaryGroups.map(\.title).sorted().joined(separator: ", "))")
+    }
+}
+
+// MARK: - Swap list
+
+/// The swap bottom sheet: the list, with an alternative's detail page pushed inside the sheet.
+struct SwapSheet: View {
+    let request: SwapRequest
+
+    var body: some View {
+        NavigationStack {
+            SwapListView(request: request)
+                .navigationDestination(for: GymRoute.self) { route in
+                    switch route {
+                    case .swapDetail(let choice): ExerciseDetailView(exerciseID: choice.candidateID, swap: choice)
+                    case .exercise(let id): ExerciseDetailView(exerciseID: id)
+                    case .group(let group): MuscleGroupView(group: group)
+                    }
+                }
+        }
+        .environment(\.colorScheme, .dark)
+        .presentationDetents([.large])
+        .presentationDragIndicator(.visible)
+        .presentationBackground(Palette.navy)
+    }
+}
+
+/// Swap from the plan: every safe alternative for the same movement with gear you have, best match first,
+/// laid out like a muscle list. Swap from a card's own button, or open it and swap from its page.
+struct SwapListView: View {
+    let request: SwapRequest
+    @Environment(\.modelContext) private var modelContext
+    @Environment(AppRouter.self) private var router
+    @Query private var profiles: [ProfileRecord]
+    @Query private var swaps: [ExerciseSwap]
+    @Query private var logs: [DailyLog]
+    @Query private var painFlags: [PainFlag]
+    @State private var scope: SwapScope = .today
+
+    var body: some View {
+        if let record = profiles.first, let original = ExerciseLibrary.bundled[request.originalID] {
+            let resolver = PlanResolver(record: record, swaps: swaps, logs: logs, painFlags: painFlags)
+            let options = SwapRanker.alternatives(
+                for: original, equipment: resolver.equipment(on: request.day), limitations: resolver.profile.limitations,
+                history: resolver.history, usedThisWeek: resolver.usedThisWeek(on: request.day), limit: 40)
+            GymPage(title: "SWAP", closes: true) {
+                VStack(alignment: .leading, spacing: Space.xs - 2) {
+                    Text("Replace \(original.name)")
+                        .textStyle(.title2)
+                        .foregroundStyle(Palette.onPanel)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .accessibilityAddTraits(.isHeader)
+                    Text("Same movement and set volume, only gear you have. Best match first.")
+                        .textStyle(.caption)
+                        .foregroundStyle(Palette.onPanelMuted)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                GymSegmented(selection: $scope, options: [SwapScope.today, .always], title: \.title)
+                Text(scope == .today ? "Just this session. Your plan stays the same next week."
+                                     : "Every week of your plan, from now on.")
+                    .textStyle(.micro)
+                    .foregroundStyle(Palette.onPanelMuted)
+
+                if options.isEmpty {
+                    Text("Nothing else with your equipment trains this movement safely. Keep it, or add equipment in Profile.")
+                        .textStyle(.body)
+                        .foregroundStyle(Palette.onPanelMuted)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .padding(.top, Space.md)
+                } else {
+                    LazyVGrid(columns: [GridItem(.flexible(), spacing: Space.sm), GridItem(.flexible(), spacing: Space.sm)],
+                              spacing: Space.sm) {
+                        ForEach(Array(options.enumerated()), id: \.element.exercise.id) { i, option in
+                            let choice = SwapChoice(request: request, candidateID: option.exercise.id, scope: scope)
+                            // Swap sits on the card, bottom right; the rest of the card opens the detail page.
+                            NavigationLink(value: GymRoute.swapDetail(choice)) {
+                                ExerciseCard(exercise: option.exercise, badge: i == 0 ? "Best match" : nil, reservesButtonRow: true)
+                            }
+                            .buttonStyle(.plain)
+                            .overlay(alignment: .bottomTrailing) {
+                                Button { SwapStore.save(choice, context: modelContext, router: router) } label: {
+                                    Label("Swap", systemImage: "arrow.left.arrow.right")
+                                        .textStyle(.micro)
+                                        .foregroundStyle(Palette.navy)
+                                        .padding(.horizontal, Space.sm)
+                                        .frame(minHeight: Size.checkRing + 8)
+                                        .background(Palette.ice, in: Capsule())
+                                        .contentShape(Capsule())
+                                }
+                                .buttonStyle(PressableStyle())
+                                .padding(Space.sm)
+                                .accessibilityLabel("Swap in \(option.exercise.name)")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+extension SwapScope {
+    var title: String {
+        switch self {
+        case .today: "Just today"
+        case .always: "From now on"
+        }
+    }
+}
+
+// MARK: - Exercise art
+
+/// The card picture: RepDB's illustration (free tier, credited in Acknowledgements) where one matches the
+/// exercise, otherwise the muscle figure with the worked muscles lit.
+struct ExerciseArt: View {
+    enum Pose: String { case start, peak }
+    let exercise: Exercise
+    var pose: Pose = .peak
+    var highlight: MuscleGroup?
+
+    /// `ex_<exercise id>_<pose>` in the asset catalog (Assets.xcassets/Exercises).
+    static func image(_ id: String, _ pose: Pose) -> Image? {
+        let name = "ex_\(id)_\(pose.rawValue)"
+        return UIImage(named: name) == nil ? nil : Image(name)
+    }
+
+    var body: some View {
+        if let image = Self.image(exercise.id, pose) {
+            image
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity)
+                .frame(height: Size.exerciseCardFigure + Space.sm * 2)
+                .background(Palette.repdbSky)
+                .accessibilityHidden(true)
+        } else {
+            BodyFigure(side: highlight?.side ?? exercise.bestSide, primary: exercise.primaryGroups,
+                       secondary: exercise.secondaryGroups, outlined: false)
+                .frame(maxWidth: .infinity)
+                .frame(height: Size.exerciseCardFigure)
+                .padding(.vertical, Space.sm)
+                .background(Palette.navyRaised.opacity(0.6))
+        }
     }
 }
 
@@ -198,6 +424,8 @@ struct ExerciseDetailView: View {
     enum Tab: String, CaseIterable { case guidance = "Guidance", performance = "Performance" }
 
     let exerciseID: String
+    /// Opened from a swap list: the page leads with "Swap in".
+    var swap: SwapChoice?
     @Environment(\.modelContext) private var modelContext
     @Environment(AppRouter.self) private var router
     @Query private var profiles: [ProfileRecord]
@@ -243,15 +471,32 @@ struct ExerciseDetailView: View {
                     .padding(.top, Space.xxs)
                 }
                 Spacer(minLength: Space.xs)
-                Image(ex.pattern == .conditioning || ex.pattern == .mobility ? "Illustration-walk" : "Illustration-lift")
-                    .resizable().scaledToFill()
-                    .frame(width: Size.detailThumb.width, height: Size.detailThumb.height)
-                    .clipShape(RoundedRectangle(cornerRadius: Radius.md))
-                    .accessibilityHidden(true)
+                Group {
+                    if let image = ExerciseArt.image(ex.id, .peak) {
+                        image.resizable().scaledToFit().background(Palette.repdbSky)
+                    } else {
+                        Image(ex.pattern == .conditioning || ex.pattern == .mobility ? "Illustration-walk" : "Illustration-lift")
+                            .resizable().scaledToFill()
+                    }
+                }
+                .frame(width: Size.detailThumb.width, height: Size.detailThumb.height)
+                .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+                .accessibilityHidden(true)
             }
         }
 
-        if let swap = todaySwap(for: ex) {
+        if let swap, let original = ExerciseLibrary.bundled[swap.request.originalID] {
+            Button { SwapStore.save(swap, context: modelContext, router: router) } label: {
+                VStack(spacing: Space.xxs) {
+                    Text("Swap in for \(original.name) ›").textStyle(.button)
+                    Text(swap.scope.title).textStyle(.micro).opacity(0.7)
+                }
+                .foregroundStyle(Palette.navy)
+                .frame(maxWidth: .infinity, minHeight: Size.buttonTall)
+                .background(Palette.ice, in: Capsule())
+            }
+            .buttonStyle(PressableStyle())
+        } else if let swap = todaySwap(for: ex) {
             Button { swapIn(ex, replacing: swap) } label: {
                 Text("Swap into today for \(swap.name) ›")
                     .textStyle(.button)
@@ -260,6 +505,25 @@ struct ExerciseDetailView: View {
                     .background(Palette.ice, in: Capsule())
             }
             .buttonStyle(PressableStyle())
+        }
+
+        if let start = ExerciseArt.image(ex.id, .start), let peak = ExerciseArt.image(ex.id, .peak) {
+            GymCard {
+                Text("The movement").textStyle(.headline).foregroundStyle(Palette.onPanel)
+                HStack(spacing: Space.sm) {
+                    ForEach([("Start", start), ("Finish", peak)], id: \.0) { label, image in
+                        VStack(spacing: Space.xs - 2) {
+                            image.resizable().scaledToFit()
+                                .background(Palette.repdbSky)
+                                .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+                            Text(label).textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
+                        }
+                    }
+                }
+                .padding(.top, Space.sm)
+                .accessibilityElement(children: .ignore)
+                .accessibilityLabel("Start and finish positions")
+            }
         }
 
         GymCard {
@@ -520,95 +784,21 @@ struct FavoriteStar: View {
     }
 }
 
-// MARK: - Rest timer
-
-struct RestTimerSheet: View {
-    @Environment(\.dismiss) private var dismiss
-    @State private var total = 90
-    @State private var endsAt: Date?
-    @State private var pausedLeft: Int?
-
-    var body: some View {
-        VStack(spacing: Space.lg) {
-            HStack {
-                Text("Rest timer").textStyle(.headline).foregroundStyle(Palette.onPanel)
-                Spacer()
-                Button("Done") { dismiss() }.textStyle(.label).foregroundStyle(Palette.copper)
-            }
-            TimelineView(.periodic(from: .now, by: 0.25)) { context in
-                let left = remaining(at: context.date)
-                ZStack {
-                    Circle().stroke(Palette.onPanelTrack, lineWidth: Space.sm)
-                    Circle()
-                        .trim(from: 0, to: CGFloat(left) / CGFloat(max(1, total)))
-                        .stroke(Palette.copper, style: StrokeStyle(lineWidth: Space.sm, lineCap: .round))
-                        .rotationEffect(.degrees(-90))
-                    Text(String(format: "%d:%02d", left / 60, left % 60))
-                        .textStyle(.display)
-                        .foregroundStyle(Palette.onPanel)
-                        .monospacedDigit()
-                }
-                .frame(width: Size.spinner * 1.6, height: Size.spinner * 1.6)
-                .onChange(of: left) { _, new in if new == 0 && endsAt != nil { finish() } }
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("\(left) seconds left")
-            }
-            HStack(spacing: Space.xs) {
-                ForEach([60, 90, 120, 180], id: \.self) { s in
-                    GymChip(title: s < 120 ? "\(s) s" : "\(s / 60) min", isSelected: total == s) {
-                        total = s; endsAt = nil; pausedLeft = nil
-                    }
-                }
-            }
-            Button(action: toggle) {
-                Text(endsAt == nil ? (pausedLeft == nil ? "Start" : "Resume") : "Pause")
-                    .textStyle(.button)
-                    .foregroundStyle(Palette.navy)
-                    .frame(maxWidth: .infinity, minHeight: Size.button)
-                    .background(Palette.ice, in: Capsule())
-            }
-            .buttonStyle(PressableStyle())
-            Spacer(minLength: 0)
-        }
-        .padding(Space.lg)
-        .background(Palette.navy.ignoresSafeArea())
-        .presentationDetents([.medium, .large])
-        .environment(\.colorScheme, .dark)
-    }
-
-    private func remaining(at date: Date) -> Int {
-        if let endsAt { return max(0, Int(endsAt.timeIntervalSince(date).rounded(.up))) }
-        return pausedLeft ?? total
-    }
-
-    private func toggle() {
-        if let endsAt {
-            pausedLeft = max(0, Int(endsAt.timeIntervalSinceNow.rounded(.up)))
-            self.endsAt = nil
-        } else {
-            endsAt = .now.addingTimeInterval(TimeInterval(pausedLeft ?? total))
-            pausedLeft = nil
-        }
-    }
-
-    private func finish() {
-        endsAt = nil
-        pausedLeft = nil
-        UINotificationFeedbackGenerator().notificationOccurred(.success)
-    }
-}
-
 // MARK: - Gym chrome (navy)
 
 /// A pushed Gym page: back button, optional centred title, trailing accessory, navy background.
 struct GymPage<Trailing: View, Content: View>: View {
     let title: String?
+    /// At the root of a sheet: an ✕ that closes it instead of a back chevron.
+    var closes = false
     @ViewBuilder var trailing: () -> Trailing
     @ViewBuilder var content: () -> Content
     @Environment(\.dismiss) private var dismiss
 
-    init(title: String?, @ViewBuilder trailing: @escaping () -> Trailing = { EmptyView() }, @ViewBuilder content: @escaping () -> Content) {
+    init(title: String?, closes: Bool = false, @ViewBuilder trailing: @escaping () -> Trailing = { EmptyView() },
+         @ViewBuilder content: @escaping () -> Content) {
         self.title = title
+        self.closes = closes
         self.trailing = trailing
         self.content = content
     }
@@ -622,14 +812,14 @@ struct GymPage<Trailing: View, Content: View>: View {
                     }
                     HStack {
                         Button { dismiss() } label: {
-                            Image(systemName: "chevron.left")
+                            Image(systemName: closes ? "xmark" : "chevron.left")
                                 .font(TextStyle.headline.font)
                                 .foregroundStyle(Palette.onPanel)
                                 .frame(width: Size.avatar, height: Size.avatar)
                                 .background(Palette.navyRaised, in: RoundedRectangle(cornerRadius: Radius.sm))
                         }
                         .buttonStyle(.plain)
-                        .accessibilityLabel("Back")
+                        .accessibilityLabel(closes ? "Close" : "Back")
                         Spacer()
                         trailing()
                     }
@@ -686,6 +876,8 @@ private struct GymTag: View {
     var body: some View {
         Text(text)
             .textStyle(.micro)
+            .lineLimit(1)
+            .fixedSize()
             .foregroundStyle(Palette.ice)
             .padding(.horizontal, Space.xs)
             .padding(.vertical, Space.xxs)
@@ -731,24 +923,5 @@ struct GymSegmented<Option: Hashable>: View {
         }
         .padding(Space.xxs)
         .background(Palette.navyRaised, in: Capsule())
-    }
-}
-
-private struct RoundIconButton: View {
-    let icon: String
-    let label: String
-    var tint: Color = Palette.ice
-    let action: () -> Void
-
-    var body: some View {
-        Button(action: action) {
-            Image(systemName: icon)
-                .font(TextStyle.headline.font)
-                .foregroundStyle(tint)
-                .frame(width: Size.buttonTall, height: Size.buttonTall)
-                .background(Palette.navyRaised, in: Circle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(label)
     }
 }
