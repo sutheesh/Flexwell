@@ -2,7 +2,8 @@ import Foundation
 import SwiftData
 import FlexFitEngine
 
-/// Any day's meals: the week plan scaled to that day's calorie target, with saved ingredient swaps applied.
+/// Any day's meals and calories: the week's calorie plan (rest day, cheat days) and that day's meals scaled
+/// to it, with saved ingredient swaps applied.
 struct MealPlanContext {
     let profile: UserProfile
     let targets: DailyTargets
@@ -10,30 +11,36 @@ struct MealPlanContext {
 
     static func weekday(of date: Date) -> Int { (Calendar.current.component(.weekday, from: date) + 5) % 7 }
 
+    /// Days since 1 Jan 2001 (a Monday): what the planner rotates meals by.
+    static func dayNumber(of date: Date) -> Int {
+        let cal = Calendar.current
+        let origin = cal.date(from: DateComponents(year: 2001, month: 1, day: 1)) ?? .distantPast
+        return cal.dateComponents([.day], from: origin, to: cal.startOfDay(for: date)).day ?? 0
+    }
+
+    /// The week's calories, Monday first.
+    var week: CalorieWeek.Week {
+        CalorieWeek.week(for: profile, base: targets.calories, expenditure: targets.expenditure)
+    }
+
+    func day(on date: Date) -> CalorieWeek.Day { week.days[Self.weekday(of: date)] }
+
     func meals(on date: Date) -> [PlannedMeal] {
         let start = Calendar.current.startOfDay(for: date)
         let choices = swaps.filter { $0.day == start }
             .map { IngredientSwapChoice(mealIndex: $0.mealIndex, from: $0.from, to: $0.to) }
-        return MealPlanner.day(weekday: Self.weekday(of: date), profile: profile,
-                               targetCalories: calories(on: date), swaps: choices)
+        let day = day(on: date)
+        return MealPlanner.day(dayNumber: Self.dayNumber(of: date), profile: profile,
+                               targetCalories: day.plannedCalories, cheatMeal: day.cheat == .meal, swaps: choices)
     }
 
-    /// The mock's day target: full on training and recovery days, 150 kcal lower on the full-rest day.
-    func calories(on date: Date) -> Int {
-        Self.calories(base: targets.calories, kind: WeekPlanner.week(for: profile)[Self.weekday(of: date)].kind)
-    }
-
-    static let restDayReduction = 150
-
-    static func calories(base: Int, kind: DayKind) -> Int {
-        kind == .rest ? base - restDayReduction : base
-    }
+    func calories(on date: Date) -> Int { day(on: date).calories }
 
     /// The next meal not yet eaten, by time of day; falls back to the first uneaten one.
     static func nextMeal(_ meals: [PlannedMeal], eaten: Set<Int>, now: Date = .now) -> PlannedMeal? {
         let hour = Double(Calendar.current.component(.hour, from: now)) + Double(Calendar.current.component(.minute, from: now)) / 60
         let open = meals.filter { !eaten.contains($0.index) }
-        return open.first { $0.slot.hour + 1.5 >= hour } ?? open.first
+        return open.first { $0.moment.hour + 1.5 >= hour } ?? open.first
     }
 }
 

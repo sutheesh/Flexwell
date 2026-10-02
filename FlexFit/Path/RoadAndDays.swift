@@ -161,12 +161,12 @@ struct DayByDaySection: View {
                 ForEach(meals) { meal in
                     Button { onOpenMeal(MealSelection(date: dates[selected], planned: meal)) } label: {
                         HStack(spacing: Space.sm) {
-                            Text(meal.slot.clock).textStyle(.micro).foregroundStyle(Palette.inkMuted)
+                            Text(meal.moment.clock).textStyle(.micro).foregroundStyle(Palette.inkMuted)
                                 .frame(width: Size.avatar + 16, alignment: .leading)
                             VStack(alignment: .leading, spacing: Space.xxs) {
                                 Text(meal.meal.name).textStyle(.label).foregroundStyle(Palette.ink)
                                     .fixedSize(horizontal: false, vertical: true)
-                                Text("\(meal.slot.title) · \(meal.proteinG)g protein").textStyle(.micro).foregroundStyle(Palette.inkMuted)
+                                Text("\(meal.moment.title) · \(meal.proteinG)g protein").textStyle(.micro).foregroundStyle(Palette.inkMuted)
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
                             Text("\(meal.kcal)").textStyle(.macroValue).foregroundStyle(Palette.copperText)

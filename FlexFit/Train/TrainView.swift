@@ -15,29 +15,38 @@ struct TrainView: View {
     @Query private var painFlags: [PainFlag]
     @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
     @State private var selectedWeekday = TrainView.todayWeekday
+    /// Which week the strip shows, relative to this one (-1 last week, 1 next week).
+    @State private var weekOffset = 0
     @State private var mode: Mode = .plan
-    /// The header ★ on the Exercises view: favourites instead of the body map.
+    /// The header ★ opens favourites from either Gym mode; on Exercises it toggles back to the body map.
     @State private var showsFavorites = false
 
     enum Mode: String, CaseIterable { case plan = "My plan", exercises = "Exercises" }
 
     static var todayWeekday: Int { (Calendar.current.component(.weekday, from: .now) + 5) % 7 }
+    /// How far ahead the strip goes when the plan has no end date (maintaining weight).
+    static let openEndedWeeksAhead = 12
 
     var body: some View {
         Group {
             if let record = profiles.first {
-                content(record: record, week: TodayPlan.weekNumber(since: record.createdAt, now: .now))
+                content(record: record, currentWeek: TodayPlan.weekNumber(since: record.createdAt, now: .now))
             }
         }
         .environment(\.colorScheme, .dark)
     }
 
-    private func content(record: ProfileRecord, week weekNumber: Int) -> some View {
+    private func content(record: ProfileRecord, currentWeek: Int) -> some View {
         let resolver = PlanResolver(record: record, swaps: swaps, logs: logs, painFlags: painFlags)
         let profile = resolver.profile
-        let dates = weekDates()
+        // The plan runs from the week it started in to its last week (open-ended when maintaining).
+        let totalWeeks = TargetCalculator.weeksToGoal(for: profile)
+        let weeks = (1 - currentWeek)...max(0, totalWeeks.map { $0 - currentWeek } ?? Self.openEndedWeeksAhead)
+        let weekNumber = currentWeek + weekOffset
+        let planStart = Calendar.current.startOfDay(for: record.createdAt)
+        let dates = weekDates(offset: weekOffset)
         let selectedDate = dates[selectedWeekday]
-        let isToday = selectedWeekday == Self.todayWeekday
+        let isToday = Calendar.current.isDateInToday(selectedDate)
         let day = resolver.week[selectedWeekday]
         let plan = resolver.session(forWeekday: selectedWeekday, on: selectedDate, applyPivot: isToday)
         let done = Set(resolver.log(for: selectedDate)?.completedExercises ?? [])
@@ -45,25 +54,46 @@ struct TrainView: View {
         return ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(spacing: Space.sm) {
-                    HeaderButton(name: profile.name, kicker: "Workout plan · week \(weekNumber)",
+                    HeaderButton(name: profile.name,
+                                 kicker: "Workout plan · week \(weekNumber)" + (totalWeeks.map { " of \($0)" } ?? ""),
                                  title: mode == .plan ? "Schedule" : (showsFavorites ? "Favourites" : "Exercises"),
                                  showsCart: false)
-                    if mode == .exercises {
-                        Button { withAnimation(.easeInOut(duration: 0.2)) { showsFavorites.toggle() } } label: {
-                            Image(systemName: showsFavorites ? "star.fill" : "star")
-                                .font(TextStyle.headline.font)
-                                .foregroundStyle(Palette.copper)
-                                .frame(width: Size.avatar, height: Size.avatar)
-                                .background(Palette.navyRaised, in: RoundedRectangle(cornerRadius: Radius.sm))
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            if mode == .plan {
+                                showsFavorites = true
+                                mode = .exercises
+                            } else {
+                                showsFavorites.toggle()
+                            }
                         }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel(showsFavorites ? "Show the body map" : "Show favourites")
-                        .accessibilityAddTraits(showsFavorites ? .isSelected : [])
+                    } label: {
+                        Image(systemName: showsFavorites ? "star.fill" : "star")
+                            .font(TextStyle.headline.font)
+                            .foregroundStyle(Palette.copper)
+                            .frame(width: Size.avatar, height: Size.avatar)
+                            .background(Palette.navyRaised, in: RoundedRectangle(cornerRadius: Radius.sm))
                     }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel(mode == .plan || !showsFavorites ? "Show favourites" : "Show the body map")
+                    .accessibilityAddTraits(showsFavorites && mode == .exercises ? .isSelected : [])
                 }
 
-                WeekStrip(week: resolver.week, dates: dates, selected: $selectedWeekday)
+                WeekSwitcher(dates: dates, offset: weekOffset, weekNumber: weekNumber,
+                             canGoBack: weekOffset > weeks.lowerBound, canGoForward: weekOffset < weeks.upperBound,
+                             onChange: { showWeek(weekOffset + $0, planStart: planStart) },
+                             onThisWeek: { showWeek(0, planStart: planStart) })
                     .padding(.top, Space.sm)
+
+                WeekStrip(week: resolver.week, dates: dates, firstDay: planStart,
+                          cheatDays: Set(profile.cheatDays.activeWeekdays), selected: $selectedWeekday)
+                    .padding(.top, Space.xs)
+                    // Swipe the strip sideways for the previous or next week.
+                    .simultaneousGesture(DragGesture(minimumDistance: 24).onEnded { drag in
+                        guard abs(drag.translation.width) > abs(drag.translation.height) * 1.5 else { return }
+                        let step = drag.translation.width < 0 ? 1 : -1
+                        if weeks.contains(weekOffset + step) { showWeek(weekOffset + step, planStart: planStart) }
+                    })
 
                 SessionPanel(day: day, plan: plan, isToday: isToday, travel: resolver.travelKit(on: selectedDate),
                              onStart: { router.workoutDay = selectedDate },
@@ -112,14 +142,15 @@ struct TrainView: View {
                     }
                     .background(Palette.navy, in: RoundedRectangle(cornerRadius: Radius.md))
                 } else {
-                    Text(restNote(for: day, kcal: MealPlanContext.calories(base: TargetsStore.current(weekly, profile: profile).calories, kind: day.kind)))
+                    Text(restNote(for: day, kcal: MealPlanContext(profile: profile, targets: TargetsStore.current(weekly, profile: profile), swaps: []).calories(on: selectedDate)))
                         .textStyle(.body)
                         .foregroundStyle(Palette.onPanelMuted)
                         .fixedSize(horizontal: false, vertical: true)
                         .padding(.top, Space.xl - 2)
                 }
 
-                WeekProgress(week: resolver.week, today: Self.todayWeekday,
+                WeekProgress(week: resolver.week, title: weekOffset == 0 ? "This week" : "Week \(weekNumber)",
+                             today: weekOffset == 0 ? Self.todayWeekday : nil,
                              completed: Set((0..<7).filter { resolver.log(for: dates[$0])?.completedExercises.isEmpty == false }))
                     .padding(.top, Space.md - 2)
                 }
@@ -137,6 +168,20 @@ struct TrainView: View {
 
     // MARK: Actions
 
+    /// Shows another week, keeping the selected weekday (today's, back on this week), but never a day before
+    /// the plan started.
+    private func showWeek(_ offset: Int, planStart: Date) {
+        withAnimation(.easeInOut(duration: 0.2)) {
+            weekOffset = offset
+            if offset == 0 { selectedWeekday = Self.todayWeekday }
+            let dates = weekDates(offset: offset)
+            if dates[selectedWeekday] < planStart,
+               let first = Weekday.displayOrder.first(where: { dates[$0] >= planStart }) {
+                selectedWeekday = first
+            }
+        }
+    }
+
     private func toggleDone(_ id: String, on date: Date) {
         let log = DailyLog.forDay(date, in: modelContext)
         if let i = log.completedExercises.firstIndex(of: id) {
@@ -150,11 +195,12 @@ struct TrainView: View {
 
     // MARK: Helpers
 
-    private func weekDates() -> [Date] {
+    /// The dates of the Sunday-to-Saturday week `offset` weeks from this one, indexed by weekday (0 = Monday).
+    private func weekDates(offset: Int) -> [Date] {
         let cal = Calendar.current
-        let today = cal.startOfDay(for: .now)
-        let monday = cal.date(byAdding: .day, value: -Self.todayWeekday, to: today) ?? today
-        return (0..<7).map { cal.date(byAdding: .day, value: $0, to: monday) ?? monday }
+        let thisSunday = TodayPlan.weekStart(.now)
+        let sunday = cal.date(byAdding: .day, value: 7 * offset, to: thisSunday) ?? thisSunday
+        return (0..<7).map { cal.date(byAdding: .day, value: ($0 + 1) % 7, to: sunday) ?? sunday }
     }
 
     private func isSwapped(_ id: String, on date: Date) -> Bool {
@@ -164,7 +210,7 @@ struct TrainView: View {
 
     private func restNote(for day: PlannedDay, kcal: Int) -> String {
         day.kind == .rest
-            ? "Rest day. 7,000 easy steps, 10 minutes of stretching, and food at \(Formatters.kcal(kcal)) kcal — \(MealPlanContext.restDayReduction) lower than training days."
+            ? "Rest day. 7,000 easy steps, 10 minutes of stretching, and food at \(Formatters.kcal(kcal)) kcal — \(CalorieWeek.restDayReduction) lower than training days."
             : "25-minute brisk walk plus hips and T-spine mobility. Keeps the legs fresh for tomorrow."
     }
 }
@@ -225,13 +271,19 @@ struct TabHeader: View {
 
 private struct WeekStrip: View {
     let week: [PlannedDay]
+    /// Indexed by weekday, 0 = Monday.
     let dates: [Date]
+    /// Days before the plan started can't be picked.
+    let firstDay: Date
+    /// Weekdays (0 = Monday) that are cheat days.
+    var cheatDays: Set<Int> = []
     @Binding var selected: Int
 
     var body: some View {
         HStack(spacing: Space.xxs + 1) {
-            ForEach(0..<7, id: \.self) { i in
+            ForEach(Weekday.displayOrder, id: \.self) { i in
                 let isSelected = i == selected
+                let beforePlan = dates[i] < firstDay
                 Button { selected = i } label: {
                     VStack(spacing: Space.xxs + 1) {
                         Text(Weekday.shortName(i))
@@ -245,11 +297,22 @@ private struct WeekStrip: View {
                     }
                     .foregroundStyle(isSelected ? Palette.navy : Palette.onPanel)
                     .frame(maxWidth: .infinity, minHeight: Size.row + 12)
+                    .overlay(alignment: .topTrailing) {
+                        if cheatDays.contains(i) {
+                            Image(systemName: "birthday.cake.fill")
+                                .font(.system(size: 9))
+                                .foregroundStyle(isSelected ? Palette.navy : Palette.copper)
+                                .padding(Space.xxs)
+                                .accessibilityHidden(true)
+                        }
+                    }
                     .background(isSelected ? Palette.ice : Palette.navy, in: RoundedRectangle(cornerRadius: Radius.sm))
                     .contentShape(RoundedRectangle(cornerRadius: Radius.sm))
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("\(dates[i].formatted(.dateTime.weekday(.wide).day())), \(label(week[i]))")
+                .disabled(beforePlan)
+                .opacity(beforePlan ? 0.35 : 1)
+                .accessibilityLabel("\(dates[i].formatted(.dateTime.weekday(.wide).day())), \(beforePlan ? "before your plan" : label(week[i]))\(cheatDays.contains(i) ? ", cheat day" : "")")
                 .accessibilityAddTraits(isSelected ? .isSelected : [])
             }
         }
@@ -269,6 +332,75 @@ private struct WeekStrip: View {
         case .activeRecovery: "Walk and mobility"
         case .rest: "Rest"
         }
+    }
+}
+
+// MARK: - Week switcher
+
+/// Previous / next week around the week's dates; tapping the dates goes back to this week.
+private struct WeekSwitcher: View {
+    /// Indexed by weekday, 0 = Monday.
+    let dates: [Date]
+    let offset: Int
+    let weekNumber: Int
+    let canGoBack: Bool
+    let canGoForward: Bool
+    let onChange: (Int) -> Void
+    let onThisWeek: () -> Void
+
+    var body: some View {
+        HStack(spacing: Space.sm) {
+            arrow("chevron.left", enabled: canGoBack, label: "Previous week") { onChange(-1) }
+            Spacer(minLength: 0)
+            Button(action: onThisWeek) {
+                VStack(spacing: Space.xxs / 2) {
+                    Text(range)
+                        .textStyle(.label)
+                        .foregroundStyle(Palette.onPanel)
+                    Text(caption)
+                        .textStyle(.micro)
+                        .foregroundStyle(offset == 0 ? Palette.copper : Palette.onPanelMuted)
+                }
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .disabled(offset == 0)
+            .accessibilityLabel("\(caption), \(range)")
+            .accessibilityHint(offset == 0 ? "" : "Goes back to this week")
+            Spacer(minLength: 0)
+            arrow("chevron.right", enabled: canGoForward, label: "Next week") { onChange(1) }
+        }
+    }
+
+    /// "Sep 21 – 27", or "Sep 28 – Oct 4" across months.
+    private var range: String {
+        let sunday = dates[6], saturday = dates[5]
+        let sameMonth = Calendar.current.isDate(sunday, equalTo: saturday, toGranularity: .month)
+        let end = sameMonth ? saturday.formatted(.dateTime.day()) : saturday.formatted(.dateTime.month(.abbreviated).day())
+        return "\(sunday.formatted(.dateTime.month(.abbreviated).day())) – \(end)"
+    }
+
+    private var caption: String {
+        switch offset {
+        case 0: "This week · week \(weekNumber)"
+        case -1: "Last week · week \(weekNumber)"
+        case 1: "Next week · week \(weekNumber)"
+        default: "Week \(weekNumber)"
+        }
+    }
+
+    private func arrow(_ symbol: String, enabled: Bool, label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            Image(systemName: symbol)
+                .font(TextStyle.label.font)
+                .foregroundStyle(Palette.onPanel)
+                .frame(width: Size.button, height: Size.button)
+                .background(Palette.navyRaised, in: Circle())
+        }
+        .buttonStyle(.plain)
+        .disabled(!enabled)
+        .opacity(enabled ? 1 : 0.3)
+        .accessibilityLabel(label)
     }
 }
 
@@ -470,7 +602,9 @@ enum ExerciseCopy {
 
 private struct WeekProgress: View {
     let week: [PlannedDay]
-    let today: Int
+    let title: String
+    /// Today's weekday, when the week shown is this one.
+    let today: Int?
     /// Weekdays with at least one exercise ticked off.
     let completed: Set<Int>
 
@@ -479,7 +613,7 @@ private struct WeekProgress: View {
         let done = (0..<7).filter { week[$0].kind == .training && completed.contains($0) }.count
         VStack(alignment: .leading, spacing: Space.sm + 1) {
             HStack(alignment: .firstTextBaseline) {
-                Text("This week")
+                Text(title)
                     .textStyle(.label)
                     .foregroundStyle(Palette.onPanel)
                 Spacer()
@@ -488,7 +622,7 @@ private struct WeekProgress: View {
                     .foregroundStyle(Palette.ice)
             }
             HStack(spacing: Space.xxs) {
-                ForEach(0..<7, id: \.self) { i in
+                ForEach(Weekday.displayOrder, id: \.self) { i in
                     Capsule()
                         .fill(fill(for: i))
                         .frame(height: Size.dot)

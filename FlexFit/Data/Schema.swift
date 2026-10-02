@@ -46,9 +46,22 @@ enum SchemaV1: VersionedSchema {
         var cuisines: [String] = []
         var allergens: [String] = []
         var dislikes: [String] = []
+        /// Proteins the user doesn't eat.
+        var excludedProteins: [String] = []
+        /// Halal, Jain.
+        var foodRules: [String] = []
+        var snackTaste: String = SnackTaste.both.rawValue
         /// 0 = no limit.
         var maxCookMinutes: Int = 0
-        var mealPattern: String = MealPattern.threePlusSnack.rawValue
+        /// Main meals a day (older profiles may hold a pattern from before snacks were their own setting).
+        var mealPattern: String = MealPattern.three.rawValue
+        /// Nil on profiles saved before snacks were their own setting: read from the old meal pattern.
+        var snacksBetweenMeals: Bool?
+        var cheatFrequency: String = CheatDays.Frequency.none.rawValue
+        /// Weekdays, 0 = Monday, in order of preference.
+        var cheatWeekdays: [Int] = CheatDays().weekdays
+        var cheatStyle: String = CheatDays.Style.day.rawValue
+        var cheatBudget: String = CheatDays.Budget.spread.rawValue
         var history: String = TrainingHistory.firstAttempt.rawValue
         var dailySteps: String = DailySteps.fourToEight.rawValue
         var styles: [String] = []
@@ -383,8 +396,16 @@ extension ProfileRecord {
         cuisines = p.cuisines.map(\.rawValue).sorted()
         allergens = p.allergens.map(\.rawValue).sorted()
         dislikes = p.dislikes.sorted()
+        excludedProteins = p.excludedProteins.map(\.rawValue).sorted()
+        foodRules = p.foodRules.map(\.rawValue).sorted()
+        snackTaste = p.snackTaste.rawValue
         maxCookMinutes = p.maxCookMinutes ?? 0
         mealPattern = p.mealPattern.rawValue
+        snacksBetweenMeals = p.snacksBetweenMeals
+        cheatFrequency = p.cheatDays.frequency.rawValue
+        cheatWeekdays = p.cheatDays.weekdays
+        cheatStyle = p.cheatDays.style.rawValue
+        cheatBudget = p.cheatDays.budget.rawValue
         history = p.history.rawValue
         dailySteps = p.dailySteps.rawValue
         styles = p.styles.map(\.rawValue).sorted()
@@ -418,8 +439,16 @@ extension ProfileRecord {
         p.cuisines = Set(cuisines.compactMap(Cuisine.init(rawValue:)))
         p.allergens = Set(allergens.compactMap(Allergen.init(rawValue:)))
         p.dislikes = Set(dislikes)
+        p.excludedProteins = Set(excludedProteins.compactMap(Protein.init(rawValue:)))
+        p.foodRules = Set(foodRules.compactMap(FoodRule.init(rawValue:)))
+        p.snackTaste = SnackTaste(rawValue: snackTaste) ?? .both
         p.maxCookMinutes = maxCookMinutes > 0 ? maxCookMinutes : nil
-        p.mealPattern = MealPattern(rawValue: mealPattern) ?? .threePlusSnack
+        p.mealPattern = MealPattern(stored: mealPattern)
+        p.snacksBetweenMeals = snacksBetweenMeals ?? MealPattern.legacyHadSnacks(mealPattern) ?? true
+        p.cheatDays.frequency = CheatDays.Frequency(rawValue: cheatFrequency) ?? .none
+        p.cheatDays.weekdays = cheatWeekdays
+        p.cheatDays.style = CheatDays.Style(rawValue: cheatStyle) ?? .day
+        p.cheatDays.budget = CheatDays.Budget(rawValue: cheatBudget) ?? .spread
         p.history = TrainingHistory(rawValue: history) ?? .firstAttempt
         p.dailySteps = DailySteps(rawValue: dailySteps) ?? .fourToEight
         p.styles = Set(styles.compactMap(TrainingStyle.init(rawValue:)))

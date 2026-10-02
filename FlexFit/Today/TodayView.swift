@@ -117,6 +117,8 @@ struct TodayView: View {
                     }
                 }
 
+                CheatDayBanner(day: mealContext.day(on: now), proteinG: targets.proteinG)
+
                 if !meals.isEmpty || !intake.entries.isEmpty {
                     HStack(alignment: .firstTextBaseline) {
                         SectionHeader(title: next == nil ? "Today's food" : "Next meal")
@@ -136,6 +138,9 @@ struct TodayView: View {
                                 TodayMealRow(meal: next, target: dayTarget, status: .upNext)
                             }
                             .buttonStyle(.plain)
+                        }
+                        if let free = mealContext.day(on: now).cheatMealKcal, !intake.dinnerReplaced, next == nil || next?.moment == .eveningSnack {
+                            CheatMealCard(kcal: free)
                         }
                         Button { router.tab = .eat } label: {
                             FoodSummaryRow(eatenCount: intake.visibleMeals.filter { eatenIdx.contains($0.index) }.count,
@@ -293,11 +298,17 @@ enum TodayPlan {
         return WeekPlanner.week(for: profile)[weekday]
     }
 
-    /// 1-based week of the plan, counted from when the profile was created.
+    /// 1-based week of the plan: weeks run Sunday to Saturday, and week 1 is the one the profile was created in.
     static func weekNumber(since start: Date, now: Date) -> Int {
-        let days = Calendar.current.dateComponents([.day], from: Calendar.current.startOfDay(for: start),
-                                                   to: Calendar.current.startOfDay(for: now)).day ?? 0
+        let days = Calendar.current.dateComponents([.day], from: weekStart(start), to: weekStart(now)).day ?? 0
         return max(0, days) / 7 + 1
+    }
+
+    /// The Sunday that starts the week `date` falls in (start of day).
+    static func weekStart(_ date: Date) -> Date {
+        let cal = Calendar.current
+        let day = cal.startOfDay(for: date)
+        return cal.date(byAdding: .day, value: 1 - cal.component(.weekday, from: day), to: day) ?? day
     }
 }
 
@@ -737,13 +748,13 @@ private struct TodayMealRow: View {
         HStack(spacing: Space.sm + 1) {
             Circle()
                 .fill(Palette.page)
-                .overlay { Image(meal.slot.illustration).resizable().scaledToFill() }
+                .overlay { Image(meal.meal.picture).resizable().scaledToFill() }
                 .frame(width: Size.avatar + 10, height: Size.avatar + 10)
                 .clipShape(Circle())
                 .accessibilityHidden(true)
             VStack(alignment: .leading, spacing: Space.xxs + 2) {
                 HStack(spacing: Space.xs - 1) {
-                    Text("\(meal.slot.title) · \(meal.slot.clock)")
+                    Text("\(meal.moment.title) · \(meal.moment.clock)")
                         .textStyle(.micro)
                         .foregroundStyle(Palette.inkMuted)
                     Text(statusTitle)

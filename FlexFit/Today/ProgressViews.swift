@@ -439,15 +439,6 @@ struct ProgressDetailView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Space.md) {
                     HStack(spacing: Space.sm) {
-                        Button { dismiss() } label: {
-                            Image(systemName: "chevron.left")
-                                .font(TextStyle.headline.font).foregroundStyle(Palette.ink)
-                                .frame(width: Size.avatar, height: Size.avatar)
-                                .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.sm))
-                                .cardShadow()
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Back")
                         VStack(alignment: .leading, spacing: Space.xxs + 1) {
                             Text("Since \(DayMonth.text(since))").textStyle(.caption).foregroundStyle(Palette.inkMuted)
                             Text("Progress").textStyle(.title2).foregroundStyle(Palette.ink).accessibilityAddTraits(.isHeader)
@@ -489,7 +480,7 @@ struct ProgressDetailView: View {
             }
             .statusBarBackdrop()
             .pageBackground()
-            .toolbar(.hidden, for: .navigationBar)
+            .toolbar(.visible, for: .navigationBar)
             .task(id: since) {
                 if record.healthSyncEnabled { walking = await HealthService.shared.walking(since: since) }
             }

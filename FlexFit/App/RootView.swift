@@ -67,8 +67,12 @@ private struct TodayTab: View {
                 .toolbar(.hidden, for: .navigationBar)
                 .navigationDestination(for: TodayRoute.self) { route in
                     switch route {
-                    case .path: PathView(isPushed: true).toolbar(.hidden, for: .navigationBar)
+                    case .path: PathView(isPushed: true)
+                        .toolbar(.visible, for: .navigationBar)
+                        .navigationTitle("")
                     case .progress: ProgressDetailView()
+                        .toolbar(.visible, for: .navigationBar)
+                        .navigationTitle("")
                     }
                 }
         }
@@ -87,9 +91,10 @@ private struct GymTab: View {
                 .toolbar(.hidden, for: .navigationBar)
                 .navigationDestination(for: GymRoute.self) { route in
                     switch route {
-                    case .group(let group): MuscleGroupView(group: group)
-                    case .exercise(let id): ExerciseDetailView(exerciseID: id)
+                    case .group(let group): MuscleGroupView(group: group).toolbar(.visible, for: .navigationBar)
+                    case .exercise(let id): ExerciseDetailView(exerciseID: id).toolbar(.visible, for: .navigationBar)
                     case .swapDetail(let choice): ExerciseDetailView(exerciseID: choice.candidateID, swap: choice)
+                        .toolbar(.visible, for: .navigationBar)
                     }
                 }
         }

@@ -116,6 +116,20 @@ struct SettingsView: View {
                             selection: bind(record, \.dietStyle), options: DietStyle.allCases.map { ($0.title, $0.rawValue) })
                     menuRow(icon: "clock", tint: .navy, title: "Meals per day", value: profile.mealPattern.title,
                             selection: bind(record, \.mealPattern), options: MealPattern.allCases.map { ($0.title, $0.rawValue) })
+                    Button {
+                        record.snacksBetweenMeals = !profile.snacksBetweenMeals
+                        save()
+                    } label: {
+                        ProfileRowLabel(icon: "carrot", tint: .blue, title: "Snacks between meals", value: nil,
+                                        chevron: .toggle(profile.snacksBetweenMeals))
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityValue(profile.snacksBetweenMeals ? "On" : "Off")
+                    NavigationLink { CheatDaysEditor(record: record) } label: {
+                        ProfileRowLabel(icon: "birthday.cake", tint: .copper, title: "Cheat days",
+                                        value: profile.cheatDays.summary, chevron: .push)
+                    }
+                    .buttonStyle(.plain)
                     menuRow(icon: "frying.pan", tint: .blue, title: "Max cooking time",
                             value: record.maxCookMinutes == 0 ? "No limit" : "\(record.maxCookMinutes) min",
                             selection: bind(record, \.maxCookMinutes), options: [10, 20, 40, 0].map { ($0 == 0 ? "No limit" : "\($0) min", $0) })
@@ -578,6 +592,7 @@ private struct EquipmentEditor: View {
         }
         .pageBackground()
         .navigationTitle("Equipment")
+        .toolbar(.visible, for: .navigationBar)
     }
 }
 
@@ -612,16 +627,143 @@ private struct LimitationsEditor: View {
         }
         .pageBackground()
         .navigationTitle("Areas to protect")
+        .toolbar(.visible, for: .navigationBar)
+    }
+}
+
+/// How often, which days, the whole day or one meal, and what pays for it — with what that means in calories.
+private struct CheatDaysEditor: View {
+    let record: ProfileRecord
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \WeeklyTargets.weekOf) private var weekly: [WeeklyTargets]
+
+    var body: some View {
+        let profile = record.profile()
+        let cheat = profile.cheatDays
+        ScrollView {
+            VStack(alignment: .leading, spacing: Space.lg) {
+                group("How often") {
+                    ForEach(CheatDays.Frequency.allCases, id: \.self) { f in
+                        Chip(title: f.title, isSelected: cheat.frequency == f) { set { $0.frequency = f } }
+                    }
+                }
+                if cheat.frequency != .none {
+                    group(cheat.frequency == .twice ? "Which days (pick two)" : "Which day") {
+                        ForEach(Weekday.displayOrder, id: \.self) { day in
+                            Chip(title: Weekday.shortName(day), isSelected: cheat.activeWeekdays.contains(day)) {
+                                set { c in
+                                    // The newest pick comes first; the oldest drops off past the count.
+                                    c.weekdays.removeAll { $0 == day }
+                                    c.weekdays.insert(day, at: 0)
+                                    c.weekdays = Array(c.weekdays.prefix(max(2, c.frequency.count)))
+                                }
+                            }
+                        }
+                    }
+                    group("What it is") {
+                        ForEach(CheatDays.Style.allCases, id: \.self) { s in
+                            Chip(title: s.title, isSelected: cheat.style == s) { set { $0.style = s } }
+                        }
+                    }
+                    group("Paying for it") {
+                        ForEach(CheatDays.Budget.allCases, id: \.self) { b in
+                            Chip(title: b.title, isSelected: cheat.budget == b) { set { $0.budget = b } }
+                        }
+                    }
+                    InlineNote(text: effect(profile), systemImage: "info.circle")
+                }
+            }
+            .padding(Space.lg)
+            .readableColumn()
+        }
+        .pageBackground()
+        .navigationTitle("Cheat days")
+        .toolbar(.visible, for: .navigationBar)
+    }
+
+    private func group<Content: View>(_ title: String, @ViewBuilder content: () -> Content) -> some View {
+        VStack(alignment: .leading, spacing: Space.sm) {
+            Text(title).textStyle(.label).foregroundStyle(Palette.ink)
+            FlowLayout { content() }
+        }
+    }
+
+    private func set(_ change: (inout CheatDays) -> Void) {
+        var p = record.profile()
+        change(&p.cheatDays)
+        record.cheatFrequency = p.cheatDays.frequency.rawValue
+        record.cheatWeekdays = p.cheatDays.weekdays
+        record.cheatStyle = p.cheatDays.style.rawValue
+        record.cheatBudget = p.cheatDays.budget.rawValue
+        try? modelContext.save()
+    }
+
+    /// What the choice does to the week, in plain numbers.
+    private func effect(_ profile: UserProfile) -> String {
+        let targets = TargetsStore.current(weekly, profile: profile)
+        let week = CalorieWeek.week(for: profile, base: targets.calories, expenditure: targets.expenditure)
+        let cheatDays = week.days.enumerated().filter { $0.element.cheat != nil }
+        guard let first = cheatDays.first?.element else { return "" }
+        let what = first.cheat == .meal
+            ? "a free meal of about \(Formatters.kcal(first.cheatMealKcal ?? 0)) kcal in place of dinner"
+            : "about \(Formatters.kcal(first.calories)) kcal for the day"
+        let others = week.days.filter { $0.cheat == nil }
+        let cut = others.isEmpty ? 0 : others.reduce(0) { $0 + $1.plain - $1.calories } / others.count
+        var text = "On cheat days you have \(what)."
+        if profile.cheatDays.budget == .spread {
+            text += cut > 0 ? " The other days eat about \(cut) kcal less to pay for it." : ""
+            if week.unpaidKcal > 0 {
+                text += " Your other days are already near the safe minimum, so \(Formatters.kcal(week.unpaidKcal)) kcal a week can't be made up — your goal date moves a little."
+            }
+        } else if let with = TargetCalculator.weeksToGoal(for: profile) {
+            var without = profile
+            without.cheatDays.frequency = .none
+            if let base = TargetCalculator.weeksToGoal(for: without), with > base {
+                text += " Nothing else changes; your goal moves from \(base) to \(with) weeks."
+            } else {
+                text += " Nothing else changes."
+            }
+        }
+        return text
     }
 }
 
 private struct FoodEditor: View {
     let record: ProfileRecord
     @Environment(\.modelContext) private var modelContext
+    @State private var searchingFoods = false
 
     var body: some View {
+        let profile = record.profile()
+        let ruledOut = Protein.ruledOut(by: profile.diet, rules: profile.foodRules)
         ScrollView {
             VStack(alignment: .leading, spacing: Space.xl) {
+                group("Food rules", hint: "On top of your diet style.") {
+                    ForEach(FoodRule.allCases, id: \.self) { rule in
+                        Chip(title: "\(rule.title) · \(rule.subtitle.lowercased())", isSelected: record.foodRules.contains(rule.rawValue)) {
+                            toggle(\.foodRules, rule.rawValue)
+                        }
+                    }
+                }
+                if ruledOut.count < Protein.allCases.count {
+                    group("Proteins you eat", hint: "Hard rule: meals with the ones you untick never appear.") {
+                        ForEach(Protein.allCases.filter { !ruledOut.contains($0) }, id: \.self) { protein in
+                            Chip(title: protein.title, isSelected: !record.excludedProteins.contains(protein.rawValue)) {
+                                toggle(\.excludedProteins, protein.rawValue)
+                            }
+                        }
+                    }
+                }
+                if profile.snacksBetweenMeals {
+                    group("Snack taste", hint: "Which snacks to lean towards.") {
+                        ForEach(SnackTaste.allCases, id: \.self) { taste in
+                            Chip(title: taste.title, isSelected: profile.snackTaste == taste) {
+                                record.snackTaste = taste.rawValue
+                                try? modelContext.save()
+                            }
+                        }
+                    }
+                }
                 group("Cuisines", hint: "Your meals come from these kitchens.") {
                     ForEach(Cuisine.allCases, id: \.self) { c in
                         Chip(title: c.rawValue, isSelected: record.cuisines.contains(c.rawValue)) { toggle(\.cuisines, c.rawValue) }
@@ -633,9 +775,10 @@ private struct FoodEditor: View {
                     }
                 }
                 group("Foods you won't eat", hint: "Avoided wherever there's an alternative.") {
-                    ForEach(FoodDislikes.options, id: \.self) { f in
+                    ForEach(FoodDislikes.options + record.dislikes.filter { !FoodDislikes.options.contains($0) }.sorted(), id: \.self) { f in
                         Chip(title: f, isSelected: record.dislikes.contains(f)) { toggle(\.dislikes, f) }
                     }
+                    Chip(title: "Search more…", isSelected: false) { searchingFoods = true }
                 }
             }
             .padding(Space.lg)
@@ -643,6 +786,13 @@ private struct FoodEditor: View {
         }
         .pageBackground()
         .navigationTitle("Food preferences")
+        .toolbar(.visible, for: .navigationBar)
+        .sheet(isPresented: $searchingFoods) {
+            FoodSearchPicker(selection: Binding(get: { Set(record.dislikes) }, set: {
+                record.dislikes = $0.sorted()
+                try? modelContext.save()
+            }))
+        }
     }
 
     private func group<C: View>(_ title: String, hint: String, @ViewBuilder chips: () -> C) -> some View {

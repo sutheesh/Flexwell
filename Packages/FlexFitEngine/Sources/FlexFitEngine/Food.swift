@@ -25,12 +25,23 @@ public enum RestaurantGuide {
 
     public static var cuisines: [String] { bundled.keys.sorted() }
 
-    /// Picks safe for this user (allergens, vegetarian/vegan), best protein-per-calorie first,
-    /// preferring ones that fit the calories left today.
+    /// Picks safe for this user (allergens, diet, proteins they don't eat, halal), best protein-per-calorie first,
+    /// preferring ones that fit the calories left today. Dish names are read for the meat in them.
     public static func picks(cuisine: String, profile: UserProfile, kcalLeft: Int, limit: Int = 3) -> [RestaurantPick] {
         (bundled[cuisine] ?? [])
             .filter { profile.allergens.isDisjoint(with: $0.allergens) }
-            .filter { profile.diet == .vegan ? $0.vegan : profile.diet == .vegetarian ? $0.vegetarian : true }
+            .filter { dish in
+                let proteins = IngredientRules.proteins(in: dish.name)
+                switch profile.diet {
+                case .vegan: guard dish.vegan else { return false }
+                case .vegetarian: guard dish.vegetarian else { return false }
+                case .pescatarian: guard dish.vegetarian || proteins.isDisjoint(with: Protein.landMeat) else { return false }
+                default: break
+                }
+                if profile.foodRules.contains(.jain) && !dish.vegan && !dish.vegetarian { return false }
+                if profile.foodRules.contains(.halal) && proteins.contains(.pork) { return false }
+                return proteins.isDisjoint(with: profile.excludedProteins)
+            }
             .sorted { a, b in
                 let aFits = a.kcal <= max(kcalLeft, 350), bFits = b.kcal <= max(kcalLeft, 350)
                 if aFits != bFits { return aFits }

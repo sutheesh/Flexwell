@@ -86,7 +86,7 @@ extension UserProfile {
         p.allergens = [.peanuts]
         p.dislikes = ["Mushrooms"]
         p.maxCookMinutes = 20
-        p.mealPattern = .threePlusSnack
+        p.mealPattern = .three
         return p
     }()
 

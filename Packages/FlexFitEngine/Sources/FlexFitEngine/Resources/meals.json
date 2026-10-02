@@ -1,6 +1,6 @@
 {
- "version": 1,
- "reviewStatus": "draft — macros computed from per-ingredient reference nutrition (nutrition.json); recipes and values must be human-verified before launch",
+ "version": 3,
+ "reviewStatus": "macros computed from per-ingredient nutrition (nutrition.json, checked against USDA 2026-09-27); recipes themselves must still be human-verified before launch",
  "allergenNote": "Tags are the mock's plus allergens derived from ingredient names (conservative: oats count as gluten, coconut as a tree nut per FDA). Verify every recipe before launch.",
  "meals": [
   {
@@ -101,9 +101,9 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 517,
-   "proteinG": 29,
-   "carbsG": 66,
+   "kcal": 512,
+   "proteinG": 27,
+   "carbsG": 67,
    "fatG": 17,
    "cookMinutes": 5,
    "rating": 4.8,
@@ -264,10 +264,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 683,
-   "proteinG": 62,
+   "kcal": 507,
+   "proteinG": 50,
    "carbsG": 47,
-   "fatG": 26,
+   "fatG": 12,
    "cookMinutes": 20,
    "rating": 4.9,
    "ingredients": [
@@ -340,10 +340,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 599,
-   "proteinG": 64,
+   "kcal": 518,
+   "proteinG": 49,
    "carbsG": 50,
-   "fatG": 15,
+   "fatG": 13,
    "cookMinutes": 20,
    "rating": 4.9,
    "ingredients": [
@@ -381,10 +381,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 661,
-   "proteinG": 35,
-   "carbsG": 56,
-   "fatG": 33,
+   "kcal": 663,
+   "proteinG": 33,
+   "carbsG": 48,
+   "fatG": 38,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -461,10 +461,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 586,
-   "proteinG": 65,
+   "kcal": 509,
+   "proteinG": 51,
    "carbsG": 61,
-   "fatG": 8,
+   "fatG": 6,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -499,10 +499,10 @@
    "vegan": false,
    "keto": true,
    "allergens": [],
-   "kcal": 577,
-   "proteinG": 55,
+   "kcal": 427,
+   "proteinG": 47,
    "carbsG": 6,
-   "fatG": 37,
+   "fatG": 24,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -605,10 +605,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 352,
-   "proteinG": 34,
-   "carbsG": 42,
-   "fatG": 7,
+   "kcal": 337,
+   "proteinG": 33,
+   "carbsG": 41,
+   "fatG": 6,
    "cookMinutes": 2,
    "rating": 4.6,
    "ingredients": [
@@ -709,10 +709,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 655,
-   "proteinG": 32,
-   "carbsG": 122,
-   "fatG": 6,
+   "kcal": 657,
+   "proteinG": 30,
+   "carbsG": 115,
+   "fatG": 10,
    "cookMinutes": 25,
    "rating": 4.9,
    "ingredients": [
@@ -787,12 +787,13 @@
    "vegan": false,
    "keto": false,
    "allergens": [
+    "gluten",
     "soy"
    ],
-   "kcal": 511,
-   "proteinG": 61,
+   "kcal": 434,
+   "proteinG": 47,
    "carbsG": 48,
-   "fatG": 7,
+   "fatG": 5,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -827,10 +828,10 @@
    "vegan": false,
    "keto": true,
    "allergens": [],
-   "kcal": 575,
-   "proteinG": 54,
+   "kcal": 399,
+   "proteinG": 42,
    "carbsG": 10,
-   "fatG": 35,
+   "fatG": 21,
    "cookMinutes": 30,
    "rating": 4.8,
    "ingredients": [
@@ -908,10 +909,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 604,
-   "proteinG": 61,
+   "kcal": 528,
+   "proteinG": 46,
    "carbsG": 49,
-   "fatG": 18,
+   "fatG": 16,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -988,10 +989,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 390,
-   "proteinG": 14,
-   "carbsG": 57,
-   "fatG": 13,
+   "kcal": 384,
+   "proteinG": 11,
+   "carbsG": 58,
+   "fatG": 12,
    "cookMinutes": 12,
    "rating": 4.5,
    "ingredients": [
@@ -1109,10 +1110,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 623,
-   "proteinG": 29,
-   "carbsG": 46,
-   "fatG": 36,
+   "kcal": 624,
+   "proteinG": 28,
+   "carbsG": 39,
+   "fatG": 40,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1149,10 +1150,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 434,
-   "proteinG": 14,
-   "carbsG": 70,
-   "fatG": 11,
+   "kcal": 482,
+   "proteinG": 21,
+   "carbsG": 72,
+   "fatG": 13,
    "cookMinutes": 10,
    "rating": 4.6,
    "ingredients": [
@@ -1220,10 +1221,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 488,
-   "proteinG": 41,
+   "kcal": 467,
+   "proteinG": 39,
    "carbsG": 60,
-   "fatG": 10,
+   "fatG": 9,
    "cookMinutes": 5,
    "rating": 4.8,
    "ingredients": [
@@ -1258,10 +1259,10 @@
     "gluten",
     "treeNuts"
    ],
-   "kcal": 416,
-   "proteinG": 27,
-   "carbsG": 40,
-   "fatG": 17,
+   "kcal": 424,
+   "proteinG": 28,
+   "carbsG": 36,
+   "fatG": 19,
    "cookMinutes": 3,
    "rating": 4.5,
    "ingredients": [
@@ -1363,10 +1364,10 @@
     "eggs",
     "gluten"
    ],
-   "kcal": 483,
-   "proteinG": 42,
+   "kcal": 466,
+   "proteinG": 40,
    "carbsG": 47,
-   "fatG": 15,
+   "fatG": 13,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -1395,7 +1396,7 @@
    "cuisine": "Western",
    "vegetarian": true,
    "vegan": false,
-   "keto": true,
+   "keto": false,
    "allergens": [
     "eggs",
     "gluten"
@@ -1631,6 +1632,7 @@
    "vegan": true,
    "keto": false,
    "allergens": [
+    "gluten",
     "soy"
    ],
    "kcal": 399,
@@ -1672,6 +1674,7 @@
    "keto": false,
    "allergens": [
     "eggs",
+    "gluten",
     "soy"
    ],
    "kcal": 346,
@@ -1900,10 +1903,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 659,
-   "proteinG": 38,
-   "carbsG": 55,
-   "fatG": 33,
+   "kcal": 661,
+   "proteinG": 36,
+   "carbsG": 48,
+   "fatG": 37,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -1972,10 +1975,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 565,
-   "proteinG": 59,
-   "carbsG": 56,
-   "fatG": 10,
+   "kcal": 495,
+   "proteinG": 44,
+   "carbsG": 47,
+   "fatG": 13,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2045,10 +2048,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 466,
-   "proteinG": 46,
-   "carbsG": 45,
-   "fatG": 11,
+   "kcal": 469,
+   "proteinG": 39,
+   "carbsG": 46,
+   "fatG": 15,
    "cookMinutes": 5,
    "rating": 4.6,
    "ingredients": [
@@ -2081,15 +2084,15 @@
    "cuisine": "Western",
    "vegetarian": false,
    "vegan": false,
-   "keto": true,
+   "keto": false,
    "allergens": [
     "eggs",
     "fish"
    ],
-   "kcal": 478,
-   "proteinG": 50,
+   "kcal": 446,
+   "proteinG": 45,
    "carbsG": 23,
-   "fatG": 20,
+   "fatG": 19,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2161,10 +2164,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 531,
-   "proteinG": 68,
+   "kcal": 447,
+   "proteinG": 53,
    "carbsG": 28,
-   "fatG": 15,
+   "fatG": 12,
    "cookMinutes": 10,
    "rating": 4.7,
    "ingredients": [
@@ -2202,10 +2205,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 585,
-   "proteinG": 54,
+   "kcal": 426,
+   "proteinG": 43,
    "carbsG": 30,
-   "fatG": 28,
+   "fatG": 16,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -2243,10 +2246,10 @@
     "gluten",
     "sesame"
    ],
-   "kcal": 670,
+   "kcal": 699,
    "proteinG": 27,
    "carbsG": 77,
-   "fatG": 31,
+   "fatG": 35,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -2284,10 +2287,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 546,
-   "proteinG": 59,
+   "kcal": 474,
+   "proteinG": 46,
    "carbsG": 51,
-   "fatG": 10,
+   "fatG": 8,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2364,10 +2367,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 460,
-   "proteinG": 52,
+   "kcal": 428,
+   "proteinG": 46,
    "carbsG": 33,
-   "fatG": 13,
+   "fatG": 11,
    "cookMinutes": 5,
    "rating": 4.5,
    "ingredients": [
@@ -2402,12 +2405,13 @@
    "vegan": false,
    "keto": false,
    "allergens": [
+    "gluten",
     "soy"
    ],
-   "kcal": 600,
-   "proteinG": 52,
+   "kcal": 450,
+   "proteinG": 41,
    "carbsG": 53,
-   "fatG": 19,
+   "fatG": 8,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -2480,12 +2484,13 @@
    "vegan": false,
    "keto": false,
    "allergens": [
+    "gluten",
     "soy"
    ],
-   "kcal": 559,
-   "proteinG": 50,
+   "kcal": 439,
+   "proteinG": 44,
    "carbsG": 48,
-   "fatG": 19,
+   "fatG": 8,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2519,10 +2524,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 633,
-   "proteinG": 61,
+   "kcal": 566,
+   "proteinG": 49,
    "carbsG": 45,
-   "fatG": 22,
+   "fatG": 20,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -2673,6 +2678,7 @@
    "vegan": false,
    "keto": false,
    "allergens": [
+    "gluten",
     "soy"
    ],
    "kcal": 449,
@@ -2757,9 +2763,9 @@
    "allergens": [
     "shellfish"
    ],
-   "kcal": 343,
-   "proteinG": 37,
-   "carbsG": 49,
+   "kcal": 321,
+   "proteinG": 31,
+   "carbsG": 48,
    "fatG": 1,
    "cookMinutes": 15,
    "rating": 4.6,
@@ -2770,7 +2776,7 @@
     },
     {
      "name": "Glass noodles",
-     "grams": 210
+     "grams": 50
     },
     {
      "name": "Cucumber",
@@ -2825,10 +2831,10 @@
    "allergens": [
     "sesame"
    ],
-   "kcal": 144,
+   "kcal": 187,
    "proteinG": 6,
-   "carbsG": 19,
-   "fatG": 6,
+   "carbsG": 20,
+   "fatG": 11,
    "cookMinutes": 5,
    "rating": 4.5,
    "ingredients": [
@@ -2886,10 +2892,10 @@
     "gluten",
     "soy"
    ],
-   "kcal": 222,
-   "proteinG": 20,
-   "carbsG": 22,
-   "fatG": 7,
+   "kcal": 247,
+   "proteinG": 18,
+   "carbsG": 23,
+   "fatG": 9,
    "cookMinutes": 1,
    "rating": 4.2,
    "ingredients": [
@@ -3093,10 +3099,10 @@
     "fish",
     "gluten"
    ],
-   "kcal": 241,
-   "proteinG": 25,
-   "carbsG": 22,
-   "fatG": 5,
+   "kcal": 219,
+   "proteinG": 23,
+   "carbsG": 24,
+   "fatG": 3,
    "cookMinutes": 3,
    "rating": 4.3,
    "ingredients": [
@@ -3327,10 +3333,10 @@
    "allergens": [
     "peanuts"
    ],
-   "kcal": 202,
-   "proteinG": 5,
-   "carbsG": 32,
-   "fatG": 6,
+   "kcal": 174,
+   "proteinG": 4,
+   "carbsG": 33,
+   "fatG": 4,
    "cookMinutes": 15,
    "rating": 4.4,
    "ingredients": [
@@ -3363,10 +3369,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 265,
+   "kcal": 248,
    "proteinG": 36,
-   "carbsG": 15,
-   "fatG": 7,
+   "carbsG": 14,
+   "fatG": 6,
    "cookMinutes": 2,
    "rating": 4.6,
    "ingredients": [
@@ -3505,10 +3511,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 553,
-   "proteinG": 62,
+   "kcal": 476,
+   "proteinG": 47,
    "carbsG": 52,
-   "fatG": 9,
+   "fatG": 7,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3617,10 +3623,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 686,
-   "proteinG": 64,
-   "carbsG": 44,
-   "fatG": 27,
+   "kcal": 512,
+   "proteinG": 50,
+   "carbsG": 37,
+   "fatG": 17,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3690,7 +3696,7 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 630,
+   "kcal": 626,
    "proteinG": 49,
    "carbsG": 72,
    "fatG": 18,
@@ -3724,10 +3730,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 645,
-   "proteinG": 52,
+   "kcal": 510,
+   "proteinG": 45,
    "carbsG": 47,
-   "fatG": 28,
+   "fatG": 16,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3758,10 +3764,10 @@
    "vegan": false,
    "keto": true,
    "allergens": [],
-   "kcal": 568,
-   "proteinG": 54,
+   "kcal": 392,
+   "proteinG": 41,
    "carbsG": 9,
-   "fatG": 34,
+   "fatG": 21,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -3903,10 +3909,10 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 491,
-   "proteinG": 61,
+   "kcal": 410,
+   "proteinG": 46,
    "carbsG": 7,
-   "fatG": 23,
+   "fatG": 21,
    "cookMinutes": 20,
    "rating": 4.8,
    "ingredients": [
@@ -3943,9 +3949,9 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 446,
-   "proteinG": 48,
-   "carbsG": 37,
+   "kcal": 435,
+   "proteinG": 46,
+   "carbsG": 34,
    "fatG": 13,
    "cookMinutes": 20,
    "rating": 4.6,
@@ -3979,7 +3985,7 @@
    "allergens": [
     "dairy"
    ],
-   "kcal": 341,
+   "kcal": 335,
    "proteinG": 25,
    "carbsG": 45,
    "fatG": 8,
@@ -4018,6 +4024,7 @@
    "keto": false,
    "allergens": [
     "fish",
+    "gluten",
     "soy"
    ],
    "kcal": 518,
@@ -4060,10 +4067,10 @@
    "allergens": [
     "gluten"
    ],
-   "kcal": 601,
-   "proteinG": 61,
+   "kcal": 524,
+   "proteinG": 47,
    "carbsG": 67,
-   "fatG": 8,
+   "fatG": 6,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -4094,6 +4101,7 @@
    "vegan": true,
    "keto": false,
    "allergens": [
+    "gluten",
     "soy"
    ],
    "kcal": 495,
@@ -4130,10 +4138,10 @@
    "vegan": false,
    "keto": false,
    "allergens": [],
-   "kcal": 553,
-   "proteinG": 47,
+   "kcal": 433,
+   "proteinG": 41,
    "carbsG": 47,
-   "fatG": 19,
+   "fatG": 8,
    "cookMinutes": 20,
    "rating": 4.7,
    "ingredients": [
@@ -4171,10 +4179,10 @@
     "dairy",
     "gluten"
    ],
-   "kcal": 692,
-   "proteinG": 68,
+   "kcal": 620,
+   "proteinG": 55,
    "carbsG": 57,
-   "fatG": 20,
+   "fatG": 19,
    "cookMinutes": 20,
    "rating": 4.6,
    "ingredients": [
@@ -4245,10 +4253,10 @@
    "allergens": [
     "fish"
    ],
-   "kcal": 599,
-   "proteinG": 45,
+   "kcal": 547,
+   "proteinG": 34,
    "carbsG": 48,
-   "fatG": 26,
+   "fatG": 23,
    "cookMinutes": 15,
    "rating": 4.7,
    "ingredients": [
@@ -4286,9 +4294,9 @@
     "shellfish",
     "treeNuts"
    ],
-   "kcal": 515,
-   "proteinG": 44,
-   "carbsG": 46,
+   "kcal": 493,
+   "proteinG": 38,
+   "carbsG": 45,
    "fatG": 18,
    "cookMinutes": 20,
    "rating": 4.7,
@@ -4322,10 +4330,10 @@
    "allergens": [
     "treeNuts"
    ],
-   "kcal": 593,
-   "proteinG": 63,
+   "kcal": 516,
+   "proteinG": 48,
    "carbsG": 49,
-   "fatG": 16,
+   "fatG": 14,
    "cookMinutes": 15,
    "rating": 4.6,
    "ingredients": [
@@ -4386,6 +4394,8456 @@
     {
      "name": "Peanuts",
      "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 121,
+   "slot": "snack",
+   "name": "Air-popped Popcorn",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 97,
+   "proteinG": 3,
+   "carbsG": 19,
+   "fatG": 1,
+   "cookMinutes": 3,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Popcorn",
+     "grams": 25
+    },
+    {
+     "name": "Salt",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 122,
+   "slot": "snack",
+   "name": "Orange & Pistachios",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 122,
+   "proteinG": 3,
+   "carbsG": 19,
+   "fatG": 5,
+   "cookMinutes": 1,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Orange",
+     "grams": 140
+    },
+    {
+     "name": "Pistachios",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 123,
+   "slot": "snack",
+   "name": "Kachumber & Roasted Chana",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 100,
+   "proteinG": 5,
+   "carbsG": 19,
+   "fatG": 1,
+   "cookMinutes": 5,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Cucumber",
+     "grams": 120
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    },
+    {
+     "name": "Roasted chana",
+     "grams": 15
+    },
+    {
+     "name": "Chaat masala",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 124,
+   "slot": "snack",
+   "name": "Watermelon, Lime & Tajín",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 93,
+   "proteinG": 2,
+   "carbsG": 24,
+   "fatG": 0,
+   "cookMinutes": 3,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Watermelon",
+     "grams": 300
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Tajín",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 125,
+   "slot": "snack",
+   "name": "Miso Soup with Tofu",
+   "cuisine": "East Asian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 138,
+   "proteinG": 13,
+   "carbsG": 10,
+   "fatG": 6,
+   "cookMinutes": 8,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Miso",
+     "grams": 18
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 60
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 250
+    }
+   ]
+  },
+  {
+   "id": 126,
+   "slot": "snack",
+   "name": "Pineapple, Lime & Chilli",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 106,
+   "proteinG": 1,
+   "carbsG": 28,
+   "fatG": 0,
+   "cookMinutes": 3,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Pineapple",
+     "grams": 200
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 127,
+   "slot": "snack",
+   "name": "Pear & Walnuts",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 144,
+   "proteinG": 2,
+   "carbsG": 25,
+   "fatG": 5,
+   "cookMinutes": 1,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Pear",
+     "grams": 160
+    },
+    {
+     "name": "Walnuts",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 128,
+   "slot": "snack",
+   "name": "Rice Cake, Avocado & Lime",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 138,
+   "proteinG": 2,
+   "carbsG": 19,
+   "fatG": 7,
+   "cookMinutes": 3,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Rice cakes",
+     "grams": 18
+    },
+    {
+     "name": "Avocado",
+     "grams": 40
+    },
+    {
+     "name": "Lime",
+     "grams": 5
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 129,
+   "slot": "snack",
+   "name": "Frozen Grapes",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 117,
+   "proteinG": 1,
+   "carbsG": 31,
+   "fatG": 0,
+   "cookMinutes": 1,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Grapes",
+     "grams": 170
+    }
+   ]
+  },
+  {
+   "id": 130,
+   "slot": "snack",
+   "name": "Dates & Walnuts",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 113,
+   "proteinG": 2,
+   "carbsG": 19,
+   "fatG": 5,
+   "cookMinutes": 1,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Dates",
+     "grams": 24
+    },
+    {
+     "name": "Walnuts",
+     "grams": 7
+    }
+   ]
+  },
+  {
+   "id": 131,
+   "slot": "snack",
+   "name": "Kiwi & Pumpkin Seeds",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 136,
+   "proteinG": 4,
+   "carbsG": 23,
+   "fatG": 5,
+   "cookMinutes": 2,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Kiwi",
+     "grams": 150
+    },
+    {
+     "name": "Pumpkin seeds",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 132,
+   "slot": "snack",
+   "name": "Thai Cucumber & Peanut Salad",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "peanuts"
+   ],
+   "kcal": 87,
+   "proteinG": 4,
+   "carbsG": 9,
+   "fatG": 5,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Cucumber",
+     "grams": 150
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Peanuts",
+     "grams": 10
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Coriander",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "slot": "snack",
+   "name": "Cottage Cheese & Cucumber",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 120,
+   "proteinG": 13,
+   "carbsG": 7,
+   "fatG": 5,
+   "cookMinutes": 2,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Cottage cheese",
+     "grams": 110
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Salt & pepper",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 134,
+   "slot": "snack",
+   "name": "Boiled Egg & Cherry Tomatoes",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs"
+   ],
+   "kcal": 97,
+   "proteinG": 8,
+   "carbsG": 4,
+   "fatG": 5,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 100
+    },
+    {
+     "name": "Salt & pepper",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 135,
+   "slot": "snack",
+   "name": "Mozzarella & Cherry Tomatoes",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 112,
+   "proteinG": 8,
+   "carbsG": 5,
+   "fatG": 7,
+   "cookMinutes": 2,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Mozzarella",
+     "grams": 30
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 100
+    },
+    {
+     "name": "Olive oil",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 136,
+   "slot": "snack",
+   "name": "Dark Chocolate & Almonds",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "treeNuts"
+   ],
+   "kcal": 118,
+   "proteinG": 3,
+   "carbsG": 7,
+   "fatG": 9,
+   "cookMinutes": 1,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Dark chocolate",
+     "grams": 12
+    },
+    {
+     "name": "Almonds",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 137,
+   "slot": "snack",
+   "name": "Paneer Tikka Bites",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 144,
+   "proteinG": 10,
+   "carbsG": 4,
+   "fatG": 10,
+   "cookMinutes": 12,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Paneer",
+     "grams": 45
+    },
+    {
+     "name": "Red pepper",
+     "grams": 40
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 10
+    },
+    {
+     "name": "Chaat masala",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 138,
+   "slot": "snack",
+   "name": "Labneh, Cucumber & Za'atar",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 85,
+   "proteinG": 4,
+   "carbsG": 6,
+   "fatG": 6,
+   "cookMinutes": 2,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Labneh",
+     "grams": 40
+    },
+    {
+     "name": "Cucumber",
+     "grams": 100
+    },
+    {
+     "name": "Za'atar",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 139,
+   "slot": "snack",
+   "name": "Tuna Cucumber Bites",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "fish"
+   ],
+   "kcal": 94,
+   "proteinG": 16,
+   "carbsG": 5,
+   "fatG": 2,
+   "cookMinutes": 5,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Tinned tuna",
+     "grams": 50
+    },
+    {
+     "name": "Cucumber",
+     "grams": 100
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 20
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 140,
+   "slot": "snack",
+   "name": "Smoked Salmon Cucumber Rounds",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "fish"
+   ],
+   "kcal": 84,
+   "proteinG": 10,
+   "carbsG": 5,
+   "fatG": 3,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Smoked salmon",
+     "grams": 45
+    },
+    {
+     "name": "Cucumber",
+     "grams": 100
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 15
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 141,
+   "slot": "snack",
+   "name": "Turkey & Hummus Roll-ups",
+   "cuisine": "Middle Eastern",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "sesame"
+   ],
+   "kcal": 118,
+   "proteinG": 11,
+   "carbsG": 6,
+   "fatG": 6,
+   "cookMinutes": 3,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Turkey slices",
+     "grams": 60
+    },
+    {
+     "name": "Hummus",
+     "grams": 20
+    },
+    {
+     "name": "Cucumber",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 142,
+   "slot": "snack",
+   "name": "Cucumber, Lime & Pepitas",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": true,
+   "allergens": [],
+   "kcal": 93,
+   "proteinG": 5,
+   "carbsG": 8,
+   "fatG": 6,
+   "cookMinutes": 3,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Cucumber",
+     "grams": 150
+    },
+    {
+     "name": "Pumpkin seeds",
+     "grams": 12
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Tajín",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 143,
+   "slot": "breakfast",
+   "name": "Pan con Tomate & Eggs",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 482,
+   "proteinG": 25,
+   "carbsG": 50,
+   "fatG": 20,
+   "cookMinutes": 10,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Sourdough",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 100
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Garlic",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 144,
+   "slot": "breakfast",
+   "name": "Chickpea & Tofu Scramble",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 541,
+   "proteinG": 36,
+   "carbsG": 59,
+   "fatG": 21,
+   "cookMinutes": 12,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 120
+    },
+    {
+     "name": "Chickpeas",
+     "grams": 80
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    },
+    {
+     "name": "Olive oil",
+     "grams": 7
+    },
+    {
+     "name": "Sourdough",
+     "grams": 50
+    },
+    {
+     "name": "Paprika",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 145,
+   "slot": "lunch",
+   "name": "Greek Lentil Salad & Pita",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 555,
+   "proteinG": 26,
+   "carbsG": 85,
+   "fatG": 14,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Green lentils",
+     "grams": 200
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    },
+    {
+     "name": "Red onion",
+     "grams": 30
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    },
+    {
+     "name": "Lemon",
+     "grams": 15
+    },
+    {
+     "name": "Parsley",
+     "grams": 10
+    },
+    {
+     "name": "Olives",
+     "grams": 20
+    },
+    {
+     "name": "Pita",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 146,
+   "slot": "lunch",
+   "name": "Greek Chicken Salad",
+   "cuisine": "Mediterranean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 444,
+   "proteinG": 45,
+   "carbsG": 13,
+   "fatG": 24,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Cucumber",
+     "grams": 100
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 100
+    },
+    {
+     "name": "Feta",
+     "grams": 30
+    },
+    {
+     "name": "Olives",
+     "grams": 25
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 147,
+   "slot": "dinner",
+   "name": "Baked Cod with Courgette & Olives",
+   "cuisine": "Mediterranean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish"
+   ],
+   "kcal": 363,
+   "proteinG": 41,
+   "carbsG": 14,
+   "fatG": 17,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Cod",
+     "grams": 200
+    },
+    {
+     "name": "Courgette",
+     "grams": 150
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    },
+    {
+     "name": "Olives",
+     "grams": 25
+    },
+    {
+     "name": "Olive oil",
+     "grams": 12
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 148,
+   "slot": "dinner",
+   "name": "Chickpea, Spinach & Tomato Stew with Bulgur",
+   "cuisine": "Mediterranean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 612,
+   "proteinG": 28,
+   "carbsG": 102,
+   "fatG": 14,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 180
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 200
+    },
+    {
+     "name": "Spinach",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Bulgur",
+     "grams": 150
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 149,
+   "slot": "breakfast",
+   "name": "Black Bean & Tofu Breakfast Tacos",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 441,
+   "proteinG": 31,
+   "carbsG": 50,
+   "fatG": 15,
+   "cookMinutes": 12,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 120
+    },
+    {
+     "name": "Black beans",
+     "grams": 60
+    },
+    {
+     "name": "Tortillas",
+     "grams": 50
+    },
+    {
+     "name": "Salsa",
+     "grams": 50
+    },
+    {
+     "name": "Red pepper",
+     "grams": 50
+    },
+    {
+     "name": "Cumin",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 150,
+   "slot": "breakfast",
+   "name": "Mexican Egg & Pepper Scramble",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "eggs"
+   ],
+   "kcal": 394,
+   "proteinG": 27,
+   "carbsG": 12,
+   "fatG": 27,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 150
+    },
+    {
+     "name": "Green pepper",
+     "grams": 60
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Cheddar",
+     "grams": 20
+    },
+    {
+     "name": "Salsa",
+     "grams": 40
+    },
+    {
+     "name": "Avocado",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 151,
+   "slot": "lunch",
+   "name": "Chicken Taco Salad",
+   "cuisine": "Mexican",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 428,
+   "proteinG": 47,
+   "carbsG": 14,
+   "fatG": 21,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Cos lettuce",
+     "grams": 100
+    },
+    {
+     "name": "Salsa",
+     "grams": 40
+    },
+    {
+     "name": "Avocado",
+     "grams": 60
+    },
+    {
+     "name": "Cheddar",
+     "grams": 20
+    },
+    {
+     "name": "Red pepper",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 152,
+   "slot": "lunch",
+   "name": "Black Bean & Sweet Potato Quinoa Bowl",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 564,
+   "proteinG": 22,
+   "carbsG": 102,
+   "fatG": 10,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Black beans",
+     "grams": 120
+    },
+    {
+     "name": "Sweet potato",
+     "grams": 150
+    },
+    {
+     "name": "Quinoa",
+     "grams": 120
+    },
+    {
+     "name": "Corn",
+     "grams": 50
+    },
+    {
+     "name": "Salsa",
+     "grams": 50
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Avocado",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 153,
+   "slot": "dinner",
+   "name": "Veggie Bean Fajitas",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 537,
+   "proteinG": 19,
+   "carbsG": 83,
+   "fatG": 16,
+   "cookMinutes": 20,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Tortillas",
+     "grams": 75
+    },
+    {
+     "name": "Red pepper",
+     "grams": 100
+    },
+    {
+     "name": "Green pepper",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 80
+    },
+    {
+     "name": "Black beans",
+     "grams": 100
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Salsa",
+     "grams": 50
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    },
+    {
+     "name": "Cumin",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 154,
+   "slot": "dinner",
+   "name": "Lean Chilli con Carne & Rice",
+   "cuisine": "Mexican",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 648,
+   "proteinG": 40,
+   "carbsG": 74,
+   "fatG": 22,
+   "cookMinutes": 30,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Beef mince",
+     "grams": 130
+    },
+    {
+     "name": "Kidney beans",
+     "grams": 100
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 120
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 155,
+   "slot": "breakfast",
+   "name": "Shakshuka & Sourdough",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 554,
+   "proteinG": 29,
+   "carbsG": 54,
+   "fatG": 26,
+   "cookMinutes": 20,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 200
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Feta",
+     "grams": 25
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Sourdough",
+     "grams": 50
+    },
+    {
+     "name": "Cumin",
+     "grams": 1
+    },
+    {
+     "name": "Paprika",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 156,
+   "slot": "lunch",
+   "name": "Tabbouleh & Hummus Plate",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame"
+   ],
+   "kcal": 540,
+   "proteinG": 17,
+   "carbsG": 76,
+   "fatG": 22,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Bulgur",
+     "grams": 150
+    },
+    {
+     "name": "Parsley",
+     "grams": 30
+    },
+    {
+     "name": "Mint",
+     "grams": 5
+    },
+    {
+     "name": "Tomato",
+     "grams": 100
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Lemon",
+     "grams": 15
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    },
+    {
+     "name": "Hummus",
+     "grams": 60
+    },
+    {
+     "name": "Pita",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 157,
+   "slot": "lunch",
+   "name": "Chicken Shish & Fattoush",
+   "cuisine": "Middle Eastern",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten"
+   ],
+   "kcal": 485,
+   "proteinG": 46,
+   "carbsG": 36,
+   "fatG": 17,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Cos lettuce",
+     "grams": 80
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Pita",
+     "grams": 40
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    },
+    {
+     "name": "Yoghurt dressing",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 158,
+   "slot": "lunch",
+   "name": "Lamb Kofta & Cucumber Salad",
+   "cuisine": "Middle Eastern",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 472,
+   "proteinG": 27,
+   "carbsG": 13,
+   "fatG": 35,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Lamb mince",
+     "grams": 130
+    },
+    {
+     "name": "Cucumber",
+     "grams": 120
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Tzatziki",
+     "grams": 60
+    },
+    {
+     "name": "Parsley",
+     "grams": 10
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 159,
+   "slot": "dinner",
+   "name": "Mujadara (Lentils, Rice & Onions)",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 509,
+   "proteinG": 19,
+   "carbsG": 79,
+   "fatG": 14,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Green lentils",
+     "grams": 150
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 130
+    },
+    {
+     "name": "Onion",
+     "grams": 100
+    },
+    {
+     "name": "Olive oil",
+     "grams": 12
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    }
+   ]
+  },
+  {
+   "id": 160,
+   "slot": "dinner",
+   "name": "Salmon with Tahini, Greens & Bulgur",
+   "cuisine": "Middle Eastern",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "gluten",
+    "sesame"
+   ],
+   "kcal": 506,
+   "proteinG": 38,
+   "carbsG": 26,
+   "fatG": 28,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 150
+    },
+    {
+     "name": "Tahini",
+     "grams": 15
+    },
+    {
+     "name": "Spinach",
+     "grams": 80
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    },
+    {
+     "name": "Bulgur",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 161,
+   "slot": "dinner",
+   "name": "Chicken & Chickpea Tagine-style Stew",
+   "cuisine": "Middle Eastern",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 553,
+   "proteinG": 49,
+   "carbsG": 53,
+   "fatG": 17,
+   "cookMinutes": 30,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 180
+    },
+    {
+     "name": "Chickpeas",
+     "grams": 100
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Carrot",
+     "grams": 80
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    },
+    {
+     "name": "Olive oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 162,
+   "slot": "breakfast",
+   "name": "Thai Rice Porridge with Chicken & Egg",
+   "cuisine": "Thai",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "fish"
+   ],
+   "kcal": 405,
+   "proteinG": 26,
+   "carbsG": 46,
+   "fatG": 12,
+   "cookMinutes": 20,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Jasmine rice",
+     "grams": 150
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Chicken mince",
+     "grams": 80
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Fish sauce",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 200
+    }
+   ]
+  },
+  {
+   "id": 163,
+   "slot": "breakfast",
+   "name": "Thai Omelette & Jasmine Rice",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 410,
+   "proteinG": 19,
+   "carbsG": 46,
+   "fatG": 16,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 150
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 164,
+   "slot": "breakfast",
+   "name": "Mango & Coconut Chia Pudding",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "soy",
+    "treeNuts"
+   ],
+   "kcal": 381,
+   "proteinG": 11,
+   "carbsG": 36,
+   "fatG": 23,
+   "cookMinutes": 5,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chia seeds",
+     "grams": 25
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 60
+    },
+    {
+     "name": "Soy milk",
+     "grams": 150
+    },
+    {
+     "name": "Mango",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 165,
+   "slot": "lunch",
+   "name": "Tofu Pad Krapow & Rice",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 514,
+   "proteinG": 33,
+   "carbsG": 55,
+   "fatG": 21,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Thai basil",
+     "grams": 10
+    },
+    {
+     "name": "Green beans",
+     "grams": 80
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 150
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 166,
+   "slot": "lunch",
+   "name": "Thai Beef Salad (Yam Neua)",
+   "cuisine": "Thai",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish",
+    "peanuts"
+   ],
+   "kcal": 401,
+   "proteinG": 48,
+   "carbsG": 15,
+   "fatG": 18,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 180
+    },
+    {
+     "name": "Cucumber",
+     "grams": 100
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 40
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Lime",
+     "grams": 15
+    },
+    {
+     "name": "Fish sauce",
+     "grams": 10
+    },
+    {
+     "name": "Mint",
+     "grams": 5
+    },
+    {
+     "name": "Coriander",
+     "grams": 5
+    },
+    {
+     "name": "Cos lettuce",
+     "grams": 60
+    },
+    {
+     "name": "Peanuts",
+     "grams": 20
+    }
+   ]
+  },
+  {
+   "id": 167,
+   "slot": "dinner",
+   "name": "Thai Red Curry with Tofu & Veg",
+   "cuisine": "Thai",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy",
+    "treeNuts"
+   ],
+   "kcal": 620,
+   "proteinG": 34,
+   "carbsG": 60,
+   "fatG": 31,
+   "cookMinutes": 25,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 80
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Green beans",
+     "grams": 80
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 150
+    },
+    {
+     "name": "Thai basil",
+     "grams": 5
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 168,
+   "slot": "breakfast",
+   "name": "Rolled Egg, Rice & Miso",
+   "cuisine": "East Asian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 457,
+   "proteinG": 28,
+   "carbsG": 50,
+   "fatG": 16,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 150
+    },
+    {
+     "name": "Miso",
+     "grams": 15
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 169,
+   "slot": "breakfast",
+   "name": "Savoury Tofu Congee",
+   "cuisine": "East Asian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 382,
+   "proteinG": 26,
+   "carbsG": 45,
+   "fatG": 12,
+   "cookMinutes": 20,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Jasmine rice",
+     "grams": 130
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 120
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 250
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 170,
+   "slot": "breakfast",
+   "name": "Egg & Edamame Rice Bowl",
+   "cuisine": "East Asian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 408,
+   "proteinG": 28,
+   "carbsG": 40,
+   "fatG": 16,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Edamame",
+     "grams": 80
+    },
+    {
+     "name": "Brown rice",
+     "grams": 120
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 171,
+   "slot": "lunch",
+   "name": "Cold Soba Noodle Salad with Tofu",
+   "cuisine": "East Asian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 540,
+   "proteinG": 37,
+   "carbsG": 76,
+   "fatG": 14,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Soba noodles",
+     "grams": 80
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 100
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Carrot",
+     "grams": 50
+    },
+    {
+     "name": "Edamame",
+     "grams": 50
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Sesame",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 172,
+   "slot": "lunch",
+   "name": "Ginger Soy Chicken Lettuce Wraps",
+   "cuisine": "East Asian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 425,
+   "proteinG": 43,
+   "carbsG": 11,
+   "fatG": 23,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 200
+    },
+    {
+     "name": "Lettuce cups",
+     "grams": 80
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Carrot",
+     "grams": 40
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Sesame",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Ginger",
+     "grams": 3
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 12
+    }
+   ]
+  },
+  {
+   "id": 173,
+   "slot": "dinner",
+   "name": "Miso-glazed Salmon, Rice & Pak Choi",
+   "cuisine": "East Asian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 534,
+   "proteinG": 38,
+   "carbsG": 41,
+   "fatG": 23,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 150
+    },
+    {
+     "name": "Miso",
+     "grams": 15
+    },
+    {
+     "name": "Brown rice",
+     "grams": 130
+    },
+    {
+     "name": "Pak choi",
+     "grams": 120
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 174,
+   "slot": "lunch",
+   "name": "Chicken Cobb Salad",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "eggs"
+   ],
+   "kcal": 501,
+   "proteinG": 48,
+   "carbsG": 11,
+   "fatG": 30,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 150
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Avocado",
+     "grams": 50
+    },
+    {
+     "name": "Cos lettuce",
+     "grams": 100
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    },
+    {
+     "name": "Cheddar",
+     "grams": 15
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 175,
+   "slot": "dinner",
+   "name": "Salmon, Green Beans & Almonds",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish",
+    "treeNuts"
+   ],
+   "kcal": 484,
+   "proteinG": 37,
+   "carbsG": 14,
+   "fatG": 31,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 160
+    },
+    {
+     "name": "Green beans",
+     "grams": 150
+    },
+    {
+     "name": "Almonds",
+     "grams": 10
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 176,
+   "slot": "dinner",
+   "name": "Quick Lentil Shepherd's Pie",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 566,
+   "proteinG": 24,
+   "carbsG": 100,
+   "fatG": 9,
+   "cookMinutes": 30,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Green lentils",
+     "grams": 180
+    },
+    {
+     "name": "Carrot",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Potato",
+     "grams": 250
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 177,
+   "slot": "dinner",
+   "name": "Turkey Meatballs & Courgetti",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 422,
+   "proteinG": 42,
+   "carbsG": 15,
+   "fatG": 23,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Turkey mince",
+     "grams": 170
+    },
+    {
+     "name": "Courgette",
+     "grams": 200
+    },
+    {
+     "name": "Tomato sauce",
+     "grams": 120
+    },
+    {
+     "name": "Parmesan",
+     "grams": 10
+    },
+    {
+     "name": "Olive oil",
+     "grams": 6
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 178,
+   "slot": "lunch",
+   "name": "Chana Masala & Brown Rice",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 632,
+   "proteinG": 25,
+   "carbsG": 105,
+   "fatG": 14,
+   "cookMinutes": 25,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 200
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 70
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Brown rice",
+     "grams": 120
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 179,
+   "slot": "dinner",
+   "name": "Palak Tofu & Roti",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 564,
+   "proteinG": 39,
+   "carbsG": 50,
+   "fatG": 27,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 160
+    },
+    {
+     "name": "Spinach",
+     "grams": 200
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    },
+    {
+     "name": "Whole-wheat roti",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 180,
+   "slot": "dinner",
+   "name": "Tandoori Fish & Kachumber",
+   "cuisine": "Indian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "fish"
+   ],
+   "kcal": 402,
+   "proteinG": 50,
+   "carbsG": 15,
+   "fatG": 16,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "White fish",
+     "grams": 220
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 60
+    },
+    {
+     "name": "Cucumber",
+     "grams": 100
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Red onion",
+     "grams": 30
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 10
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 181,
+   "slot": "breakfast",
+   "name": "Mexican Cinnamon Oats with Mango",
+   "cuisine": "Mexican",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 432,
+   "proteinG": 17,
+   "carbsG": 69,
+   "fatG": 11,
+   "cookMinutes": 8,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Rolled oats",
+     "grams": 60
+    },
+    {
+     "name": "Soy milk",
+     "grams": 200
+    },
+    {
+     "name": "Mango",
+     "grams": 80
+    },
+    {
+     "name": "Chia seeds",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 182,
+   "slot": "breakfast",
+   "name": "Za'atar Eggs & Labneh Plate",
+   "cuisine": "Middle Eastern",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "eggs"
+   ],
+   "kcal": 318,
+   "proteinG": 19,
+   "carbsG": 10,
+   "fatG": 23,
+   "cookMinutes": 10,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Labneh",
+     "grams": 40
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Za'atar",
+     "grams": 3
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    },
+    {
+     "name": "Olives",
+     "grams": 15
+    }
+   ]
+  },
+  {
+   "id": 183,
+   "slot": "breakfast",
+   "name": "Berry Overnight Oats",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 437,
+   "proteinG": 17,
+   "carbsG": 70,
+   "fatG": 11,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Rolled oats",
+     "grams": 60
+    },
+    {
+     "name": "Soy milk",
+     "grams": 200
+    },
+    {
+     "name": "Frozen berries",
+     "grams": 80
+    },
+    {
+     "name": "Chia seeds",
+     "grams": 10
+    },
+    {
+     "name": "Maple syrup",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 184,
+   "slot": "lunch",
+   "name": "Smashed Chickpea Salad Sandwich",
+   "cuisine": "Western",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame"
+   ],
+   "kcal": 484,
+   "proteinG": 24,
+   "carbsG": 77,
+   "fatG": 10,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 150
+    },
+    {
+     "name": "Hummus",
+     "grams": 20
+    },
+    {
+     "name": "Celery",
+     "grams": 40
+    },
+    {
+     "name": "Red onion",
+     "grams": 15
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    },
+    {
+     "name": "Whole-grain bread",
+     "grams": 70
+    }
+   ]
+  },
+  {
+   "id": 185,
+   "slot": "dinner",
+   "name": "Black Pepper Tofu & Broccoli",
+   "cuisine": "East Asian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 514,
+   "proteinG": 35,
+   "carbsG": 54,
+   "fatG": 22,
+   "cookMinutes": 20,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Broccoli",
+     "grams": 150
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    },
+    {
+     "name": "Brown rice",
+     "grams": 140
+    }
+   ]
+  },
+  {
+   "id": 186,
+   "slot": "breakfast",
+   "name": "Smoked Salmon & Scrambled Eggs",
+   "cuisine": "Western",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs",
+    "fish"
+   ],
+   "kcal": 340,
+   "proteinG": 30,
+   "carbsG": 5,
+   "fatG": 22,
+   "cookMinutes": 10,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 150
+    },
+    {
+     "name": "Smoked salmon",
+     "grams": 50
+    },
+    {
+     "name": "Spinach",
+     "grams": 50
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 187,
+   "slot": "breakfast",
+   "name": "Paneer Bhurji with Peppers",
+   "cuisine": "Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 351,
+   "proteinG": 19,
+   "carbsG": 10,
+   "fatG": 27,
+   "cookMinutes": 12,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Paneer",
+     "grams": 100
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Tomato",
+     "grams": 40
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    },
+    {
+     "name": "Cumin",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 188,
+   "slot": "breakfast",
+   "name": "Chicken & Ginger Congee",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 341,
+   "proteinG": 27,
+   "carbsG": 42,
+   "fatG": 6,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Jasmine rice",
+     "grams": 130
+    },
+    {
+     "name": "Chicken breast",
+     "grams": 100
+    },
+    {
+     "name": "Ginger",
+     "grams": 8
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 300
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 189,
+   "slot": "breakfast",
+   "name": "Steamed Egg Custard & Rice",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 379,
+   "proteinG": 19,
+   "carbsG": 42,
+   "fatG": 15,
+   "cookMinutes": 15,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 100
+    },
+    {
+     "name": "Brown rice",
+     "grams": 150
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 190,
+   "slot": "breakfast",
+   "name": "Scallion Tofu Scramble & Pak Choi",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 416,
+   "proteinG": 31,
+   "carbsG": 37,
+   "fatG": 19,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Pak choi",
+     "grams": 100
+    },
+    {
+     "name": "Spring onion",
+     "grams": 15
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    },
+    {
+     "name": "Garlic",
+     "grams": 3
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 191,
+   "slot": "lunch",
+   "name": "Chicken & Broccoli Stir-fry with Rice",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 522,
+   "proteinG": 46,
+   "carbsG": 57,
+   "fatG": 12,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 160
+    },
+    {
+     "name": "Broccoli",
+     "grams": 150
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Oyster sauce",
+     "grams": 15
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 150
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    }
+   ]
+  },
+  {
+   "id": 192,
+   "slot": "lunch",
+   "name": "Veg Chow Mein",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 472,
+   "proteinG": 16,
+   "carbsG": 74,
+   "fatG": 14,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Egg noodles",
+     "grams": 80
+    },
+    {
+     "name": "Cabbage",
+     "grams": 100
+    },
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Bean sprouts",
+     "grams": 60
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 193,
+   "slot": "lunch",
+   "name": "Kung Pao Tofu & Rice",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "peanuts",
+    "soy"
+   ],
+   "kcal": 587,
+   "proteinG": 35,
+   "carbsG": 54,
+   "fatG": 28,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Peanuts",
+     "grams": 15
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 140
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 194,
+   "slot": "dinner",
+   "name": "Steamed Fish with Ginger & Pak Choi",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish",
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 406,
+   "proteinG": 57,
+   "carbsG": 15,
+   "fatG": 14,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "White fish",
+     "grams": 230
+    },
+    {
+     "name": "Ginger",
+     "grams": 10
+    },
+    {
+     "name": "Spring onion",
+     "grams": 15
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 8
+    },
+    {
+     "name": "Pak choi",
+     "grams": 150
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 80
+    },
+    {
+     "name": "Edamame",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 195,
+   "slot": "dinner",
+   "name": "Beef & Pepper Stir-fry with Rice",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 502,
+   "proteinG": 39,
+   "carbsG": 53,
+   "fatG": 14,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 150
+    },
+    {
+     "name": "Green pepper",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Oyster sauce",
+     "grams": 15
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 150
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    }
+   ]
+  },
+  {
+   "id": 196,
+   "slot": "dinner",
+   "name": "Sichuan Aubergine & Tofu",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 529,
+   "proteinG": 28,
+   "carbsG": 60,
+   "fatG": 23,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Aubergine",
+     "grams": 200
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 120
+    },
+    {
+     "name": "Chilli bean paste",
+     "grams": 15
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 10
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 140
+    }
+   ]
+  },
+  {
+   "id": 197,
+   "slot": "snack",
+   "name": "Smashed Cucumber Salad",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 76,
+   "proteinG": 2,
+   "carbsG": 9,
+   "fatG": 4,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Cucumber",
+     "grams": 200
+    },
+    {
+     "name": "Garlic",
+     "grams": 3
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 4
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 198,
+   "slot": "snack",
+   "name": "Garlic Chilli Edamame",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 130,
+   "proteinG": 13,
+   "carbsG": 11,
+   "fatG": 5,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Edamame",
+     "grams": 100
+    },
+    {
+     "name": "Garlic",
+     "grams": 3
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 199,
+   "slot": "breakfast",
+   "name": "Salmon, Rice & Miso Soup",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 482,
+   "proteinG": 33,
+   "carbsG": 46,
+   "fatG": 18,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 100
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 130
+    },
+    {
+     "name": "Miso",
+     "grams": 15
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 40
+    },
+    {
+     "name": "Nori",
+     "grams": 2
+    },
+    {
+     "name": "Spring onion",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 200
+    }
+   ]
+  },
+  {
+   "id": 200,
+   "slot": "breakfast",
+   "name": "Egg Rice Bowl (Tamago Gohan)",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 364,
+   "proteinG": 19,
+   "carbsG": 46,
+   "fatG": 11,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 150
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Nori",
+     "grams": 2
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 201,
+   "slot": "breakfast",
+   "name": "Miso Oat Porridge with Spinach",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 368,
+   "proteinG": 22,
+   "carbsG": 48,
+   "fatG": 12,
+   "cookMinutes": 10,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Rolled oats",
+     "grams": 60
+    },
+    {
+     "name": "Miso",
+     "grams": 12
+    },
+    {
+     "name": "Spinach",
+     "grams": 50
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 60
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    },
+    {
+     "name": "Spring onion",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 202,
+   "slot": "lunch",
+   "name": "Chicken Teriyaki Don",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 487,
+   "proteinG": 42,
+   "carbsG": 58,
+   "fatG": 9,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 170
+    },
+    {
+     "name": "Teriyaki sauce",
+     "grams": 25
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 160
+    },
+    {
+     "name": "Broccoli",
+     "grams": 100
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 203,
+   "slot": "lunch",
+   "name": "Somen Noodle Soup with Tofu",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 443,
+   "proteinG": 30,
+   "carbsG": 63,
+   "fatG": 10,
+   "cookMinutes": 15,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Somen noodles",
+     "grams": 70
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 100
+    },
+    {
+     "name": "Pak choi",
+     "grams": 80
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 60
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 350
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 204,
+   "slot": "lunch",
+   "name": "Tofu Poke Bowl",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 543,
+   "proteinG": 35,
+   "carbsG": 60,
+   "fatG": 22,
+   "cookMinutes": 10,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 130
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 150
+    },
+    {
+     "name": "Edamame",
+     "grams": 50
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Avocado",
+     "grams": 40
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    },
+    {
+     "name": "Nori",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 205,
+   "slot": "dinner",
+   "name": "Miso Aubergine & Tofu with Rice",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 522,
+   "proteinG": 29,
+   "carbsG": 63,
+   "fatG": 20,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Aubergine",
+     "grams": 200
+    },
+    {
+     "name": "Miso",
+     "grams": 20
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 120
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 140
+    },
+    {
+     "name": "Sesame",
+     "grams": 4
+    },
+    {
+     "name": "Spring onion",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 206,
+   "slot": "dinner",
+   "name": "Ginger Pork (Shogayaki) & Rice",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 452,
+   "proteinG": 38,
+   "carbsG": 54,
+   "fatG": 9,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Pork loin",
+     "grams": 150
+    },
+    {
+     "name": "Ginger",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Cabbage",
+     "grams": 100
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 140
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 207,
+   "slot": "dinner",
+   "name": "Beef & Vegetable Hot Pot",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 376,
+   "proteinG": 51,
+   "carbsG": 15,
+   "fatG": 14,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 150
+    },
+    {
+     "name": "Pak choi",
+     "grams": 150
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 100
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 60
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 400
+    },
+    {
+     "name": "Sesame",
+     "grams": 4
+    }
+   ]
+  },
+  {
+   "id": 208,
+   "slot": "snack",
+   "name": "Salmon Onigiri",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish"
+   ],
+   "kcal": 172,
+   "proteinG": 7,
+   "carbsG": 33,
+   "fatG": 1,
+   "cookMinutes": 10,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Sushi rice",
+     "grams": 110
+    },
+    {
+     "name": "Smoked salmon",
+     "grams": 20
+    },
+    {
+     "name": "Nori",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 209,
+   "slot": "snack",
+   "name": "Chilled Tofu (Hiyayakko)",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": true,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 154,
+   "proteinG": 18,
+   "carbsG": 5,
+   "fatG": 9,
+   "cookMinutes": 3,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 100
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 5
+    },
+    {
+     "name": "Ginger",
+     "grams": 3
+    },
+    {
+     "name": "Nori",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 210,
+   "slot": "breakfast",
+   "name": "Kimchi Egg Rice Bowl",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "sesame",
+    "shellfish"
+   ],
+   "kcal": 367,
+   "proteinG": 19,
+   "carbsG": 39,
+   "fatG": 15,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Brown rice",
+     "grams": 140
+    },
+    {
+     "name": "Kimchi",
+     "grams": 60
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 3
+    },
+    {
+     "name": "Spring onion",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 211,
+   "slot": "breakfast",
+   "name": "Rolled Omelette & Greens (Gyeran-mari)",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs",
+    "sesame"
+   ],
+   "kcal": 302,
+   "proteinG": 24,
+   "carbsG": 7,
+   "fatG": 20,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 165
+    },
+    {
+     "name": "Carrot",
+     "grams": 30
+    },
+    {
+     "name": "Spring onion",
+     "grams": 15
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 4
+    }
+   ]
+  },
+  {
+   "id": 212,
+   "slot": "breakfast",
+   "name": "Tofu & Mushroom Rice Porridge",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 362,
+   "proteinG": 24,
+   "carbsG": 40,
+   "fatG": 14,
+   "cookMinutes": 20,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Brown rice",
+     "grams": 120
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 100
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 60
+    },
+    {
+     "name": "Spinach",
+     "grams": 40
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 4
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 200
+    }
+   ]
+  },
+  {
+   "id": 213,
+   "slot": "lunch",
+   "name": "Beef Bibimbap",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "sesame"
+   ],
+   "kcal": 599,
+   "proteinG": 35,
+   "carbsG": 57,
+   "fatG": 26,
+   "cookMinutes": 25,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Beef mince",
+     "grams": 100
+    },
+    {
+     "name": "Brown rice",
+     "grams": 150
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Bean sprouts",
+     "grams": 60
+    },
+    {
+     "name": "Carrot",
+     "grams": 50
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Gochujang",
+     "grams": 15
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 4
+    }
+   ]
+  },
+  {
+   "id": 214,
+   "slot": "lunch",
+   "name": "Tofu Bibimbap",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 512,
+   "proteinG": 32,
+   "carbsG": 62,
+   "fatG": 19,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 130
+    },
+    {
+     "name": "Brown rice",
+     "grams": 150
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Bean sprouts",
+     "grams": 60
+    },
+    {
+     "name": "Carrot",
+     "grams": 50
+    },
+    {
+     "name": "Courgette",
+     "grams": 60
+    },
+    {
+     "name": "Gochujang",
+     "grams": 15
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 215,
+   "slot": "lunch",
+   "name": "Kimchi Fried Rice & Egg",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "sesame",
+    "shellfish"
+   ],
+   "kcal": 404,
+   "proteinG": 13,
+   "carbsG": 50,
+   "fatG": 17,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Brown rice",
+     "grams": 180
+    },
+    {
+     "name": "Kimchi",
+     "grams": 80
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 216,
+   "slot": "dinner",
+   "name": "Spicy Chicken & Cabbage (Dak-galbi)",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame"
+   ],
+   "kcal": 450,
+   "proteinG": 41,
+   "carbsG": 42,
+   "fatG": 13,
+   "cookMinutes": 25,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 180
+    },
+    {
+     "name": "Cabbage",
+     "grams": 150
+    },
+    {
+     "name": "Sweet potato",
+     "grams": 100
+    },
+    {
+     "name": "Gochujang",
+     "grams": 20
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 217,
+   "slot": "dinner",
+   "name": "Bulgogi Beef Lettuce Wraps",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 398,
+   "proteinG": 46,
+   "carbsG": 11,
+   "fatG": 19,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 190
+    },
+    {
+     "name": "Lettuce cups",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 8
+    },
+    {
+     "name": "Sesame",
+     "grams": 5
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Kimchi",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 218,
+   "slot": "dinner",
+   "name": "Soft Tofu Stew (Sundubu-style)",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 542,
+   "proteinG": 43,
+   "carbsG": 58,
+   "fatG": 20,
+   "cookMinutes": 20,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 200
+    },
+    {
+     "name": "Courgette",
+     "grams": 100
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Gochujang",
+     "grams": 15
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 300
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Brown rice",
+     "grams": 120
+    }
+   ]
+  },
+  {
+   "id": 219,
+   "slot": "snack",
+   "name": "Kimchi & Tofu Bites",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "sesame",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 133,
+   "proteinG": 14,
+   "carbsG": 4,
+   "fatG": 8,
+   "cookMinutes": 5,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 80
+    },
+    {
+     "name": "Kimchi",
+     "grams": 40
+    },
+    {
+     "name": "Sesame",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 220,
+   "slot": "snack",
+   "name": "Roasted Sweet Potato (Goguma)",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 129,
+   "proteinG": 2,
+   "carbsG": 30,
+   "fatG": 0,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Sweet potato",
+     "grams": 150
+    }
+   ]
+  },
+  {
+   "id": 221,
+   "slot": "breakfast",
+   "name": "Ricotta, Strawberries & Honey Toast",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten"
+   ],
+   "kcal": 343,
+   "proteinG": 14,
+   "carbsG": 52,
+   "fatG": 9,
+   "cookMinutes": 5,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Ricotta",
+     "grams": 80
+    },
+    {
+     "name": "Sourdough",
+     "grams": 60
+    },
+    {
+     "name": "Strawberries",
+     "grams": 80
+    },
+    {
+     "name": "Honey",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 222,
+   "slot": "breakfast",
+   "name": "Spinach & Parmesan Frittata",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "eggs"
+   ],
+   "kcal": 349,
+   "proteinG": 28,
+   "carbsG": 7,
+   "fatG": 24,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 165
+    },
+    {
+     "name": "Spinach",
+     "grams": 80
+    },
+    {
+     "name": "Parmesan",
+     "grams": 10
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 60
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 223,
+   "slot": "breakfast",
+   "name": "Polenta Porridge with Berries",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "soy"
+   ],
+   "kcal": 350,
+   "proteinG": 11,
+   "carbsG": 65,
+   "fatG": 6,
+   "cookMinutes": 10,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Polenta",
+     "grams": 50
+    },
+    {
+     "name": "Soy milk",
+     "grams": 200
+    },
+    {
+     "name": "Frozen berries",
+     "grams": 80
+    },
+    {
+     "name": "Maple syrup",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 224,
+   "slot": "lunch",
+   "name": "Minestrone with Beans",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 476,
+   "proteinG": 20,
+   "carbsG": 81,
+   "fatG": 10,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Cannellini beans",
+     "grams": 120
+    },
+    {
+     "name": "Wholewheat pasta",
+     "grams": 40
+    },
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Celery",
+     "grams": 50
+    },
+    {
+     "name": "Courgette",
+     "grams": 80
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 300
+    }
+   ]
+  },
+  {
+   "id": 225,
+   "slot": "lunch",
+   "name": "Chicken Caprese Salad",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 437,
+   "proteinG": 50,
+   "carbsG": 7,
+   "fatG": 23,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 160
+    },
+    {
+     "name": "Mozzarella",
+     "grams": 50
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 100
+    },
+    {
+     "name": "Rocket",
+     "grams": 40
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    },
+    {
+     "name": "Basil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 226,
+   "slot": "lunch",
+   "name": "Tuna & Bean Panzanella",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "gluten"
+   ],
+   "kcal": 480,
+   "proteinG": 41,
+   "carbsG": 56,
+   "fatG": 11,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Tinned tuna",
+     "grams": 100
+    },
+    {
+     "name": "Cannellini beans",
+     "grams": 100
+    },
+    {
+     "name": "Sourdough",
+     "grams": 50
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 100
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 227,
+   "slot": "dinner",
+   "name": "Lentil Arrabbiata with Wholewheat Pasta",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 540,
+   "proteinG": 23,
+   "carbsG": 94,
+   "fatG": 11,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Wholewheat pasta",
+     "grams": 80
+    },
+    {
+     "name": "Green lentils",
+     "grams": 100
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 200
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 228,
+   "slot": "dinner",
+   "name": "Pesto Chicken & Veg Traybake",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "treeNuts"
+   ],
+   "kcal": 469,
+   "proteinG": 46,
+   "carbsG": 40,
+   "fatG": 13,
+   "cookMinutes": 30,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 170
+    },
+    {
+     "name": "Pesto",
+     "grams": 20
+    },
+    {
+     "name": "Courgette",
+     "grams": 120
+    },
+    {
+     "name": "Red pepper",
+     "grams": 100
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    },
+    {
+     "name": "Baby potatoes",
+     "grams": 150
+    }
+   ]
+  },
+  {
+   "id": 229,
+   "slot": "dinner",
+   "name": "Cod Puttanesca with Spinach",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish"
+   ],
+   "kcal": 391,
+   "proteinG": 47,
+   "carbsG": 15,
+   "fatG": 17,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Cod",
+     "grams": 230
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Olives",
+     "grams": 25
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Olive oil",
+     "grams": 12
+    },
+    {
+     "name": "Parsley",
+     "grams": 5
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Spinach",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 230,
+   "slot": "snack",
+   "name": "Ricotta & Pear",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 130,
+   "proteinG": 4,
+   "carbsG": 18,
+   "fatG": 5,
+   "cookMinutes": 2,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Ricotta",
+     "grams": 50
+    },
+    {
+     "name": "Pear",
+     "grams": 80
+    },
+    {
+     "name": "Honey",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 231,
+   "slot": "snack",
+   "name": "Tomato Bruschetta",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 127,
+   "proteinG": 4,
+   "carbsG": 20,
+   "fatG": 4,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Sourdough",
+     "grams": 30
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Olive oil",
+     "grams": 3
+    },
+    {
+     "name": "Garlic",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 232,
+   "slot": "breakfast",
+   "name": "Rava Upma with Vegetables",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "peanuts"
+   ],
+   "kcal": 410,
+   "proteinG": 13,
+   "carbsG": 59,
+   "fatG": 14,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Semolina",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Carrot",
+     "grams": 40
+    },
+    {
+     "name": "Green peas",
+     "grams": 40
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 2
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Peanuts",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 233,
+   "slot": "breakfast",
+   "name": "Pesarattu (Moong Dosa) & Chutney",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 363,
+   "proteinG": 18,
+   "carbsG": 50,
+   "fatG": 11,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Moong dal",
+     "grams": 70
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Coconut chutney",
+     "grams": 30
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 234,
+   "slot": "breakfast",
+   "name": "Masala Dosa & Sambar",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 545,
+   "proteinG": 17,
+   "carbsG": 88,
+   "fatG": 14,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Dosa",
+     "grams": 120
+    },
+    {
+     "name": "Potato",
+     "grams": 120
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Coconut chutney",
+     "grams": 30
+    },
+    {
+     "name": "Sambar",
+     "grams": 150
+    }
+   ]
+  },
+  {
+   "id": 235,
+   "slot": "lunch",
+   "name": "Curd Rice with Cucumber",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 371,
+   "proteinG": 11,
+   "carbsG": 60,
+   "fatG": 9,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Basmati rice",
+     "grams": 180
+    },
+    {
+     "name": "Plain yoghurt",
+     "grams": 150
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 1
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 4
+    }
+   ]
+  },
+  {
+   "id": 236,
+   "slot": "lunch",
+   "name": "Chicken Chettinad & Rice",
+   "cuisine": "South Indian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 575,
+   "proteinG": 40,
+   "carbsG": 54,
+   "fatG": 21,
+   "cookMinutes": 30,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 170
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Coconut",
+     "grams": 15
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 150
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 2
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 237,
+   "slot": "lunch",
+   "name": "Vegetable Kootu & Rice",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 456,
+   "proteinG": 19,
+   "carbsG": 86,
+   "fatG": 5,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Toor dal",
+     "grams": 60
+    },
+    {
+     "name": "Cabbage",
+     "grams": 80
+    },
+    {
+     "name": "Carrot",
+     "grams": 50
+    },
+    {
+     "name": "Coconut",
+     "grams": 10
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 130
+    },
+    {
+     "name": "Cumin",
+     "grams": 1
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 238,
+   "slot": "dinner",
+   "name": "Kerala Fish Curry & Greens",
+   "cuisine": "South Indian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish",
+    "treeNuts"
+   ],
+   "kcal": 390,
+   "proteinG": 43,
+   "carbsG": 11,
+   "fatG": 20,
+   "cookMinutes": 25,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "White fish",
+     "grams": 200
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 60
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 2
+    },
+    {
+     "name": "Spinach",
+     "grams": 80
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 239,
+   "slot": "dinner",
+   "name": "Rasam, Rice & Beans Poriyal",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 476,
+   "proteinG": 16,
+   "carbsG": 81,
+   "fatG": 11,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Toor dal",
+     "grams": 40
+    },
+    {
+     "name": "Tomato",
+     "grams": 100
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 150
+    },
+    {
+     "name": "Green beans",
+     "grams": 120
+    },
+    {
+     "name": "Coconut",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 240,
+   "slot": "dinner",
+   "name": "Egg Roast & Brown Rice",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "treeNuts"
+   ],
+   "kcal": 495,
+   "proteinG": 20,
+   "carbsG": 52,
+   "fatG": 24,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Onion",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Coconut",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Brown rice",
+     "grams": 150
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 241,
+   "slot": "snack",
+   "name": "Chickpea Sundal",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 135,
+   "proteinG": 7,
+   "carbsG": 20,
+   "fatG": 3,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 70
+    },
+    {
+     "name": "Coconut",
+     "grams": 5
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 1
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 242,
+   "slot": "snack",
+   "name": "Spiced Buttermilk (Moru)",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 103,
+   "proteinG": 8,
+   "carbsG": 13,
+   "fatG": 2,
+   "cookMinutes": 3,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Buttermilk",
+     "grams": 250
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 1
+    },
+    {
+     "name": "Ginger",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 243,
+   "slot": "breakfast",
+   "name": "Plantain & Egg Scramble",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs"
+   ],
+   "kcal": 369,
+   "proteinG": 17,
+   "carbsG": 44,
+   "fatG": 16,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Plantain",
+     "grams": 120
+    },
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Tomato",
+     "grams": 50
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 244,
+   "slot": "breakfast",
+   "name": "Callaloo & Cod with Toast",
+   "cuisine": "Caribbean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "gluten"
+   ],
+   "kcal": 357,
+   "proteinG": 33,
+   "carbsG": 36,
+   "fatG": 10,
+   "cookMinutes": 20,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Cod",
+     "grams": 120
+    },
+    {
+     "name": "Spinach",
+     "grams": 120
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Whole-grain bread",
+     "grams": 60
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 245,
+   "slot": "breakfast",
+   "name": "Cornmeal Porridge with Banana",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy"
+   ],
+   "kcal": 384,
+   "proteinG": 13,
+   "carbsG": 71,
+   "fatG": 7,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Polenta",
+     "grams": 50
+    },
+    {
+     "name": "Milk",
+     "grams": 250
+    },
+    {
+     "name": "Honey",
+     "grams": 8
+    },
+    {
+     "name": "Banana",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 246,
+   "slot": "lunch",
+   "name": "Jerk Chicken, Rice & Peas",
+   "cuisine": "Caribbean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 516,
+   "proteinG": 44,
+   "carbsG": 55,
+   "fatG": 12,
+   "cookMinutes": 30,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 170
+    },
+    {
+     "name": "Jerk seasoning",
+     "grams": 5
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 130
+    },
+    {
+     "name": "Kidney beans",
+     "grams": 70
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 20
+    }
+   ]
+  },
+  {
+   "id": 247,
+   "slot": "lunch",
+   "name": "Lentil & Sweet Potato Curry",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 453,
+   "proteinG": 21,
+   "carbsG": 75,
+   "fatG": 10,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Green lentils",
+     "grams": 150
+    },
+    {
+     "name": "Sweet potato",
+     "grams": 150
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 40
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Spinach",
+     "grams": 50
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 248,
+   "slot": "lunch",
+   "name": "Jerk Tofu Bowl with Mango",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "soy"
+   ],
+   "kcal": 561,
+   "proteinG": 38,
+   "carbsG": 75,
+   "fatG": 16,
+   "cookMinutes": 20,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Jerk seasoning",
+     "grams": 5
+    },
+    {
+     "name": "Brown rice",
+     "grams": 130
+    },
+    {
+     "name": "Black beans",
+     "grams": 80
+    },
+    {
+     "name": "Mango",
+     "grams": 80
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 249,
+   "slot": "dinner",
+   "name": "Jerk Fish & Lime Slaw",
+   "cuisine": "Caribbean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "dairy",
+    "fish"
+   ],
+   "kcal": 381,
+   "proteinG": 49,
+   "carbsG": 15,
+   "fatG": 14,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "White fish",
+     "grams": 230
+    },
+    {
+     "name": "Jerk seasoning",
+     "grams": 5
+    },
+    {
+     "name": "Cabbage",
+     "grams": 100
+    },
+    {
+     "name": "Carrot",
+     "grams": 40
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 30
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 250,
+   "slot": "dinner",
+   "name": "Brown Stew Chicken & Rice",
+   "cuisine": "Caribbean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 511,
+   "proteinG": 40,
+   "carbsG": 55,
+   "fatG": 14,
+   "cookMinutes": 30,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 170
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Carrot",
+     "grams": 50
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 130
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 251,
+   "slot": "dinner",
+   "name": "Black Bean & Plantain Stew",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 482,
+   "proteinG": 19,
+   "carbsG": 92,
+   "fatG": 8,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Black beans",
+     "grams": 150
+    },
+    {
+     "name": "Plantain",
+     "grams": 120
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 252,
+   "slot": "snack",
+   "name": "Mango, Lime & Chilli",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 114,
+   "proteinG": 2,
+   "carbsG": 29,
+   "fatG": 1,
+   "cookMinutes": 3,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Mango",
+     "grams": 180
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 253,
+   "slot": "snack",
+   "name": "Baked Plantain Chips",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 124,
+   "proteinG": 1,
+   "carbsG": 26,
+   "fatG": 3,
+   "cookMinutes": 20,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Plantain",
+     "grams": 80
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 254,
+   "slot": "breakfast",
+   "name": "Akara Bean Fritters & Plantain",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 364,
+   "proteinG": 13,
+   "carbsG": 61,
+   "fatG": 9,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Black-eyed peas",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Red pepper",
+     "grams": 30
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Plantain",
+     "grams": 80
+    }
+   ]
+  },
+  {
+   "id": 255,
+   "slot": "breakfast",
+   "name": "Harissa Chickpea & Egg Skillet",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 521,
+   "proteinG": 28,
+   "carbsG": 60,
+   "fatG": 19,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Chickpeas",
+     "grams": 80
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 150
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Harissa",
+     "grams": 10
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    },
+    {
+     "name": "Pita",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 256,
+   "slot": "breakfast",
+   "name": "Maize Porridge (Uji) with Peanuts",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "peanuts",
+    "soy"
+   ],
+   "kcal": 412,
+   "proteinG": 14,
+   "carbsG": 69,
+   "fatG": 10,
+   "cookMinutes": 10,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Polenta",
+     "grams": 50
+    },
+    {
+     "name": "Soy milk",
+     "grams": 200
+    },
+    {
+     "name": "Peanuts",
+     "grams": 10
+    },
+    {
+     "name": "Banana",
+     "grams": 60
+    },
+    {
+     "name": "Maple syrup",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 257,
+   "slot": "lunch",
+   "name": "Jollof Rice with Chicken",
+   "cuisine": "African",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 523,
+   "proteinG": 37,
+   "carbsG": 58,
+   "fatG": 15,
+   "cookMinutes": 30,
+   "rating": 4.8,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 150
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 150
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 258,
+   "slot": "lunch",
+   "name": "Peanut & Sweet Potato Stew",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "peanuts"
+   ],
+   "kcal": 631,
+   "proteinG": 24,
+   "carbsG": 102,
+   "fatG": 17,
+   "cookMinutes": 25,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Peanut butter",
+     "grams": 25
+    },
+    {
+     "name": "Sweet potato",
+     "grams": 150
+    },
+    {
+     "name": "Chickpeas",
+     "grams": 100
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 120
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Brown rice",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 259,
+   "slot": "lunch",
+   "name": "Chakalaka Bean Bowl with Pap",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 430,
+   "proteinG": 16,
+   "carbsG": 76,
+   "fatG": 9,
+   "cookMinutes": 25,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Cannellini beans",
+     "grams": 120
+    },
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Polenta",
+     "grams": 40
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 260,
+   "slot": "dinner",
+   "name": "Suya Beef & Kachumbari",
+   "cuisine": "African",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "peanuts"
+   ],
+   "kcal": 454,
+   "proteinG": 49,
+   "carbsG": 14,
+   "fatG": 23,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 190
+    },
+    {
+     "name": "Peanuts",
+     "grams": 20
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Red onion",
+     "grams": 30
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 261,
+   "slot": "dinner",
+   "name": "Moroccan Veg Tagine & Couscous",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 563,
+   "proteinG": 21,
+   "carbsG": 100,
+   "fatG": 11,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 120
+    },
+    {
+     "name": "Carrot",
+     "grams": 80
+    },
+    {
+     "name": "Courgette",
+     "grams": 100
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 120
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Couscous",
+     "grams": 150
+    },
+    {
+     "name": "Raisins",
+     "grams": 10
+    },
+    {
+     "name": "Olive oil",
+     "grams": 6
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 262,
+   "slot": "dinner",
+   "name": "Ethiopian Red Lentil Stew & Greens",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 555,
+   "proteinG": 25,
+   "carbsG": 92,
+   "fatG": 12,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Red lentils",
+     "grams": 70
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Paprika",
+     "grams": 3
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Kale",
+     "grams": 80
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 263,
+   "slot": "snack",
+   "name": "Spiced Roasted Chickpeas",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 135,
+   "proteinG": 6,
+   "carbsG": 19,
+   "fatG": 4,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 70
+    },
+    {
+     "name": "Olive oil",
+     "grams": 2
+    },
+    {
+     "name": "Paprika",
+     "grams": 1
+    }
+   ]
+  },
+  {
+   "id": 264,
+   "slot": "snack",
+   "name": "Mango & Groundnuts",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "peanuts"
+   ],
+   "kcal": 129,
+   "proteinG": 4,
+   "carbsG": 20,
+   "fatG": 5,
+   "cookMinutes": 2,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Mango",
+     "grams": 120
+    },
+    {
+     "name": "Peanuts",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 265,
+   "slot": "breakfast",
+   "name": "Tomato & Egg Stir-fry with Rice",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 419,
+   "proteinG": 20,
+   "carbsG": 44,
+   "fatG": 18,
+   "cookMinutes": 12,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Tomato",
+     "grams": 150
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 7
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 130
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 266,
+   "slot": "breakfast",
+   "name": "Savoury Soy Milk Soup & Toast",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 325,
+   "proteinG": 17,
+   "carbsG": 41,
+   "fatG": 10,
+   "cookMinutes": 8,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Soy milk",
+     "grams": 300
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 3
+    },
+    {
+     "name": "Whole-grain bread",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 267,
+   "slot": "lunch",
+   "name": "Prawn & Pea Egg Fried Rice",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 504,
+   "proteinG": 36,
+   "carbsG": 55,
+   "fatG": 16,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Prawns",
+     "grams": 100
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Brown rice",
+     "grams": 180
+    },
+    {
+     "name": "Green peas",
+     "grams": 50
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 268,
+   "slot": "lunch",
+   "name": "Hot & Sour Tofu Noodle Soup",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 440,
+   "proteinG": 28,
+   "carbsG": 60,
+   "fatG": 11,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 120
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 80
+    },
+    {
+     "name": "Rice noodles",
+     "grams": 60
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 400
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 269,
+   "slot": "dinner",
+   "name": "Cashew Chicken & Rice",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "shellfish",
+    "soy",
+    "treeNuts"
+   ],
+   "kcal": 563,
+   "proteinG": 45,
+   "carbsG": 54,
+   "fatG": 18,
+   "cookMinutes": 20,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 160
+    },
+    {
+     "name": "Cashews",
+     "grams": 15
+    },
+    {
+     "name": "Red pepper",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Oyster sauce",
+     "grams": 10
+    },
+    {
+     "name": "Jasmine rice",
+     "grams": 140
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 270,
+   "slot": "dinner",
+   "name": "Garlic Prawns & Broccoli",
+   "cuisine": "Chinese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 391,
+   "proteinG": 46,
+   "carbsG": 14,
+   "fatG": 19,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Prawns",
+     "grams": 200
+    },
+    {
+     "name": "Broccoli",
+     "grams": 150
+    },
+    {
+     "name": "Garlic",
+     "grams": 8
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 12
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 8
+    },
+    {
+     "name": "Ginger",
+     "grams": 5
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 271,
+   "slot": "snack",
+   "name": "Soy Egg & Cucumber",
+   "cuisine": "Chinese",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs",
+    "gluten",
+    "soy"
+   ],
+   "kcal": 93,
+   "proteinG": 8,
+   "carbsG": 4,
+   "fatG": 5,
+   "cookMinutes": 12,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    }
+   ]
+  },
+  {
+   "id": 272,
+   "slot": "breakfast",
+   "name": "Egg Sandwich (Tamago Sando)",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 359,
+   "proteinG": 25,
+   "carbsG": 33,
+   "fatG": 14,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Whole-grain bread",
+     "grams": 70
+    },
+    {
+     "name": "Greek yoghurt",
+     "grams": 20
+    },
+    {
+     "name": "Cucumber",
+     "grams": 40
+    }
+   ]
+  },
+  {
+   "id": 273,
+   "slot": "breakfast",
+   "name": "Tofu Onigiri & Miso Soup",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 332,
+   "proteinG": 17,
+   "carbsG": 53,
+   "fatG": 7,
+   "cookMinutes": 12,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Sushi rice",
+     "grams": 150
+    },
+    {
+     "name": "Nori",
+     "grams": 3
+    },
+    {
+     "name": "Miso",
+     "grams": 15
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 60
+    },
+    {
+     "name": "Spring onion",
+     "grams": 5
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 200
+    }
+   ]
+  },
+  {
+   "id": 274,
+   "slot": "lunch",
+   "name": "Soba with Chicken & Greens",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 464,
+   "proteinG": 44,
+   "carbsG": 63,
+   "fatG": 6,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Soba noodles",
+     "grams": 80
+    },
+    {
+     "name": "Chicken breast",
+     "grams": 130
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 275,
+   "slot": "lunch",
+   "name": "Vegetable Yakisoba with Tofu",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 533,
+   "proteinG": 31,
+   "carbsG": 77,
+   "fatG": 16,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Soba noodles",
+     "grams": 80
+    },
+    {
+     "name": "Cabbage",
+     "grams": 100
+    },
+    {
+     "name": "Carrot",
+     "grams": 50
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 100
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 276,
+   "slot": "dinner",
+   "name": "Salt-grilled Salmon & Sautéed Greens",
+   "cuisine": "Japanese",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish",
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 449,
+   "proteinG": 40,
+   "carbsG": 8,
+   "fatG": 28,
+   "cookMinutes": 15,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Salmon",
+     "grams": 170
+    },
+    {
+     "name": "Spinach",
+     "grams": 120
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 80
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 5
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 5
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 277,
+   "slot": "dinner",
+   "name": "Japanese Curry with Tofu & Veg",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "soy"
+   ],
+   "kcal": 569,
+   "proteinG": 29,
+   "carbsG": 77,
+   "fatG": 18,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 130
+    },
+    {
+     "name": "Potato",
+     "grams": 120
+    },
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 60
+    },
+    {
+     "name": "Sushi rice",
+     "grams": 140
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    },
+    {
+     "name": "Paprika",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 278,
+   "slot": "snack",
+   "name": "Cucumber Maki",
+   "cuisine": "Japanese",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "sesame"
+   ],
+   "kcal": 127,
+   "proteinG": 3,
+   "carbsG": 26,
+   "fatG": 1,
+   "cookMinutes": 10,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Sushi rice",
+     "grams": 80
+    },
+    {
+     "name": "Cucumber",
+     "grams": 40
+    },
+    {
+     "name": "Nori",
+     "grams": 2
+    },
+    {
+     "name": "Sesame",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 279,
+   "slot": "breakfast",
+   "name": "Steamed Egg (Gyeran-jjim) & Rice",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "sesame"
+   ],
+   "kcal": 340,
+   "proteinG": 18,
+   "carbsG": 34,
+   "fatG": 15,
+   "cookMinutes": 12,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 100
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Brown rice",
+     "grams": 120
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 280,
+   "slot": "breakfast",
+   "name": "Sweet Potato, Soy Milk & Walnuts",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "soy",
+    "treeNuts"
+   ],
+   "kcal": 372,
+   "proteinG": 13,
+   "carbsG": 56,
+   "fatG": 11,
+   "cookMinutes": 20,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Sweet potato",
+     "grams": 200
+    },
+    {
+     "name": "Soy milk",
+     "grams": 250
+    },
+    {
+     "name": "Walnuts",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 281,
+   "slot": "lunch",
+   "name": "Japchae with Tofu",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "soy"
+   ],
+   "kcal": 472,
+   "proteinG": 22,
+   "carbsG": 67,
+   "fatG": 15,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Glass noodles",
+     "grams": 60
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 100
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Carrot",
+     "grams": 40
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Soy sauce",
+     "grams": 10
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 282,
+   "slot": "lunch",
+   "name": "Gochujang Chicken Salad",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "sesame"
+   ],
+   "kcal": 397,
+   "proteinG": 46,
+   "carbsG": 15,
+   "fatG": 17,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 190
+    },
+    {
+     "name": "Cabbage",
+     "grams": 80
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Carrot",
+     "grams": 30
+    },
+    {
+     "name": "Gochujang",
+     "grams": 10
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 10
+    },
+    {
+     "name": "Sesame",
+     "grams": 3
+    }
+   ]
+  },
+  {
+   "id": 283,
+   "slot": "dinner",
+   "name": "Miso Tofu & Vegetable Stew with Rice",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten",
+    "soy"
+   ],
+   "kcal": 519,
+   "proteinG": 35,
+   "carbsG": 65,
+   "fatG": 16,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Firm tofu",
+     "grams": 150
+    },
+    {
+     "name": "Courgette",
+     "grams": 100
+    },
+    {
+     "name": "Potato",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Miso",
+     "grams": 20
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 350
+    },
+    {
+     "name": "Brown rice",
+     "grams": 120
+    }
+   ]
+  },
+  {
+   "id": 284,
+   "slot": "dinner",
+   "name": "Pork & Kimchi Stir-fry with Tofu",
+   "cuisine": "Korean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "gluten",
+    "sesame",
+    "shellfish",
+    "soy"
+   ],
+   "kcal": 438,
+   "proteinG": 54,
+   "carbsG": 11,
+   "fatG": 20,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Pork loin",
+     "grams": 200
+    },
+    {
+     "name": "Kimchi",
+     "grams": 100
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 10
+    },
+    {
+     "name": "Spring onion",
+     "grams": 10
+    },
+    {
+     "name": "Gochujang",
+     "grams": 5
+    },
+    {
+     "name": "Firm tofu",
+     "grams": 60
+    }
+   ]
+  },
+  {
+   "id": 285,
+   "slot": "snack",
+   "name": "Sesame Spinach & Egg",
+   "cuisine": "Korean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs",
+    "sesame"
+   ],
+   "kcal": 149,
+   "proteinG": 12,
+   "carbsG": 6,
+   "fatG": 10,
+   "cookMinutes": 8,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Spinach",
+     "grams": 150
+    },
+    {
+     "name": "Sesame oil",
+     "grams": 4
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    }
+   ]
+  },
+  {
+   "id": 286,
+   "slot": "breakfast",
+   "name": "Tomato & Basil Omelette with Toast",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "gluten"
+   ],
+   "kcal": 362,
+   "proteinG": 21,
+   "carbsG": 32,
+   "fatG": 17,
+   "cookMinutes": 10,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 110
+    },
+    {
+     "name": "Tomato",
+     "grams": 80
+    },
+    {
+     "name": "Basil",
+     "grams": 5
+    },
+    {
+     "name": "Sourdough",
+     "grams": 50
+    },
+    {
+     "name": "Olive oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 287,
+   "slot": "breakfast",
+   "name": "Chickpea Farinata & Rocket",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 327,
+   "proteinG": 15,
+   "carbsG": 39,
+   "fatG": 12,
+   "cookMinutes": 20,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Chickpea flour",
+     "grams": 60
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Rocket",
+     "grams": 40
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    }
+   ]
+  },
+  {
+   "id": 288,
+   "slot": "lunch",
+   "name": "Tuna Pasta Salad",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "fish",
+    "gluten"
+   ],
+   "kcal": 487,
+   "proteinG": 37,
+   "carbsG": 58,
+   "fatG": 12,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Pasta",
+     "grams": 70
+    },
+    {
+     "name": "Tinned tuna",
+     "grams": 100
+    },
+    {
+     "name": "Cherry tomato",
+     "grams": 80
+    },
+    {
+     "name": "Rocket",
+     "grams": 30
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Olives",
+     "grams": 15
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 289,
+   "slot": "lunch",
+   "name": "Caponata & Chickpea Bowl",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 541,
+   "proteinG": 21,
+   "carbsG": 82,
+   "fatG": 17,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Aubergine",
+     "grams": 150
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Celery",
+     "grams": 40
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Olives",
+     "grams": 15
+    },
+    {
+     "name": "Olive oil",
+     "grams": 10
+    },
+    {
+     "name": "Chickpeas",
+     "grams": 120
+    },
+    {
+     "name": "Sourdough",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 290,
+   "slot": "dinner",
+   "name": "Spaghetti with Turkey Bolognese",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten"
+   ],
+   "kcal": 614,
+   "proteinG": 43,
+   "carbsG": 81,
+   "fatG": 14,
+   "cookMinutes": 30,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Pasta",
+     "grams": 80
+    },
+    {
+     "name": "Turkey mince",
+     "grams": 130
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Carrot",
+     "grams": 40
+    },
+    {
+     "name": "Garlic",
+     "grams": 5
+    },
+    {
+     "name": "Parmesan",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 291,
+   "slot": "dinner",
+   "name": "Chicken Cacciatore",
+   "cuisine": "Italian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [],
+   "kcal": 395,
+   "proteinG": 44,
+   "carbsG": 14,
+   "fatG": 19,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 200
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Red pepper",
+     "grams": 50
+    },
+    {
+     "name": "Mushrooms",
+     "grams": 80
+    },
+    {
+     "name": "Olives",
+     "grams": 15
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 292,
+   "slot": "snack",
+   "name": "White Bean Dip & Veg Sticks",
+   "cuisine": "Italian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 129,
+   "proteinG": 6,
+   "carbsG": 20,
+   "fatG": 3,
+   "cookMinutes": 5,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Cannellini beans",
+     "grams": 60
+    },
+    {
+     "name": "Olive oil",
+     "grams": 3
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    },
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Celery",
+     "grams": 50
+    }
+   ]
+  },
+  {
+   "id": 293,
+   "slot": "breakfast",
+   "name": "Tomato & Onion Uttapam",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 380,
+   "proteinG": 10,
+   "carbsG": 63,
+   "fatG": 10,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Dosa",
+     "grams": 150
+    },
+    {
+     "name": "Tomato",
+     "grams": 50
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Coconut chutney",
+     "grams": 20
+    }
+   ]
+  },
+  {
+   "id": 294,
+   "slot": "breakfast",
+   "name": "Egg Dosa & Chutney",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "eggs",
+    "treeNuts"
+   ],
+   "kcal": 380,
+   "proteinG": 15,
+   "carbsG": 48,
+   "fatG": 14,
+   "cookMinutes": 15,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Dosa",
+     "grams": 120
+    },
+    {
+     "name": "Eggs",
+     "grams": 55
+    },
+    {
+     "name": "Onion",
+     "grams": 20
+    },
+    {
+     "name": "Coriander",
+     "grams": 5
+    },
+    {
+     "name": "Coconut chutney",
+     "grams": 20
+    }
+   ]
+  },
+  {
+   "id": 295,
+   "slot": "lunch",
+   "name": "Lemon Rice with Peanuts & Curd",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "peanuts"
+   ],
+   "kcal": 439,
+   "proteinG": 12,
+   "carbsG": 59,
+   "fatG": 17,
+   "cookMinutes": 15,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Basmati rice",
+     "grams": 180
+    },
+    {
+     "name": "Peanuts",
+     "grams": 15
+    },
+    {
+     "name": "Lemon",
+     "grams": 15
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 1
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    },
+    {
+     "name": "Plain yoghurt",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 296,
+   "slot": "lunch",
+   "name": "Avial & Rice",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "treeNuts"
+   ],
+   "kcal": 443,
+   "proteinG": 10,
+   "carbsG": 68,
+   "fatG": 15,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Green beans",
+     "grams": 80
+    },
+    {
+     "name": "Potato",
+     "grams": 80
+    },
+    {
+     "name": "Coconut",
+     "grams": 20
+    },
+    {
+     "name": "Plain yoghurt",
+     "grams": 60
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 2
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 130
+    }
+   ]
+  },
+  {
+   "id": 297,
+   "slot": "dinner",
+   "name": "Chicken Pepper Fry & Cabbage Thoran",
+   "cuisine": "South Indian",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 398,
+   "proteinG": 40,
+   "carbsG": 12,
+   "fatG": 21,
+   "cookMinutes": 25,
+   "rating": 4.7,
+   "ingredients": [
+    {
+     "name": "Chicken thigh",
+     "grams": 190
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Curry leaves",
+     "grams": 2
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 10
+    },
+    {
+     "name": "Cabbage",
+     "grams": 120
+    },
+    {
+     "name": "Coconut",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 298,
+   "slot": "dinner",
+   "name": "Spinach Moong Dal Kootu & Rice",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 488,
+   "proteinG": 22,
+   "carbsG": 80,
+   "fatG": 10,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Moong dal",
+     "grams": 60
+    },
+    {
+     "name": "Spinach",
+     "grams": 120
+    },
+    {
+     "name": "Coconut",
+     "grams": 10
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 130
+    },
+    {
+     "name": "Cumin",
+     "grams": 1
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 299,
+   "slot": "snack",
+   "name": "Masala Peanuts",
+   "cuisine": "South Indian",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": true,
+   "allergens": [
+    "peanuts"
+   ],
+   "kcal": 117,
+   "proteinG": 5,
+   "carbsG": 4,
+   "fatG": 10,
+   "cookMinutes": 5,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Peanuts",
+     "grams": 20
+    },
+    {
+     "name": "Chaat masala",
+     "grams": 1
+    },
+    {
+     "name": "Lemon",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 300,
+   "slot": "breakfast",
+   "name": "Tropical Fruit & Yoghurt Bowl",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten",
+    "treeNuts"
+   ],
+   "kcal": 398,
+   "proteinG": 22,
+   "carbsG": 42,
+   "fatG": 17,
+   "cookMinutes": 5,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Greek yoghurt",
+     "grams": 200
+    },
+    {
+     "name": "Mango",
+     "grams": 80
+    },
+    {
+     "name": "Pineapple",
+     "grams": 80
+    },
+    {
+     "name": "Coconut",
+     "grams": 5
+    },
+    {
+     "name": "Granola",
+     "grams": 20
+    }
+   ]
+  },
+  {
+   "id": 301,
+   "slot": "breakfast",
+   "name": "Plantain Porridge",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "peanuts",
+    "soy"
+   ],
+   "kcal": 363,
+   "proteinG": 11,
+   "carbsG": 65,
+   "fatG": 9,
+   "cookMinutes": 15,
+   "rating": 4.3,
+   "ingredients": [
+    {
+     "name": "Plantain",
+     "grams": 150
+    },
+    {
+     "name": "Soy milk",
+     "grams": 200
+    },
+    {
+     "name": "Peanut butter",
+     "grams": 10
+    },
+    {
+     "name": "Maple syrup",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 302,
+   "slot": "lunch",
+   "name": "Curry Chickpea & Potato Roti",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 555,
+   "proteinG": 20,
+   "carbsG": 86,
+   "fatG": 15,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 150
+    },
+    {
+     "name": "Potato",
+     "grams": 80
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Whole-wheat roti",
+     "grams": 60
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    },
+    {
+     "name": "Cumin",
+     "grams": 2
+    }
+   ]
+  },
+  {
+   "id": 303,
+   "slot": "lunch",
+   "name": "Pepperpot-style Beef & Veg Stew",
+   "cuisine": "Caribbean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [],
+   "kcal": 409,
+   "proteinG": 37,
+   "carbsG": 40,
+   "fatG": 12,
+   "cookMinutes": 30,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Sirloin",
+     "grams": 150
+    },
+    {
+     "name": "Sweet potato",
+     "grams": 120
+    },
+    {
+     "name": "Carrot",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Pumpkin",
+     "grams": 80
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 304,
+   "slot": "dinner",
+   "name": "Fish with Okra & Tomato",
+   "cuisine": "Caribbean",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish"
+   ],
+   "kcal": 351,
+   "proteinG": 45,
+   "carbsG": 14,
+   "fatG": 13,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "White fish",
+     "grams": 220
+    },
+    {
+     "name": "Okra",
+     "grams": 100
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 305,
+   "slot": "dinner",
+   "name": "Coconut Red Bean Stew & Rice",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 478,
+   "proteinG": 20,
+   "carbsG": 80,
+   "fatG": 10,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Kidney beans",
+     "grams": 150
+    },
+    {
+     "name": "Coconut milk",
+     "grams": 40
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 120
+    }
+   ]
+  },
+  {
+   "id": 306,
+   "slot": "snack",
+   "name": "Pineapple & Coconut",
+   "cuisine": "Caribbean",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [
+    "treeNuts"
+   ],
+   "kcal": 118,
+   "proteinG": 1,
+   "carbsG": 25,
+   "fatG": 3,
+   "cookMinutes": 3,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Pineapple",
+     "grams": 180
+    },
+    {
+     "name": "Coconut",
+     "grams": 8
+    }
+   ]
+  },
+  {
+   "id": 307,
+   "slot": "breakfast",
+   "name": "Spiced Yoghurt, Oats, Dates & Almonds",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "dairy",
+    "gluten",
+    "treeNuts"
+   ],
+   "kcal": 422,
+   "proteinG": 25,
+   "carbsG": 45,
+   "fatG": 17,
+   "cookMinutes": 5,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Greek yoghurt",
+     "grams": 200
+    },
+    {
+     "name": "Dates",
+     "grams": 20
+    },
+    {
+     "name": "Almonds",
+     "grams": 10
+    },
+    {
+     "name": "Rolled oats",
+     "grams": 30
+    }
+   ]
+  },
+  {
+   "id": 308,
+   "slot": "breakfast",
+   "name": "Eggs & Sukuma Wiki",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "eggs"
+   ],
+   "kcal": 338,
+   "proteinG": 25,
+   "carbsG": 11,
+   "fatG": 22,
+   "cookMinutes": 12,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "Eggs",
+     "grams": 165
+    },
+    {
+     "name": "Kale",
+     "grams": 100
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 309,
+   "slot": "lunch",
+   "name": "Cape Malay Chickpea Curry & Rice",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 537,
+   "proteinG": 19,
+   "carbsG": 94,
+   "fatG": 11,
+   "cookMinutes": 25,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chickpeas",
+     "grams": 150
+    },
+    {
+     "name": "Onion",
+     "grams": 50
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Raisins",
+     "grams": 10
+    },
+    {
+     "name": "Basmati rice",
+     "grams": 120
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 6
+    }
+   ]
+  },
+  {
+   "id": 310,
+   "slot": "lunch",
+   "name": "Harissa Chicken & Couscous Salad",
+   "cuisine": "African",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": false,
+   "allergens": [
+    "gluten"
+   ],
+   "kcal": 450,
+   "proteinG": 41,
+   "carbsG": 41,
+   "fatG": 13,
+   "cookMinutes": 20,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Chicken breast",
+     "grams": 150
+    },
+    {
+     "name": "Couscous",
+     "grams": 150
+    },
+    {
+     "name": "Cucumber",
+     "grams": 60
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Mint",
+     "grams": 5
+    },
+    {
+     "name": "Lemon",
+     "grams": 10
+    },
+    {
+     "name": "Olive oil",
+     "grams": 8
+    },
+    {
+     "name": "Harissa",
+     "grams": 5
+    }
+   ]
+  },
+  {
+   "id": 311,
+   "slot": "dinner",
+   "name": "Nigerian Pepper Soup with Fish",
+   "cuisine": "African",
+   "vegetarian": false,
+   "vegan": false,
+   "keto": true,
+   "allergens": [
+    "fish"
+   ],
+   "kcal": 387,
+   "proteinG": 51,
+   "carbsG": 14,
+   "fatG": 13,
+   "cookMinutes": 25,
+   "rating": 4.5,
+   "ingredients": [
+    {
+     "name": "White fish",
+     "grams": 250
+    },
+    {
+     "name": "Onion",
+     "grams": 30
+    },
+    {
+     "name": "Red pepper",
+     "grams": 60
+    },
+    {
+     "name": "Tomato",
+     "grams": 60
+    },
+    {
+     "name": "Vegetable stock",
+     "grams": 300
+    },
+    {
+     "name": "Chilli flakes",
+     "grams": 1
+    },
+    {
+     "name": "Spinach",
+     "grams": 60
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 10
+    }
+   ]
+  },
+  {
+   "id": 312,
+   "slot": "dinner",
+   "name": "Black-eyed Pea Stew & Plantain",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 468,
+   "proteinG": 20,
+   "carbsG": 83,
+   "fatG": 10,
+   "cookMinutes": 30,
+   "rating": 4.6,
+   "ingredients": [
+    {
+     "name": "Black-eyed peas",
+     "grams": 180
+    },
+    {
+     "name": "Spinach",
+     "grams": 80
+    },
+    {
+     "name": "Tinned tomato",
+     "grams": 100
+    },
+    {
+     "name": "Onion",
+     "grams": 40
+    },
+    {
+     "name": "Vegetable oil",
+     "grams": 8
+    },
+    {
+     "name": "Plantain",
+     "grams": 100
+    }
+   ]
+  },
+  {
+   "id": 313,
+   "slot": "snack",
+   "name": "Kachumbari & Avocado Cup",
+   "cuisine": "African",
+   "vegetarian": true,
+   "vegan": true,
+   "keto": false,
+   "allergens": [],
+   "kcal": 90,
+   "proteinG": 2,
+   "carbsG": 12,
+   "fatG": 5,
+   "cookMinutes": 5,
+   "rating": 4.4,
+   "ingredients": [
+    {
+     "name": "Tomato",
+     "grams": 100
+    },
+    {
+     "name": "Cucumber",
+     "grams": 80
+    },
+    {
+     "name": "Red onion",
+     "grams": 20
+    },
+    {
+     "name": "Lime",
+     "grams": 10
+    },
+    {
+     "name": "Coriander",
+     "grams": 5
+    },
+    {
+     "name": "Avocado",
+     "grams": 30
     }
    ]
   }

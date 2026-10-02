@@ -184,6 +184,7 @@ extension OnboardingDraft.Step {
 private struct StepQuestions: View {
     let step: OnboardingDraft.Step
     @Bindable var draft: OnboardingDraft
+    @State private var searchingFoods = false
     var focusedField: FocusState<WizardView.Field?>.Binding
 
     var body: some View {
@@ -372,6 +373,19 @@ private struct StepQuestions: View {
         Question("Diet style") {
             choices(DietStyle.allCases, selection: $draft.diet) { ($0.title, $0.subtitle) }
         }
+        Question("Food rules", hint: "Optional. They apply on top of any diet style.") {
+            FlowLayout {
+                ForEach(FoodRule.allCases, id: \.self) { rule in
+                    Chip(title: rule.title, isSelected: draft.foodRules.contains(rule)) {
+                        draft.foodRules.formSymmetricDifference([rule])
+                    }
+                }
+            }
+        }
+        if !draft.foodRules.isEmpty {
+            InlineNote(text: FoodRule.allCases.filter(draft.foodRules.contains).map { "\($0.title): \($0.subtitle.lowercased())." }
+                        .joined(separator: " "), systemImage: "info.circle")
+        }
     }
 
     @ViewBuilder private var taste: some View {
@@ -399,17 +413,35 @@ private struct StepQuestions: View {
                 }
             }
         }
+        let ruledOut = Protein.ruledOut(by: draft.diet, rules: draft.foodRules)
+        if ruledOut.count < Protein.allCases.count {
+            Question("Proteins you eat", hint: "Untick any you don't eat — those meals never appear.") {
+                FlowLayout {
+                    ForEach(Protein.allCases.filter { !ruledOut.contains($0) }, id: \.self) { protein in
+                        Chip(title: protein.title, isSelected: !draft.excludedProteins.contains(protein)) {
+                            draft.excludedProteins.formSymmetricDifference([protein])
+                        }
+                    }
+                }
+            }
+        }
         Question("Foods you will not eat", hint: "Avoided wherever there's an alternative.") {
             FlowLayout {
                 Chip(title: "None", isSelected: draft.dislikes?.isEmpty == true) { draft.dislikes = [] }
-                ForEach(FoodDislikes.options, id: \.self) { food in
+                // The common ones, then anything else the user searched for.
+                ForEach(FoodDislikes.options + (draft.dislikes ?? []).filter { !FoodDislikes.options.contains($0) }.sorted(),
+                        id: \.self) { food in
                     Chip(title: food, isSelected: draft.dislikes?.contains(food) == true) {
                         var set = draft.dislikes ?? []
                         set.formSymmetricDifference([food])
                         draft.dislikes = set
                     }
                 }
+                Chip(title: "Search more…", isSelected: false) { searchingFoods = true }
             }
+        }
+        .sheet(isPresented: $searchingFoods) {
+            FoodSearchPicker(selection: Binding(get: { draft.dislikes ?? [] }, set: { draft.dislikes = $0 }))
         }
     }
 
@@ -417,8 +449,20 @@ private struct StepQuestions: View {
         Question("Max cooking time per meal") {
             choices([10, 20, 40, 0], selection: $draft.cookLimit) { ($0 == 0 ? "No limit — I like cooking" : "\($0) minutes", nil) }
         }
-        Question("Meals per day") {
+        Question("Main meals per day") {
             choices(MealPattern.allCases, selection: $draft.mealPattern) { ($0.title, nil) }
+        }
+        Question("Snacks between meals", hint: "Light snacks keep you going; the main meals carry most of the day.") {
+            choices([true, false], selection: $draft.snacks) {
+                $0 ? ("Yes — mid-morning and evening", "About 100–200 kcal each") : ("No snacks", "Just the main meals")
+            }
+        }
+        if draft.snacks == true {
+            Question("Snack taste") {
+                choices(SnackTaste.allCases, selection: Binding(get: { draft.snackTaste }, set: { draft.snackTaste = $0 ?? .both })) {
+                    ($0.title, $0.subtitle)
+                }
+            }
         }
     }
 

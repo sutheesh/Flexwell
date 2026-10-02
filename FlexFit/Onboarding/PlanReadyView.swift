@@ -9,6 +9,9 @@ struct PlanReadyView: View {
     private var targets: DailyTargets { TargetCalculator.initialTargets(for: profile) }
     private var weeks: Int? { TargetCalculator.weeksToGoal(for: profile) }
     private var week: [PlannedDay] { WeekPlanner.week(for: profile) }
+    private var calorieWeek: CalorieWeek.Week {
+        CalorieWeek.week(for: profile, base: targets.calories, expenditure: targets.expenditure)
+    }
 
     var body: some View {
         ScrollView {
@@ -53,7 +56,7 @@ struct PlanReadyView: View {
 
                 CardList {
                     ForEach(week, id: \.weekday) { day in
-                        WeekRow(day: day, foodKcal: MealPlanContext.calories(base: targets.calories, kind: day.kind))
+                        WeekRow(day: day, foodKcal: calorieWeek.days[day.weekday].calories)
                     }
                 }
                 Text(foodLine)
@@ -95,7 +98,7 @@ struct PlanReadyView: View {
     private var foodLine: String {
         let kitchens = profile.cuisines.isEmpty ? "all" : profile.cuisines.map(\.rawValue).sorted().joined(separator: " + ")
         let never = profile.allergens.isEmpty ? "" : ", never containing " + profile.allergens.map { $0.title.lowercased() }.sorted().joined(separator: ", ")
-        return "Meals come from \(kitchens) kitchens, \(profile.diet.title.lowercased())\(never). \(profile.mealPattern.title) a day."
+        return "Meals come from \(kitchens) kitchens, \(profile.diet.title.lowercased())\(never). \(profile.mealPattern.title) a day\(profile.snacksBetweenMeals ? ", with light snacks between" : "")."
     }
 
     private var subtitle: String {

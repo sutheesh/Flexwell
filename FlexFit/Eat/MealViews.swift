@@ -2,6 +2,63 @@ import SwiftUI
 import SwiftData
 import FlexFitEngine
 
+// MARK: - Cheat days
+
+/// The day's cheat note: the whole day at a higher target, or a free meal in place of dinner.
+struct CheatDayBanner: View {
+    let day: CalorieWeek.Day
+    let proteinG: Int
+    var isToday = true
+
+    var body: some View {
+        if let cheat = day.cheat {
+            InlineNote(text: text(cheat), systemImage: "birthday.cake")
+        }
+    }
+
+    private func text(_ cheat: CheatDays.Style) -> String {
+        switch cheat {
+        case .day:
+            "\(isToday ? "Today is" : "It's") your cheat day: about \(Formatters.kcal(day.calories)) kcal, so enjoy it. "
+                + "Keep protein near \(proteinG) g; the meals below are only suggestions."
+        case .meal:
+            "Cheat meal \(isToday ? "tonight" : "that evening"): about \(Formatters.kcal(day.cheatMealKcal ?? 0)) kcal for anything "
+                + "you like, in place of dinner. The rest of the day runs as planned."
+        }
+    }
+}
+
+/// The free meal that stands in for dinner on a cheat-meal day.
+struct CheatMealCard: View {
+    let kcal: Int
+
+    var body: some View {
+        HStack(alignment: .top, spacing: Space.sm + 1) {
+            Image(systemName: "birthday.cake")
+                .font(TextStyle.headline.font)
+                .foregroundStyle(Palette.copperText)
+                .frame(width: Size.mealThumb.width, height: Size.mealThumb.height)
+                .background(Palette.copperTint, in: RoundedRectangle(cornerRadius: Radius.sm))
+                .accessibilityHidden(true)
+            VStack(alignment: .leading, spacing: Space.xs - 2) {
+                Text("Cheat meal · \(MealMoment.dinner.clock)")
+                    .textStyle(.micro)
+                    .foregroundStyle(Palette.inkMuted)
+                Text("Your free meal")
+                    .textStyle(.mealName)
+                    .foregroundStyle(Palette.ink)
+                Text("About \(Formatters.kcal(kcal)) kcal — anything you like. Log it with the scanner or Restaurant mode so the day stays honest.")
+                    .textStyle(.caption)
+                    .foregroundStyle(Palette.inkMuted)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(Space.md)
+        .accessibilityElement(children: .combine)
+    }
+}
+
 // MARK: - Meal card (Eat day list)
 
 struct MealCard: View {
@@ -14,7 +71,7 @@ struct MealCard: View {
         HStack(alignment: .top, spacing: Space.sm + 1) {
             Button(action: onOpen) {
                 Rectangle().fill(Palette.page)
-                    .overlay { Image(planned.slot.illustration).resizable().scaledToFill() }
+                    .overlay { Image(planned.meal.picture).resizable().scaledToFill() }
                     .frame(width: Size.mealThumb.width, height: Size.mealThumb.height)
                     .clipShape(RoundedRectangle(cornerRadius: Radius.sm))
             }
@@ -25,7 +82,7 @@ struct MealCard: View {
                 HStack(alignment: .top, spacing: Space.xs) {
                     Button(action: onOpen) {
                         VStack(alignment: .leading, spacing: Space.xs - 2) {
-                            Text("\(planned.slot.title) · \(planned.slot.clock)")
+                            Text("\(planned.moment.title) · \(planned.moment.clock)")
                                 .textStyle(.micro)
                                 .foregroundStyle(Palette.inkMuted)
                             Text(planned.meal.name)
@@ -180,7 +237,7 @@ struct PickedForYouCard: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             Circle()
                 .fill(Palette.white.opacity(0.4))
-                .overlay { Image(planned.slot.illustration).resizable().scaledToFill() }
+                .overlay { Image(planned.meal.picture).resizable().scaledToFill() }
                 .frame(width: Size.mealHero + 4, height: Size.mealHero + 4)
                 .clipShape(Circle())
                 .accessibilityHidden(true)
@@ -309,7 +366,7 @@ private struct IngredientFlower: View {
                     .fill(Palette.white)
                     .frame(width: r * 0.6, height: r * 0.6)
                     .overlay {
-                        Image(planned.slot.illustration)
+                        Image(planned.meal.picture)
                             .resizable()
                             .scaledToFill()
                             .frame(width: r * 0.5, height: r * 0.5)

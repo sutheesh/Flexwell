@@ -241,6 +241,26 @@ struct ExerciseCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ExerciseArt(exercise: exercise, pose: .peak, highlight: highlight)
+                .clipShape(UnevenRoundedRectangle(
+                    topLeadingRadius: Radius.lg,
+                    bottomLeadingRadius: 0,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: Radius.lg
+                ))
+                .overlay(alignment: .bottomLeading) {
+                    if ExerciseArt.image(exercise.id, .peak) != nil {
+                        Rectangle()
+                            .fill(Palette.repdbSky)
+                            .frame(width: Radius.lg, height: Radius.lg)
+                    }
+                }
+                .overlay(alignment: .bottomTrailing) {
+                    if ExerciseArt.image(exercise.id, .peak) != nil {
+                        Rectangle()
+                            .fill(Palette.repdbSky)
+                            .frame(width: Radius.lg, height: Radius.lg)
+                    }
+                }
                 .overlay(alignment: .topTrailing) { FavoriteStar(exerciseID: exercise.id).padding(Space.xs) }
                 .overlay(alignment: .topLeading) {
                     if let badge {
@@ -420,9 +440,94 @@ struct ExerciseArt: View {
 
 // MARK: - Exercise detail
 
-struct ExerciseDetailView: View {
-    enum Tab: String, CaseIterable { case guidance = "Guidance", performance = "Performance" }
+/// A lightweight motion preview made from an exercise's start and finish reference images: a continuous
+/// rep that holds each pose, eases between them and lifts slightly through the effort.
+private struct ExerciseMotionPreview: View {
+    let start: Image
+    let peak: Image
 
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @State private var showingPeak = false
+    @State private var isPlaying = true
+
+    /// One rep: hold the start, ease to the finish, hold, ease back.
+    private static let hold = 0.6, move = 0.9
+    private static var period: Double { 2 * (hold + move) }
+
+    /// How far into the finish pose the rep is at `time` (0 start … 1 finish), eased in and out.
+    private static func progress(at time: TimeInterval) -> Double {
+        let t = time.truncatingRemainder(dividingBy: period)
+        let eased = { (u: Double) in (1 - cos(.pi * u)) / 2 }
+        switch t {
+        case ..<hold: return 0
+        case ..<(hold + move): return eased((t - hold) / move)
+        case ..<(2 * hold + move): return 1
+        default: return 1 - eased((t - 2 * hold - move) / move)
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: Space.xs) {
+            TimelineView(.animation(paused: !isPlaying || reduceMotion)) { context in
+                let p = reduceMotion ? (showingPeak ? 1 : 0) : Self.progress(at: context.date.timeIntervalSinceReferenceDate)
+                GeometryReader { geometry in
+                    ZStack(alignment: .bottom) {
+                        ZStack {
+                            start
+                                .resizable()
+                                .scaledToFit()
+                                .opacity(1 - p)
+                            peak
+                                .resizable()
+                                .scaledToFit()
+                                .opacity(p)
+                        }
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        // A little lift and growth through the push reads as movement between the two poses.
+                        .scaleEffect(1 + 0.025 * p, anchor: .bottom)
+                        .offset(y: -geometry.size.height * 0.012 * p)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Palette.repdbSky)
+
+                        HStack {
+                            Label(p > 0.5 ? "Press" : "Ready", systemImage: "figure.strengthtraining.traditional")
+                                .textStyle(.caption)
+                                .foregroundStyle(Palette.onPanel)
+                            Spacer()
+                            Button {
+                                if reduceMotion {
+                                    showingPeak.toggle()
+                                } else {
+                                    isPlaying.toggle()
+                                }
+                            } label: {
+                                Image(systemName: reduceMotion ? "arrow.right" : (isPlaying ? "pause.fill" : "play.fill"))
+                                    .font(TextStyle.label.font)
+                                    .foregroundStyle(Palette.onPanel)
+                                    .frame(width: Size.button, height: Size.button)
+                                    .background(Palette.navy.opacity(0.82), in: Circle())
+                            }
+                            .buttonStyle(.plain)
+                            .accessibilityLabel(reduceMotion ? "Show next pose" : (isPlaying ? "Pause motion preview" : "Play motion preview"))
+                        }
+                        .padding(Space.sm)
+                        .background(LinearGradient(colors: [.clear, Palette.navy.opacity(0.72)], startPoint: .top, endPoint: .bottom))
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: Radius.md))
+                }
+            }
+            .frame(height: Size.exerciseCardFigure + Space.md * 2)
+
+            Text("Moves between the two reference poses")
+                .textStyle(.micro)
+                .foregroundStyle(Palette.onPanelMuted)
+                .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .accessibilityElement(children: .contain)
+    }
+}
+
+struct ExerciseDetailView: View {
     let exerciseID: String
     /// Opened from a swap list: the page leads with "Swap in".
     var swap: SwapChoice?
@@ -433,7 +538,6 @@ struct ExerciseDetailView: View {
     @Query private var logs: [DailyLog]
     @Query private var painFlags: [PainFlag]
     @Query(sort: \SessionLog.day, order: .reverse) private var sessions: [SessionLog]
-    @State private var tab: Tab = .guidance
 
     var body: some View {
         if let exercise = ExerciseLibrary.bundled[exerciseID] {
@@ -443,11 +547,13 @@ struct ExerciseDetailView: View {
                     .foregroundStyle(Palette.onPanel)
                     .fixedSize(horizontal: false, vertical: true)
                     .accessibilityAddTraits(.isHeader)
-                GymSegmented(selection: $tab, options: Tab.allCases, title: \.rawValue)
-                switch tab {
-                case .guidance: guidance(exercise)
-                case .performance: performance(exercise)
-                }
+                guidance(exercise)
+                Text("Performance")
+                    .textStyle(.headline)
+                    .foregroundStyle(Palette.onPanel)
+                    .accessibilityAddTraits(.isHeader)
+                    .padding(.top, Space.sm)
+                performance(exercise)
             }
         }
     }
@@ -509,20 +615,11 @@ struct ExerciseDetailView: View {
 
         if let start = ExerciseArt.image(ex.id, .start), let peak = ExerciseArt.image(ex.id, .peak) {
             GymCard {
-                Text("The movement").textStyle(.headline).foregroundStyle(Palette.onPanel)
-                HStack(spacing: Space.sm) {
-                    ForEach([("Start", start), ("Finish", peak)], id: \.0) { label, image in
-                        VStack(spacing: Space.xs - 2) {
-                            image.resizable().scaledToFit()
-                                .background(Palette.repdbSky)
-                                .clipShape(RoundedRectangle(cornerRadius: Radius.md))
-                            Text(label).textStyle(.micro).foregroundStyle(Palette.onPanelMuted)
-                        }
-                    }
-                }
-                .padding(.top, Space.sm)
-                .accessibilityElement(children: .ignore)
-                .accessibilityLabel("Start and finish positions")
+                Text("Motion preview")
+                    .textStyle(.headline)
+                    .foregroundStyle(Palette.onPanel)
+                ExerciseMotionPreview(start: start, peak: peak)
+                    .padding(.top, Space.sm)
             }
         }
 
@@ -806,24 +903,6 @@ struct GymPage<Trailing: View, Content: View>: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: Space.md) {
-                ZStack {
-                    if let title {
-                        Text(title).textStyle(.kicker).foregroundStyle(Palette.onPanelMuted).accessibilityAddTraits(.isHeader)
-                    }
-                    HStack {
-                        Button { dismiss() } label: {
-                            Image(systemName: closes ? "xmark" : "chevron.left")
-                                .font(TextStyle.headline.font)
-                                .foregroundStyle(Palette.onPanel)
-                                .frame(width: Size.avatar, height: Size.avatar)
-                                .background(Palette.navyRaised, in: RoundedRectangle(cornerRadius: Radius.sm))
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel(closes ? "Close" : "Back")
-                        Spacer()
-                        trailing()
-                    }
-                }
                 content()
             }
             .padding(.horizontal, Space.lg)
@@ -837,7 +916,23 @@ struct GymPage<Trailing: View, Content: View>: View {
             Color.clear.frame(height: 0).background(Palette.navy.ignoresSafeArea(edges: .top))
         }
         .background(Palette.navy.ignoresSafeArea())
-        .toolbar(.hidden, for: .navigationBar)
+        .navigationTitle(title ?? "")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar(.visible, for: .navigationBar)
+        .toolbar {
+            if closes {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button { dismiss() } label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(Palette.onPanel)
+                    }
+                    .accessibilityLabel("Close")
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                trailing()
+            }
+        }
     }
 }
 

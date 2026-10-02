@@ -40,22 +40,9 @@ struct PathView: View {
             VStack(alignment: .leading, spacing: Space.md - 2) {
                 let title = remaining.map { $0 == 0 ? "Goal week" : "\($0) weeks to goal" } ?? "Holding steady"
                 if isPushed {
-                    HStack(spacing: Space.sm) {
-                        Button { dismiss() } label: {
-                            Image(systemName: "chevron.left")
-                                .font(TextStyle.headline.font)
-                                .foregroundStyle(Palette.ink)
-                                .frame(width: Size.avatar, height: Size.avatar)
-                                .background(Palette.card, in: RoundedRectangle(cornerRadius: Radius.sm))
-                                .cardShadow()
-                        }
-                        .buttonStyle(.plain)
-                        .accessibilityLabel("Back")
-                        VStack(alignment: .leading, spacing: Space.xxs + 1) {
-                            Text("Your path").textStyle(.caption).foregroundStyle(Palette.inkMuted)
-                            Text(title).textStyle(.title2).foregroundStyle(Palette.ink).accessibilityAddTraits(.isHeader)
-                        }
-                        Spacer(minLength: 0)
+                    VStack(alignment: .leading, spacing: Space.xxs + 1) {
+                        Text("Your path").textStyle(.caption).foregroundStyle(Palette.inkMuted)
+                        Text(title).textStyle(.title2).foregroundStyle(Palette.ink).accessibilityAddTraits(.isHeader)
                     }
                     .padding(.vertical, Space.xs)
                 } else {

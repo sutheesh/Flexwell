@@ -100,7 +100,8 @@ struct EatView: View {
                         }
                     }
 
-                    DayChips(dates: dates, selected: $selectedWeekday)
+                    DayChips(dates: dates, selected: $selectedWeekday,
+                             cheatDays: Set((0..<7).filter { context.week.days[$0].cheat != nil }))
 
                     HStack(alignment: .firstTextBaseline) {
                         SectionHeader(title: dayTitle(selectedDate))
@@ -111,6 +112,9 @@ struct EatView: View {
                     }
                     .padding(.horizontal, Space.xxs / 2)
                     .padding(.top, Space.xs)
+
+                    CheatDayBanner(day: context.day(on: selectedDate), proteinG: targets.proteinG,
+                                   isToday: Calendar.current.isDateInToday(selectedDate))
 
                     if !dayIntake.entries.isEmpty {
                         CardList {
@@ -132,13 +136,16 @@ struct EatView: View {
                                          onOpen: { detail = MealSelection(date: selectedDate, planned: meal) },
                                          onSwap: { swapping = MealSelection(date: selectedDate, planned: meal) })
                             }
+                            if let free = context.day(on: selectedDate).cheatMealKcal, !dayIntake.dinnerReplaced {
+                                CheatMealCard(kcal: free)
+                            }
                         }
                     }
                     if !savedMeals.isEmpty {
                         SectionHeader(title: "Saved meals")
                         CardList {
                             ForEach(savedMeals.compactMap { MealLibrary.bundled[$0.mealID] }) { meal in
-                                let planned = PlannedMeal(meal: meal, slot: meal.slot, index: 200 + meal.id, kcal: meal.kcal,
+                                let planned = PlannedMeal(meal: meal, moment: MealMoment(slot: meal.slot), index: 200 + meal.id, kcal: meal.kcal,
                                                           proteinG: meal.proteinG, carbsG: meal.carbsG, fatG: meal.fatG,
                                                           ingredients: meal.ingredients, swapped: nil)
                                 MealCard(planned: planned, isEaten: false,
@@ -241,7 +248,7 @@ private struct SearchResults: View {
         } else {
             CardList {
                 ForEach(matches) { meal in
-                    let planned = PlannedMeal(meal: meal, slot: meal.slot, index: 100 + meal.id, kcal: meal.kcal,
+                    let planned = PlannedMeal(meal: meal, moment: MealMoment(slot: meal.slot), index: 100 + meal.id, kcal: meal.kcal,
                                               proteinG: meal.proteinG, carbsG: meal.carbsG, fatG: meal.fatG,
                                               ingredients: meal.ingredients, swapped: nil)
                     MealCard(planned: planned, isEaten: false, onOpen: { onOpen(planned) }, onSwap: { onOpen(planned) })
@@ -254,6 +261,8 @@ private struct SearchResults: View {
 private struct DayChips: View {
     let dates: [Date]
     @Binding var selected: Int
+    /// Weekdays (0 = Monday) that are cheat days.
+    var cheatDays: Set<Int> = []
     @State private var leadingDay: Int?
 
     var body: some View {
@@ -262,7 +271,12 @@ private struct DayChips: View {
                 ForEach(dates.indices, id: \.self) { i in
                     let isSelected = i == selected
                     Button { selected = i } label: {
-                        Text(Calendar.current.isDateInToday(dates[i]) ? "Today" : "\(Weekday.shortName(i)) \(dates[i].formatted(.dateTime.day()))")
+                        HStack(spacing: Space.xxs) {
+                            Text(Calendar.current.isDateInToday(dates[i]) ? "Today" : "\(Weekday.shortName(i)) \(dates[i].formatted(.dateTime.day()))")
+                            if cheatDays.contains(i) {
+                                Image(systemName: "birthday.cake").imageScale(.small).accessibilityLabel("cheat day")
+                            }
+                        }
                             .textStyle(.label)
                             .foregroundStyle(isSelected ? Palette.onInkFill : Palette.ink)
                             .padding(.horizontal, Space.md - 1)

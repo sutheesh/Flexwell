@@ -51,16 +51,25 @@ struct FlexFitApp: App {
     }
 }
 
-/// Onboarding until a profile exists, then the tabs.
+/// The splash, then onboarding until a profile exists, then the tabs.
 struct AppRoot: View {
     @Query private var profiles: [ProfileRecord]
+    /// Shown once per launch. UI tests and screenshots skip it with -FFNoSplash.
+    @State private var showsSplash = !ProcessInfo.processInfo.arguments.contains("-FFNoSplash")
 
     var body: some View {
-        if profiles.isEmpty {
-            OnboardingFlow()
-        } else {
-            RootView()
-                .weeklyTargetsUpkeep()
+        ZStack {
+            if profiles.isEmpty {
+                OnboardingFlow()
+            } else {
+                RootView()
+                    .weeklyTargetsUpkeep()
+            }
+            if showsSplash {
+                SplashView { withAnimation(.easeInOut(duration: 0.35)) { showsSplash = false } }
+                    .transition(.opacity)
+                    .zIndex(1)
+            }
         }
     }
 }

@@ -19,6 +19,15 @@ struct BodyFigure: View {
     static let aspect: CGFloat = 727.0 / 1280.0
 
     var body: some View {
+        // The 3D render when it's bundled; the vector model otherwise (and for taps).
+        if onTap == nil, MuscleHeatmap.isAvailable {
+            MuscleHeatmap(side: side, primary: primary, secondary: secondary)
+        } else {
+            vectorFigure
+        }
+    }
+
+    private var vectorFigure: some View {
         // The model's feet are toeless wedges; hide them and draw feet with toes in the same plate style.
         var view = BodyView(gender: .male, side: side == .front ? .front : .back, style: style)
             .highlight(.feet, color: .clear)
@@ -62,6 +71,48 @@ struct BodyFigure: View {
             headColor: Palette.onPanel.opacity(0.2),
             hairColor: Palette.onPanel.opacity(0.08)
         )
+    }
+}
+
+/// RepDB's 3D body render with our muscle groups tinted on it: primary in copper, secondary in sand.
+/// Each group is a grayscale cut of the render's own shading (`Heatmap/<side>_<group>`), so the tint keeps
+/// the muscle's 3D shape.
+struct MuscleHeatmap: View {
+    let side: BodyFigure.Side
+    var primary: Set<MuscleGroup> = []
+    var secondary: Set<MuscleGroup> = []
+
+    var body: some View {
+        if let base = Self.image("\(side.rawValue)_base") {
+            Image(uiImage: base)
+                .resizable()
+                .overlay {
+                    ForEach(layers(secondary.subtracting(primary)), id: \.self) { layer($0, Palette.sand) }
+                    ForEach(layers(primary), id: \.self) { layer($0, Palette.copper) }
+                }
+                .aspectRatio(base.size, contentMode: .fit)
+                .allowsHitTesting(false)
+                .accessibilityHidden(true)
+        }
+    }
+
+    private func layers(_ groups: Set<MuscleGroup>) -> [UIImage] {
+        groups.sorted { $0.rawValue < $1.rawValue }.compactMap { Self.image("\(side.rawValue)_\($0.rawValue)") }
+    }
+
+    private func layer(_ image: UIImage, _ tint: Color) -> some View {
+        Image(uiImage: image).resizable().colorMultiply(tint)
+    }
+
+    /// Whether the renders are bundled.
+    static var isAvailable: Bool { image("front_base") != nil && image("back_base") != nil }
+
+    private static var cache: [String: UIImage?] = [:]
+    private static func image(_ name: String) -> UIImage? {
+        if let hit = cache[name] { return hit }
+        let image = UIImage(named: "Heatmap/\(name)")
+        cache[name] = image
+        return image
     }
 }
 
@@ -260,6 +311,8 @@ extension Exercise {
     HStack {
         BodyFigure(side: .front, primary: [.quads], secondary: [.glutes, .adductors])
         BodyFigure(side: .back, primary: [.back], secondary: [.biceps, .shoulders])
+        MuscleHeatmap(side: .front, primary: [.chest], secondary: [.abs, .biceps])
+        MuscleHeatmap(side: .back, primary: [.back], secondary: [.traps])
     }
     .padding()
     .background(Palette.navy)

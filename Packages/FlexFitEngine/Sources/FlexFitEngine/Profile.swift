@@ -25,9 +25,19 @@ public struct UserProfile: Codable, Sendable, Equatable {
     public var allergens: Set<Allergen> = []
     /// Soft filter: ingredient keywords the user won't eat.
     public var dislikes: Set<String> = []
+    /// Hard filter: proteins the user doesn't eat (everything is eaten unless listed).
+    public var excludedProteins: Set<Protein> = []
+    /// Hard filter: halal, Jain.
+    public var foodRules: Set<FoodRule> = []
+    /// Which snacks to lean towards.
+    public var snackTaste: SnackTaste = .both
     /// Nil = no limit.
     public var maxCookMinutes: Int?
-    public var mealPattern: MealPattern = .threePlusSnack
+    /// Main meals a day; snacks come on top (see `snacksBetweenMeals`).
+    public var mealPattern: MealPattern = .three
+    /// A light snack between breakfast and lunch and another between lunch and dinner.
+    public var snacksBetweenMeals = true
+    public var cheatDays = CheatDays()
     // The rest of the mock's wizard.
     public var history: TrainingHistory = .firstAttempt
     public var dailySteps: DailySteps = .fourToEight
@@ -134,29 +144,91 @@ public enum Limitation: String, Codable, Sendable, CaseIterable {
 }
 
 public enum DietStyle: String, Codable, Sendable, CaseIterable {
-    case highProtein, balanced, vegetarian, vegan, keto, intermittentFasting
+    case highProtein, balanced, vegetarian, vegan, pescatarian, keto, intermittentFasting
 }
 
 public enum Cuisine: String, Codable, Sendable, CaseIterable {
     case indian = "Indian", western = "Western", mediterranean = "Mediterranean", eastAsian = "East Asian"
     case mexican = "Mexican", middleEastern = "Middle Eastern", thai = "Thai"
+    case chinese = "Chinese", japanese = "Japanese", korean = "Korean", italian = "Italian"
+    case southIndian = "South Indian", caribbean = "Caribbean", african = "African"
+
+    /// The recipe cuisines this choice serves: East Asian takes in Chinese, Japanese and Korean (and each of those
+    /// the broader East Asian recipes); Indian and South Indian take in each other.
+    public var served: Set<String> {
+        switch self {
+        case .eastAsian: [rawValue, Cuisine.chinese.rawValue, Cuisine.japanese.rawValue, Cuisine.korean.rawValue]
+        case .chinese, .japanese, .korean: [rawValue, Cuisine.eastAsian.rawValue]
+        case .indian: [rawValue, Cuisine.southIndian.rawValue]
+        case .southIndian: [rawValue, Cuisine.indian.rawValue]
+        default: [rawValue]
+        }
+    }
 }
 
 public enum Allergen: String, Codable, Sendable, CaseIterable {
     case peanuts, treeNuts, dairy, gluten, shellfish, fish, soy, eggs, sesame
 }
 
+/// Main meals a day.
 public enum MealPattern: String, Codable, Sendable, CaseIterable {
-    case two, three, threePlusSnack, fourToFive
+    case two, three
 
-    public var slots: [MealSlot] {
-        switch self {
-        case .two: [.lunch, .dinner]
-        case .three: [.breakfast, .lunch, .dinner]
-        case .threePlusSnack: [.breakfast, .lunch, .snack, .dinner]
-        case .fourToFive: [.breakfast, .snack, .lunch, .snack, .dinner]
+    /// Reads a stored value, including the patterns from before snacks became their own setting.
+    public init(stored: String) {
+        self = stored == "two" ? .two : .three
+    }
+
+    /// Whether a pattern stored before snacks became their own setting included snacks (nil if it isn't one).
+    public static func legacyHadSnacks(_ stored: String) -> Bool? {
+        switch stored {
+        case "threePlusSnack", "fourToFive": true
+        case "two", "three": false
+        default: nil
         }
     }
+}
+
+/// Planned cheat days: how often, on which weekdays, the whole day or one meal, and what pays for it.
+public struct CheatDays: Codable, Sendable, Equatable {
+    public var frequency: Frequency = .none
+    /// Weekdays (0 = Monday) in order of preference; `frequency` says how many are used.
+    public var weekdays: [Int] = [5, 2]
+    public var style: Style = .day
+    public var budget: Budget = .spread
+
+    public enum Frequency: String, Codable, Sendable, CaseIterable {
+        case none, once, twice
+        public var count: Int {
+            switch self {
+            case .none: 0
+            case .once: 1
+            case .twice: 2
+            }
+        }
+    }
+
+    public enum Style: String, Codable, Sendable, CaseIterable {
+        /// The whole day at about maintenance.
+        case day
+        /// One free meal in place of dinner.
+        case meal
+    }
+
+    public enum Budget: String, Codable, Sendable, CaseIterable {
+        /// A small cut on the other days pays for it, so the goal date holds.
+        case spread
+        /// Nothing else changes; the goal date moves out.
+        case goalMoves
+    }
+
+    /// The cheat weekdays in use (0 = Monday), distinct.
+    public var activeWeekdays: [Int] {
+        var seen = Set<Int>()
+        return Array(weekdays.filter { (0..<7).contains($0) && seen.insert($0).inserted }.prefix(frequency.count))
+    }
+
+    public init() {}
 }
 
 public enum TrainingHistory: String, Codable, Sendable, CaseIterable {

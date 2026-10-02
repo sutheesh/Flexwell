@@ -74,11 +74,17 @@ public enum TargetCalculator {
         )
     }
 
-    /// Whole weeks to reach the target at the chosen pace. Nil when maintaining.
+    /// Whole weeks to reach the target at the chosen pace. Nil when maintaining. Cheat days the rest of the
+    /// week doesn't pay for slow a cut down (never below a fifth of the pace).
     public static func weeksToGoal(for p: UserProfile) -> Int? {
         let pace = Safety.cappedPace(p.pacePctPerWeek, goal: p.goal)
         guard p.goal != .maintain, pace > 0 else { return nil }
-        let perWeek = pace / 100 * p.weightKg
+        var perWeek = pace / 100 * p.weightKg
+        if p.goal == .lose {
+            let t = initialTargets(for: p)
+            let unpaid = CalorieWeek.week(for: p, base: t.calories, expenditure: t.expenditure).unpaidKcal
+            perWeek = max(perWeek * 0.2, perWeek - Double(unpaid) / kcalPerKg)
+        }
         let weeks = abs(p.weightKg - p.targetWeightKg) / perWeek
         return max(1, Int(weeks.rounded(.up)))
     }

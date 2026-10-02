@@ -9,3 +9,6 @@ build/
 # Personal Claude Code permissions (local paths) — not shared
 .claude/settings.json
 .claude/settings.local.json
+
+# Recipe photos made by tools/generate_recipe_images.py (reviewed before going into the app)
+generated/

@@ -1,4 +1,5 @@
 import SwiftUI
+import FlexFitEngine
 
 // Shared controls from the mock. Each draws only from DesignTokens.
 
@@ -281,5 +282,45 @@ extension View {
     func readableColumn() -> some View {
         frame(maxWidth: Size.readableWidth)
             .frame(maxWidth: .infinity)
+    }
+}
+
+/// Every ingredient in the library, searchable: tap to mark foods the user won't eat.
+struct FoodSearchPicker: View {
+    @Binding var selection: Set<String>
+    @State private var query = ""
+    @Environment(\.dismiss) private var dismiss
+
+    private var matches: [String] {
+        let q = query.trimmingCharacters(in: .whitespaces)
+        return q.isEmpty ? FoodDislikes.all : FoodDislikes.all.filter { $0.localizedCaseInsensitiveContains(q) }
+    }
+
+    var body: some View {
+        NavigationStack {
+            List(matches, id: \.self) { name in
+                Button {
+                    selection.formSymmetricDifference([name])
+                } label: {
+                    HStack(spacing: Space.sm) {
+                        Text(NutritionTable.bundled[name]?.emoji ?? "🍽️").accessibilityHidden(true)
+                        Text(name).textStyle(.body).foregroundStyle(Palette.ink)
+                        Spacer()
+                        if selection.contains(name) {
+                            Image(systemName: "checkmark").foregroundStyle(Palette.copper)
+                        }
+                    }
+                    .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityAddTraits(selection.contains(name) ? .isSelected : [])
+            }
+            .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search foods")
+            .navigationTitle("Foods you won't eat")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
+            }
+        }
     }
 }

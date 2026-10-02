@@ -50,9 +50,14 @@ final class OnboardingDraft {
     /// Nil until answered; empty = "None".
     var allergens: Set<Allergen>?
     var dislikes: Set<String>?
+    /// Proteins the user doesn't eat; empty = eats them all.
+    var excludedProteins: Set<Protein> = []
+    var foodRules: Set<FoodRule> = []
+    var snackTaste: SnackTaste = .both
     /// 0 = no limit; nil = unanswered.
     var cookLimit: Int?
     var mealPattern: MealPattern?
+    var snacks: Bool?
     var budget: GroceryBudget?
     var shopDay: ShopDay?
     var reminder: ReminderTime?
@@ -149,7 +154,7 @@ final class OnboardingDraft {
         case .constraints:
             allergens != nil && dislikes != nil
         case .kitchen:
-            cookLimit != nil && mealPattern != nil
+            cookLimit != nil && mealPattern != nil && snacks != nil
         case .shopping:
             budget != nil && shopDay != nil
         case .accountability:
@@ -195,8 +200,12 @@ final class OnboardingDraft {
         profile.cuisines = cuisines
         profile.allergens = allergens ?? []
         profile.dislikes = dislikes ?? []
+        profile.excludedProteins = excludedProteins.subtracting(Protein.ruledOut(by: diet, rules: foodRules))
+        profile.foodRules = foodRules
+        profile.snackTaste = snackTaste
         profile.maxCookMinutes = (cookLimit ?? 0) > 0 ? cookLimit : nil
-        profile.mealPattern = mealPattern ?? .threePlusSnack
+        profile.mealPattern = mealPattern ?? .three
+        profile.snacksBetweenMeals = snacks ?? true
         profile.budget = budget ?? .moderate
         profile.shopDay = shopDay ?? .sunday
         profile.reminder = reminder ?? .morning

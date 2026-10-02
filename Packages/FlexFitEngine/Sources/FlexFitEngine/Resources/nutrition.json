@@ -1,7 +1,7 @@
 {
- "version": 1,
- "basis": "per 100 g as listed in recipes: grains/beans cooked or tinned; dals, oats, poha, semolina, pasta and dry noodles uncooked",
- "reviewStatus": "draft — reference values, verify against USDA FoodData Central before launch",
+ "version": 2,
+ "basis": "per 100 g as listed in recipes: meat, fish and eggs raw; grains and beans cooked or tinned; dals, oats, poha, semolina, pasta and noodles dry",
+ "reviewStatus": "checked against USDA FoodData Central on 2026-09-27 (see docs/nutrition-check.md); items USDA doesn't list come from IFCT 2017, brand labels or their recipe, as each source says",
  "ingredients": {
   "Almond butter": {
    "kcal": 614,
@@ -9,7 +9,8 @@
    "carbsG": 19,
    "fatG": 56,
    "emoji": "🥜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 168588 (SR Legacy): Nuts, almond butter, plain, without salt added"
   },
   "Almonds": {
    "kcal": 579,
@@ -17,7 +18,8 @@
    "carbsG": 22,
    "fatG": 50,
    "emoji": "🌰",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170567 (SR Legacy): Nuts, almonds"
   },
   "Apple": {
    "kcal": 52,
@@ -25,7 +27,8 @@
    "carbsG": 14,
    "fatG": 0.2,
    "emoji": "🍎",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171688 (SR Legacy): Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)"
   },
   "Asparagus": {
    "kcal": 20,
@@ -33,7 +36,8 @@
    "carbsG": 3.9,
    "fatG": 0.1,
    "emoji": "🥦",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168389 (SR Legacy): Asparagus, raw"
   },
   "Aubergine": {
    "kcal": 25,
@@ -41,7 +45,8 @@
    "carbsG": 6,
    "fatG": 0.2,
    "emoji": "🍆",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169228 (SR Legacy): Eggplant, raw"
   },
   "Avocado": {
    "kcal": 160,
@@ -49,7 +54,8 @@
    "carbsG": 8.5,
    "fatG": 15,
    "emoji": "🥑",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 171705 (SR Legacy): Avocados, raw, all commercial varieties"
   },
   "Baby potatoes": {
    "kcal": 77,
@@ -57,7 +63,8 @@
    "carbsG": 17,
    "fatG": 0.1,
    "emoji": "🥔",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170029 (SR Legacy): Potatoes, red, flesh and skin, raw"
   },
   "Bagel": {
    "kcal": 257,
@@ -65,7 +72,8 @@
    "carbsG": 50,
    "fatG": 1.6,
    "emoji": "🥯",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 175049 (SR Legacy): Bagels, plain, enriched, without calcium propionate (includes onion, poppy, sesame)"
   },
   "Banana": {
    "kcal": 89,
@@ -73,7 +81,17 @@
    "carbsG": 23,
    "fatG": 0.3,
    "emoji": "🍌",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 173944 (SR Legacy): Bananas, raw"
+  },
+  "Basil": {
+   "kcal": 23,
+   "proteinG": 3.1,
+   "carbsG": 2.6,
+   "fatG": 0.6,
+   "emoji": "🌿",
+   "tone": "green",
+   "source": "USDA FDC 172232 (SR Legacy): Basil, fresh"
   },
   "Basmati rice": {
    "kcal": 130,
@@ -81,7 +99,8 @@
    "carbsG": 28,
    "fatG": 0.3,
    "emoji": "🍚",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168878 (SR Legacy): Rice, white, long-grain, regular, enriched, cooked"
   },
   "Bean sprouts": {
    "kcal": 30,
@@ -89,15 +108,17 @@
    "carbsG": 6,
    "fatG": 0.2,
    "emoji": "🌱",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169957 (SR Legacy): Mung beans, mature seeds, sprouted, raw"
   },
   "Beef mince": {
-   "kcal": 250,
-   "proteinG": 26,
+   "kcal": 215,
+   "proteinG": 18.6,
    "carbsG": 0,
-   "fatG": 17,
+   "fatG": 15,
    "emoji": "🥩",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171796 (SR Legacy): Beef, ground, 85% lean meat / 15% fat, raw (Includes foods for USDA's Food Distribution Program)"
   },
   "Black beans": {
    "kcal": 132,
@@ -105,7 +126,17 @@
    "carbsG": 24,
    "fatG": 0.5,
    "emoji": "🫘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 173735 (SR Legacy): Beans, black, mature seeds, cooked, boiled, without salt"
+  },
+  "Black-eyed peas": {
+   "kcal": 116,
+   "proteinG": 7.7,
+   "carbsG": 20.8,
+   "fatG": 0.5,
+   "emoji": "🫘",
+   "tone": "sand",
+   "source": "USDA FDC 173759 (SR Legacy): Cowpeas, common (blackeyes, crowder, southern), mature seeds, cooked, boiled, without salt"
   },
   "Blueberries": {
    "kcal": 57,
@@ -113,7 +144,8 @@
    "carbsG": 14,
    "fatG": 0.3,
    "emoji": "🫐",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 171711 (SR Legacy): Blueberries, raw"
   },
   "Broccoli": {
    "kcal": 34,
@@ -121,7 +153,8 @@
    "carbsG": 7,
    "fatG": 0.4,
    "emoji": "🥦",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170379 (SR Legacy): Broccoli, raw"
   },
   "Brown rice": {
    "kcal": 123,
@@ -129,7 +162,8 @@
    "carbsG": 26,
    "fatG": 1,
    "emoji": "🍚",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169704 (SR Legacy): Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)"
   },
   "Bulgur": {
    "kcal": 83,
@@ -137,7 +171,8 @@
    "carbsG": 19,
    "fatG": 0.2,
    "emoji": "🌾",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170287 (SR Legacy): Bulgur, cooked"
   },
   "Butter": {
    "kcal": 717,
@@ -145,7 +180,8 @@
    "carbsG": 0.1,
    "fatG": 81,
    "emoji": "🧈",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 173410 (SR Legacy): Butter, salted"
   },
   "Buttermilk": {
    "kcal": 40,
@@ -153,7 +189,8 @@
    "carbsG": 4.8,
    "fatG": 0.9,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 170874 (SR Legacy): Milk, buttermilk, fluid, cultured, lowfat"
   },
   "Cabbage": {
    "kcal": 25,
@@ -161,7 +198,8 @@
    "carbsG": 6,
    "fatG": 0.1,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169975 (SR Legacy): Cabbage, raw"
   },
   "Cannellini beans": {
    "kcal": 114,
@@ -169,7 +207,8 @@
    "carbsG": 20,
    "fatG": 0.4,
    "emoji": "🫘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 175204 (SR Legacy): Beans, white, mature seeds, canned"
   },
   "Carrot": {
    "kcal": 41,
@@ -177,7 +216,8 @@
    "carbsG": 10,
    "fatG": 0.2,
    "emoji": "🥕",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170393 (SR Legacy): Carrots, raw"
   },
   "Cashews": {
    "kcal": 553,
@@ -185,7 +225,8 @@
    "carbsG": 30,
    "fatG": 44,
    "emoji": "🌰",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170162 (SR Legacy): Nuts, cashew nuts, raw"
   },
   "Celery": {
    "kcal": 16,
@@ -193,7 +234,8 @@
    "carbsG": 3,
    "fatG": 0.2,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169988 (SR Legacy): Celery, raw"
   },
   "Chaat masala": {
    "kcal": 250,
@@ -201,7 +243,8 @@
    "carbsG": 50,
    "fatG": 3,
    "emoji": "🧂",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "spice blend, from brand labels"
   },
   "Cheddar": {
    "kcal": 403,
@@ -209,7 +252,8 @@
    "carbsG": 1.3,
    "fatG": 33,
    "emoji": "🧀",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 328637 (Foundation Foods): Cheese, cheddar"
   },
   "Cherry tomato": {
    "kcal": 18,
@@ -217,7 +261,8 @@
    "carbsG": 3.9,
    "fatG": 0.2,
    "emoji": "🍅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170457 (SR Legacy): Tomatoes, red, ripe, raw, year round average"
   },
   "Chia seeds": {
    "kcal": 486,
@@ -225,15 +270,17 @@
    "carbsG": 42,
    "fatG": 31,
    "emoji": "🌱",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170554 (SR Legacy): Seeds, chia seeds, dried"
   },
   "Chicken breast": {
-   "kcal": 165,
-   "proteinG": 31,
+   "kcal": 120,
+   "proteinG": 22.5,
    "carbsG": 0,
-   "fatG": 3.6,
+   "fatG": 2.6,
    "emoji": "🍗",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171077 (SR Legacy): Chicken, broiler or fryers, breast, skinless, boneless, meat only, raw"
   },
   "Chicken mince": {
    "kcal": 143,
@@ -241,15 +288,17 @@
    "carbsG": 0,
    "fatG": 8,
    "emoji": "🍗",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171116 (SR Legacy): Chicken, ground, raw"
   },
   "Chicken thigh": {
-   "kcal": 209,
-   "proteinG": 26,
+   "kcal": 121,
+   "proteinG": 19.7,
    "carbsG": 0,
-   "fatG": 11,
+   "fatG": 4.1,
    "emoji": "🍗",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 173627 (SR Legacy): Chicken, broilers or fryers, dark meat, thigh, meat only, raw"
   },
   "Chickpea flour": {
    "kcal": 387,
@@ -257,7 +306,8 @@
    "carbsG": 58,
    "fatG": 6.7,
    "emoji": "🌾",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174288 (SR Legacy): Chickpea flour (besan)"
   },
   "Chickpeas": {
    "kcal": 164,
@@ -265,7 +315,8 @@
    "carbsG": 27,
    "fatG": 2.6,
    "emoji": "🫘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 173757 (SR Legacy): Chickpeas (garbanzo beans, bengal gram), mature seeds, cooked, boiled, without salt"
   },
   "Chilli bean paste": {
    "kcal": 180,
@@ -273,7 +324,17 @@
    "carbsG": 20,
    "fatG": 8,
    "emoji": "🌶️",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "average of brand labels"
+  },
+  "Chilli flakes": {
+   "kcal": 318,
+   "proteinG": 12.0,
+   "carbsG": 56.6,
+   "fatG": 17.3,
+   "emoji": "🌶️",
+   "tone": "peach",
+   "source": "USDA FDC 170932 (SR Legacy): Spices, pepper, red or cayenne"
   },
   "Coconut": {
    "kcal": 354,
@@ -281,7 +342,8 @@
    "carbsG": 15,
    "fatG": 33,
    "emoji": "🥥",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170169 (SR Legacy): Nuts, coconut meat, raw"
   },
   "Coconut chutney": {
    "kcal": 200,
@@ -289,7 +351,8 @@
    "carbsG": 8,
    "fatG": 18,
    "emoji": "🥥",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "home recipe, from its ingredients"
   },
   "Coconut milk": {
    "kcal": 197,
@@ -297,7 +360,8 @@
    "carbsG": 3,
    "fatG": 21,
    "emoji": "🥥",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 170173 (SR Legacy): Nuts, coconut milk, canned (liquid expressed from grated meat and water)"
   },
   "Cod": {
    "kcal": 82,
@@ -305,7 +369,8 @@
    "carbsG": 0,
    "fatG": 0.7,
    "emoji": "🐟",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 171955 (SR Legacy): Fish, cod, Atlantic, raw"
   },
   "Coriander": {
    "kcal": 23,
@@ -313,7 +378,8 @@
    "carbsG": 3.7,
    "fatG": 0.5,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169997 (SR Legacy): Coriander (cilantro) leaves, raw"
   },
   "Corn": {
    "kcal": 96,
@@ -321,7 +387,8 @@
    "carbsG": 21,
    "fatG": 1.5,
    "emoji": "🌽",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169999 (SR Legacy): Corn, sweet, yellow, cooked, boiled, drained, without salt"
   },
   "Cos lettuce": {
    "kcal": 17,
@@ -329,7 +396,8 @@
    "carbsG": 3.3,
    "fatG": 0.3,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169247 (SR Legacy): Lettuce, cos or romaine, raw"
   },
   "Cottage cheese": {
    "kcal": 98,
@@ -337,7 +405,8 @@
    "carbsG": 3.4,
    "fatG": 4.3,
    "emoji": "🧀",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 172179 (SR Legacy): Cheese, cottage, creamed, large or small curd"
   },
   "Courgette": {
    "kcal": 17,
@@ -345,15 +414,26 @@
    "carbsG": 3.1,
    "fatG": 0.3,
    "emoji": "🥒",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169291 (SR Legacy): Squash, summer, zucchini, includes skin, raw"
+  },
+  "Couscous": {
+   "kcal": 112,
+   "proteinG": 3.8,
+   "carbsG": 23.2,
+   "fatG": 0.2,
+   "emoji": "🍚",
+   "tone": "sand",
+   "source": "USDA FDC 169700 (SR Legacy): Couscous, cooked"
   },
   "Crackers": {
-   "kcal": 430,
-   "proteinG": 9,
-   "carbsG": 70,
-   "fatG": 12,
+   "kcal": 418,
+   "proteinG": 9.5,
+   "carbsG": 74.0,
+   "fatG": 8.6,
    "emoji": "🍘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172746 (SR Legacy): Crackers, saltines (includes oyster, soda, soup)"
   },
   "Cucumber": {
    "kcal": 15,
@@ -361,7 +441,8 @@
    "carbsG": 3.6,
    "fatG": 0.1,
    "emoji": "🥒",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168409 (SR Legacy): Cucumber, with peel, raw"
   },
   "Cumin": {
    "kcal": 375,
@@ -369,7 +450,8 @@
    "carbsG": 44,
    "fatG": 22,
    "emoji": "🧂",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170923 (SR Legacy): Spices, cumin seed"
   },
   "Curry leaves": {
    "kcal": 108,
@@ -377,7 +459,17 @@
    "carbsG": 19,
    "fatG": 1,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "India Food Composition Tables 2017 (IFCT)"
+  },
+  "Dark chocolate": {
+   "kcal": 598,
+   "proteinG": 7.8,
+   "carbsG": 45.9,
+   "fatG": 42.6,
+   "emoji": "🍫",
+   "tone": "sand",
+   "source": "USDA FDC 170273 (SR Legacy): Chocolate, dark, 70-85% cacao solids"
   },
   "Dates": {
    "kcal": 282,
@@ -385,15 +477,17 @@
    "carbsG": 75,
    "fatG": 0.4,
    "emoji": "🌴",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 168191 (SR Legacy): Dates, medjool"
   },
   "Dosa": {
-   "kcal": 168,
-   "proteinG": 4,
-   "carbsG": 30,
-   "fatG": 3.7,
+   "kcal": 210,
+   "proteinG": 5.7,
+   "carbsG": 37.0,
+   "fatG": 4.0,
    "emoji": "🫓",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 2708347 (FNDDS): Dosa, plain"
   },
   "Edamame": {
    "kcal": 121,
@@ -401,7 +495,17 @@
    "carbsG": 9,
    "fatG": 5,
    "emoji": "🫛",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168411 (SR Legacy): Edamame, frozen, prepared"
+  },
+  "Egg noodles": {
+   "kcal": 384,
+   "proteinG": 14.2,
+   "carbsG": 71.3,
+   "fatG": 4.4,
+   "emoji": "🍜",
+   "tone": "sand",
+   "source": "USDA FDC 169731 (SR Legacy): Noodles, egg, dry, enriched"
   },
   "Eggs": {
    "kcal": 143,
@@ -409,7 +513,8 @@
    "carbsG": 0.7,
    "fatG": 9.5,
    "emoji": "🥚",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171287 (SR Legacy): Egg, whole, raw, fresh"
   },
   "Falafel": {
    "kcal": 333,
@@ -417,7 +522,8 @@
    "carbsG": 32,
    "fatG": 18,
    "emoji": "🧆",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172455 (SR Legacy): Falafel, home-prepared"
   },
   "Fava beans": {
    "kcal": 110,
@@ -425,7 +531,8 @@
    "carbsG": 20,
    "fatG": 0.4,
    "emoji": "🫘",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 173753 (SR Legacy): Broadbeans (fava beans), mature seeds, cooked, boiled, without salt"
   },
   "Feta": {
    "kcal": 264,
@@ -433,7 +540,8 @@
    "carbsG": 4,
    "fatG": 21,
    "emoji": "🧀",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 173420 (SR Legacy): Cheese, feta"
   },
   "Firm tofu": {
    "kcal": 144,
@@ -441,7 +549,8 @@
    "carbsG": 3,
    "fatG": 8.7,
    "emoji": "⬜",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 172475 (SR Legacy): Tofu, raw, firm, prepared with calcium sulfate"
   },
   "Fish sauce": {
    "kcal": 35,
@@ -449,7 +558,8 @@
    "carbsG": 3.6,
    "fatG": 0,
    "emoji": "🐟",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174531 (SR Legacy): Sauce, fish, ready-to-serve"
   },
   "Frozen berries": {
    "kcal": 50,
@@ -457,7 +567,8 @@
    "carbsG": 12,
    "fatG": 0.3,
    "emoji": "🫐",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 168209 (SR Legacy): Raspberries, frozen, red, unsweetened"
   },
   "Garlic": {
    "kcal": 149,
@@ -465,7 +576,8 @@
    "carbsG": 33,
    "fatG": 0.5,
    "emoji": "🧄",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169230 (SR Legacy): Garlic, raw"
   },
   "Garlic powder": {
    "kcal": 331,
@@ -473,7 +585,8 @@
    "carbsG": 73,
    "fatG": 0.7,
    "emoji": "🧄",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171325 (SR Legacy): Spices, garlic powder"
   },
   "Ghee": {
    "kcal": 900,
@@ -481,7 +594,8 @@
    "carbsG": 0,
    "fatG": 100,
    "emoji": "🧈",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171314 (SR Legacy): Butter, Clarified butter (ghee)"
   },
   "Ginger": {
    "kcal": 80,
@@ -489,23 +603,44 @@
    "carbsG": 18,
    "fatG": 0.8,
    "emoji": "🫚",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169231 (SR Legacy): Ginger root, raw"
   },
   "Glass noodles": {
-   "kcal": 84,
-   "proteinG": 0.1,
-   "carbsG": 21,
-   "fatG": 0,
+   "kcal": 351,
+   "proteinG": 0.2,
+   "carbsG": 86.1,
+   "fatG": 0.1,
    "emoji": "🍜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174258 (SR Legacy): Noodles, chinese, cellophane or long rice (mung beans), dehydrated"
+  },
+  "Gochujang": {
+   "kcal": 223,
+   "proteinG": 5,
+   "carbsG": 45,
+   "fatG": 2,
+   "emoji": "🌶️",
+   "tone": "peach",
+   "source": "average of brand labels"
   },
   "Granola": {
-   "kcal": 471,
-   "proteinG": 10,
-   "carbsG": 64,
-   "fatG": 20,
+   "kcal": 489,
+   "proteinG": 13.7,
+   "carbsG": 53.9,
+   "fatG": 24.3,
    "emoji": "🥣",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171646 (SR Legacy): Cereals ready-to-eat, granola, homemade"
+  },
+  "Grapes": {
+   "kcal": 69,
+   "proteinG": 0.7,
+   "carbsG": 18.1,
+   "fatG": 0.2,
+   "emoji": "🍇",
+   "tone": "green",
+   "source": "USDA FDC 174683 (SR Legacy): Grapes, red or green (European type, such as Thompson seedless), raw"
   },
   "Greek yoghurt": {
    "kcal": 97,
@@ -513,7 +648,8 @@
    "carbsG": 3.9,
    "fatG": 5,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 171304 (SR Legacy): Yogurt, Greek, plain, whole milk"
   },
   "Green beans": {
    "kcal": 31,
@@ -521,7 +657,8 @@
    "carbsG": 7,
    "fatG": 0.2,
    "emoji": "🫛",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169961 (SR Legacy): Beans, snap, green, raw"
   },
   "Green lentils": {
    "kcal": 116,
@@ -529,7 +666,8 @@
    "carbsG": 20,
    "fatG": 0.4,
    "emoji": "🫘",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 172421 (SR Legacy): Lentils, mature seeds, cooked, boiled, without salt"
   },
   "Green peas": {
    "kcal": 81,
@@ -537,7 +675,8 @@
    "carbsG": 14,
    "fatG": 0.4,
    "emoji": "🫛",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170017 (SR Legacy): Peas, green, frozen, cooked, boiled, drained, without salt"
   },
   "Green pepper": {
    "kcal": 20,
@@ -545,7 +684,8 @@
    "carbsG": 4.6,
    "fatG": 0.2,
    "emoji": "🫑",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170427 (SR Legacy): Peppers, sweet, green, raw"
   },
   "Greens": {
    "kcal": 20,
@@ -553,7 +693,8 @@
    "carbsG": 3,
    "fatG": 0.3,
    "emoji": "🥗",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168462 (SR Legacy): Spinach, raw"
   },
   "Guacamole": {
    "kcal": 155,
@@ -561,7 +702,8 @@
    "carbsG": 8.5,
    "fatG": 14,
    "emoji": "🥑",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 2709307 (FNDDS): Guacamole, NFS"
   },
   "Halloumi": {
    "kcal": 321,
@@ -569,7 +711,17 @@
    "carbsG": 2,
    "fatG": 25,
    "emoji": "🧀",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "average of brand labels"
+  },
+  "Harissa": {
+   "kcal": 120,
+   "proteinG": 3,
+   "carbsG": 10,
+   "fatG": 8,
+   "emoji": "🌶️",
+   "tone": "peach",
+   "source": "average of brand labels"
   },
   "Honey": {
    "kcal": 304,
@@ -577,15 +729,17 @@
    "carbsG": 82,
    "fatG": 0,
    "emoji": "🍯",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169640 (SR Legacy): Honey"
   },
   "Hummus": {
-   "kcal": 166,
-   "proteinG": 7.9,
-   "carbsG": 14,
-   "fatG": 9.6,
+   "kcal": 237,
+   "proteinG": 7.8,
+   "carbsG": 15,
+   "fatG": 17.8,
    "emoji": "🫘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174289 (SR Legacy): Hummus, commercial"
   },
   "Hung curd": {
    "kcal": 98,
@@ -593,15 +747,17 @@
    "carbsG": 4,
    "fatG": 5,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 171304 (SR Legacy): Yogurt, Greek, plain, whole milk"
   },
   "Idli": {
-   "kcal": 130,
-   "proteinG": 4,
-   "carbsG": 27,
-   "fatG": 0.4,
+   "kcal": 128,
+   "proteinG": 6.4,
+   "carbsG": 25.0,
+   "fatG": 0.3,
    "emoji": "🍘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 2708346 (FNDDS): Idli"
   },
   "Jasmine rice": {
    "kcal": 129,
@@ -609,15 +765,26 @@
    "carbsG": 28,
    "fatG": 0.3,
    "emoji": "🍚",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168878 (SR Legacy): Rice, white, long-grain, regular, enriched, cooked"
+  },
+  "Jerk seasoning": {
+   "kcal": 250,
+   "proteinG": 8,
+   "carbsG": 45,
+   "fatG": 5,
+   "emoji": "🧂",
+   "tone": "sand",
+   "source": "spice blend, from brand labels"
   },
   "Kale": {
-   "kcal": 49,
-   "proteinG": 4.3,
-   "carbsG": 9,
-   "fatG": 0.9,
+   "kcal": 35,
+   "proteinG": 2.9,
+   "carbsG": 4.4,
+   "fatG": 1.5,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168421 (SR Legacy): Kale, raw"
   },
   "Kidney beans": {
    "kcal": 127,
@@ -625,7 +792,26 @@
    "carbsG": 23,
    "fatG": 0.5,
    "emoji": "🫘",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 173740 (SR Legacy): Beans, kidney, all types, mature seeds, cooked, boiled, without salt"
+  },
+  "Kimchi": {
+   "kcal": 15,
+   "proteinG": 1.1,
+   "carbsG": 2.4,
+   "fatG": 0.5,
+   "emoji": "🥬",
+   "tone": "peach",
+   "source": "USDA FDC 170392 (SR Legacy): Cabbage, kimchi"
+  },
+  "Kiwi": {
+   "kcal": 61,
+   "proteinG": 1.1,
+   "carbsG": 14.7,
+   "fatG": 0.5,
+   "emoji": "🥝",
+   "tone": "green",
+   "source": "USDA FDC 168153 (SR Legacy): Kiwifruit, green, raw"
   },
   "Labneh": {
    "kcal": 160,
@@ -633,7 +819,8 @@
    "carbsG": 4,
    "fatG": 13,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "average of brand labels"
   },
   "Lamb mince": {
    "kcal": 282,
@@ -641,7 +828,8 @@
    "carbsG": 0,
    "fatG": 23,
    "emoji": "🥩",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 174370 (SR Legacy): Lamb, ground, raw"
   },
   "Lemon": {
    "kcal": 29,
@@ -649,7 +837,8 @@
    "carbsG": 9,
    "fatG": 0.3,
    "emoji": "🍋",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 167746 (SR Legacy): Lemons, raw, without peel"
   },
   "Lettuce": {
    "kcal": 15,
@@ -657,7 +846,8 @@
    "carbsG": 2.9,
    "fatG": 0.2,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169249 (SR Legacy): Lettuce, green leaf, raw"
   },
   "Lettuce cups": {
    "kcal": 15,
@@ -665,7 +855,8 @@
    "carbsG": 2.9,
    "fatG": 0.2,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169248 (SR Legacy): Lettuce, iceberg (includes crisphead types), raw"
   },
   "Lime": {
    "kcal": 30,
@@ -673,7 +864,8 @@
    "carbsG": 11,
    "fatG": 0.2,
    "emoji": "🍋‍🟩",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168155 (SR Legacy): Limes, raw"
   },
   "Makhana": {
    "kcal": 347,
@@ -681,7 +873,8 @@
    "carbsG": 77,
    "fatG": 0.1,
    "emoji": "⚪",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "India Food Composition Tables 2017 (IFCT)"
   },
   "Mango": {
    "kcal": 60,
@@ -689,7 +882,8 @@
    "carbsG": 15,
    "fatG": 0.4,
    "emoji": "🥭",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 169910 (SR Legacy): Mangos, raw"
   },
   "Maple syrup": {
    "kcal": 260,
@@ -697,7 +891,8 @@
    "carbsG": 67,
    "fatG": 0.1,
    "emoji": "🍁",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169661 (SR Legacy): Syrups, maple"
   },
   "Milk": {
    "kcal": 50,
@@ -705,7 +900,8 @@
    "carbsG": 4.8,
    "fatG": 2,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 171267 (SR Legacy): Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D"
   },
   "Mint": {
    "kcal": 44,
@@ -713,7 +909,8 @@
    "carbsG": 8,
    "fatG": 0.7,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 173475 (SR Legacy): Spearmint, fresh"
   },
   "Mint chutney": {
    "kcal": 60,
@@ -721,7 +918,17 @@
    "carbsG": 8,
    "fatG": 2,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "home recipe, from its ingredients"
+  },
+  "Miso": {
+   "kcal": 198,
+   "proteinG": 12.8,
+   "carbsG": 25.4,
+   "fatG": 6.0,
+   "emoji": "🥣",
+   "tone": "sand",
+   "source": "USDA FDC 172442 (SR Legacy): Miso"
   },
   "Mixed nuts": {
    "kcal": 607,
@@ -729,7 +936,8 @@
    "carbsG": 21,
    "fatG": 54,
    "emoji": "🥜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170585 (SR Legacy): Nuts, mixed nuts, dry roasted, with peanuts, without salt added"
   },
   "Mixed veg": {
    "kcal": 65,
@@ -737,7 +945,8 @@
    "carbsG": 13,
    "fatG": 0.3,
    "emoji": "🥕",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170472 (SR Legacy): Vegetables, mixed, frozen, cooked, boiled, drained, without salt"
   },
   "Moong dal": {
    "kcal": 347,
@@ -745,7 +954,8 @@
    "carbsG": 63,
    "fatG": 1.2,
    "emoji": "🫘",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 174256 (SR Legacy): Mung beans, mature seeds, raw"
   },
   "Moong sprouts": {
    "kcal": 30,
@@ -753,7 +963,17 @@
    "carbsG": 6,
    "fatG": 0.2,
    "emoji": "🌱",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169957 (SR Legacy): Mung beans, mature seeds, sprouted, raw"
+  },
+  "Mozzarella": {
+   "kcal": 254,
+   "proteinG": 24.3,
+   "carbsG": 2.8,
+   "fatG": 15.9,
+   "emoji": "🧀",
+   "tone": "sand",
+   "source": "USDA FDC 170847 (SR Legacy): Cheese, mozzarella, part skim milk"
   },
   "Mushrooms": {
    "kcal": 22,
@@ -761,7 +981,26 @@
    "carbsG": 3.3,
    "fatG": 0.3,
    "emoji": "🍄",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169251 (SR Legacy): Mushrooms, white, raw"
+  },
+  "Nori": {
+   "kcal": 298,
+   "proteinG": 31.8,
+   "carbsG": 52.4,
+   "fatG": 4.0,
+   "emoji": "🟩",
+   "tone": "green",
+   "source": "USDA FDC 2709988 (FNDDS): Seaweed, dried"
+  },
+  "Okra": {
+   "kcal": 33,
+   "proteinG": 1.9,
+   "carbsG": 7.5,
+   "fatG": 0.2,
+   "emoji": "🫛",
+   "tone": "green",
+   "source": "USDA FDC 169260 (SR Legacy): Okra, raw"
   },
   "Olive oil": {
    "kcal": 884,
@@ -769,7 +1008,8 @@
    "carbsG": 0,
    "fatG": 100,
    "emoji": "🫒",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 171413 (SR Legacy): Oil, olive, salad or cooking"
   },
   "Olives": {
    "kcal": 115,
@@ -777,7 +1017,8 @@
    "carbsG": 6,
    "fatG": 11,
    "emoji": "🫒",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169094 (SR Legacy): Olives, ripe, canned (small-extra large)"
   },
   "Onion": {
    "kcal": 40,
@@ -785,7 +1026,26 @@
    "carbsG": 9,
    "fatG": 0.1,
    "emoji": "🧅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170000 (SR Legacy): Onions, raw"
+  },
+  "Orange": {
+   "kcal": 47,
+   "proteinG": 0.9,
+   "carbsG": 11.8,
+   "fatG": 0.1,
+   "emoji": "🍊",
+   "tone": "peach",
+   "source": "USDA FDC 169097 (SR Legacy): Oranges, raw, all commercial varieties"
+  },
+  "Oyster sauce": {
+   "kcal": 51,
+   "proteinG": 1.4,
+   "carbsG": 10.9,
+   "fatG": 0.2,
+   "emoji": "🥣",
+   "tone": "sand",
+   "source": "USDA FDC 174529 (SR Legacy): Sauce, oyster, ready-to-serve"
   },
   "Pak choi": {
    "kcal": 13,
@@ -793,7 +1053,8 @@
    "carbsG": 2.2,
    "fatG": 0.2,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170390 (SR Legacy): Cabbage, chinese (pak-choi), raw"
   },
   "Paneer": {
    "kcal": 265,
@@ -801,7 +1062,8 @@
    "carbsG": 1.2,
    "fatG": 21,
    "emoji": "🧀",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "India Food Composition Tables 2017 (IFCT)"
   },
   "Panko": {
    "kcal": 395,
@@ -809,7 +1071,8 @@
    "carbsG": 72,
    "fatG": 5.3,
    "emoji": "🍞",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174928 (SR Legacy): Bread, crumbs, dry, grated, plain"
   },
   "Paprika": {
    "kcal": 282,
@@ -817,15 +1080,17 @@
    "carbsG": 54,
    "fatG": 13,
    "emoji": "🌶️",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171329 (SR Legacy): Spices, paprika"
   },
   "Parmesan": {
-   "kcal": 431,
-   "proteinG": 38,
-   "carbsG": 4,
-   "fatG": 29,
+   "kcal": 392,
+   "proteinG": 35.8,
+   "carbsG": 3.2,
+   "fatG": 25,
    "emoji": "🧀",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170848 (SR Legacy): Cheese, parmesan, hard"
   },
   "Parsley": {
    "kcal": 36,
@@ -833,7 +1098,17 @@
    "carbsG": 6,
    "fatG": 0.8,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170416 (SR Legacy): Parsley, fresh"
+  },
+  "Pasta": {
+   "kcal": 371,
+   "proteinG": 13.0,
+   "carbsG": 74.7,
+   "fatG": 1.5,
+   "emoji": "🍝",
+   "tone": "sand",
+   "source": "USDA FDC 169736 (SR Legacy): Pasta, dry, enriched"
   },
   "Peanut butter": {
    "kcal": 588,
@@ -841,15 +1116,17 @@
    "carbsG": 20,
    "fatG": 50,
    "emoji": "🥜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172470 (SR Legacy): Peanut butter, smooth style, without salt"
   },
   "Peanut sauce": {
-   "kcal": 400,
-   "proteinG": 12,
-   "carbsG": 20,
-   "fatG": 30,
+   "kcal": 257,
+   "proteinG": 6.3,
+   "carbsG": 22.0,
+   "fatG": 16.0,
    "emoji": "🥜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 2707546 (FNDDS): Peanut sauce"
   },
   "Peanuts": {
    "kcal": 567,
@@ -857,7 +1134,8 @@
    "carbsG": 16,
    "fatG": 49,
    "emoji": "🥜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172430 (SR Legacy): Peanuts, all types, raw"
   },
   "Pear": {
    "kcal": 57,
@@ -865,7 +1143,17 @@
    "carbsG": 15,
    "fatG": 0.1,
    "emoji": "🍐",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169118 (SR Legacy): Pears, raw"
+  },
+  "Pesto": {
+   "kcal": 418,
+   "proteinG": 9.8,
+   "carbsG": 10.1,
+   "fatG": 37.6,
+   "emoji": "🌿",
+   "tone": "green",
+   "source": "USDA FDC 171579 (SR Legacy): Sauce, pesto, ready-to-serve, refrigerated"
   },
   "Pineapple": {
    "kcal": 50,
@@ -873,7 +1161,17 @@
    "carbsG": 13,
    "fatG": 0.1,
    "emoji": "🍍",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169124 (SR Legacy): Pineapple, raw, all varieties"
+  },
+  "Pistachios": {
+   "kcal": 560,
+   "proteinG": 20.2,
+   "carbsG": 27.2,
+   "fatG": 45.3,
+   "emoji": "🥜",
+   "tone": "green",
+   "source": "USDA FDC 170184 (SR Legacy): Nuts, pistachio nuts, raw"
   },
   "Pita": {
    "kcal": 275,
@@ -881,7 +1179,26 @@
    "carbsG": 56,
    "fatG": 1.2,
    "emoji": "🫓",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174915 (SR Legacy): Bread, pita, white, enriched"
+  },
+  "Plain yoghurt": {
+   "kcal": 61,
+   "proteinG": 3.5,
+   "carbsG": 4.7,
+   "fatG": 3.2,
+   "emoji": "🥛",
+   "tone": "blue",
+   "source": "USDA FDC 171284 (SR Legacy): Yogurt, plain, whole milk"
+  },
+  "Plantain": {
+   "kcal": 122,
+   "proteinG": 1.3,
+   "carbsG": 31.9,
+   "fatG": 0.3,
+   "emoji": "🍌",
+   "tone": "sand",
+   "source": "USDA FDC 169130 (SR Legacy): Plantains, yellow, raw"
   },
   "Poha": {
    "kcal": 350,
@@ -889,7 +1206,35 @@
    "carbsG": 77,
    "fatG": 1.2,
    "emoji": "🍚",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "India Food Composition Tables 2017 (IFCT)"
+  },
+  "Polenta": {
+   "kcal": 362,
+   "proteinG": 8.1,
+   "carbsG": 76.9,
+   "fatG": 3.6,
+   "emoji": "🌽",
+   "tone": "sand",
+   "source": "USDA FDC 169697 (SR Legacy): Cornmeal, whole-grain, yellow"
+  },
+  "Popcorn": {
+   "kcal": 387,
+   "proteinG": 12.9,
+   "carbsG": 77.8,
+   "fatG": 4.5,
+   "emoji": "🍿",
+   "tone": "sand",
+   "source": "USDA FDC 167959 (SR Legacy): Snacks, popcorn, air-popped"
+  },
+  "Pork loin": {
+   "kcal": 109,
+   "proteinG": 20.9,
+   "carbsG": 0,
+   "fatG": 2.2,
+   "emoji": "🥩",
+   "tone": "peach",
+   "source": "USDA FDC 168249 (SR Legacy): Pork, fresh, loin, tenderloin, separable lean only, raw"
   },
   "Potato": {
    "kcal": 77,
@@ -897,23 +1242,35 @@
    "carbsG": 17,
    "fatG": 0.1,
    "emoji": "🥔",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170026 (SR Legacy): Potatoes, flesh and skin, raw"
   },
   "Prawns": {
-   "kcal": 99,
-   "proteinG": 24,
-   "carbsG": 0.2,
-   "fatG": 0.3,
+   "kcal": 85,
+   "proteinG": 20.1,
+   "carbsG": 0,
+   "fatG": 0.5,
    "emoji": "🦐",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 175179 (SR Legacy): Crustaceans, shrimp, raw"
   },
   "Protein bar": {
-   "kcal": 370,
-   "proteinG": 33,
-   "carbsG": 37,
-   "fatG": 12,
+   "kcal": 412,
+   "proteinG": 30.3,
+   "carbsG": 38.4,
+   "fatG": 15.2,
    "emoji": "🍫",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 2708124 (FNDDS): Nutrition bar (South Beach Living High Protein Bar)"
+  },
+  "Pumpkin": {
+   "kcal": 26,
+   "proteinG": 1,
+   "carbsG": 6.5,
+   "fatG": 0.1,
+   "emoji": "🎃",
+   "tone": "peach",
+   "source": "USDA FDC 168448 (SR Legacy): Pumpkin, raw"
   },
   "Pumpkin seeds": {
    "kcal": 559,
@@ -921,7 +1278,8 @@
    "carbsG": 11,
    "fatG": 49,
    "emoji": "🌱",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170556 (SR Legacy): Seeds, pumpkin and squash seed kernels, dried"
   },
   "Quinoa": {
    "kcal": 120,
@@ -929,7 +1287,8 @@
    "carbsG": 21,
    "fatG": 1.9,
    "emoji": "🌾",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 168917 (SR Legacy): Quinoa, cooked"
   },
   "Raisins": {
    "kcal": 299,
@@ -937,7 +1296,8 @@
    "carbsG": 79,
    "fatG": 0.5,
    "emoji": "🍇",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 168165 (SR Legacy): Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)"
   },
   "Raspberries": {
    "kcal": 52,
@@ -945,7 +1305,17 @@
    "carbsG": 12,
    "fatG": 0.7,
    "emoji": "🍓",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 167755 (SR Legacy): Raspberries, raw"
+  },
+  "Red lentils": {
+   "kcal": 358,
+   "proteinG": 23.9,
+   "carbsG": 63.1,
+   "fatG": 2.2,
+   "emoji": "🫘",
+   "tone": "peach",
+   "source": "USDA FDC 174284 (SR Legacy): Lentils, pink or red, raw"
   },
   "Red onion": {
    "kcal": 40,
@@ -953,7 +1323,8 @@
    "carbsG": 9,
    "fatG": 0.1,
    "emoji": "🧅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170000 (SR Legacy): Onions, raw"
   },
   "Red pepper": {
    "kcal": 31,
@@ -961,7 +1332,8 @@
    "carbsG": 6,
    "fatG": 0.3,
    "emoji": "🫑",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170108 (SR Legacy): Peppers, sweet, red, raw"
   },
   "Rice cakes": {
    "kcal": 387,
@@ -969,7 +1341,8 @@
    "carbsG": 82,
    "fatG": 2.8,
    "emoji": "🍘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170250 (SR Legacy): Snacks, rice cakes, brown rice, plain, unsalted"
   },
   "Rice noodles": {
    "kcal": 364,
@@ -977,7 +1350,8 @@
    "carbsG": 80,
    "fatG": 0.6,
    "emoji": "🍜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169742 (SR Legacy): Rice noodles, dry"
   },
   "Rice paper": {
    "kcal": 333,
@@ -985,7 +1359,17 @@
    "carbsG": 77,
    "fatG": 0.5,
    "emoji": "🍜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 2708166 (FNDDS): Rice paper"
+  },
+  "Ricotta": {
+   "kcal": 150,
+   "proteinG": 7.5,
+   "carbsG": 7.3,
+   "fatG": 10.2,
+   "emoji": "🧀",
+   "tone": "sand",
+   "source": "USDA FDC 170851 (SR Legacy): Cheese, ricotta, whole milk"
   },
   "Roasted chana": {
    "kcal": 369,
@@ -993,7 +1377,8 @@
    "carbsG": 58,
    "fatG": 5,
    "emoji": "🫘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "India Food Composition Tables 2017 (IFCT)"
   },
   "Rocket": {
    "kcal": 25,
@@ -1001,23 +1386,26 @@
    "carbsG": 3.7,
    "fatG": 0.7,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 169387 (SR Legacy): Arugula, raw"
   },
   "Rolled oats": {
-   "kcal": 389,
-   "proteinG": 17,
-   "carbsG": 66,
-   "fatG": 6.9,
+   "kcal": 379,
+   "proteinG": 13.2,
+   "carbsG": 67.7,
+   "fatG": 6.5,
    "emoji": "🥣",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 173904 (SR Legacy): Cereals, oats, regular and quick, not fortified, dry"
   },
   "Roti": {
    "kcal": 297,
-   "proteinG": 9.6,
-   "carbsG": 56,
-   "fatG": 3.7,
+   "proteinG": 11.2,
+   "carbsG": 46.4,
+   "fatG": 7.5,
    "emoji": "🫓",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171844 (SR Legacy): Bread, chapati or roti, plain, commercially prepared"
   },
   "Rye bread": {
    "kcal": 259,
@@ -1025,7 +1413,8 @@
    "carbsG": 48,
    "fatG": 3.3,
    "emoji": "🍞",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172684 (SR Legacy): Bread, rye"
   },
   "Salmon": {
    "kcal": 208,
@@ -1033,7 +1422,8 @@
    "carbsG": 0,
    "fatG": 13,
    "emoji": "🍣",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 175167 (SR Legacy): Fish, salmon, Atlantic, farmed, raw"
   },
   "Salsa": {
    "kcal": 36,
@@ -1041,7 +1431,8 @@
    "carbsG": 7,
    "fatG": 0.2,
    "emoji": "🍅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 174524 (SR Legacy): Sauce, salsa, ready-to-serve"
   },
   "Salt": {
    "kcal": 0,
@@ -1049,7 +1440,8 @@
    "carbsG": 0,
    "fatG": 0,
    "emoji": "🧂",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "no calories"
   },
   "Salt & pepper": {
    "kcal": 0,
@@ -1057,15 +1449,17 @@
    "carbsG": 0,
    "fatG": 0,
    "emoji": "🧂",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "no calories"
   },
   "Sambar": {
-   "kcal": 60,
-   "proteinG": 3,
-   "carbsG": 9,
-   "fatG": 1.5,
+   "kcal": 86,
+   "proteinG": 4.3,
+   "carbsG": 11.8,
+   "fatG": 2.7,
    "emoji": "🍲",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 2707430 (FNDDS): Sambar, vegetable stew"
   },
   "Seaweed snacks": {
    "kcal": 420,
@@ -1073,7 +1467,8 @@
    "carbsG": 35,
    "fatG": 28,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "average of brand labels"
   },
   "Semolina": {
    "kcal": 360,
@@ -1081,7 +1476,8 @@
    "carbsG": 73,
    "fatG": 1,
    "emoji": "🌾",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169715 (SR Legacy): Semolina, enriched"
   },
   "Sesame": {
    "kcal": 573,
@@ -1089,15 +1485,26 @@
    "carbsG": 23,
    "fatG": 50,
    "emoji": "🌱",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170150 (SR Legacy): Seeds, sesame seeds, whole, dried"
+  },
+  "Sesame oil": {
+   "kcal": 884,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 100,
+   "emoji": "🫒",
+   "tone": "sand",
+   "source": "USDA FDC 171016 (SR Legacy): Oil, sesame, salad or cooking"
   },
   "Sirloin": {
-   "kcal": 206,
-   "proteinG": 26,
+   "kcal": 131,
+   "proteinG": 22.1,
    "carbsG": 0,
-   "fatG": 11,
+   "fatG": 4.1,
    "emoji": "🥩",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 174055 (SR Legacy): Beef, top sirloin, steak, separable lean only, trimmed to 1/8\" fat, all grades, raw"
   },
   "Skyr": {
    "kcal": 63,
@@ -1105,7 +1512,8 @@
    "carbsG": 4,
    "fatG": 0.2,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "average of brand labels"
   },
   "Smoked salmon": {
    "kcal": 117,
@@ -1113,7 +1521,8 @@
    "carbsG": 0,
    "fatG": 4.3,
    "emoji": "🍣",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 173687 (SR Legacy): Fish, salmon, chinook, smoked"
   },
   "Soba noodles": {
    "kcal": 336,
@@ -1121,7 +1530,17 @@
    "carbsG": 74,
    "fatG": 0.7,
    "emoji": "🍜",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 168906 (SR Legacy): Noodles, japanese, soba, dry"
+  },
+  "Somen noodles": {
+   "kcal": 356,
+   "proteinG": 11.3,
+   "carbsG": 74.1,
+   "fatG": 0.8,
+   "emoji": "🍜",
+   "tone": "sand",
+   "source": "USDA FDC 168908 (SR Legacy): Noodles, japanese, somen, dry"
   },
   "Sourdough": {
    "kcal": 289,
@@ -1129,7 +1548,8 @@
    "carbsG": 56,
    "fatG": 1.8,
    "emoji": "🍞",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172675 (SR Legacy): Bread, french or vienna (includes sourdough)"
   },
   "Soy milk": {
    "kcal": 54,
@@ -1137,7 +1557,8 @@
    "carbsG": 6,
    "fatG": 1.8,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 172446 (SR Legacy): Soymilk, original and vanilla, unfortified"
   },
   "Soy sauce": {
    "kcal": 53,
@@ -1145,7 +1566,8 @@
    "carbsG": 4.9,
    "fatG": 0.6,
    "emoji": "🍶",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174277 (SR Legacy): Soy sauce made from soy and wheat (shoyu)"
   },
   "Spinach": {
    "kcal": 23,
@@ -1153,7 +1575,8 @@
    "carbsG": 3.6,
    "fatG": 0.4,
    "emoji": "🥬",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168462 (SR Legacy): Spinach, raw"
   },
   "Spring onion": {
    "kcal": 32,
@@ -1161,7 +1584,8 @@
    "carbsG": 7,
    "fatG": 0.2,
    "emoji": "🧅",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 170005 (SR Legacy): Onions, spring or scallions (includes tops and bulb), raw"
   },
   "Strawberries": {
    "kcal": 32,
@@ -1169,7 +1593,8 @@
    "carbsG": 7.7,
    "fatG": 0.3,
    "emoji": "🍓",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 167762 (SR Legacy): Strawberries, raw"
   },
   "Sushi rice": {
    "kcal": 130,
@@ -1177,7 +1602,8 @@
    "carbsG": 29,
    "fatG": 0.2,
    "emoji": "🍚",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 168882 (SR Legacy): Rice, white, short-grain, enriched, cooked"
   },
   "Sweet potato": {
    "kcal": 86,
@@ -1185,7 +1611,8 @@
    "carbsG": 20,
    "fatG": 0.1,
    "emoji": "🍠",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 168482 (SR Legacy): Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program)"
   },
   "Tahini": {
    "kcal": 595,
@@ -1193,7 +1620,8 @@
    "carbsG": 21,
    "fatG": 54,
    "emoji": "🥣",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170189 (SR Legacy): Seeds, sesame butter, tahini, from roasted and toasted kernels (most common type)"
   },
   "Tajín": {
    "kcal": 0,
@@ -1201,7 +1629,8 @@
    "carbsG": 0,
    "fatG": 0,
    "emoji": "🧂",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "no calories"
   },
   "Teriyaki sauce": {
    "kcal": 89,
@@ -1209,7 +1638,8 @@
    "carbsG": 16,
    "fatG": 0,
    "emoji": "🍶",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171167 (SR Legacy): Sauce, teriyaki, ready-to-serve"
   },
   "Thai basil": {
    "kcal": 23,
@@ -1217,7 +1647,8 @@
    "carbsG": 2.7,
    "fatG": 0.6,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "USDA FDC 172232 (SR Legacy): Basil, fresh"
   },
   "Tinned tomato": {
    "kcal": 32,
@@ -1225,7 +1656,8 @@
    "carbsG": 7,
    "fatG": 0.3,
    "emoji": "🍅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170501 (SR Legacy): Tomatoes, crushed, canned"
   },
   "Tinned tuna": {
    "kcal": 116,
@@ -1233,7 +1665,8 @@
    "carbsG": 0,
    "fatG": 1,
    "emoji": "🐟",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 171986 (SR Legacy): Fish, tuna, light, canned in water, without salt, drained solids"
   },
   "Tomato": {
    "kcal": 18,
@@ -1241,7 +1674,8 @@
    "carbsG": 3.9,
    "fatG": 0.2,
    "emoji": "🍅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170457 (SR Legacy): Tomatoes, red, ripe, raw, year round average"
   },
   "Tomato sauce": {
    "kcal": 29,
@@ -1249,7 +1683,8 @@
    "carbsG": 6,
    "fatG": 0.2,
    "emoji": "🍅",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 170054 (SR Legacy): Tomato products, canned, sauce"
   },
   "Toor dal": {
    "kcal": 343,
@@ -1257,7 +1692,8 @@
    "carbsG": 63,
    "fatG": 1.5,
    "emoji": "🫘",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172436 (SR Legacy): Pigeon peas (red gram), mature seeds, raw"
   },
   "Tortillas": {
    "kcal": 304,
@@ -1265,23 +1701,26 @@
    "carbsG": 50,
    "fatG": 8,
    "emoji": "🫓",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 167535 (SR Legacy): Tortillas, ready-to-bake or -fry, flour, shelf stable"
   },
   "Tuna": {
-   "kcal": 132,
-   "proteinG": 28,
+   "kcal": 109,
+   "proteinG": 24.4,
    "carbsG": 0,
-   "fatG": 1.3,
+   "fatG": 0.5,
    "emoji": "🐟",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 175159 (SR Legacy): Fish, tuna, fresh, yellowfin, raw"
   },
   "Turkey breast": {
-   "kcal": 135,
-   "proteinG": 30,
-   "carbsG": 0,
-   "fatG": 1,
+   "kcal": 114,
+   "proteinG": 23.7,
+   "carbsG": 0.1,
+   "fatG": 1.5,
    "emoji": "🍗",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171098 (SR Legacy): Turkey, whole, breast, meat only, raw"
   },
   "Turkey mince": {
    "kcal": 149,
@@ -1289,7 +1728,17 @@
    "carbsG": 0,
    "fatG": 8,
    "emoji": "🍗",
-   "tone": "peach"
+   "tone": "peach",
+   "source": "USDA FDC 171505 (SR Legacy): Turkey, Ground, raw"
+  },
+  "Turkey slices": {
+   "kcal": 106,
+   "proteinG": 14.8,
+   "carbsG": 2.2,
+   "fatG": 3.8,
+   "emoji": "🦃",
+   "tone": "peach",
+   "source": "USDA FDC 172941 (SR Legacy): Turkey breast, sliced, prepackaged"
   },
   "Tzatziki": {
    "kcal": 90,
@@ -1297,7 +1746,17 @@
    "carbsG": 4,
    "fatG": 6.5,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 2705448 (FNDDS): Tzatziki dip"
+  },
+  "Vegetable oil": {
+   "kcal": 884,
+   "proteinG": 0,
+   "carbsG": 0,
+   "fatG": 100,
+   "emoji": "🫒",
+   "tone": "sand",
+   "source": "USDA FDC 172336 (SR Legacy): Oil, canola"
   },
   "Vegetable stock": {
    "kcal": 5,
@@ -1305,7 +1764,8 @@
    "carbsG": 1,
    "fatG": 0,
    "emoji": "🍲",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 171583 (SR Legacy): Soup, vegetable broth, ready to serve"
   },
   "Walnuts": {
    "kcal": 654,
@@ -1313,15 +1773,26 @@
    "carbsG": 14,
    "fatG": 65,
    "emoji": "🌰",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 170187 (SR Legacy): Nuts, walnuts, english"
+  },
+  "Watermelon": {
+   "kcal": 30,
+   "proteinG": 0.6,
+   "carbsG": 7.5,
+   "fatG": 0.1,
+   "emoji": "🍉",
+   "tone": "peach",
+   "source": "USDA FDC 167765 (SR Legacy): Watermelon, raw"
   },
   "Whey": {
-   "kcal": 400,
-   "proteinG": 80,
-   "carbsG": 8,
-   "fatG": 6,
+   "kcal": 352,
+   "proteinG": 78.1,
+   "carbsG": 6.2,
+   "fatG": 1.6,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 173180 (SR Legacy): Beverages, Protein powder whey based"
   },
   "White fish": {
    "kcal": 90,
@@ -1329,7 +1800,8 @@
    "carbsG": 0,
    "fatG": 1,
    "emoji": "🐟",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "USDA FDC 175176 (SR Legacy): Fish, tilapia, raw"
   },
   "Whole-grain bread": {
    "kcal": 252,
@@ -1337,15 +1809,17 @@
    "carbsG": 43,
    "fatG": 3.5,
    "emoji": "🍞",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 172688 (SR Legacy): Bread, whole-wheat, commercially prepared"
   },
   "Whole-wheat roti": {
-   "kcal": 297,
-   "proteinG": 9.6,
-   "carbsG": 56,
-   "fatG": 3.7,
+   "kcal": 299,
+   "proteinG": 7.8,
+   "carbsG": 46.1,
+   "fatG": 9.2,
    "emoji": "🫓",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 174075 (SR Legacy): Bread, chapati or roti, whole wheat, commercially prepared, frozen"
   },
   "Wholewheat pasta": {
    "kcal": 348,
@@ -1353,7 +1827,8 @@
    "carbsG": 72,
    "fatG": 2.5,
    "emoji": "🍝",
-   "tone": "sand"
+   "tone": "sand",
+   "source": "USDA FDC 169738 (SR Legacy): Pasta, whole-wheat, dry (Includes foods for USDA's Food Distribution Program)"
   },
   "Yoghurt dressing": {
    "kcal": 80,
@@ -1361,7 +1836,8 @@
    "carbsG": 5,
    "fatG": 4.5,
    "emoji": "🥛",
-   "tone": "blue"
+   "tone": "blue",
+   "source": "home recipe, from its ingredients"
   },
   "Za'atar": {
    "kcal": 300,
@@ -1369,7 +1845,8 @@
    "carbsG": 40,
    "fatG": 14,
    "emoji": "🌿",
-   "tone": "green"
+   "tone": "green",
+   "source": "spice blend, from brand labels"
   }
  }
 }

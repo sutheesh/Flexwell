@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import FlexFitEngine
 
 // User-facing names for engine values. The engine stays free of UI copy.
@@ -212,6 +213,9 @@ enum Weekday {
     static func shortName(_ index: Int) -> String {
         ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][index]
     }
+
+    /// Weekday indices (0 = Monday) in the order weeks are shown: Sunday to Saturday.
+    static let displayOrder = [6, 0, 1, 2, 3, 4, 5]
 }
 
 extension TrainingHistory {
@@ -270,6 +274,7 @@ extension DietStyle {
         case .balanced: "Balanced / flexible"
         case .vegetarian: "Vegetarian"
         case .vegan: "Vegan"
+        case .pescatarian: "Pescatarian"
         case .keto: "Keto"
         case .intermittentFasting: "Intermittent fasting"
         }
@@ -281,6 +286,7 @@ extension DietStyle {
         case .balanced: "No rules beyond calories"
         case .vegetarian: "No meat or fish"
         case .vegan: "No animal products"
+        case .pescatarian: "Fish and seafood, no meat"
         case .keto: "Very low carb"
         case .intermittentFasting: "8-hour eating window"
         }
@@ -304,8 +310,76 @@ extension Allergen {
 }
 
 enum FoodDislikes {
-    /// The mock's "Foods you will not eat" list.
+    /// The mock's "Foods you will not eat" list; any other ingredient can be searched for.
     static let options = ["Tofu", "Salmon", "Paneer", "Coriander", "Avocado", "Chickpeas", "Mushrooms"]
+
+    /// Every ingredient in the recipe library a user might not eat (seasonings and stock left out).
+    static let all: [String] = NutritionTable.bundled.keys
+        .filter { !["Salt", "Salt & pepper", "Vegetable stock", "Tajín"].contains($0) }
+        .sorted()
+}
+
+extension Protein {
+    var title: String {
+        switch self {
+        case .poultry: "Chicken & turkey"
+        case .beef: "Beef"
+        case .pork: "Pork"
+        case .lamb: "Lamb"
+        case .fish: "Fish"
+        case .shellfish: "Shellfish"
+        case .eggs: "Eggs"
+        case .dairy: "Dairy"
+        case .soy: "Tofu & soy"
+        }
+    }
+
+    /// The proteins a diet or food rule already rules out, so there's no point asking about them.
+    static func ruledOut(by diet: DietStyle?, rules: Set<FoodRule>) -> Set<Protein> {
+        var out: Set<Protein> = switch diet {
+        case .vegetarian: meatAndFish
+        case .vegan: meatAndFish.union([.eggs, .dairy])
+        case .pescatarian: landMeat
+        default: []
+        }
+        if rules.contains(.jain) { out.formUnion(meatAndFish.union([.eggs])) }
+        if rules.contains(.halal) { out.insert(.pork) }
+        return out
+    }
+}
+
+extension FoodRule {
+    var title: String {
+        switch self {
+        case .halal: "Halal"
+        case .jain: "Jain"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .halal: "No pork"
+        case .jain: "No eggs, root vegetables, onion or garlic"
+        }
+    }
+}
+
+extension SnackTaste {
+    var title: String {
+        switch self {
+        case .both: "Both"
+        case .sweet: "Mostly sweet"
+        case .savoury: "Mostly savoury"
+        }
+    }
+
+    var subtitle: String {
+        switch self {
+        case .both: "A mix of fruit and savoury bites"
+        case .sweet: "Fruit, yoghurt, dates, a little chocolate"
+        case .savoury: "Nuts, eggs, dips, crunchy bites"
+        }
+    }
 }
 
 extension MealPattern {
@@ -313,8 +387,76 @@ extension MealPattern {
         switch self {
         case .two: "2 meals"
         case .three: "3 meals"
-        case .threePlusSnack: "3 meals + snack"
-        case .fourToFive: "4 – 5 small meals"
+        }
+    }
+}
+
+extension CheatDays.Frequency {
+    var title: String {
+        switch self {
+        case .none: "None"
+        case .once: "Once a week"
+        case .twice: "Twice a week"
+        }
+    }
+}
+
+extension CheatDays.Style {
+    var title: String {
+        switch self {
+        case .day: "Whole day"
+        case .meal: "One meal"
+        }
+    }
+}
+
+extension CheatDays.Budget {
+    var title: String {
+        switch self {
+        case .spread: "Other days eat a little less"
+        case .goalMoves: "Goal date moves"
+        }
+    }
+}
+
+extension CheatDays {
+    /// "Off", or "Sat" / "Wed + Sat".
+    var summary: String {
+        let days = activeWeekdays
+        guard !days.isEmpty else { return "Off" }
+        return Weekday.displayOrder.filter(days.contains).map(Weekday.shortName).joined(separator: " + ")
+    }
+}
+
+extension MealMoment {
+    var title: String {
+        switch self {
+        case .breakfast: "Breakfast"
+        case .morningSnack: "Mid-morning snack"
+        case .lunch: "Lunch"
+        case .eveningSnack: "Evening snack"
+        case .dinner: "Dinner"
+        }
+    }
+
+    /// Suggested time of day.
+    var clock: String {
+        switch self {
+        case .breakfast: "8:00 am"
+        case .morningSnack: "10:30 am"
+        case .lunch: "1:00 pm"
+        case .eveningSnack: "4:30 pm"
+        case .dinner: "8:00 pm"
+        }
+    }
+
+    var hour: Double {
+        switch self {
+        case .breakfast: 8
+        case .morningSnack: 10.5
+        case .lunch: 13
+        case .eveningSnack: 16.5
+        case .dinner: 20
         }
     }
 }
@@ -329,26 +471,15 @@ extension MealSlot {
         }
     }
 
-    /// Suggested time of day, from the mock.
-    var clock: String {
-        switch self {
-        case .breakfast: "8:00 am"
-        case .lunch: "1:00 pm"
-        case .snack: "4:30 pm"
-        case .dinner: "8:00 pm"
-        }
-    }
-
-    var hour: Double {
-        switch self {
-        case .breakfast: 8
-        case .lunch: 13
-        case .snack: 16.5
-        case .dinner: 20
-        }
-    }
-
     var illustration: String { "Illustration-\(rawValue)" }
+}
+
+extension Meal {
+    /// The recipe's own photo (`meal_<id>` in Assets/Meals) when there is one, otherwise its meal type's illustration.
+    var picture: String {
+        let photo = "meal_\(id)"
+        return UIImage(named: photo) != nil ? photo : slot.illustration
+    }
 }
 
 extension Meal.Tag {
